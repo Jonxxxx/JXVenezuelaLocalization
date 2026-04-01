@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Number">
+          <DataField>Number</DataField>
+        </Field>
+        <Field Name="JXVZHistoryReceiptHeader_JXVZDocumentDate">
+          <DataField>JXVZHistoryReceiptHeader_JXVZDocumentDate</DataField>
+        </Field>
+        <Field Name="JXVZName">
+          <DataField>JXVZName</DataField>
+        </Field>
+        <Field Name="JXVZAddress">
+          <DataField>JXVZAddress</DataField>
+        </Field>
+        <Field Name="JXVZCuit">
+          <DataField>JXVZCuit</DataField>
+        </Field>
+        <Field Name="JXVZHistoryReceiptHeader_JXVZCustomerNo">
+          <DataField>JXVZHistoryReceiptHeader_JXVZCustomerNo</DataField>
+        </Field>
+        <Field Name="NumberIIBB">
+          <DataField>NumberIIBB</DataField>
+        </Field>
+        <Field Name="CompanyInformation_Address">
+          <DataField>CompanyInformation_Address</DataField>
+        </Field>
+        <Field Name="CompanyInformation_Name">
+          <DataField>CompanyInformation_Name</DataField>
+        </Field>
+        <Field Name="JXVZUserId">
+          <DataField>JXVZUserId</DataField>
+        </Field>
+        <Field Name="DocumentNo">
+          <DataField>DocumentNo</DataField>
+        </Field>
+        <Field Name="JXVZDate">
+          <DataField>JXVZDate</DataField>
+        </Field>
+        <Field Name="JXVZAmount">
+          <DataField>JXVZAmount</DataField>
+        </Field>
+        <Field Name="JXVZAmountFormat">
+          <DataField>JXVZAmountFormat</DataField>
+        </Field>
+        <Field Name="Currencyvalue">
+          <DataField>Currencyvalue</DataField>
+        </Field>
+        <Field Name="JXVZCancelled">
+          <DataField>JXVZCancelled</DataField>
+        </Field>
+        <Field Name="JXVZCancelledFormat">
+          <DataField>JXVZCancelledFormat</DataField>
+        </Field>
+        <Field Name="AmountLocal">
+          <DataField>AmountLocal</DataField>
+        </Field>
+        <Field Name="AmountLocalFormat">
+          <DataField>AmountLocalFormat</DataField>
+        </Field>
+        <Field Name="JXVZValueNo">
+          <DataField>JXVZValueNo</DataField>
+        </Field>
+        <Field Name="JXVZdescription">
+          <DataField>JXVZdescription</DataField>
+        </Field>
+        <Field Name="JXVZEntity">
+          <DataField>JXVZEntity</DataField>
+        </Field>
+        <Field Name="JXVZToDate">
+          <DataField>JXVZToDate</DataField>
+        </Field>
+        <Field Name="PostedValueLineAmount">
+          <DataField>PostedValueLineAmount</DataField>
+        </Field>
+        <Field Name="PostedValueLineAmountFormat">
+          <DataField>PostedValueLineAmountFormat</DataField>
+        </Field>
+        <Field Name="CurrencyvalueVaL">
+          <DataField>CurrencyvalueVaL</DataField>
+        </Field>
+        <Field Name="PostedValueLineAmountLocal">
+          <DataField>PostedValueLineAmountLocal</DataField>
+        </Field>
+        <Field Name="PostedValueLineAmountLocalFormat">
+          <DataField>PostedValueLineAmountLocalFormat</DataField>
+        </Field>
+        <Field Name="PostedValueLineAmount_Control1000000048">
+          <DataField>PostedValueLineAmount_Control1000000048</DataField>
+        </Field>
+        <Field Name="PostedValueLineAmount_Control1000000048Format">
+          <DataField>PostedValueLineAmount_Control1000000048Format</DataField>
+        </Field>
+        <Field Name="TotalAmountLocal_Control1000000053">
+          <DataField>TotalAmountLocal_Control1000000053</DataField>
+        </Field>
+        <Field Name="TotalAmountLocal_Control1000000053Format">
+          <DataField>TotalAmountLocal_Control1000000053Format</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

@@ -1,0 +1,556 @@
+report 84105 JXVZSalesVatBook
+{
+    Caption = 'Sales vat book', Comment = 'ESP=Libro IVA ventas';
+    UsageCategory = ReportsAndAnalysis;
+    ApplicationArea = All;
+
+    DefaultLayout = RDLC;
+    RDLCLayout = 'ReportLayout/ARSalesVatBook.rdl';
+
+    dataset
+    {
+        dataitem(Header; Integer)
+        {
+            DataItemTableView = sorting(Number) order(ascending) where(Number = const(1));
+
+            column(CompanyInfo_Number; Header.Number)
+            {
+
+            }
+            column("CompanyInfo_City"; CompanyInfo.City)
+            {//
+
+            }
+            column("CompanyInfo_VATRegistrationNo"; CompanyInfo."VAT Registration No.")
+            {//
+
+            }
+            column("CompanyInfo_Name"; CompanyInfo.Name)
+            {//
+
+            }
+            column("CompanyInfo_Address"; CompanyInfo.Address)
+            {//
+
+            }
+            column(CompanyInfo_County; CompanyInfo.County)
+            {//
+
+            }
+            column(CompanyInfo_PostCode; CompanyInfo."Post Code")
+            {
+
+            }
+            column(FromDate; FromDate)
+            {//
+
+            }
+            column(ToDate; ToDate)
+            {//
+
+            }
+
+            column(OpenIIBB; '')
+            { }
+
+            trigger OnPreDataItem()
+
+            begin
+                CompanyInfo.reset();
+                CompanyInfo.Get('');
+
+                GenLedgerSetup.Reset();
+                GenLedgerSetup.Get();
+            end;
+        }
+
+        dataitem("Sales Invoice Header"; "Sales Invoice Header")
+        {
+            DataItemTableView = sorting("No.") order(ascending);
+
+            trigger OnPreDataItem()
+            begin
+                "Sales Invoice Header".SetRange("Posting Date", FromDate, ToDate);
+                "Sales Invoice Header".SetRange(JXInvoiceType, "Sales Invoice Header".JXInvoiceType::Invoice);
+            end;
+
+            trigger OnAfterGetRecord()
+            var
+                TaxJurisdictionTemp: Record "Tax Jurisdiction" temporary;
+            begin
+                "Sales Invoice Header".CalcFields("Amount Including VAT");
+                JXVZSalesVatBook.Init();
+                ReportKey += 1;
+                JXVZSalesVatBook.JXVZKey := ReportKey;
+                JXVZSalesVatBook.JXVZPostingdate := "Sales Invoice Header"."Posting Date";
+                JXVZSalesVatBook.JXVZInvoiceNumber := "Sales Invoice Header"."No.";
+                JXVZSalesVatBook.JXVZCompanyName := "Sales Invoice Header"."Bill-to Name";
+                JXVZSalesVatBook.JXVZVATRegistrationNo := "Sales Invoice Header"."VAT Registration No.";
+                JXVZSalesVatBook.JXVZTaxAreaCode := "Sales Invoice Header"."Tax Area Code";
+                JXVZSalesVatBook.JXVZProvince := "Sales Invoice Header".JXVZProvinceCode;
+                JXVZSalesVatBook.JXVZInvoiceType := Format("Sales Invoice Header".JXInvoiceType::Invoice);
+                JXVZSalesVatBook.JXVZInvoiceAmount := Abs("Sales Invoice Header"."Amount Including VAT");
+
+                if ("Sales Invoice Header"."Currency Code" <> '') then
+                    JXVZSalesVatBook.JXVZInvoiceAmountLCY := Abs("Sales Invoice Header"."Amount Including VAT") / "Sales Invoice Header"."Currency Factor"
+                else
+                    JXVZSalesVatBook.JXVZInvoiceAmountLCY := Abs("Sales Invoice Header"."Amount Including VAT");
+                JXVZSalesVatBook.JXVZCurrency := "Sales Invoice Header"."Currency Code";
+
+                SalesInvoiceLine.Reset();
+                SalesInvoiceLine.SetRange(SalesInvoiceLine."Document No.", "Sales Invoice Header"."No.");
+                if SalesInvoiceLine.FindSet() then
+                    repeat
+                        TaxGroup.Reset();
+                        TaxGroup.SetRange(TaxGroup."Code", SalesInvoiceLine."Tax Group Code");
+                        if TaxGroup.FindFirst() then
+                            case TaxGroup.JXVZType of
+                                TaxGroup.JXVZType::"No base":
+                                    if ("Sales Invoice Header"."Currency Code" <> '') then
+                                        JXVZSalesVatBook.JXVZNoBaseAmount += Abs(SalesInvoiceLine."Line Amount") / "Sales Invoice Header"."Currency Factor"
+                                    else
+                                        JXVZSalesVatBook.JXVZNoBaseAmount += Abs(SalesInvoiceLine."Line Amount");
+                                TaxGroup.JXVZType::"Exempt base":
+                                    if ("Sales Invoice Header"."Currency Code" <> '') then
+                                        JXVZSalesVatBook.JXVZExemptBaseAmount += Abs(SalesInvoiceLine."Line Amount") / "Sales Invoice Header"."Currency Factor"
+                                    else
+                                        JXVZSalesVatBook.JXVZExemptBaseAmount += Abs(SalesInvoiceLine."Line Amount");
+                            end;
+
+                    until SalesInvoiceLine.Next() = 0;
+
+                JXVZSalesVatBook.JXVZBaseAmount := 0;
+                TaxJurisdictionTemp.DeleteAll();
+                VatEntry.Reset();
+                VatEntry.SetRange("Document Type", VatEntry."Document Type"::Invoice);
+                VatEntry.SetRange("Document No.", "Sales Invoice Header"."No.");
+                if VatEntry.FindSet() then
+                    repeat
+                        TaxJurisdictionTemp.Reset();
+                        TaxJurisdictionTemp.SetRange(TaxJurisdictionTemp.Code, Format(VatEntry."Sales Tax Connection No."));
+                        if not TaxJurisdictionTemp.FindFirst() then begin
+                            JXVZSalesVatBook.JXVZBaseAmount += /*Abs*/(VatEntry.Base);
+
+                            TaxJurisdictionTemp.Init();
+                            TaxJurisdictionTemp.Code := Format(VatEntry."Sales Tax Connection No.");
+                            TaxJurisdictionTemp.Insert(false);
+                        end;
+
+                        TaxJurisdiction.Reset();
+                        TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
+                        if TaxJurisdiction.FindFirst() then
+                            case TaxJurisdiction.JXTaxType of
+                                TaxJurisdiction.JXTaxType::VAT:
+                                    /*TaxJurisdiction.Reset();
+                                    TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
+                                    if TaxJurisdiction.FindFirst() then*/
+                                    case TaxJurisdiction.JXVAType of
+                                        TaxJurisdiction.JXVAType::IVA21:
+                                            JXVZSalesVatBook.JXVZVAT21 += /*Abs*/(VatEntry.Amount);
+
+                                        TaxJurisdiction.JXVAType::IVA27:
+                                            JXVZSalesVatBook.JXVZVAT27 += /*Abs*/(VatEntry.Amount);
+
+                                        TaxJurisdiction.JXVAType::IVA105:
+                                            JXVZSalesVatBook.JXVZVAT105 += /*Abs*/(VatEntry.Amount);
+                                    end;
+
+                                TaxJurisdiction.JXTaxType::VATPerception:
+                                    JXVZSalesVatBook.JXVZVATPercep += /*Abs*/(VatEntry.Amount);
+
+                                TaxJurisdiction.JXTaxType::GrossIncome:
+                                    begin
+                                        JXVZSalesVatBook.JXVZIIBB += /*Abs*/(VatEntry.Amount);
+
+                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::ARBA then
+                                            JXVZSalesVatBook.JXVZIIBBArba += /*Abs*/(VatEntry.Amount);
+
+                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::CABA then
+                                            JXVZSalesVatBook.JXVZIIBBCaba += /*Abs*/(VatEntry.Amount);
+
+                                    end;
+
+                                TaxJurisdiction.JXTaxType::Others:
+                                    JXVZSalesVatBook.JXVZSpecial += /*Abs*/(VatEntry.Amount);
+                            end;
+                    until VatEntry.Next() = 0;
+
+                JXVZSalesVatBook.JXVZBaseAmount := abs(JXVZSalesVatBook.JXVZBaseAmount);
+                JXVZSalesVatBook.JXVZVAT21 := abs(JXVZSalesVatBook.JXVZVAT21);
+                JXVZSalesVatBook.JXVZVAT27 := abs(JXVZSalesVatBook.JXVZVAT27);
+                JXVZSalesVatBook.JXVZVAT105 := abs(JXVZSalesVatBook.JXVZVAT105);
+                JXVZSalesVatBook.JXVZVATPercep := abs(JXVZSalesVatBook.JXVZVATPercep);
+                JXVZSalesVatBook.JXVZIIBB := abs(JXVZSalesVatBook.JXVZIIBB);
+                JXVZSalesVatBook.JXVZIIBBArba := abs(JXVZSalesVatBook.JXVZIIBBArba);
+                JXVZSalesVatBook.JXVZIIBBCaba := abs(JXVZSalesVatBook.JXVZIIBBCaba);
+                JXVZSalesVatBook.JXVZSpecial := abs(JXVZSalesVatBook.JXVZSpecial);
+
+                JXVZSalesVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXFiscalType);
+                JXVZSalesVatBook.Insert();
+            end;
+
+        }
+        dataitem("Sales Debit Memo Header"; "Sales Invoice Header")
+        {
+            DataItemTableView = sorting("No.") order(Ascending);
+            ;
+
+            trigger OnPreDataItem()
+            begin
+                "Sales Debit Memo Header".SetRange("Posting Date", FromDate, ToDate);
+                "Sales Debit Memo Header".SetRange(JXInvoiceType, "Sales Debit Memo Header".JXInvoiceType::DebitMemo);
+            end;
+
+            trigger OnAfterGetRecord()
+            var
+                TaxJurisdictionTemp: Record "Tax Jurisdiction" temporary;
+            begin
+                "Sales Debit Memo Header".CalcFields("Amount Including VAT");
+                JXVZSalesVatBook.Init();
+                ReportKey += 1;
+                JXVZSalesVatBook.JXVZKey := ReportKey;
+                JXVZSalesVatBook.JXVZPostingdate := "Sales Debit Memo Header"."Posting Date";
+                JXVZSalesVatBook.JXVZInvoiceNumber := "Sales Debit Memo Header"."No.";
+                JXVZSalesVatBook.JXVZCompanyName := "Sales Debit Memo Header"."Bill-to Name";
+                JXVZSalesVatBook.JXVZVATRegistrationNo := "Sales Debit Memo Header"."VAT Registration No.";
+                JXVZSalesVatBook.JXVZTaxAreaCode := "Sales Debit Memo Header"."Tax Area Code";
+                JXVZSalesVatBook.JXVZProvince := "Sales Debit Memo Header".JXVZProvinceCode;
+                JXVZSalesVatBook.JXVZInvoiceType := Format("Sales Debit Memo Header".JXInvoiceType::DebitMemo);
+                JXVZSalesVatBook.JXVZInvoiceAmount := Abs("Sales Debit Memo Header"."Amount Including VAT");
+
+                if ("Sales Debit Memo Header"."Currency Code" <> '') then
+                    JXVZSalesVatBook.JXVZInvoiceAmountLCY := Abs("Sales Debit Memo Header"."Amount Including VAT") / "Sales Debit Memo Header"."Currency Factor"
+                else
+                    JXVZSalesVatBook.JXVZInvoiceAmountLCY := Abs("Sales Debit Memo Header"."Amount Including VAT");
+                JXVZSalesVatBook.JXVZCurrency := "Sales Debit Memo Header"."Currency Code";
+
+                SalesInvoiceLine.Reset();
+                SalesInvoiceLine.SetRange(SalesInvoiceLine."Document No.", "Sales Debit Memo Header"."No.");
+                if SalesInvoiceLine.FindSet() then
+                    repeat
+                        TaxGroup.Reset();
+                        TaxGroup.SetRange(TaxGroup."Code", SalesInvoiceLine."Tax Group Code");
+                        if TaxGroup.FindFirst() then
+                            case TaxGroup.JXVZType of
+                                TaxGroup.JXVZType::"No base":
+                                    if ("Sales Debit Memo Header"."Currency Code" <> '') then
+                                        JXVZSalesVatBook.JXVZNoBaseAmount += Abs(SalesInvoiceLine."Line Amount") / "Sales Debit Memo Header"."Currency Factor"
+                                    else
+                                        JXVZSalesVatBook.JXVZNoBaseAmount += Abs(SalesInvoiceLine."Line Amount");
+
+                                TaxGroup.JXVZType::"Exempt base":
+                                    if ("Sales Debit Memo Header"."Currency Code" <> '') then
+                                        JXVZSalesVatBook.JXVZExemptBaseamount += Abs(SalesInvoiceLine."Line Amount") / "Sales Debit Memo Header"."Currency Factor"
+                                    else
+                                        JXVZSalesVatBook.JXVZExemptBaseamount += Abs(SalesInvoiceLine."Line Amount");
+                            end;
+
+                    until SalesInvoiceLine.Next() = 0;
+
+                JXVZSalesVatBook.JXVZBaseAmount := 0;
+                TaxJurisdictionTemp.deleteAll();
+                VatEntry.Reset();
+                VatEntry.SetRange("Document Type", VatEntry."Document Type"::Invoice);
+                VatEntry.SetRange("Document No.", "Sales Debit Memo Header"."No.");
+                if VatEntry.FindSet() then
+                    repeat
+                        TaxJurisdictionTemp.Reset();
+                        TaxJurisdictionTemp.SetRange(TaxJurisdictionTemp.Code, Format(VatEntry."Sales Tax Connection No."));
+                        if not TaxJurisdictionTemp.FindFirst() then begin
+                            JXVZSalesVatBook.JXVZBaseAmount += Abs(VatEntry.Base);
+                            TaxJurisdictionTemp.Init();
+                            TaxJurisdictionTemp.Code := Format(VatEntry."Sales Tax Connection No.");
+                            TaxJurisdictionTemp.Insert(false);
+                        end;
+
+                        TaxJurisdiction.Reset();
+                        TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
+                        if TaxJurisdiction.FindFirst() then
+                            case TaxJurisdiction.JXTaxType of
+                                TaxJurisdiction.JXTaxType::VAT:
+                                    /*TaxJurisdiction.Reset();
+                                    TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
+                                    if TaxJurisdiction.FindFirst() then*/
+                                    case TaxJurisdiction.JXVAType of
+                                        TaxJurisdiction.JXVAType::IVA21:
+                                            JXVZSalesVatBook.JXVZVAT21 += Abs(VatEntry.Amount);
+
+                                        TaxJurisdiction.JXVAType::IVA27:
+                                            JXVZSalesVatBook.JXVZVAT27 += Abs(VatEntry.Amount);
+
+                                        TaxJurisdiction.JXVAType::IVA105:
+                                            JXVZSalesVatBook.JXVZVAT105 += Abs(VatEntry.Amount);
+                                    end;
+
+                                TaxJurisdiction.JXTaxType::VATPerception:
+                                    JXVZSalesVatBook.JXVZVATPercep += Abs(VatEntry.Amount);
+
+                                TaxJurisdiction.JXTaxType::GrossIncome:
+                                    begin
+                                        JXVZSalesVatBook.JXVZIIBB += Abs(VatEntry.Amount);
+
+                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::ARBA then
+                                            JXVZSalesVatBook.JXVZIIBBArba += Abs(VatEntry.Amount);
+
+                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::CABA then
+                                            JXVZSalesVatBook.JXVZIIBBCaba += Abs(VatEntry.Amount);
+                                    end;
+
+                                TaxJurisdiction.JXTaxType::Others:
+                                    JXVZSalesVatBook.JXVZSpecial += Abs(VatEntry.Amount);
+                            end;
+                    until VatEntry.Next() = 0;
+
+                JXVZSalesVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXFiscalType);
+                JXVZSalesVatBook.Insert();
+            end;
+        }
+        dataitem("Sales Cr.Memo Header"; "Sales Cr.Memo Header")
+        {
+            DataItemTableView = sorting("No.") order(Ascending) where(JXVZNotShowInBooks = filter(False));
+            ;
+
+            trigger OnPreDataItem()
+            begin
+                "Sales Cr.Memo Header".SetRange("Posting Date", FromDate, ToDate);
+            end;
+
+            trigger OnAfterGetRecord()
+            var
+                TaxJurisdictionTemp: Record "Tax Jurisdiction" temporary;
+            begin
+                "Sales Cr.Memo Header".CalcFields("Amount Including VAT");
+                JXVZSalesVatBook.Init();
+                ReportKey += 1;
+                JXVZSalesVatBook.JXVZKey := ReportKey;
+                JXVZSalesVatBook.JXVZPostingdate := "Sales Cr.Memo Header"."Posting Date";
+                JXVZSalesVatBook.JXVZInvoiceNumber := "Sales Cr.Memo Header"."No.";
+                JXVZSalesVatBook.JXVZCompanyName := "Sales Cr.Memo Header"."Bill-to Name";
+                JXVZSalesVatBook.JXVZVATRegistrationNo := "Sales Cr.Memo Header"."VAT Registration No.";
+                JXVZSalesVatBook.JXVZTaxAreaCode := "Sales Cr.Memo Header"."Tax Area Code";
+                JXVZSalesVatBook.JXVZProvince := "Sales Cr.Memo Header".JXVZProvinceCode;
+                JXVZSalesVatBook.JXVZInvoiceType := 'Nota de crédito';
+                JXVZSalesVatBook.JXVZInvoiceAmount := Abs("Sales Cr.Memo Header"."Amount Including VAT") * -1;
+
+                if ("Sales Cr.Memo Header"."Currency Code" <> '') then
+                    JXVZSalesVatBook.JXVZInvoiceAmountLCY := (Abs("Sales Cr.Memo Header"."Amount Including VAT") * -1) / "Sales Cr.Memo Header"."Currency Factor"
+                else
+                    JXVZSalesVatBook.JXVZInvoiceAmountLCY := Abs("Sales Cr.Memo Header"."Amount Including VAT") * -1;
+                JXVZSalesVatBook.JXVZCurrency := "Sales Cr.Memo Header"."Currency Code";
+
+                SalesCrMemoLine.Reset();
+                SalesCrMemoLine.SetRange(SalesCrMemoLine."Document No.", "Sales Cr.Memo Header"."No.");
+                if SalesCrMemoLine.FindSet() then
+                    repeat
+                        TaxGroup.Reset();
+                        TaxGroup.SetRange(TaxGroup."Code", SalesCrMemoLine."Tax Group Code");
+                        if TaxGroup.FindFirst() then
+                            case TaxGroup.JXVZType of
+                                TaxGroup.JXVZType::"No base":
+                                    if ("Sales Cr.Memo Header"."Currency Code" <> '') then
+                                        JXVZSalesVatBook.JXVZNoBaseAmount += (Abs(SalesCrMemoLine."Line Amount") * -1) / "Sales Cr.Memo Header"."Currency Factor"
+                                    else
+                                        JXVZSalesVatBook.JXVZNoBaseAmount += Abs(SalesCrMemoLine."Line Amount") * -1;
+
+                                TaxGroup.JXVZType::"Exempt base":
+                                    if ("Sales Cr.Memo Header"."Currency Code" <> '') then
+                                        JXVZSalesVatBook.JXVZExemptBaseAmount += (Abs(SalesCrMemoLine."Line Amount") * -1) / "Sales Cr.Memo Header"."Currency Factor"
+                                    else
+                                        JXVZSalesVatBook.JXVZExemptBaseAmount += Abs(SalesCrMemoLine."Line Amount") * -1;
+                            end;
+
+                    until SalesCrMemoLine.Next() = 0;
+
+                JXVZSalesVatBook.JXVZBaseAmount := 0;
+                TaxJurisdictionTemp.DeleteAll();
+                VatEntry.Reset();
+                VatEntry.SetRange("Document Type", VatEntry."Document Type"::"Credit Memo");
+                VatEntry.SetRange("Document No.", "Sales Cr.Memo Header"."No.");
+                if VatEntry.FindSet() then
+                    repeat
+                        TaxJurisdictionTemp.Reset();
+                        TaxJurisdictionTemp.SetRange(TaxJurisdictionTemp.Code, Format(VatEntry."Sales Tax Connection No."));
+                        if not TaxJurisdictionTemp.FindFirst() then begin
+                            JXVZSalesVatBook.JXVZBaseAmount += /*Abs*/(VatEntry.Base) /** -1*/;
+                            TaxJurisdictionTemp.Init();
+                            TaxJurisdictionTemp.Code := Format(VatEntry."Sales Tax Connection No.");
+                            TaxJurisdictionTemp.Insert(false);
+                        end;
+
+                        TaxJurisdiction.Reset();
+                        TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
+                        if TaxJurisdiction.FindFirst() then
+                            case TaxJurisdiction.JXTaxType of
+                                TaxJurisdiction.JXTaxType::VAT:
+                                    /*TaxJurisdiction.Reset();
+                                    TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
+                                    if TaxJurisdiction.FindFirst() then*/
+                                    case TaxJurisdiction.JXVAType of
+                                        TaxJurisdiction.JXVAType::IVA21:
+                                            JXVZSalesVatBook.JXVZVAT21 += /*Abs*/(VatEntry.Amount) /** -1*/;
+
+                                        TaxJurisdiction.JXVAType::IVA27:
+                                            JXVZSalesVatBook.JXVZVAT27 += /*Abs*/(VatEntry.Amount) /** -1*/;
+
+                                        TaxJurisdiction.JXVAType::IVA105:
+                                            JXVZSalesVatBook.JXVZVAT105 += /*Abs*/(VatEntry.Amount) /** -1*/;
+                                    end;
+
+                                TaxJurisdiction.JXTaxType::VATPerception:
+                                    JXVZSalesVatBook.JXVZVATPercep += /*Abs*/(VatEntry.Amount) /** -1*/;
+
+                                TaxJurisdiction.JXTaxType::GrossIncome:
+                                    begin
+                                        JXVZSalesVatBook.JXVZIIBB += /*Abs*/(VatEntry.Amount) /** -1*/;
+
+                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::ARBA then
+                                            JXVZSalesVatBook.JXVZIIBBArba += /*Abs*/(VatEntry.Amount) /** -1*/;
+
+                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::CABA then
+                                            JXVZSalesVatBook.JXVZIIBBCaba += /*Abs*/(VatEntry.Amount) /** -1*/;
+                                    end;
+
+                                TaxJurisdiction.JXTaxType::Others:
+                                    JXVZSalesVatBook.JXVZSpecial += /*Abs*/(VatEntry.Amount) /** -1*/;
+                            end;
+                    until VatEntry.Next() = 0;
+
+                JXVZSalesVatBook.JXVZBaseAmount := abs(JXVZSalesVatBook.JXVZBaseAmount) * -1;
+                JXVZSalesVatBook.JXVZVAT21 := abs(JXVZSalesVatBook.JXVZVAT21) * -1;
+                JXVZSalesVatBook.JXVZVAT27 := abs(JXVZSalesVatBook.JXVZVAT27) * -1;
+                JXVZSalesVatBook.JXVZVAT105 := abs(JXVZSalesVatBook.JXVZVAT105) * -1;
+                JXVZSalesVatBook.JXVZVATPercep := abs(JXVZSalesVatBook.JXVZVATPercep) * -1;
+                JXVZSalesVatBook.JXVZIIBB := abs(JXVZSalesVatBook.JXVZIIBB) * -1;
+                JXVZSalesVatBook.JXVZIIBBArba := abs(JXVZSalesVatBook.JXVZIIBBArba) * -1;
+                JXVZSalesVatBook.JXVZIIBBCaba := abs(JXVZSalesVatBook.JXVZIIBBCaba) * -1;
+                JXVZSalesVatBook.JXVZSpecial := abs(JXVZSalesVatBook.JXVZSpecial) * -1;
+
+                JXVZSalesVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXFiscalType);
+                JXVZSalesVatBook.Insert();
+            end;
+        }
+
+        dataitem(Temp; Integer)
+        {
+            DataItemTableView = sorting(Number) order(ascending);
+
+            column(PostingDate; JXVZSalesVatBook.JXVZPostingdate)
+            { }
+            column(InvoiceNumber; JXVZSalesVatBook.JXVZInvoiceNumber)
+            { }
+            column(CompanyName; JXVZSalesVatBook.JXVZCompanyName)
+            { }
+            column(VATRegistrationNoo; JXVZSalesVatBook.JXVZVATRegistrationNo)
+            { }
+            column(Taxareacode; JXVZSalesVatBook.JXVZTaxAreaCode)
+            { }
+            column(Province; JXVZSalesVatBook.JXVZProvince)
+            { }
+            column(Invoicetype; JXVZSalesVatBook.JXVZInvoiceType)
+            { }
+            column(Invoiceamount; JXVZSalesVatBook.JXVZInvoiceAmount)
+            { }
+            column(BaseAmount; JXVZSalesVatBook.JXVZBaseAmount)
+            { }
+            column(NoBaseAmount; JXVZSalesVatBook.JXVZNoBaseAmount)
+            { }
+            column(ExemptBaseAmount; JXVZSalesVatBook.JXVZExemptBaseAmount)
+            { }
+            column(VAT105; JXVZSalesVatBook.JXVZVAT105)
+            { }
+            column(VAT21; JXVZSalesVatBook.JXVZVAT21)
+            { }
+            column(VAT27; JXVZSalesVatBook.JXVZVAT27)
+            { }
+            column(VATpercep; JXVZSalesVatBook.JXVZVATPercep)
+            { }
+            column(IIBB; JXVZSalesVatBook.JXVZIIBB)
+            { }
+            column(Special; JXVZSalesVatBook.JXVZSpecial)
+            { }
+            column(FiscalType; JXVZSalesVatBook.JXVZFiscalType)
+            { }
+            column(CurrencyCode; JXVZSalesVatBook.JXVZCurrency)
+            { }
+            column(InvoiceAmountLCY; JXVZSalesVatBook.JXVZInvoiceAmountLCY)
+            { }
+            column(IIBBArba; JXVZSalesVatBook.JXVZIIBBArba)
+            { }
+
+            column(IIBBCaba; JXVZSalesVatBook.JXVZIIBBCaba)
+            { }
+
+            trigger OnPreDataItem()
+            begin
+                JXVZSalesVatBook.Reset();
+                SetRange(Number, 1, JXVZSalesVatBook.Count());
+            end;
+
+            trigger OnAfterGetRecord()
+            begin
+                if (Number = 1) then
+                    JXVZSalesVatBook.FindFirst()
+                else
+                    JXVZSalesVatBook.Next();
+
+                if StrPos(JXVZSalesVatBook.JXVZVATRegistrationNo, '-') = 0 then
+                    JXVZSalesVatBook.JXVZVATRegistrationNo := InsStr((InsStr(JXVZSalesVatBook.JXVZVATRegistrationNo, '-', 3)), '-', 12)
+            end;
+        }
+    }
+
+    requestpage
+    {
+        layout
+        {
+            area(Content)
+            {
+                group(Dates)
+                {
+                    Caption = 'Dates', Comment = 'ESP=Fechas';
+                    field(FromDate; FromDate)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'From', Comment = 'ESP=Desde';
+                        ToolTip = 'From', Comment = 'ESP=Desde';
+
+                    }
+
+                    field(ToDate; ToDate)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'To', Comment = 'ESP=Hasta';
+                        ToolTip = 'To', Comment = 'ESP=Hasta';
+                    }
+                }
+            }
+        }
+
+        actions
+        {
+            area(processing)
+            {
+            }
+        }
+    }
+
+    procedure SetDates(_FromDate: Date; _ToDate: Date)
+    begin
+        FromDate := _FromDate;
+        ToDate := _ToDate;
+    end;
+
+    var
+        CompanyInfo: Record "Company Information";
+        JXVZSalesVatBook: Record JXVZVatBookTmp temporary;
+        VatEntry: Record "VAT Entry";
+        TaxJurisdiction: Record "Tax Jurisdiction";
+        SalesInvoiceLine: Record "Sales Invoice Line";
+        SalesCrMemoLine: Record "Sales Cr.Memo Line";
+        TaxGroup: Record "Tax Group";
+        LTFiscalType: Record JXVZFiscalType;
+        GenLedgerSetup: Record "General Ledger Setup";
+        FromDate: Date;
+        ToDate: Date;
+        ReportKey: Integer;
+}

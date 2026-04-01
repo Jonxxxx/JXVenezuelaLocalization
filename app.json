@@ -1,0 +1,31 @@
+{
+  "id": "559a87fb-0a57-4f68-a9cf-a1b659344586",
+  "name": "JXVenezuelaVenezuela",
+  "publisher": "Jonxsoft Uruguay S.A.S.",
+  "version": "2.1.2.1230",
+  "brief": "Venezuela Venezuela",
+  "description": "Development of Venezuela Venezuela for Dynamics 365 Business Central",
+  "privacyStatement": "https://jonxsoft.com/",
+  "EULA": "https://jonxsoft.com/",
+  "help": "https://jonxsoft.com/",
+  "url": "https://jonxsoft.com/",
+  "logo": "jonxsoft_logo.png",  
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "26.0.0.0",
+  "idRanges": [
+    {
+      "from": 84100,
+      "to": 84299
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://jonxsoft.com/",
+  "runtime": "15.0",
+  "features": ["TranslationFile"],
+  "resourceExposurePolicy": {
+    "allowDebugging": false,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  }
+}
