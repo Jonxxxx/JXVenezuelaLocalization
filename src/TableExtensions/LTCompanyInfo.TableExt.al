@@ -2,7 +2,7 @@ tableextension 84110 JXVZCompanyInfo extends "Company Information"
 {
     fields
     {
-        field(84100; JXFiscalType; Code[20])
+        field(84100; JXVZFiscalType; Code[20])
         {
             //RI = Responsable inscripto, CF = Consumidor final, MO = Monotributista
             //RX = Exento, EXT = Extranjero, NC = No categorizado
@@ -11,14 +11,14 @@ tableextension 84110 JXVZCompanyInfo extends "Company Information"
             TableRelation = JXVZFiscalType."No.";
         }
 
-        field(84102; JXCompanyStartDate; Date)
+        field(84102; JXVZCompanyStartDate; Date)
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Company start date',
                         Comment = 'ESP = Fecha comienzo empresa';
         }
 
-        field(84103; JXLocalCurrencyDesc; Text[30])
+        field(84103; JXVZLocalCurrencyDesc; Text[30])
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Local currency description',
@@ -48,9 +48,9 @@ tableextension 84110 JXVZCompanyInfo extends "Company Information"
                 JXErrorLbl: Label 'This Venezuela is under development', Comment = 'Esta Venezuela está en desarrollo';
             begin
                 if (Rec.JXVZCountry <> Rec.JXVZCountry::Empty) then
-                    Rec.Validate(JXVZLatamLocEnabled, true)
+                    Rec.Validate(JXVZVenezuelaLocEnabled, true)
                 else
-                    Rec.Validate(JXVZLatamLocEnabled, false);
+                    Rec.Validate(JXVZVenezuelaLocEnabled, false);
             end;
         }
 
@@ -67,30 +67,30 @@ tableextension 84110 JXVZCompanyInfo extends "Company Information"
                     JXVZLogicalFactory.LicenseCodeValidations(Rec.JXVZLicenseCode, rec.JXVZCountry);
             end;
         }
-        field(84111; JXLocAdminUser; Guid)
+        field(84111; JXVZLocAdminUser; Guid)
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Imp Loc. User';
             TableRelation = User;
         }
 
-        field(84112; JXVZLatamLocEnabled; Boolean)
+        field(84112; JXVZVenezuelaLocEnabled; Boolean)
         {
             DataClassification = CustomerContent;
-            Caption = 'Latam Venezuela Enabled';
+            Caption = 'Venezuela Localization Enabled';
 
             trigger OnValidate()
             var
-                JXVZLatamApplicationAreaMgt: Codeunit JXVZLatamApplicationAreaMgt;
+                JXVZVenApplicationAreaMgt: Codeunit JXVZVenApplicationAreaMgt;
                 AppArea: Text;
             begin
-                if JXVZLatamLocEnabled then
-                    AppArea := '#JXVZshowLATAM'
+                if JXVZVenezuelaLocEnabled then
+                    AppArea := '#JXVZshowVen'
                 else
-                    AppArea := '#JXVZNotshowLATAM';
+                    AppArea := '#JXVZNotshowVen';
 
-                JXVZLatamApplicationAreaMgt.SetGlobalAppAreaLatam(AppArea);
-                JXVZLatamApplicationAreaMgt.ApplyLATAMApplicationArea();
+                JXVZVenApplicationAreaMgt.SetGlobalAppAreaVenezuela(AppArea);
+                JXVZVenApplicationAreaMgt.ApplyVenezuelaApplicationArea();
 
                 RestartSession();
             end;

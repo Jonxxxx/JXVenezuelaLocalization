@@ -2,7 +2,7 @@ tableextension 84109 JXVZTaxJurisdiction extends "Tax Jurisdiction"
 {
     fields
     {
-        field(84100; JXTaxType; Option)
+        field(84100; JXVZTaxType; Option)
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Tax type',
@@ -12,7 +12,7 @@ tableextension 84109 JXVZTaxJurisdiction extends "Tax Jurisdiction"
                               Comment = 'ESP = ,IVA,Ingresos brutos,Percepcion IVA,Otros';
         }
 
-        field(84101; JXVAType; Option)
+        field(84101; JXVZVAType; Option)
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'VAT type',

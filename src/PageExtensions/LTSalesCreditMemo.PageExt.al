@@ -15,7 +15,7 @@ pageextension 84106 JXVZSalesCreditMemo extends "Sales Credit Memo"
                     ApplicationArea = All;
                     ToolTip = 'Point of sale', Comment = 'ESP = Punto de venta';
                 }
-                field(JXFiscalType; Rec.JXFiscalType)
+                field(JXVZFiscalType; Rec.JXVZFiscalType)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Fiscal type', Comment = 'ESP = Tipo fiscal';
@@ -25,22 +25,16 @@ pageextension 84106 JXVZSalesCreditMemo extends "Sales Credit Memo"
                 {
                     Visible = IsVenezuela;
                     ApplicationArea = All;
-                    ToolTip = 'FE document type', Comment = 'ESP = Tipo documento FE';
+                    ToolTip = 'document type', Comment = 'ESP = Tipo documento';
                 }
-                field(JXFETypeVoucher; Rec.JXFETypeVoucher)
-                {
-                    Visible = IsVenezuela;
-                    ApplicationArea = All;
-                    Editable = AllowEditVoucherType;
-                    ToolTip = 'Voucher type for FE', Comment = 'ESP = Tipo de voucher para FE';
-                }
-                field(JXFEOption; Rec.JXFEOption)
+                field(JXVZSTypeVoucher; Rec.JXVZSTypeVoucher)
                 {
                     Visible = IsVenezuela;
                     ApplicationArea = All;
                     Editable = false;
-                    ToolTip = 'FE option', Comment = 'ESP = Opcion FE';
+                    ToolTip = 'Voucher type for', Comment = 'ESP = Tipo de voucher para';
                 }
+
                 field("JXPosting No."; Rec."Posting No.")
                 {
                     ApplicationArea = All;
@@ -98,10 +92,6 @@ pageextension 84106 JXVZSalesCreditMemo extends "Sales Credit Memo"
     begin
         IsVenezuela := CompanyInformation.JXIsVenezuela();
 
-        if ((IsVenezuela)) then begin
-            AllowEditVoucherType := rec.JXFEAllowEditTypeVoucher();
-
-        end;
     end;
 
     var
@@ -110,7 +100,7 @@ pageextension 84106 JXVZSalesCreditMemo extends "Sales Credit Memo"
 
 
         IsVenezuela: Boolean;
-        AllowEditVoucherType: Boolean;
+
         ShowSeriesField: Boolean;
 
 }

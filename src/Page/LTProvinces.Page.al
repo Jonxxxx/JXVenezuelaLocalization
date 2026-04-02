@@ -23,16 +23,6 @@ page 84139 JXVZProvinces
                     ApplicationArea = All;
                     Tooltip = 'Description', Comment = 'ESP=Descripcion';
                 }
-                field(JXVZAFIPCode; Rec.JXVZAFIPCode)
-                {
-                    ApplicationArea = All;
-                    Tooltip = 'AFIP code', Comment = 'ESP=Codigo AFIP';
-                }
-                field(JXVZCOTCode; Rec.JXVZCOTCode)
-                {
-                    ApplicationArea = All;
-                    Tooltip = 'COT code', Comment = 'ESP=Codigo COT';
-                }
             }
         }
     }

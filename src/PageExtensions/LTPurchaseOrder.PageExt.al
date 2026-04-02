@@ -10,7 +10,7 @@ pageextension 84117 JXVZPurchaseOrder extends "Purchase Order"
                 Visible = IsVenezuela;
                 Caption = 'Venezuela', Comment = 'ESP=Venezuela';
 
-                field(JXInvoiceType; Rec.JXInvoiceType)
+                field(JXVZInvoiceType; Rec.JXVZInvoiceType)
                 {
                     ApplicationArea = all;
                     ToolTip = 'Invoice type', Comment = 'ESP=Tipo factura';

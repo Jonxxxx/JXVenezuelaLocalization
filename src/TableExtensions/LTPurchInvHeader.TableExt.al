@@ -24,7 +24,7 @@ tableextension 84118 JXVZPurchInvHeader extends "Purch. Inv. Header"
             TableRelation = JXVZProvince;
         }
 
-        field(84104; JXInvoiceType; Option)
+        field(84104; JXVZInvoiceType; Option)
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Invoice type',

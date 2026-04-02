@@ -23,7 +23,7 @@ tableextension 84120 JXVZPurchCrMemoHdr extends "Purch. Cr. Memo Hdr."
             TableRelation = JXVZProvince;
         }
 
-        field(84104; JXInvoiceType; Option)
+        field(84104; JXVZInvoiceType; Option)
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Invoice type',

@@ -147,21 +147,6 @@ page 84131 JXVZHistoryPaymOrder
                 end;
             }
 
-            action(SendByMail)
-            {
-                ApplicationArea = All;
-                Caption = 'Send by Email';
-                ToolTip = 'Send by Email';
-                Image = Email;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-
-                trigger OnAction()
-                begin
-                    SendOPMail(Rec);
-                end;
-            }
             action("&Navegar")
             {
                 ApplicationArea = All;
@@ -198,121 +183,13 @@ page 84131 JXVZHistoryPaymOrder
         }
     }
 
-    procedure SendOPMail(_JXVZHistoryPaymOrder: Record JXVZHistoryPaymOrder): Boolean
-    var
-        //SMTPMailSetup: Record "SMTP Mail Setup";
-        CompanyInformation: Record "Company Information";
-        Vendor: Record Vendor;
-        JXVZHistoryPaymOrderLocal: Record JXVZHistoryPaymOrder;
-        JXVZWithholdLedgerEntryLocal: Record JXVZWithholdLedgerEntry;
-        JXVZWithholdDetailEntryLocal: Record JXVZWithholdDetailEntry;
-        JXVZPostedValuesLine: Record JXVZHistPaymValueLine;
-        JXVZPaymentSetup: Record JXVZPaymentSetup;
-        ReportOP: Report JXVZPaymentOrder;
-        Email: Codeunit Email;
-        EmailMessage: Codeunit "Email Message";
-        TempBlob: Codeunit "Temp Blob";
-        RecRef: RecordRef;
-        ReportToSend: Integer;
-        Subject: Text[120];
-        Body: Text[250];
-        AttachmentName: Text[100];
-        ToAddr: List of [Text];
-        OutStreamReport: OutStream;
-        InStreamReport: InStream;
-        Out: OutStream;
-        FileStream: InStream;
-    begin
-        JXVZPaymentSetup.Reset();
-        if JXVZPaymentSetup.FindFirst() then;
-
-        JXVZPaymentSetup.TestField(JXVZBodyOPMail);
-
-        ReportToSend := JXVZPaymentSetup.JXVZHisPaymentReport;//84104; //Payment order report
-
-        //SMTPMailSetup.GET();
-        CompanyInformation.Get();
-
-        Vendor.Reset();
-        Vendor.SetRange("No.", _JXVZHistoryPaymOrder.JXVZVendorNo);
-        if Vendor.FindFirst() then
-            Vendor.TestField("E-Mail")
-        else
-            Vendor.TestField("No.");
-
-        ToAddr.Add(Vendor."E-Mail");
-
-        Subject := 'Orden de pago ' + _JXVZHistoryPaymOrder.JXVZNo;
-        Body := StrSubstNo(JXVZPaymentSetup.JXVZBodyOPMail, Vendor.Name, _JXVZHistoryPaymOrder.JXVZPostingDate, _JXVZHistoryPaymOrder.JXVZNo, CompanyInformation.Name);
-        AttachmentName := 'OP' + _JXVZHistoryPaymOrder.JXVZNo + '.pdf';
-
-        Clear(ReportOP);
-        ReportOP.SetTableView(_JXVZHistoryPaymOrder);
-        TempBlob.CreateInStream(inStreamReport, TEXTENCODING::UTF8);
-        TempBlob.CreateOutStream(outStreamReport, TEXTENCODING::UTF8);
-
-        clear(RecRef);
-        JXVZHistoryPaymOrderLocal.Reset();
-        JXVZHistoryPaymOrderLocal.SetRange(JXVZNo, _JXVZHistoryPaymOrder.JXVZNo);
-        RecRef.GetTable(JXVZHistoryPaymOrderLocal);
-
-        Report.SaveAs(ReportToSend, '', ReportFormat::Pdf, outStreamReport, RecRef);
-
-        //Create Email
-        Clear(Email);
-        Clear(EmailMessage);
-        EmailMessage.Create(Vendor."E-Mail", Subject, Body);
-        EmailMessage.AddAttachment(AttachmentName, 'PDF', inStreamReport);
-
-        //withholdings certs
-        JXVZPostedValuesLine.Reset();
-        JXVZPostedValuesLine.SetRange(JXVZPostedValuesLine.JXVZNo, Rec.JXVZNo);
-        JXVZPostedValuesLine.SetFilter(JXVZPostedValuesLine.JXVZWitholdingNo, '<>%1', 0);
-        if JXVZPostedValuesLine.FindSet() then
-            repeat
-                JXVZWithholdLedgerEntryLocal.Reset();
-                JXVZWithholdLedgerEntryLocal.SetRange(JXVZWithholdLedgerEntryLocal.JXVZVoucherNo, JXVZPostedValuesLine.JXVZNo);
-                JXVZWithholdLedgerEntryLocal.SetRange(JXVZWitholdingNo, JXVZPostedValuesLine.JXVZWitholdingNo);
-                if JXVZWithholdLedgerEntryLocal.FindSet() then
-                    repeat
-                        JXVZWithholdDetailEntryLocal.Reset();
-                        JXVZWithholdDetailEntryLocal.SetRange(JXVZWithholdDetailEntryLocal.JXVZWitholdingNo, JXVZWithholdLedgerEntryLocal.JXVZWitholdingNo);
-                        if JXVZWithholdDetailEntryLocal.FindFirst() then begin
-                            Clear(Out);
-                            clear(RecRef);
-                            clear(TempBlob);
-                            clear(FileStream);
-
-                            AttachmentName := 'CertRet_' + _JXVZHistoryPaymOrder.JXVZNo + '_' + JXVZWithholdDetailEntryLocal.JXVZReportDescription + '.pdf';
-
-                            RecRef.GetTable(JXVZWithholdLedgerEntryLocal);
-                            TempBlob.CreateInStream(FileStream, TEXTENCODING::UTF8);
-                            TempBlob.CreateOutStream(Out, TEXTENCODING::UTF8);
-
-                            REPORT.SAVEAS(JXVZWithholdDetailEntryLocal.JXVZReportID, '', REPORTFORMAT::Pdf, Out, RecRef);
-
-                            EmailMessage.AddAttachment(AttachmentName, 'PDF', FileStream);
-                        end;
-                    until JXVZWithholdLedgerEntryLocal.Next() = 0;
-
-            until JXVZPostedValuesLine.Next() = 0;
-
-        //Send mail
-        exit(Email.Send(EmailMessage, Enum::"Email Scenario"::JXVZPaymentOrder));
-
-        //SMTPMail.CreateMessage(CompanyInformation.Name, SMTPMailSetup."User ID", ToAddr, Subject, Body);
-        //SMTPMail.AddAttachmentStream(inStreamReport, AttachmentName);
-        //Send mail
-        //exit(SMTPMail.Send());
-    end;
-
     trigger OnOpenPage()
     begin
         superUser := false;
         CompanyInfo.Reset();
         if CompanyInfo.FindFirst() then begin
             User.Reset();
-            User.SetRange(user."User Security ID", CompanyInfo.JXLocAdminUser);
+            User.SetRange(user."User Security ID", CompanyInfo.JXVZLocAdminUser);
             if User.FindFirst() then
                 if UserId() = user."User Name" then
                     superUser := true;

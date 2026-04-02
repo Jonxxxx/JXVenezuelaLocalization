@@ -5,13 +5,13 @@ tableextension 84103 JXVZCustomer extends Customer
         field(84100; JXVZFEDocumentType; Code[10])
         {
             DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'FE Document type',
-                        Comment = 'ESP = Tipo documento FE';
+            Caption = 'Document type',
+                        Comment = 'ESP = Tipo documento';
             TableRelation = JXVZFECustDocumentType;
             ValidateTableRelation = true;
         }
 
-        field(84101; JXFiscalType; Code[20])
+        field(84101; JXVZFiscalType; Code[20])
         {
             //RI = Responsable inscripto, CF = Consumidor final, MO = Monotributista
             //RX = Exento, EXT = Extranjero, NC = No categorizado

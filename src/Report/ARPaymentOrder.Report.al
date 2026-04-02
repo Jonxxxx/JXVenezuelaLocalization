@@ -80,7 +80,7 @@ report 84104 JXVZPaymentOrder
                 trigger OnAfterGetRecord()
                 begin
                     if JXVZHistPaymVoucherLine.JXVZCurrencyCode = '' then
-                        CurrencyValue := JXVZFEConfiguration.JXFELocalCurrencyCode
+                        CurrencyValue := CompanyInformation.JXVZLocalCurrencyDesc
                     else
                         CurrencyValue := JXVZHistPaymVoucherLine.JXVZCurrencyCode;
 
@@ -157,7 +157,7 @@ report 84104 JXVZPaymentOrder
                 begin
 
                     if JXVZHistPaymValueLine.JXVZCurrencyCode = '' then
-                        CurrencyValue := JXVZFEConfiguration.JXFELocalCurrencyCode
+                        CurrencyValue := CompanyInformation.JXVZLocalCurrencyDesc
                     else
                         CurrencyValue := JXVZHistPaymValueLine.JXVZCurrencyCode;
 
@@ -198,9 +198,8 @@ report 84104 JXVZPaymentOrder
             begin
                 Vendor.Get(JXVZHistoryPaymOrder.JXVZVendorNo);
                 CompanyInformation.Get();
-                JXVZFEConfiguration.Get();
                 JXVZPaymentSetup.Get();
-
+                /*
                 JXVZHistPaymVoucherLinelocal.Reset();
                 JXVZHistPaymVoucherLinelocal.SetRange(JXVZPaymentOrderNo, JXVZNo);
                 JXVZHistPaymVoucherLinelocal.SetFilter(JXVZCurrencyCode, '<>%1', '');
@@ -213,7 +212,7 @@ report 84104 JXVZPaymentOrder
 
                             if ExchRate <> 0 then
                                 TextExchRate := 'Tipo de cambio: ' + Format(ExchRate);
-                        end;
+                        end;*/
             end;
         }
     }
@@ -222,7 +221,6 @@ report 84104 JXVZPaymentOrder
         PurchInvHeader: Record "Purch. Inv. Header";
         CompanyInformation: Record "Company Information";
         PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr.";
-        JXVZFEConfiguration: Record JXVZFEConfiguration;
         GenLedgerSetup: Record "General Ledger Setup";
         JXVZPaymentSetup: Record JXVZPaymentSetup;
         CurrencyValue: Code[20];

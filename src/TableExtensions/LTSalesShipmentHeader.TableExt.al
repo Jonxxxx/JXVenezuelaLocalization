@@ -12,7 +12,7 @@ tableextension 84124 JXVZSalesShipmentHeader extends "Sales Shipment Header"
             ValidateTableRelation = true;
         }
 
-        field(84106; JXFiscalType; Code[20])
+        field(84106; JXVZFiscalType; Code[20])
         {
             //RI = Responsable inscripto, CF = Consumidor final, MO = Monotributista
             //RX = Exento, EXT = Extranjero, NC = No categorizado

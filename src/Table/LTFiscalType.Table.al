@@ -17,7 +17,7 @@ table 84141 JXVZFiscalType
             Caption = 'Description', Comment = 'Descripcion';
         }
 
-        field(3; JXFiscalType; Option)
+        field(3; JXVZFiscalType; Option)
         {
             //RI = Responsable inscripto, CF = Consumidor final, MO = Monotributista
             //RX = Exento, EXT = Extranjero, NC = No categorizado
@@ -29,10 +29,10 @@ table 84141 JXVZFiscalType
                               Comment = 'ESP = ,Responsable inscripto,Consumidor final,Monotributista,Exento,Exterior,No categorizado,Otro';
         }
 
-        field(4; JXFEVATCondition; Integer)
+        field(4; JXVZSVATCondition; Integer)
         {
             DataClassification = CustomerContent;
-            Caption = 'VAT Condition FE', Comment = 'ESP="Condicion IVA FE"';
+            Caption = 'VAT Condition', Comment = 'ESP="Condicion IVA"';
         }
     }
 

@@ -67,7 +67,7 @@ report 84103 JXVZReceipt
                 trigger OnAfterGetRecord()
                 begin
                     if JXVZHistReceiptVoucherLine.JXVZCurrencyCode = '' then
-                        Currencyvalue := JXVZFEConfiguration.JXFELocalCurrencyCode
+                        Currencyvalue := CompanyInformation.JXVZLocalCurrencyDesc
                     else
                         Currencyvalue := JXVZHistReceiptVoucherLine.JXVZCurrencyCode;
 
@@ -126,7 +126,7 @@ report 84103 JXVZReceipt
                 trigger OnAfterGetRecord()
                 begin
                     if JXVZHistReceiptValueLine.JXVZCurrencyCode = '' then
-                        Currencyvalue := JXVZFEConfiguration.JXFELocalCurrencyCode
+                        Currencyvalue := CompanyInformation.JXVZLocalCurrencyDesc
                     else
                         Currencyvalue := JXVZHistReceiptValueLine.JXVZCurrencyCode;
 
@@ -151,8 +151,6 @@ report 84103 JXVZReceipt
 
                 CompanyInformation.Get();
                 CompanyInformation.CalcFields(CompanyInformation.Picture);
-
-                JXVZFEConfiguration.Get();
             end;
         }
     }
@@ -160,7 +158,6 @@ report 84103 JXVZReceipt
     var
         Customer: Record Customer;
         CompanyInformation: Record "Company Information";
-        JXVZFEConfiguration: Record JXVZFEConfiguration;
         Currencyvalue: Code[20];
         AmountLocal: Decimal;
         TotalAmountLocal: Decimal;

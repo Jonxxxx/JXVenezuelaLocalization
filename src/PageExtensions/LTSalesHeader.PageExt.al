@@ -10,7 +10,7 @@ pageextension 84104 JXVZSalesHeader extends "Sales Order"
                 Caption = 'Venezuela',
                             Comment = 'ESP = Venezuela';
 
-                field(JXInvoiceType; Rec.JXInvoiceType)
+                field(JXVZInvoiceType; Rec.JXVZInvoiceType)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Invoice type', Comment = 'ESP = Tipo de factura';
@@ -20,7 +20,7 @@ pageextension 84104 JXVZSalesHeader extends "Sales Order"
                     ApplicationArea = All;
                     ToolTip = 'Point of sale', Comment = 'ESP = Punto de venta';
                 }
-                field(JXFiscalType; Rec.JXFiscalType)
+                field(JXVZFiscalType; Rec.JXVZFiscalType)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Fiscal Type', Comment = 'ESP = Tipo fiscal';
@@ -30,22 +30,16 @@ pageextension 84104 JXVZSalesHeader extends "Sales Order"
                 {
                     Visible = IsVenezuela;
                     ApplicationArea = All;
-                    ToolTip = 'FE document type', Comment = 'ESP = Tipo documento FE';
+                    ToolTip = 'document type', Comment = 'ESP = Tipo documento';
                 }
-                field(JXFETypeVoucher; Rec.JXFETypeVoucher)
-                {
-                    Visible = IsVenezuela;
-                    ApplicationArea = All;
-                    Editable = AllowEditVoucherType;
-                    ToolTip = 'Voucher type for FE', Comment = 'ESP = Tipo de voucher para FE';
-                }
-                field(JXFEOption; Rec.JXFEOption)
+                field(JXVZSTypeVoucher; Rec.JXVZSTypeVoucher)
                 {
                     Visible = IsVenezuela;
                     ApplicationArea = All;
                     Editable = false;
-                    ToolTip = 'FE option', Comment = 'ESP = Opcion FE';
+                    ToolTip = 'Voucher type for', Comment = 'ESP = Tipo de voucher para';
                 }
+
                 field("JXPosting No."; Rec."Posting No.")
                 {
                     ApplicationArea = All;
@@ -109,16 +103,6 @@ pageextension 84104 JXVZSalesHeader extends "Sales Order"
     trigger OnOpenPage()
     begin
         IsVenezuela := CompanyInformation.JXIsVenezuela();
-
-
-
-        if ((IsVenezuela)) then begin
-
-            AllowEditVoucherType := rec.JXFEAllowEditTypeVoucher();
-
-
-        end;
-
     end;
 
     var
@@ -127,7 +111,6 @@ pageextension 84104 JXVZSalesHeader extends "Sales Order"
 
 
         IsVenezuela: Boolean;
-        AllowEditVoucherType: Boolean;
         ShowSeriesField: Boolean;
         VisiblePaymSameCurrency: Boolean;
 

@@ -10,7 +10,7 @@ pageextension 84123 JXVZPostedPurchInvoice extends "Posted Purchase Invoice"
                 Caption = 'Venezuela', Comment = 'ESP=Venezuela';
                 Editable = False;
 
-                field(JXInvoiceType; Rec.JXInvoiceType)
+                field(JXVZInvoiceType; Rec.JXVZInvoiceType)
                 {
                     ApplicationArea = all;
                     ToolTip = 'Invoice type', Comment = 'ESP=Tipo factura';

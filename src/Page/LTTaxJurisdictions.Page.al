@@ -89,13 +89,13 @@ page 84107 JXVZTaxJurisdictions
                     ApplicationArea = All;
                     ToolTip = 'Report to jurisdiction', Comment = 'ESP = Reporte para jurisdiccion';
                 }
-                field(JXVAType; Rec.JXVAType)
+                field(JXVZVAType; Rec.JXVZVAType)
                 {
                     Visible = IsVenezuela;
                     ApplicationArea = All;
                     ToolTip = 'VAT type', Comment = 'ESP = Tipo IVA';
                 }
-                field(JXTaxType; Rec.JXTaxType)
+                field(JXVZTaxType; Rec.JXVZTaxType)
                 {
                     Visible = IsVenezuela;
                     ApplicationArea = All;

@@ -71,7 +71,7 @@ report 84105 JXVZSalesVatBook
             trigger OnPreDataItem()
             begin
                 "Sales Invoice Header".SetRange("Posting Date", FromDate, ToDate);
-                "Sales Invoice Header".SetRange(JXInvoiceType, "Sales Invoice Header".JXInvoiceType::Invoice);
+                "Sales Invoice Header".SetRange(JXVZInvoiceType, "Sales Invoice Header".JXVZInvoiceType::Invoice);
             end;
 
             trigger OnAfterGetRecord()
@@ -88,7 +88,7 @@ report 84105 JXVZSalesVatBook
                 JXVZSalesVatBook.JXVZVATRegistrationNo := "Sales Invoice Header"."VAT Registration No.";
                 JXVZSalesVatBook.JXVZTaxAreaCode := "Sales Invoice Header"."Tax Area Code";
                 JXVZSalesVatBook.JXVZProvince := "Sales Invoice Header".JXVZProvinceCode;
-                JXVZSalesVatBook.JXVZInvoiceType := Format("Sales Invoice Header".JXInvoiceType::Invoice);
+                JXVZSalesVatBook.JXVZInvoiceType := Format("Sales Invoice Header".JXVZInvoiceType::Invoice);
                 JXVZSalesVatBook.JXVZInvoiceAmount := Abs("Sales Invoice Header"."Amount Including VAT");
 
                 if ("Sales Invoice Header"."Currency Code" <> '') then
@@ -139,38 +139,38 @@ report 84105 JXVZSalesVatBook
                         TaxJurisdiction.Reset();
                         TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
                         if TaxJurisdiction.FindFirst() then
-                            case TaxJurisdiction.JXTaxType of
-                                TaxJurisdiction.JXTaxType::VAT:
+                            case TaxJurisdiction.JXVZTaxType of
+                                TaxJurisdiction.JXVZTaxType::VAT:
                                     /*TaxJurisdiction.Reset();
                                     TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
                                     if TaxJurisdiction.FindFirst() then*/
-                                    case TaxJurisdiction.JXVAType of
-                                        TaxJurisdiction.JXVAType::IVA21:
+                                    case TaxJurisdiction.JXVZVAType of
+                                        TaxJurisdiction.JXVZVAType::IVA21:
                                             JXVZSalesVatBook.JXVZVAT21 += /*Abs*/(VatEntry.Amount);
 
-                                        TaxJurisdiction.JXVAType::IVA27:
+                                        TaxJurisdiction.JXVZVAType::IVA27:
                                             JXVZSalesVatBook.JXVZVAT27 += /*Abs*/(VatEntry.Amount);
 
-                                        TaxJurisdiction.JXVAType::IVA105:
+                                        TaxJurisdiction.JXVZVAType::IVA105:
                                             JXVZSalesVatBook.JXVZVAT105 += /*Abs*/(VatEntry.Amount);
                                     end;
 
-                                TaxJurisdiction.JXTaxType::VATPerception:
+                                TaxJurisdiction.JXVZTaxType::VATPerception:
                                     JXVZSalesVatBook.JXVZVATPercep += /*Abs*/(VatEntry.Amount);
 
-                                TaxJurisdiction.JXTaxType::GrossIncome:
+                                TaxJurisdiction.JXVZTaxType::GrossIncome:
                                     begin
                                         JXVZSalesVatBook.JXVZIIBB += /*Abs*/(VatEntry.Amount);
 
-                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::ARBA then
+                                        if TaxJurisdiction.JXVZVAType = TaxJurisdiction.JXVZVAType::ARBA then
                                             JXVZSalesVatBook.JXVZIIBBArba += /*Abs*/(VatEntry.Amount);
 
-                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::CABA then
+                                        if TaxJurisdiction.JXVZVAType = TaxJurisdiction.JXVZVAType::CABA then
                                             JXVZSalesVatBook.JXVZIIBBCaba += /*Abs*/(VatEntry.Amount);
 
                                     end;
 
-                                TaxJurisdiction.JXTaxType::Others:
+                                TaxJurisdiction.JXVZTaxType::Others:
                                     JXVZSalesVatBook.JXVZSpecial += /*Abs*/(VatEntry.Amount);
                             end;
                     until VatEntry.Next() = 0;
@@ -185,7 +185,7 @@ report 84105 JXVZSalesVatBook
                 JXVZSalesVatBook.JXVZIIBBCaba := abs(JXVZSalesVatBook.JXVZIIBBCaba);
                 JXVZSalesVatBook.JXVZSpecial := abs(JXVZSalesVatBook.JXVZSpecial);
 
-                JXVZSalesVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXFiscalType);
+                JXVZSalesVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXVZFiscalType);
                 JXVZSalesVatBook.Insert();
             end;
 
@@ -198,7 +198,7 @@ report 84105 JXVZSalesVatBook
             trigger OnPreDataItem()
             begin
                 "Sales Debit Memo Header".SetRange("Posting Date", FromDate, ToDate);
-                "Sales Debit Memo Header".SetRange(JXInvoiceType, "Sales Debit Memo Header".JXInvoiceType::DebitMemo);
+                "Sales Debit Memo Header".SetRange(JXVZInvoiceType, "Sales Debit Memo Header".JXVZInvoiceType::DebitMemo);
             end;
 
             trigger OnAfterGetRecord()
@@ -215,7 +215,7 @@ report 84105 JXVZSalesVatBook
                 JXVZSalesVatBook.JXVZVATRegistrationNo := "Sales Debit Memo Header"."VAT Registration No.";
                 JXVZSalesVatBook.JXVZTaxAreaCode := "Sales Debit Memo Header"."Tax Area Code";
                 JXVZSalesVatBook.JXVZProvince := "Sales Debit Memo Header".JXVZProvinceCode;
-                JXVZSalesVatBook.JXVZInvoiceType := Format("Sales Debit Memo Header".JXInvoiceType::DebitMemo);
+                JXVZSalesVatBook.JXVZInvoiceType := Format("Sales Debit Memo Header".JXVZInvoiceType::DebitMemo);
                 JXVZSalesVatBook.JXVZInvoiceAmount := Abs("Sales Debit Memo Header"."Amount Including VAT");
 
                 if ("Sales Debit Memo Header"."Currency Code" <> '') then
@@ -266,48 +266,48 @@ report 84105 JXVZSalesVatBook
                         TaxJurisdiction.Reset();
                         TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
                         if TaxJurisdiction.FindFirst() then
-                            case TaxJurisdiction.JXTaxType of
-                                TaxJurisdiction.JXTaxType::VAT:
+                            case TaxJurisdiction.JXVZTaxType of
+                                TaxJurisdiction.JXVZTaxType::VAT:
                                     /*TaxJurisdiction.Reset();
                                     TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
                                     if TaxJurisdiction.FindFirst() then*/
-                                    case TaxJurisdiction.JXVAType of
-                                        TaxJurisdiction.JXVAType::IVA21:
+                                    case TaxJurisdiction.JXVZVAType of
+                                        TaxJurisdiction.JXVZVAType::IVA21:
                                             JXVZSalesVatBook.JXVZVAT21 += Abs(VatEntry.Amount);
 
-                                        TaxJurisdiction.JXVAType::IVA27:
+                                        TaxJurisdiction.JXVZVAType::IVA27:
                                             JXVZSalesVatBook.JXVZVAT27 += Abs(VatEntry.Amount);
 
-                                        TaxJurisdiction.JXVAType::IVA105:
+                                        TaxJurisdiction.JXVZVAType::IVA105:
                                             JXVZSalesVatBook.JXVZVAT105 += Abs(VatEntry.Amount);
                                     end;
 
-                                TaxJurisdiction.JXTaxType::VATPerception:
+                                TaxJurisdiction.JXVZTaxType::VATPerception:
                                     JXVZSalesVatBook.JXVZVATPercep += Abs(VatEntry.Amount);
 
-                                TaxJurisdiction.JXTaxType::GrossIncome:
+                                TaxJurisdiction.JXVZTaxType::GrossIncome:
                                     begin
                                         JXVZSalesVatBook.JXVZIIBB += Abs(VatEntry.Amount);
 
-                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::ARBA then
+                                        if TaxJurisdiction.JXVZVAType = TaxJurisdiction.JXVZVAType::ARBA then
                                             JXVZSalesVatBook.JXVZIIBBArba += Abs(VatEntry.Amount);
 
-                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::CABA then
+                                        if TaxJurisdiction.JXVZVAType = TaxJurisdiction.JXVZVAType::CABA then
                                             JXVZSalesVatBook.JXVZIIBBCaba += Abs(VatEntry.Amount);
                                     end;
 
-                                TaxJurisdiction.JXTaxType::Others:
+                                TaxJurisdiction.JXVZTaxType::Others:
                                     JXVZSalesVatBook.JXVZSpecial += Abs(VatEntry.Amount);
                             end;
                     until VatEntry.Next() = 0;
 
-                JXVZSalesVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXFiscalType);
+                JXVZSalesVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXVZFiscalType);
                 JXVZSalesVatBook.Insert();
             end;
         }
         dataitem("Sales Cr.Memo Header"; "Sales Cr.Memo Header")
         {
-            DataItemTableView = sorting("No.") order(Ascending) where(JXVZNotShowInBooks = filter(False));
+            DataItemTableView = sorting("No.") order(Ascending);
             ;
 
             trigger OnPreDataItem()
@@ -380,37 +380,37 @@ report 84105 JXVZSalesVatBook
                         TaxJurisdiction.Reset();
                         TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
                         if TaxJurisdiction.FindFirst() then
-                            case TaxJurisdiction.JXTaxType of
-                                TaxJurisdiction.JXTaxType::VAT:
+                            case TaxJurisdiction.JXVZTaxType of
+                                TaxJurisdiction.JXVZTaxType::VAT:
                                     /*TaxJurisdiction.Reset();
                                     TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
                                     if TaxJurisdiction.FindFirst() then*/
-                                    case TaxJurisdiction.JXVAType of
-                                        TaxJurisdiction.JXVAType::IVA21:
+                                    case TaxJurisdiction.JXVZVAType of
+                                        TaxJurisdiction.JXVZVAType::IVA21:
                                             JXVZSalesVatBook.JXVZVAT21 += /*Abs*/(VatEntry.Amount) /** -1*/;
 
-                                        TaxJurisdiction.JXVAType::IVA27:
+                                        TaxJurisdiction.JXVZVAType::IVA27:
                                             JXVZSalesVatBook.JXVZVAT27 += /*Abs*/(VatEntry.Amount) /** -1*/;
 
-                                        TaxJurisdiction.JXVAType::IVA105:
+                                        TaxJurisdiction.JXVZVAType::IVA105:
                                             JXVZSalesVatBook.JXVZVAT105 += /*Abs*/(VatEntry.Amount) /** -1*/;
                                     end;
 
-                                TaxJurisdiction.JXTaxType::VATPerception:
+                                TaxJurisdiction.JXVZTaxType::VATPerception:
                                     JXVZSalesVatBook.JXVZVATPercep += /*Abs*/(VatEntry.Amount) /** -1*/;
 
-                                TaxJurisdiction.JXTaxType::GrossIncome:
+                                TaxJurisdiction.JXVZTaxType::GrossIncome:
                                     begin
                                         JXVZSalesVatBook.JXVZIIBB += /*Abs*/(VatEntry.Amount) /** -1*/;
 
-                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::ARBA then
+                                        if TaxJurisdiction.JXVZVAType = TaxJurisdiction.JXVZVAType::ARBA then
                                             JXVZSalesVatBook.JXVZIIBBArba += /*Abs*/(VatEntry.Amount) /** -1*/;
 
-                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::CABA then
+                                        if TaxJurisdiction.JXVZVAType = TaxJurisdiction.JXVZVAType::CABA then
                                             JXVZSalesVatBook.JXVZIIBBCaba += /*Abs*/(VatEntry.Amount) /** -1*/;
                                     end;
 
-                                TaxJurisdiction.JXTaxType::Others:
+                                TaxJurisdiction.JXVZTaxType::Others:
                                     JXVZSalesVatBook.JXVZSpecial += /*Abs*/(VatEntry.Amount) /** -1*/;
                             end;
                     until VatEntry.Next() = 0;
@@ -425,7 +425,7 @@ report 84105 JXVZSalesVatBook
                 JXVZSalesVatBook.JXVZIIBBCaba := abs(JXVZSalesVatBook.JXVZIIBBCaba) * -1;
                 JXVZSalesVatBook.JXVZSpecial := abs(JXVZSalesVatBook.JXVZSpecial) * -1;
 
-                JXVZSalesVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXFiscalType);
+                JXVZSalesVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXVZFiscalType);
                 JXVZSalesVatBook.Insert();
             end;
         }

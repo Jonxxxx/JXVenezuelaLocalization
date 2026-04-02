@@ -21,7 +21,7 @@ pageextension 84107 JXVZPostedSalesInvoice extends "Posted Sales Invoice"
                 {
                     Visible = IsVenezuela;
                     ApplicationArea = All;
-                    ToolTip = 'FE document type', Comment = 'ESP = Tipo documento FE';
+                    ToolTip = 'document type', Comment = 'ESP = Tipo documento';
                 }
                 field("JXTax Area Code"; Rec."Tax Area Code")
                 {
@@ -30,11 +30,11 @@ pageextension 84107 JXVZPostedSalesInvoice extends "Posted Sales Invoice"
                     ToolTip = 'Tax area code', Comment = 'ESP=Codigo area impuesto';
                 }
 
-                field(JXFETypeVoucher; Rec.JXFETypeVoucher)
+                field(JXVZSTypeVoucher; Rec.JXVZSTypeVoucher)
                 {
                     Visible = IsVenezuela;
                     ApplicationArea = All;
-                    ToolTip = 'Voucher type for FE', Comment = 'ESP = Tipo de voucher para FE';
+                    ToolTip = 'Voucher type for', Comment = 'ESP = Tipo de voucher para';
                 }
 
                 field(JXVZDispatchImportation; Rec.JXVZDispatchImportation)
@@ -50,27 +50,12 @@ pageextension 84107 JXVZPostedSalesInvoice extends "Posted Sales Invoice"
 
     trigger OnOpenPage()
     begin
-        VisiblePdfReport := false;
         IsVenezuela := CompanyInformation.JXIsVenezuela();
 
-
-
-        if ((IsVenezuela)) then begin
-
-
-            JXVZFEConfiguration.Reset();
-            if JXVZFEConfiguration.FindFirst() then
-                if JXVZFEConfiguration.JXFEVisibleSavePdfReport then
-                    VisiblePdfReport := true;
-        end;
     end;
 
     var
         CompanyInformation: Record "Company Information";
-        JXVZFEConfiguration: Record JXVZFEConfiguration;
-
-
         IsVenezuela: Boolean;
-        VisiblePdfReport: Boolean;
 
 }

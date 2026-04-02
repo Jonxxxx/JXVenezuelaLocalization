@@ -1,7 +1,7 @@
 enum 84100 JXVZCountry
 {
     Extensible = true;
-    Caption = 'Venezuela';
+    Caption = 'Localization';
 
     value(0; Empty)
     {

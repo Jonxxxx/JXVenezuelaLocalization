@@ -14,9 +14,9 @@ pageextension 84103 JXVZCustomer extends "Customer Card"
                 field(JXVZFEDocumentType; Rec.JXVZFEDocumentType)
                 {
                     ApplicationArea = All;
-                    ToolTip = 'FE document type', Comment = 'ESP = Tipo documento FE';
+                    ToolTip = 'document type', Comment = 'ESP = Tipo documento';
                 }
-                field(JXFiscalType; Rec.JXFiscalType)
+                field(JXVZFiscalType; Rec.JXVZFiscalType)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Fiscal type', Comment = 'ESP = Tipo fiscal';

@@ -98,7 +98,7 @@ codeunit 84103 JXVZSubscriberHandlerFactory
                 PurchHeader.TestField(JXVZFiscalType);
                 PurchHeader.TestField(JXVZProvince);
                 if (PurchHeader."Document Type" = PurchHeader."Document Type"::Invoice) or (PurchHeader."Document Type" = PurchHeader."Document Type"::Order) then
-                    PurchHeader.TestField(JXInvoiceType);
+                    PurchHeader.TestField(JXVZInvoiceType);
             end;
     end;
 
@@ -426,15 +426,15 @@ codeunit 84103 JXVZSubscriberHandlerFactory
                 end;
 
                 //Improvment for allow differents tax area codes in Invoices
-                JXVZPaymentSetup.Get();
-                if not JXVZPaymentSetup.JXVZAllowDiffTaxAreaCode then
-                    if TaxAmount <> DesiredTaxAmount then
-                        Error(
-                          Text001 +
-                          Text004,
-                          TaxAreaCode, GenJnlLine.FieldCaption("Tax Area Code"),
-                          TaxGroupCode, GenJnlLine.FieldCaption("Tax Group Code"),
-                          TaxAmount, DesiredTaxAmount);
+                //JXVZPaymentSetup.Get();
+                //if not JXVZPaymentSetup.JXVZAllowDiffTaxAreaCode then
+                if TaxAmount <> DesiredTaxAmount then
+                    Error(
+                      Text001 +
+                      Text004,
+                      TaxAreaCode, GenJnlLine.FieldCaption("Tax Area Code"),
+                      TaxGroupCode, GenJnlLine.FieldCaption("Tax Group Code"),
+                      TaxAmount, DesiredTaxAmount);
 
                 TotalForAllocation := DesiredTaxAmount;
 
@@ -506,21 +506,11 @@ codeunit 84103 JXVZSubscriberHandlerFactory
         PreviewMode: Boolean
     )
     var
-        JXVZFEConfiguration: Record JXVZFEConfiguration;
         CompanyInformation: Record "Company Information";
-        JXSalesLine: Record "Sales Line";
     begin
         if (CompanyInformation.JXIsVenezuela()) then begin
-            JXVZFEConfiguration.Reset();
-            if JXVZFEConfiguration.FindFirst() then;
-
-            SalesHeader.TestField(JXFiscalType);
+            SalesHeader.TestField(JXVZFiscalType);
             SalesHeader.TestField(JXVZProvinceCode);
-            if JXVZFEConfiguration.JXFEEnabled then
-                SalesHeader.TestField(JXVZPointOfSale);
-            if (SalesHeader."Document Type" = SalesHeader."Document Type"::Invoice) or (SalesHeader."Document Type" = SalesHeader."Document Type"::Order) then
-                SalesHeader.TestField(JXInvoiceType);
-
         end;
     end;
 
@@ -562,13 +552,13 @@ codeunit 84103 JXVZSubscriberHandlerFactory
                 PurchInvHeader.Reset();
                 PurchInvHeader.SetRange("Vendor Invoice No.", PurchaseHeader."Vendor Invoice No.");
                 PurchInvHeader.SetRange("Buy-from Vendor No.", PurchaseHeader."Buy-from Vendor No.");
-                PurchInvHeader.SetRange(JXInvoiceType, PurchaseHeader.JXInvoiceType);
+                PurchInvHeader.SetRange(JXVZInvoiceType, PurchaseHeader.JXVZInvoiceType);
                 if PurchaseHeader."Document Type" = PurchaseHeader."Document Type"::Invoice then
                     PurchInvHeader.SetRange("Pre-Assigned No.", '<>%1', PurchaseHeader."No.")
                 else
                     PurchInvHeader.SetRange("Order No.", '<>%1', PurchaseHeader."No.");
                 if PurchInvHeader.FindFirst() then
-                    Error(PurchaseAlreadyExistsErr, Format(PurchInvHeader.JXInvoiceType), PurchInvHeader."Vendor Invoice No.");
+                    Error(PurchaseAlreadyExistsErr, Format(PurchInvHeader.JXVZInvoiceType), PurchInvHeader."Vendor Invoice No.");
             end;
         end;
     end;

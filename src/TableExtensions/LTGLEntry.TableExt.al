@@ -2,11 +2,11 @@ tableextension 84130 JXVZGLEntry extends "G/L Entry"
 {
     keys
     {
-        key(JXKeyPostingDate; "Posting Date")
+        key(JXVZKeyPostingDate; "Posting Date")
         {
         }
 
-        key(JXKeyPostingDateTrNo; "Posting Date", "Document No.")
+        key(JXVZKeyPostingDateTrNo; "Posting Date", "Document No.")
         {
         }
     }

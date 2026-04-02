@@ -4,13 +4,13 @@ pageextension 84111 JXVZTaxJurisdiction extends "Tax Jurisdictions"
     {
         addafter("Report-to Jurisdiction")
         {
-            field(JXTaxType; Rec.JXTaxType)
+            field(JXVZTaxType; Rec.JXVZTaxType)
             {
                 Visible = IsVenezuela;
                 ApplicationArea = All;
                 ToolTip = 'Tax type', Comment = 'ESP = Tipo de impuesto';
             }
-            field(JXVAType; Rec.JXVAType)
+            field(JXVZVAType; Rec.JXVZVAType)
             {
                 Visible = IsVenezuela;
                 ApplicationArea = All;

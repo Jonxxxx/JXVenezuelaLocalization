@@ -133,22 +133,6 @@ page 84112 JXVZPostedReceipt
                 end;
             }
 
-            action(SendByMail)
-            {
-                ApplicationArea = All;
-                Caption = 'Send by Email';
-                ToolTip = 'Send by Email';
-                Image = Email;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-
-                trigger OnAction()
-                begin
-                    SendRCMail(Rec);
-                end;
-            }
-
             action(First)
             {
                 ApplicationArea = All;
@@ -228,71 +212,6 @@ page 84112 JXVZPostedReceipt
             }
         }
     }
-
-    procedure SendRCMail(_JXVZHistoryReceiptHeader: Record JXVZHistoryReceiptHeader): Boolean
-    var
-        CompanyInformation: Record "Company Information";
-        Customer: Record Customer;
-        JXVZPaymentSetup: Record JXVZPaymentSetup;
-        JXVZHistoryReceiptHeaderLocal: Record JXVZHistoryReceiptHeader;
-        ReportRC: Report JXVZReceipt;
-        Email: Codeunit Email;
-        EmailMessage: Codeunit "Email Message";
-        TempBlob: Codeunit "Temp Blob";
-        RecRef: RecordRef;
-        ReportToSend: Integer;
-        Subject: Text[120];
-        Body: Text[250];
-        AttachmentName: Text[100];
-        ToAddr: List of [Text];
-        OutStreamReport: OutStream;
-        InStreamReport: InStream;
-        Out: OutStream;
-        FileStream: InStream;
-    begin
-        JXVZPaymentSetup.Reset();
-        if JXVZPaymentSetup.FindFirst() then;
-
-        JXVZPaymentSetup.TestField(JXVZBodyRCMail);
-
-        ReportToSend := JXVZPaymentSetup.JXVZHistReceiptReport;//Receipt report
-
-        CompanyInformation.Get();
-
-        Customer.Reset();
-        Customer.SetRange("No.", _JXVZHistoryReceiptHeader.JXVZCustomerNo);
-        if Customer.FindFirst() then
-            Customer.TestField("E-Mail")
-        else
-            Customer.TestField("No.");
-
-        ToAddr.Add(Customer."E-Mail");
-
-        Subject := 'Recibo ' + _JXVZHistoryReceiptHeader.JXVZReceiptNo;
-        Body := StrSubstNo(JXVZPaymentSetup.JXVZBodyRCMail, Customer.Name, _JXVZHistoryReceiptHeader.JXVZPostingDate, _JXVZHistoryReceiptHeader.JXVZReceiptNo, CompanyInformation.Name);
-        AttachmentName := 'RC' + _JXVZHistoryReceiptHeader.JXVZReceiptNo + '.pdf';
-
-        Clear(ReportRC);
-        ReportRC.SetTableView(_JXVZHistoryReceiptHeader);
-        TempBlob.CreateInStream(inStreamReport, TEXTENCODING::UTF8);
-        TempBlob.CreateOutStream(outStreamReport, TEXTENCODING::UTF8);
-
-        clear(RecRef);
-        JXVZHistoryReceiptHeaderLocal.Reset();
-        JXVZHistoryReceiptHeaderLocal.SetRange(JXVZReceiptNo, _JXVZHistoryReceiptHeader.JXVZReceiptNo);
-        RecRef.GetTable(JXVZHistoryReceiptHeaderLocal);
-
-        Report.SaveAs(ReportToSend, '', ReportFormat::Pdf, outStreamReport, RecRef);
-
-        //Create Email
-        Clear(Email);
-        Clear(EmailMessage);
-        EmailMessage.Create(Customer."E-Mail", Subject, Body);
-        EmailMessage.AddAttachment(AttachmentName, 'PDF', inStreamReport);
-
-        //Send mail
-        exit(Email.Send(EmailMessage, Enum::"Email Scenario"::JXVZReceipt));
-    end;
 
     trigger OnOpenPage()
     begin

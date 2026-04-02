@@ -23,7 +23,7 @@ tableextension 84116 JXVZPurchaseHeader extends "Purchase Header"
             TableRelation = JXVZProvince;
         }
 
-        field(84104; JXInvoiceType; Option)
+        field(84104; JXVZInvoiceType; Option)
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Invoice type',
@@ -48,11 +48,6 @@ tableextension 84116 JXVZPurchaseHeader extends "Purchase Header"
         }
     }
 
-    trigger OnAfterInsert()
-    begin
-        JXVZSetDefaultValues();
-    end;
-
     local procedure ValidateJXVZFields()
     var
         Vendor: Record Vendor;
@@ -68,20 +63,4 @@ tableextension 84116 JXVZPurchaseHeader extends "Purchase Header"
             end;
         end;
     end;
-
-    local procedure JXVZSetDefaultValues()
-    var
-        JXVZFEConfiguration: Record JXVZFEConfiguration;
-        CompanyInformation: Record "Company Information";
-    begin
-        if (CompanyInformation.JXIsVenezuela()) then begin
-            JXVZFEConfiguration.Reset();
-            if JXVZFEConfiguration.FindFirst() then
-                if ((rec."Document Type" = rec."Document Type"::Order) or (rec."Document Type" = rec."Document Type"::Invoice)) then
-                    rec.validate(JXInvoiceType, JXVZFEConfiguration.JXVZDefValueInvoiceType);
-        end;
-    end;
-
-    var
-        ErrorZeroLbl: Label 'Value cannot be 0', Comment = 'ESP=El valor no puede ser 0';
 }

@@ -80,8 +80,8 @@ tableextension 84113 JXVZVendor extends Vendor
         field(84106; JXVZFEDocumentType; Code[10])
         {
             DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'FE Document type',
-                        Comment = 'ESP = Tipo documento FE';
+            Caption = 'Document type',
+                        Comment = 'ESP = Tipo documento';
             TableRelation = JXVZFECustDocumentType;
             ValidateTableRelation = true;
         }

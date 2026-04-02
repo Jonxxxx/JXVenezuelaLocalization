@@ -163,6 +163,7 @@ report 84109 JXVZCertWitholdingIIBB
                     Description := JXVZWithholdDetailEntry.JXVZDescription;
 
                 Jurisdiction := '';
+                /*
                 JXVZProvince.Reset();
                 JXVZProvince.SetCurrentKey(JXVZProvince.JXVZCode);
                 JXVZProvince.SetRange(JXVZProvince.JXVZCode, JXVZWithholdLedgerEntry.JXVZProvinceCode);
@@ -228,6 +229,7 @@ report 84109 JXVZCertWitholdingIIBB
                                 Jurisdiction := '';
                         end;
                 end;
+                */
 
                 gblProvincia := Jurisdiction;
 

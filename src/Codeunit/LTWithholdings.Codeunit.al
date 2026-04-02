@@ -1742,7 +1742,7 @@ codeunit 84104 JXVZWithholdings
                 TaxJurisdiction.Reset();
                 TaxJurisdiction.SetRange(Code, VATEntry."Tax Jurisdiction Code");
                 if TaxJurisdiction.FindFirst() then
-                    if TaxJurisdiction.JXTaxType = TaxJurisdiction.JXTaxType::VAT then
+                    if TaxJurisdiction.JXVZTaxType = TaxJurisdiction.JXVZTaxType::VAT then
                         TotalIVA += abs(VATEntry.Amount);
             until VATEntry.Next() = 0
     end;
@@ -1760,7 +1760,7 @@ codeunit 84104 JXVZWithholdings
                 TaxJurisdiction.Reset();
                 TaxJurisdiction.SetRange(Code, VATEntry."Tax Jurisdiction Code");
                 if TaxJurisdiction.FindFirst() then
-                    if (TaxJurisdiction.JXTaxType = TaxJurisdiction.JXTaxType::VAT) or (TaxJurisdiction.JXTaxType = TaxJurisdiction.JXTaxType::VATPerception) then
+                    if (TaxJurisdiction.JXVZTaxType = TaxJurisdiction.JXVZTaxType::VAT) or (TaxJurisdiction.JXVZTaxType = TaxJurisdiction.JXVZTaxType::VATPerception) then
                         TotalIVAAndPerIVA += abs(VATEntry.Amount);
             until VATEntry.Next() = 0
     end;
@@ -1830,11 +1830,11 @@ codeunit 84104 JXVZWithholdings
                         TaxJurisdiction.Reset();
                         TaxJurisdiction.SetRange(Code, TaxAreaLine."Tax Jurisdiction Code");
                         if TaxJurisdiction.FindFirst() then begin
-                            if (TaxJurisdiction.JXTaxType = TaxJurisdiction.JXTaxType::VAT) and (CalcIVA) then
+                            if (TaxJurisdiction.JXVZTaxType = TaxJurisdiction.JXVZTaxType::VAT) and (CalcIVA) then
                                 CalcThisLine := true;
 
                             if not CalcThisLine then
-                                if (TaxJurisdiction.JXTaxType = TaxJurisdiction.JXTaxType::VATPerception) and (CalcPerIVA) then
+                                if (TaxJurisdiction.JXVZTaxType = TaxJurisdiction.JXVZTaxType::VATPerception) and (CalcPerIVA) then
                                     CalcThisLine := true;
                         end;
 

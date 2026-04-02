@@ -10,20 +10,10 @@ pageextension 84105 JXVZSalesInvoice extends "Sales Invoice"
                 Caption = 'Venezuela',
                             Comment = 'ESP = Venezuela';
 
-                field(JXInvoiceType; Rec.JXInvoiceType)
+                field(JXVZInvoiceType; Rec.JXVZInvoiceType)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Invoice type', Comment = 'ESP = Tipo de factura';
-
-                    trigger OnValidate()
-                    begin
-                        if Rec.JXInvoiceType = Rec.JXInvoiceType::Invoice then
-                            JXFCCredRejectedVisible := false
-                        else
-                            JXFCCredRejectedVisible := true;
-
-                        CurrPage.Update();
-                    end;
                 }
 
 
@@ -32,7 +22,7 @@ pageextension 84105 JXVZSalesInvoice extends "Sales Invoice"
                     ApplicationArea = All;
                     ToolTip = 'Point of sale', Comment = 'ESP = Punto de venta';
                 }
-                field(JXFiscalType; Rec.JXFiscalType)
+                field(JXVZFiscalType; Rec.JXVZFiscalType)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Fiscal type', Comment = 'ESP = Tipo fiscal';
@@ -42,21 +32,15 @@ pageextension 84105 JXVZSalesInvoice extends "Sales Invoice"
                 {
                     Visible = IsVenezuela;
                     ApplicationArea = All;
-                    ToolTip = 'FE document type', Comment = 'ESP = Tipo documento FE';
+                    ToolTip = 'document type', Comment = 'ESP = Tipo documento';
                 }
-                field(JXFETypeVoucher; Rec.JXFETypeVoucher)
+                field(JXVZSTypeVoucher; Rec.JXVZSTypeVoucher)
                 {
-                    ApplicationArea = All;
-                    Editable = AllowEditVoucherType;
-                    ToolTip = 'Voucher type for FE', Comment = 'ESP = Tipo de voucher para FE';
-                }
-                field(JXFEOption; Rec.JXFEOption)
-                {
-                    Visible = IsVenezuela;
                     ApplicationArea = All;
                     Editable = false;
-                    ToolTip = 'FE option', Comment = 'ESP = Opcion FE';
+                    ToolTip = 'Voucher type for', Comment = 'ESP = Tipo de voucher para';
                 }
+
                 field("JXPosting No."; Rec."Posting No.")
                 {
                     ApplicationArea = All;
@@ -112,41 +96,16 @@ pageextension 84105 JXVZSalesInvoice extends "Sales Invoice"
         }
     }
 
-    trigger OnAfterGetRecord()
-    begin
-        if ((IsVenezuela)) then begin
-            if Rec.JXInvoiceType = Rec.JXInvoiceType::Invoice then begin
-                JXFCCredRejectedVisible := false;
-
-            end else
-                JXFCCredRejectedVisible := true;
-        end else
-            JXFCCredRejectedVisible := true;
-    end;
-
     trigger OnOpenPage()
     begin
         IsVenezuela := CompanyInformation.JXIsVenezuela();
-
-
-
-        if ((IsVenezuela)) then begin
-
-
-            AllowEditVoucherType := rec.JXFEAllowEditTypeVoucher();
-
-        end;
-
-
     end;
 
     var
         CompanyInformation: Record "Company Information";
         GeneralLedgerSetup: Record "General Ledger Setup";
-        JXFCCredRejectedVisible: boolean;
 
         IsVenezuela: Boolean;
-        AllowEditVoucherType: Boolean;
         ShowSeriesField: Boolean;
         VisiblePaymSameCurrency: Boolean;
 

@@ -20,14 +20,14 @@ tableextension 84112 JXVZGenJournalLine extends "Gen. Journal Line"
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Point of sale', Comment = 'ESP=Punto de venta';
-            Description = 'JXVZ (01) - FE4.0 - JXFE';
+            Description = 'JXVZ (01) - FE4.0 - JXVZS';
             TableRelation = JXVZPointOfSale;
         }
         field(84107; JXVZLetter; Text[30])
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Letter', Comment = 'ESP=Letra';
-            Description = 'JXVZ (01) - FE4.0 - JXFE';
+            Description = 'JXVZ (01) - FE4.0 - JXVZS';
         }
         field(84108; JXVZBase; Decimal)
         {

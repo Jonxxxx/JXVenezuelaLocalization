@@ -11,11 +11,11 @@ tableextension 84105 JXVZSalesInvHeader extends "Sales Invoice Header"
             ValidateTableRelation = true;
         }
 
-        field(84101; JXFETypeVoucher; Code[5])
+        field(84101; JXVZSTypeVoucher; Code[5])
         {
             DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'FE voucher type',
-                        Comment = 'ESP = Tipo comprobante FE';
+            Caption = 'voucher type',
+                        Comment = 'ESP = Tipo comprobante';
             TableRelation = JXVZFEDocumentType;
             ValidateTableRelation = true;
         }
@@ -23,13 +23,13 @@ tableextension 84105 JXVZSalesInvHeader extends "Sales Invoice Header"
         field(84105; JXVZFEDocumentType; Code[10])
         {
             DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'FE Document type',
-                        Comment = 'ESP = Tipo documento FE';
+            Caption = 'Document type',
+                        Comment = 'ESP = Tipo documento';
             TableRelation = JXVZFECustDocumentType;
             ValidateTableRelation = true;
         }
 
-        field(84106; JXFiscalType; Code[20])
+        field(84106; JXVZFiscalType; Code[20])
         {
             //RI = Responsable inscripto, CF = Consumidor final, MO = Monotributista
             //RX = Exento, EXT = Extranjero, NC = No categorizado
@@ -38,7 +38,7 @@ tableextension 84105 JXVZSalesInvHeader extends "Sales Invoice Header"
             TableRelation = JXVZFiscalType."No.";
         }
 
-        field(84107; JXInvoiceType; Option)
+        field(84107; JXVZInvoiceType; Option)
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Invoice type',

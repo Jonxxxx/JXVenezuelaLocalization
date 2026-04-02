@@ -4,20 +4,20 @@ page 84101 JXVZSeriesFEConfiguration
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = JXVZSeriesFEConfiguration;
-    Caption = 'Venezuela FE series configuration',
-                Comment = 'ESP = Configuracion series Venezuela FE';
+    Caption = 'Venezuela series configuration',
+                Comment = 'ESP = Configuracion series Venezuela';
     layout
     {
         area(Content)
         {
             repeater(GroupName)
             {
-                field(JXType; Rec.JXType)
+                field(JXVZType; Rec.JXVZType)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Type', Comment = 'ESP = Tipo';
                 }
-                field(JXFiscalType; Rec.JXFiscalType)
+                field(JXVZFiscalType; Rec.JXVZFiscalType)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Fiscal type', Comment = 'ESP = Tipo fiscal';
@@ -30,32 +30,22 @@ page 84101 JXVZSeriesFEConfiguration
                 field(JXVZFEDocumentType; Rec.JXVZFEDocumentType)
                 {
                     ApplicationArea = All;
-                    ToolTip = 'FE document type', Comment = 'ESP = Tipo de documento FE';
+                    ToolTip = 'document type', Comment = 'ESP = Tipo de documento';
                 }
-                field(JXSeriesNumber; Rec.JXSeriesNumber)
+                field(JXVZSeriesNumber; Rec.JXVZSeriesNumber)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Series number', Comment = 'ESP = Numero de serie';
                 }
-                field(JXFEType; Rec.JXFEType)
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'FE type', Comment = 'ESP = Tipo FE';
-                }
-                field(JXLetter; Rec.JXLetter)
+                field(JXVZLetter; Rec.JXVZLetter)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Letter', Comment = 'ESP = Letra';
                 }
-                field(JXFEReportDescription; Rec.JXFEReportDescription)
+                field(JXVZSReportDescription; Rec.JXVZSReportDescription)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Report description', Comment = 'ESP = Descripcion reporte';
-                }
-                field(JXVZShipmentPointOfSale; Rec.JXVZShipmentPointOfSale)
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Shipment Point of sale', Comment = 'ESP = Remito Punto de venta';
                 }
             }
         }

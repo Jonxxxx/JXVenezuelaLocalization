@@ -1,6 +1,6 @@
-codeunit 84111 JXVZLatamApplicationAreaMgt
+codeunit 84101 JXVZVenApplicationAreaMgt
 {
-    procedure ApplyLATAMApplicationArea()
+    procedure ApplyVenezuelaApplicationArea()
     var
         CompanyInformation: Record "Company Information";
         CurrentApplicationAreas: Text;
@@ -12,26 +12,26 @@ codeunit 84111 JXVZLatamApplicationAreaMgt
         CurrentApplicationAreas := Session.ApplicationArea();
         NewApplicationAreas := BuildApplicationAreaList(
           CurrentApplicationAreas,
-          GetLATAMApplicationArea(),
-          CompanyInformation.JXVZLatamLocEnabled);
+          GetVenezuelaApplicationArea(),
+          CompanyInformation.JXVZVenezuelaLocEnabled);
 
         if NewApplicationAreas <> CurrentApplicationAreas then
             Session.ApplicationArea(NewApplicationAreas);
     end;
 
-    procedure GetLATAMApplicationArea(): Text
+    procedure GetVenezuelaApplicationArea(): Text
     begin
-        exit(GlobalAppAreaLatam);
+        exit(GlobalAppAreaVen);
     end;
 
-    procedure IsLATAMEnabled(): Boolean
+    procedure IsVenezuelaEnabled(): Boolean
     var
         CompanyInformation: Record "Company Information";
     begin
         if not CompanyInformation.Get() then
             exit(false);
 
-        exit(CompanyInformation.JXVZLatamLocEnabled);
+        exit(CompanyInformation.JXVZVenezuelaLocEnabled);
     end;
 
     local procedure BuildApplicationAreaList(CurrentApplicationAreas: Text; ApplicationAreaName: Text; EnableApplicationArea: Boolean): Text
@@ -103,12 +103,12 @@ codeunit 84111 JXVZLatamApplicationAreaMgt
     begin
         CompanyInfo.Reset();
         if CompanyInfo.FindFirst() then;
-        if CompanyInfo.JXVZLatamLocEnabled then begin
-            TempApplicationAreaSetup.JXVZshowLATAM := true;
-            TempApplicationAreaSetup.JXVZNotshowLATAM := false;
+        if CompanyInfo.JXVZVenezuelaLocEnabled then begin
+            TempApplicationAreaSetup.JXVZshowVen := true;
+            TempApplicationAreaSetup.JXVZNotshowVen := false;
         end else begin
-            TempApplicationAreaSetup.JXVZshowLATAM := false;
-            TempApplicationAreaSetup.JXVZNotshowLATAM := true;
+            TempApplicationAreaSetup.JXVZshowVen := false;
+            TempApplicationAreaSetup.JXVZNotshowVen := true;
         end;
     end;
 
@@ -120,11 +120,11 @@ codeunit 84111 JXVZLatamApplicationAreaMgt
         ApplicationAreaMgmtFacade.RefreshExperienceTierCurrentCompany();
     end;
 
-    procedure SetGlobalAppAreaLatam(AppArea: Text)
+    procedure SetGlobalAppAreaVenezuela(AppArea: Text)
     begin
-        GlobalAppAreaLatam := AppArea;
+        GlobalAppAreaVen := AppArea;
     end;
 
     var
-        GlobalAppAreaLatam: Text;
+        GlobalAppAreaVen: Text;
 }

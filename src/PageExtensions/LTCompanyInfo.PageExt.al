@@ -15,17 +15,17 @@ pageextension 84112 JXVZCompanyInfo extends "Company Information"
                     ToolTip = 'Venezuela', Comment = 'ESP = Venezuela';
                 }
 
-                field(JXFiscalType; Rec.JXFiscalType)
+                field(JXVZFiscalType; Rec.JXVZFiscalType)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Fiscal type', Comment = 'ESP = Tipo fiscal';
                 }
-                field(JXCompanyStartDate; Rec.JXCompanyStartDate)
+                field(JXVZCompanyStartDate; Rec.JXVZCompanyStartDate)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Company start date', Comment = 'ESP = fecha de inicio de la compañia';
                 }
-                field(JXLocalCurrencyDesc; Rec.JXLocalCurrencyDesc)
+                field(JXVZLocalCurrencyDesc; Rec.JXVZLocalCurrencyDesc)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Local currency code', Comment = 'ESP = Codigo de divisa local';
@@ -41,18 +41,18 @@ pageextension 84112 JXVZCompanyInfo extends "Company Information"
                     ToolTip = 'VAT max difference', Comment = 'ESP = Diferencia maxima IVA';
                 }
 
-                field(JXLocAdminUser; Rec.JXLocAdminUser)
+                field(JXVZLocAdminUser; Rec.JXVZLocAdminUser)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Imp. Loc. User';
                     Visible = false;
                 }
 
-                field(JXVZLatamLocEnabled; Rec.JXVZLatamLocEnabled)
+                field(JXVZVenezuelaLocEnabled; Rec.JXVZVenezuelaLocEnabled)
                 {
                     ApplicationArea = All;
-                    ToolTip = 'LATAM Loc Enabled';
-                    Visible = false;
+                    ToolTip = 'Venezuela Loc Enabled';
+                    Visible = true;
                 }
 
                 group(JXVenezuelaInfo)
@@ -96,7 +96,7 @@ pageextension 84112 JXVZCompanyInfo extends "Company Information"
     }
 
     var
-        JXPublisherLbl: Label 'Jonxsoft Venezuela S.R.L.';
-        JXNameLbl: Label 'Jonxsoft LATAM Venezuela';
-        JXVersionLbl: Label '2.7.13.6768';
+        JXPublisherLbl: Label 'Jonxsoft Uruguay S.A.S.';
+        JXNameLbl: Label 'Jonxsoft Venezuela Localization';
+        JXVersionLbl: Label '2.1.2.1238';
 }

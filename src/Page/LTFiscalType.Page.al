@@ -25,17 +25,17 @@ page 84145 JXVZFiscalType
                     ToolTip = 'Description';
                 }
 
-                field(JXFiscalType; Rec.JXFiscalType)
+                field(JXVZFiscalType; Rec.JXVZFiscalType)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Fiscal type',
                         Comment = 'ESP = Tipo fiscal';
                 }
 
-                field(JXFEVATCondition; Rec.JXFEVATCondition)
+                field(JXVZSVATCondition; Rec.JXVZSVATCondition)
                 {
                     ApplicationArea = All;
-                    ToolTip = 'VAT Condition FE', Comment = 'ESP="Condicion IVA FE"';
+                    ToolTip = 'VAT Condition', Comment = 'ESP="Condicion IVA"';
                     Visible = IsVenezuela;
                 }
             }

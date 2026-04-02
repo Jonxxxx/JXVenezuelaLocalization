@@ -1,6 +1,6 @@
 report 84124 JXVZWithholdIIBBByVend
 {
-    UsageCategory = ReportsAndAnalysis;
+    UsageCategory = None;
     ApplicationArea = All;
     caption = 'Detalle percepciones IIBB proveedores', Comment = 'ESP=Percepciones IIBB proveedores';
     DefaultLayout = RDLC;

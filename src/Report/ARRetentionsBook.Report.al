@@ -1,8 +1,8 @@
 report 84108 JXVZRetentionsBook
 {
     Caption = 'Withholding book', Comment = 'ESP=Libro retenciones';
-    UsageCategory = ReportsAndAnalysis;
-    ApplicationArea = All;
+    UsageCategory = None;
+    //ApplicationArea = No
     DefaultLayout = RDLC;
     RDLCLayout = 'ReportLayout/ARRetentionsBook.rdl';
 

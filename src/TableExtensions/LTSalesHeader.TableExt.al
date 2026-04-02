@@ -19,11 +19,11 @@ tableextension 84104 JXVZSalesHeader extends "Sales Header"
             end;
         }
 
-        field(84101; JXFETypeVoucher; Code[5])
+        field(84101; JXVZSTypeVoucher; Code[5])
         {
             DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'FE voucher type',
-                        Comment = 'ESP = Tipo comprobante FE';
+            Caption = 'voucher type',
+                        Comment = 'ESP = Tipo comprobante';
             TableRelation = JXVZFEDocumentType;
             ValidateTableRelation = true;
 
@@ -34,24 +34,16 @@ tableextension 84104 JXVZSalesHeader extends "Sales Header"
             end;
         }
 
-        field(84102; JXFEOption; Option)
-        {
-            DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'FE option',
-                        Comment = 'ESP = Opcion FE';
-            OptionMembers = No,FE,FEX,FCCRED;
-        }
-
         field(84105; JXVZFEDocumentType; Code[10])
         {
             DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'FE Document type',
-                        Comment = 'ESP = Tipo documento FE';
+            Caption = 'Document type',
+                        Comment = 'ESP = Tipo documento';
             TableRelation = JXVZFECustDocumentType;
             ValidateTableRelation = true;
         }
 
-        field(84106; JXFiscalType; Code[20])
+        field(84106; JXVZFiscalType; Code[20])
         {
             //RI = Responsable inscripto, CF = Consumidor final, MO = Monotributista
             //RX = Exento, EXT = Extranjero, NC = No categorizado
@@ -65,7 +57,7 @@ tableextension 84104 JXVZSalesHeader extends "Sales Header"
             end;
         }
 
-        field(84107; JXInvoiceType; Option)
+        field(84107; JXVZInvoiceType; Option)
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Invoice type',
@@ -94,12 +86,10 @@ tableextension 84104 JXVZSalesHeader extends "Sales Header"
                 CompanyInformation: Record "Company Information";
             begin
                 if (CompanyInformation.JXIsVenezuela()) then begin
-                    JXVZSetDefaultValues();
-
                     customer.Reset();
                     customer.SetRange("No.", "Sell-to Customer No.");
                     if customer.FindFirst() then begin
-                        rec.JXFiscalType := customer.JXFiscalType;
+                        rec.JXVZFiscalType := customer.JXVZFiscalType;
                         rec.JXVZFEDocumentType := customer.JXVZFEDocumentType;
                         rec.JXVZProvinceCode := customer.JXVZProvinceCode;
                         if customer.JXVZPointofSale <> '' then begin
@@ -119,12 +109,11 @@ tableextension 84104 JXVZSalesHeader extends "Sales Header"
                 CompanyInformation: Record "Company Information";
             begin
                 if (CompanyInformation.JXIsVenezuela()) then begin
-                    JXVZSetDefaultValues();
 
                     customer.Reset();
                     customer.SetRange("No.", "Sell-to Customer No.");
                     if customer.FindFirst() then begin
-                        rec.JXFiscalType := customer.JXFiscalType;
+                        rec.JXVZFiscalType := customer.JXVZFiscalType;
                         rec.JXVZFEDocumentType := customer.JXVZFEDocumentType;
                         rec.JXVZProvinceCode := customer.JXVZProvinceCode;
                         if customer.JXVZPointofSale <> '' then begin
@@ -135,18 +124,7 @@ tableextension 84104 JXVZSalesHeader extends "Sales Header"
                 end;
             end;
         }
-        modify("Currency Code")
-        {
-            trigger OnAfterValidate()
-            var
-                customer: Record Customer;
-                CompanyInformation: Record "Company Information";
-            begin
-                if (CompanyInformation.JXIsVenezuela()) then begin
-                    JXVZSetDefaultValues();
-                end;
-            end;
-        }
+
     }
 
     trigger OnModify()
@@ -154,77 +132,48 @@ tableextension 84104 JXVZSalesHeader extends "Sales Header"
         CompanyInformation: Record "Company Information";
     begin
         if (CompanyInformation.JXIsVenezuela()) then
-            if ((JXInvoiceType <> xRec.JXInvoiceType) OR (JXFiscalType <> xRec.JXFiscalType) OR (JXVZPointOfSale <> xRec.JXVZPointOfSale) or (JXFETypeVoucher <> xRec.JXFETypeVoucher)) then
+            if ((JXVZInvoiceType <> xRec.JXVZInvoiceType) OR (JXVZFiscalType <> xRec.JXVZFiscalType) OR (JXVZPointOfSale <> xRec.JXVZPointOfSale) or (JXVZSTypeVoucher <> xRec.JXVZSTypeVoucher)) then
                 JXCheckFESeriesSetup();
     end;
 
     procedure JXCheckFESeriesSetup()
     var
         JXVZSeriesFEConfiguration: Record JXVZSeriesFEConfiguration;
-        JXVZFEConfiguration: Record JXVZFEConfiguration;
         CompanyInformation: Record "Company Information";
     begin
         if (CompanyInformation.JXIsVenezuela()) then begin
-            JXVZFEConfiguration.Reset();
-            if JXVZFEConfiguration.FindFirst() then;
-
             JXVZSeriesFEConfiguration.Reset();
             JXVZSeriesFEConfiguration.SetRange(JXVZPointOfSale, JXVZPointOfSale);
-            JXVZSeriesFEConfiguration.SetRange(JXFiscalType, JXFiscalType);
+            JXVZSeriesFEConfiguration.SetRange(JXVZFiscalType, JXVZFiscalType);
             case Rec."Document Type" of
                 "Document Type"::Invoice:
-                    if JXInvoiceType = JXInvoiceType::Invoice then
-                        JXVZSeriesFEConfiguration.SetRange(JXType, JXVZSeriesFEConfiguration.JXType::Invoice)
+                    if JXVZInvoiceType = JXVZInvoiceType::Invoice then
+                        JXVZSeriesFEConfiguration.SetRange(JXVZType, JXVZSeriesFEConfiguration.JXVZType::Invoice)
                     else
-                        if JXInvoiceType = JXInvoiceType::DebitMemo then
-                            JXVZSeriesFEConfiguration.SetRange(JXType, JXVZSeriesFEConfiguration.JXType::DebitMemo);
+                        if JXVZInvoiceType = JXVZInvoiceType::DebitMemo then
+                            JXVZSeriesFEConfiguration.SetRange(JXVZType, JXVZSeriesFEConfiguration.JXVZType::DebitMemo);
                 "Document Type"::"Credit Memo":
-                    JXVZSeriesFEConfiguration.SetRange(JXType, JXVZSeriesFEConfiguration.JXType::CreditMemo);
+                    JXVZSeriesFEConfiguration.SetRange(JXVZType, JXVZSeriesFEConfiguration.JXVZType::CreditMemo);
                 "Document Type"::Order:
-                    JXVZSeriesFEConfiguration.SetRange(JXType, JXVZSeriesFEConfiguration.JXType::Invoice);
+                    JXVZSeriesFEConfiguration.SetRange(JXVZType, JXVZSeriesFEConfiguration.JXVZType::Invoice);
             end;
-            if JXVZFEConfiguration.JXFEManualVoucherType then
-                if rec.JXFETypeVoucher <> '' then
-                    JXVZSeriesFEConfiguration.SetRange(JXVZFEDocumentType, rec.JXFETypeVoucher);
+
             if JXVZSeriesFEConfiguration.FindFirst() then begin
-                rec."Posting No. Series" := JXVZSeriesFEConfiguration.JXSeriesNumber;
-                rec.JXFETypeVoucher := JXVZSeriesFEConfiguration.JXVZFEDocumentType;
-                rec.JXFEOption := JXVZSeriesFEConfiguration.JXFEType;
+                rec."Posting No. Series" := JXVZSeriesFEConfiguration.JXVZSeriesNumber;
+                rec.JXVZSTypeVoucher := JXVZSeriesFEConfiguration.JXVZFEDocumentType;
             end else begin
                 rec."Posting No. Series" := '';
-                rec.JXFETypeVoucher := '';
-                rec.JXFEOption := JXFEOption::No;
+                rec.JXVZSTypeVoucher := '';
             end;
 
             if rec."Document Type" = rec."Document Type"::Order then begin
                 JXVZSeriesFEConfiguration.Reset();
                 JXVZSeriesFEConfiguration.SetRange(JXVZPointOfSale, JXVZPointOfSale);
-                JXVZSeriesFEConfiguration.SetRange(JXFiscalType, JXFiscalType);
-                JXVZSeriesFEConfiguration.SetRange(JXType, JXVZSeriesFEConfiguration.JXType::Shipment);
+                JXVZSeriesFEConfiguration.SetRange(JXVZFiscalType, JXVZFiscalType);
+                JXVZSeriesFEConfiguration.SetRange(JXVZType, JXVZSeriesFEConfiguration.JXVZType::Shipment);
                 if JXVZSeriesFEConfiguration.FindFirst() then
-                    rec."Shipping No. Series" := JXVZSeriesFEConfiguration.JXSeriesNumber;
+                    rec."Shipping No. Series" := JXVZSeriesFEConfiguration.JXVZSeriesNumber;
             end;
         end;
-    end;
-
-    local procedure JXVZSetDefaultValues()
-    var
-        JXVZFEConfiguration: Record JXVZFEConfiguration;
-    begin
-        JXVZFEConfiguration.Reset();
-        if JXVZFEConfiguration.FindFirst() then begin
-            if ((rec."Document Type" = rec."Document Type"::Order) or (rec."Document Type" = rec."Document Type"::Invoice)) then
-                rec.validate(JXInvoiceType, JXVZFEConfiguration.JXVZDefValueInvoiceType);
-        end;
-    end;
-
-    procedure JXFEAllowEditTypeVoucher(): Boolean
-    var
-        JXVZFEConfiguration: Record JXVZFEConfiguration;
-    begin
-        JXVZFEConfiguration.Reset();
-        if JXVZFEConfiguration.FindFirst() then;
-
-        exit(JXVZFEConfiguration.JXFEManualVoucherType);
     end;
 }

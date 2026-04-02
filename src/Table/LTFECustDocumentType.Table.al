@@ -1,34 +1,34 @@
 table 84104 JXVZFECustDocumentType
 {
     DataClassification = CustomerContent;
-    Caption = 'FE customer document Type',
-                Comment = 'ESP = Cliente tipo documento FE';
+    Caption = 'customer document Type',
+                Comment = 'ESP = Cliente tipo documento';
     LookupPageId = JXVZFECustDocumentTypes;
 
     fields
     {
-        field(1; JXId; Code[10])
+        field(1; JXVZId; Code[10])
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Id', Comment = 'ESP = Id';
         }
 
-        field(2; JXDescription; Text[50])
+        field(2; JXVZDescription; Text[50])
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Description', Comment = 'ESP = Descripcion';
         }
 
-        field(3; JXFEValue; Code[5])
+        field(3; JXVZSValue; Code[5])
         {
             DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'FE value', Comment = 'ESP = Valor FE';
+            Caption = 'value', Comment = 'ESP = Valor';
         }
     }
 
     keys
     {
-        key(PK; JXId)
+        key(PK; JXVZId)
         {
             Clustered = true;
         }
@@ -36,7 +36,7 @@ table 84104 JXVZFECustDocumentType
 
     fieldgroups
     {
-        fieldgroup(DropDown; JXId, JXDescription, JXFEValue)
+        fieldgroup(DropDown; JXVZId, JXVZDescription, JXVZSValue)
         { }
     }
 }

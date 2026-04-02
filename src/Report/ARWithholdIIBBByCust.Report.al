@@ -1,6 +1,6 @@
 report 84123 JXVZWithholdIIBBByCust
 {
-    UsageCategory = ReportsAndAnalysis;
+    UsageCategory = None;
     ApplicationArea = All;
     caption = 'Detalle percepciones IIBB clientes', Comment = 'ESP=Percepciones IIBB clientes';
     DefaultLayout = RDLC;
@@ -28,7 +28,7 @@ report 84123 JXVZWithholdIIBBByCust
                         repeat
                             TaxJurisdiction.Reset();
                             TaxJurisdiction.SetRange(Code, TaxAreaLine."Tax Jurisdiction Code");
-                            TaxJurisdiction.SetRange(JXTaxType, TaxJurisdiction.JXTaxType::GrossIncome);
+                            TaxJurisdiction.SetRange(JXVZTaxType, TaxJurisdiction.JXVZTaxType::GrossIncome);
                             if TaxJurisdiction.FindFirst() then begin
                                 TaxDetail.Reset();
                                 TaxDetail.SetRange("Tax Jurisdiction Code", TaxJurisdiction.Code);
@@ -43,22 +43,22 @@ report 84123 JXVZWithholdIIBBByCust
                                         JXVZExportFilesTmp.Field1 := Customer."No.";
                                         JXVZExportFilesTmp.Field2 := Customer.Name;
                                         JXVZExportFilesTmp.Field3 := Customer."VAT Registration No.";
-                                        case TaxJurisdiction.JXVAType of
-                                            TaxJurisdiction.JXVAType::ARBA:
+                                        case TaxJurisdiction.JXVZVAType of
+                                            TaxJurisdiction.JXVZVAType::ARBA:
                                                 JXVZExportFilesTmp.Field4 := Format(TaxDetail."Tax Above Maximum");
-                                            TaxJurisdiction.JXVAType::CABA:
+                                            TaxJurisdiction.JXVZVAType::CABA:
                                                 JXVZExportFilesTmp.Field5 := Format(TaxDetail."Tax Above Maximum");
-                                            TaxJurisdiction.JXVAType::MISIONES:
+                                            TaxJurisdiction.JXVZVAType::MISIONES:
                                                 JXVZExportFilesTmp.Field6 := Format(TaxDetail."Tax Above Maximum");
                                         end;
                                         JXVZExportFilesTmp.Insert(false);
                                     end else begin
-                                        case TaxJurisdiction.JXVAType of
-                                            TaxJurisdiction.JXVAType::ARBA:
+                                        case TaxJurisdiction.JXVZVAType of
+                                            TaxJurisdiction.JXVZVAType::ARBA:
                                                 JXVZExportFilesTmp.Field4 := Format(TaxDetail."Tax Above Maximum");
-                                            TaxJurisdiction.JXVAType::CABA:
+                                            TaxJurisdiction.JXVZVAType::CABA:
                                                 JXVZExportFilesTmp.Field5 := Format(TaxDetail."Tax Above Maximum");
-                                            TaxJurisdiction.JXVAType::MISIONES:
+                                            TaxJurisdiction.JXVZVAType::MISIONES:
                                                 JXVZExportFilesTmp.Field6 := Format(TaxDetail."Tax Above Maximum");
                                         end;
                                         JXVZExportFilesTmp.Modify(false);

@@ -16,16 +16,6 @@ table 84133 JXVZProvince
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Description', Comment = 'ESP=Descripcion';
         }
-        field(3; "JXVZAfipCode"; Text[10])
-        {
-            DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'AFIP code', Comment = 'ESP=Codigo AFIP';
-        }
-        field(4; "JXVZCotCode"; Code[1])
-        {
-            DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'COT code', Comment = 'ESP=Codigo COT';
-        }
     }
 
     keys

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en-US" target-language="en-US" original="JXVenezuelaVenezuela">
+  <file datatype="xml" source-language="en-US" target-language="en-US" original="JXVenezuelaLocalization">
     <body>
       <group id="body">
         <trans-unit id="Table 2766643119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -972,11 +972,6 @@
           <source>Report description</source>
           <note from="Developer" annotates="general" priority="2">ESP = "Descripcion en reporte"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZSeriesFEConfiguration - Field JXVZSReportDescription - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 349886754 - Field 1465938159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>type</source>
-          <note from="Developer" annotates="general" priority="2">ESP = "Tipo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZSeriesFEConfiguration - Field JXVZSType - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 349886754 - Field 3555728754 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
@@ -3092,11 +3087,6 @@
           <source>Report description</source>
           <note from="Developer" annotates="general" priority="2">ESP = Descripcion reporte</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZSeriesFEConfiguration - Control JXVZSReportDescription - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 349886754 - Control 1465938159 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>type</source>
-          <note from="Developer" annotates="general" priority="2">ESP = Tipo</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZSeriesFEConfiguration - Control JXVZSType - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 349886754 - Control 3555728754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
@@ -5414,17 +5404,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZWithholdTaxScale - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 314306977 - NamedType 3529750481" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 314306977">
-          <source>Jonxsoft Venezuela</source>
+          <source>Jonxsoft Venezuela Localization</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCompanyInfo - NamedType JXNameLbl</note>
         </trans-unit>
         <trans-unit id="PageExtension 314306977 - NamedType 1899344290" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 314306977">
-          <source>Jonxsoft Venezuela S.R.L.</source>
+          <source>Jonxsoft Uruguay S.A.S.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCompanyInfo - NamedType JXPublisherLbl</note>
         </trans-unit>
         <trans-unit id="PageExtension 314306977 - NamedType 3115363638" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 314306977">
-          <source>2.7.13.6768</source>
+          <source>2.1.2.1238</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCompanyInfo - NamedType JXVersionLbl</note>
         </trans-unit>
@@ -5493,11 +5483,6 @@
           <note from="Developer" annotates="general" priority="2">ESP = Tipo fiscal</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCompanyInfo - Control JXVZFiscalType - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 314306977 - Control 2517037538 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
-          <source>Venezuela Loc Enabled</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCompanyInfo - Control JXVZVenezuelaLocEnabled - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="PageExtension 314306977 - Control 4187420756 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Imp. Loc. User</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5517,6 +5502,11 @@
           <source>Province</source>
           <note from="Developer" annotates="general" priority="2">ESP = Provincia</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCompanyInfo - Control JXVZProvince - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 314306977 - Control 1443022160 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>Venezuela Loc Enabled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCompanyInfo - Control JXVZVenezuelaLocEnabled - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1271033614 - Control 1409626579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Venezuela</source>
@@ -6218,11 +6208,6 @@
           <note from="Developer" annotates="general" priority="2">ESP=Codigo retencion</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedPurchInvoiceSubform - Control JXVZWithholdingCode - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3020347624 - Control 837691727 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
-          <source>Not show in books</source>
-          <note from="Developer" annotates="general" priority="2">ESP=No mostrar en libro</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedSalesCrMemo - Control JXVZNotShowInBooks - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="PageExtension 3020347624 - Control 1409626579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
           <source>Venezuela</source>
           <note from="Developer" annotates="general" priority="2">ESP = Venezuela</note>
@@ -6233,55 +6218,15 @@
           <note from="Developer" annotates="general" priority="2">ESP=Codigo area impuesto</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedSalesCrMemo - Control JXTax Area Code - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3020347624 - Control 3280390874 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
-          <source>Associated document</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedSalesCrMemo - Control JXVZAsociateDocument - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3020347624 - Control 879352386 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
-          <source>Dispatch Importation</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Despacho de importacion</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedSalesCrMemo - Control JXVZDispatchImportation - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="PageExtension 3020347624 - Control 3777337502 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
           <source>document type</source>
           <note from="Developer" annotates="general" priority="2">ESP = Tipo documento</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedSalesCrMemo - Control JXVZFEDocumentType - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3020347624 - Control 48430761 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
-          <source>Period Asoc. from date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Periodo Asoc. fecha desde"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedSalesCrMemo - Control JXVZPeriodAsocFromDate - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3020347624 - Control 1852591942 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
-          <source>Period Asoc. to date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Periodo Asoc. fecha hasta"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedSalesCrMemo - Control JXVZPeriodAsocToDate - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="PageExtension 3020347624 - Control 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP = Punto de venta</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedSalesCrMemo - Control JXVZPointOfSale - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3020347624 - Control 2521035166 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
-          <source>CAE</source>
-          <note from="Developer" annotates="general" priority="2">ESP = CAE</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedSalesCrMemo - Control JXVZSCAE - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3020347624 - Control 407687606 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
-          <source>CAE due date</source>
-          <note from="Developer" annotates="general" priority="2">ESP = Fecha vencimiento CAE</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedSalesCrMemo - Control JXVZSDueDateCAE - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3020347624 - Control 3350433205 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
-          <source>Export permisson</source>
-          <note from="Developer" annotates="general" priority="2">ESP = Permiso exportacion</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedSalesCrMemo - Control JXVZSExportPermisson - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3020347624 - Control 203242699 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
-          <source>Export type</source>
-          <note from="Developer" annotates="general" priority="2">ESP = Tipo exportacion</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedSalesCrMemo - Control JXVZSExportType - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3020347624 - Control 1557546871 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
           <source>Voucher type for</source>
@@ -7978,12 +7923,12 @@
           <note from="Developer" annotates="general" priority="2">ESP = Codigo area impuesto</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZVendorList - Control JXTax Area Code - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="TableExtension 4195509208 - Field 207085095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 627389406">
+        <trans-unit id="TableExtension 4195509208 - Field 3264667975 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 627389406">
           <source>Not Show Loc Venezuela</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZApplicationAreaSetup - Field JXVZNotshowVenezuela - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZApplicationAreaSetup - Field JXVZNotshowVen - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 4195509208 - Field 486159052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 627389406">
+        <trans-unit id="TableExtension 4195509208 - Field 1805905020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 627389406">
           <source>Show Loc Venezuela</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZApplicationAreaSetup - Field JXVZshowVen - Property Caption</note>
@@ -8013,11 +7958,6 @@
           <note from="Developer" annotates="general" priority="2">ESP = "Tipo fiscal"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZCompanyInfo - Field JXVZFiscalType - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 314306977 - Field 2517037538 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
-          <source>Localization Venezuela Enabled</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZCompanyInfo - Field JXVZVenezuelaLocEnabled - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 314306977 - Field 3614458132 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
           <source>License Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8042,6 +7982,11 @@
           <source>Province</source>
           <note from="Developer" annotates="general" priority="2">ESP=Provincia</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZCompanyInfo - Field JXVZProvince - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 314306977 - Field 1443022160 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
+          <source>Venezuela Localization Enabled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZCompanyInfo - Field JXVZVenezuelaLocEnabled - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1271033614 - Field 3777337502 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Document type</source>
@@ -8278,35 +8223,10 @@
           <note from="Developer" annotates="general" priority="2">ESP=Codigo retencion</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZPurchInvLine - Field JXVZWithholdingCode - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 3241610155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>FCCred rejected purchase</source>
-          <note from="Developer" annotates="general" priority="2">ESP = FCCred rechazada comprador</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXFCREDRejectedPurchase - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 3405864120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>QR Code</source>
-          <note from="Developer" annotates="general" priority="2">ESP = Codigo QR</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXQRCode - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 3280390874 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>Associated document</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZAsociateDocument - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 879352386 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>Dispatch Importation</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Despacho de importacion</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZDispatchImportation - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 2306858598 - Field 3777337502 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Document type</source>
           <note from="Developer" annotates="general" priority="2">ESP = Tipo documento</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZFEDocumentType - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 80598207 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>Url QR Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZFEUrlQR - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2306858598 - Field 1537964656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Fiscal type</source>
@@ -8318,31 +8238,6 @@
           <note from="Developer" annotates="general" priority="2">ESP = Tipo factura</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZInvoiceType - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 1974279119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>Negotiation type</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Tipo de negociacion</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZNegotiationType - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 1974279119 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source> ,SCA,ADC</source>
-          <note from="Developer" annotates="general" priority="2"> ,Transferencia al sistema de circulacion abierta,Agente de deposito colectivo</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZNegotiationType - Property OptionCaption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 837691727 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>Not show in books</source>
-          <note from="Developer" annotates="general" priority="2">ESP=No mostrar en libro</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZNotShowInBooks - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 48430761 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>Period Asoc. from date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Periodo Asoc. fecha desde"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZPeriodAsocFromDate - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 1852591942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>Period Asoc. to date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Periodo Asoc. fecha hasta"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZPeriodAsocToDate - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 2306858598 - Field 4021726644 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP = Punto de venta</note>
@@ -8352,31 +8247,6 @@
           <source>Province code</source>
           <note from="Developer" annotates="general" priority="2">ESP=Codigo provincia</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZProvinceCode - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 2521035166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>CAE</source>
-          <note from="Developer" annotates="general" priority="2">ESP = CAE</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZSCAE - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 407687606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>CAE due date</source>
-          <note from="Developer" annotates="general" priority="2">ESP = Fecha vencimiento CAE</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZSDueDateCAE - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 3350433205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>export permisson</source>
-          <note from="Developer" annotates="general" priority="2">ESP = Permiso exportacion</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZSExportPermisson - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 203242699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>export type</source>
-          <note from="Developer" annotates="general" priority="2">ESP = Tipo exportacion</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZSExportType - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2306858598 - Field 203242699 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
-          <source>,Products,Services,Others</source>
-          <note from="Developer" annotates="general" priority="2">ESP = ,Productos,Servicios,Otros</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZSalesCrMemoHeader - Field JXVZSExportType - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2306858598 - Field 1557546871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 552782286">
           <source>voucher type</source>
@@ -8534,7 +8404,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZVendor - Field JXVZWithholdingCondition - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 2684712050 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Venezuela</source>
+          <source>Localization</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZCountry - Property Caption</note>
         </trans-unit>

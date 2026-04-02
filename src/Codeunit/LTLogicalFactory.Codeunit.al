@@ -168,7 +168,7 @@ codeunit 84102 JXVZLogicalFactory
     begin
         SalesInvHeader.Reset();
         SalesInvHeader.SetRange("No.", _Code);
-        SalesInvHeader.SetRange(JXInvoiceType, SalesInvHeader.JXInvoiceType::DebitMemo);
+        SalesInvHeader.SetRange(JXVZInvoiceType, SalesInvHeader.JXVZInvoiceType::DebitMemo);
         if not SalesInvHeader.IsEmpty() then
             exit(true)
         else
@@ -460,7 +460,7 @@ codeunit 84102 JXVZLogicalFactory
     begin
         PurchInvHeader.Reset();
         PurchInvHeader.SetRange("No.", _Code);
-        PurchInvHeader.SetRange(JXInvoiceType, PurchInvHeader.JXInvoiceType::DebitMemo);
+        PurchInvHeader.SetRange(JXVZInvoiceType, PurchInvHeader.JXVZInvoiceType::DebitMemo);
         if not PurchInvHeader.IsEmpty() then
             exit(true)
         else
@@ -571,7 +571,7 @@ codeunit 84102 JXVZLogicalFactory
                 TaxJurisdiction.Reset();
                 TaxJurisdiction.SetRange(Code, TaxAreaLine."Tax Jurisdiction Code");
                 if TaxJurisdiction.FindFirst() then
-                    if TaxJurisdiction.JXTaxType = TaxJurisdiction.JXTaxType::GrossIncome then
+                    if TaxJurisdiction.JXVZTaxType = TaxJurisdiction.JXVZTaxType::GrossIncome then
                         TotalIIBB += 1;
             until TaxAreaLine.Next() = 0;
 
@@ -659,100 +659,6 @@ codeunit 84102 JXVZLogicalFactory
         if ok = false then
             Error(JXErrorLbl, CompanyInfo.JXVZLicenseCode);
     end;
-
-    //JX  -  2023 04 24
-    procedure ValidateCUITArgentina(pCUIT: Text[50]): Text[50]
-    var
-        vCuit: Text[50];
-        vCuitOK: Text[50];
-        vCuitNumeric: Text[50];
-        ControlDigit: Integer;
-        ret: Text[50];
-    begin
-        vCuit := DelChr(pCUIT, '=', '-/_');
-        vCuitNumeric := vCuit;
-
-        if StrLen(VCuit) > 11 then
-            Error('El cuit no puede tener mas de 11 digitos');
-
-        if StrLen(VCuit) < 11 then
-            Error('El cuit no puede tener menos de 11 digitos');
-
-        VCuit := CopyStr(VCuit, 1, 10);
-        ControlDigit := CalcDigitCuitNumber(VCuit);
-
-        vCuitOK := CopyStr(VCuit, 1, 2) + '-' + CopyStr(VCuit, 3, 8) + '-' + Format(ControlDigit);
-        vCuitNumeric := CopyStr(vCuitNumeric, 1, 2) + '-' + CopyStr(vCuitNumeric, 3, 8) + '-' + CopyStr(vCuitNumeric, 11);
-
-        if vCuitOK <> vCuitNumeric then
-            Error('El cuit no es correcto')
-        else
-            ret := vCuitNumeric;
-
-        exit(ret);
-    end;
-
-    local procedure CalcDigitCuitNumber(pCuit: Text[50]) Ret: Integer
-    var
-        "Key": Text[50];
-        length: Integer;
-        KeyN: array[20] of Text;
-        i: Integer;
-        j: Integer;
-        cont: Integer;
-        Total: Integer;
-        Rest: Integer;
-        NumberN: Integer;
-        Subtotal: array[20] of Integer;
-        CalcValue: Integer;
-        FinalKey: array[20] of Text;
-    begin
-        "Key" := pCuit;
-        length := STRLEN("Key");
-
-        repeat
-            i := i + 1;
-            KeyN[i] := COPYSTR("Key", i, 1);
-            if KeyN[i] in ['0' .. '9'] then begin
-                j := j + 1;
-                FinalKey[j] := KeyN[i];
-            end;
-
-        until i = length;
-
-        length := j;
-        i := length;
-        j := 2;
-        repeat
-            cont := cont + 1;
-            Evaluate(NumberN, FinalKey[i]);
-
-            if cont <= 6 then begin
-                Subtotal[i] := NumberN * j;
-                j := j + 1;
-            end else begin
-                j := 2;
-                Subtotal[i] := NumberN * j;
-                cont := 1;
-                j := j + 1;
-            end;
-            Total := Total + Subtotal[i];
-            i := i - 1;
-        until i = 0;
-
-        Rest := Total Mod 11;
-
-        if Rest = 0 then
-            CalcValue := 0
-        else
-            if Rest = 1 then
-                Error('El número es incompatible')
-            else
-                CalcValue := 11 - Rest;
-
-        Ret := CalcValue;
-    end;
-    //JX  -  2023 04 24 end
 
     local procedure IsVendorPaymentAccount(_opNumber: Code[20]; _opAmount: Decimal): Boolean
     var

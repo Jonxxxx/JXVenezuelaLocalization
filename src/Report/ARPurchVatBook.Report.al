@@ -71,7 +71,7 @@ report 84106 JXVZPurchVatBook
             trigger OnPreDataItem()
             begin
                 "Purch. Inv. Header".SetRange("Posting Date", FromDate, ToDate);
-                "Purch. Inv. Header".SetRange(JXInvoiceType, "Purch. Inv. Header".JXInvoiceType::Invoice);
+                "Purch. Inv. Header".SetRange(JXVZInvoiceType, "Purch. Inv. Header".JXVZInvoiceType::Invoice);
             end;
 
             trigger OnAfterGetRecord()
@@ -90,7 +90,7 @@ report 84106 JXVZPurchVatBook
                 JXVZPurchVatBook.JXVZVATRegistrationNo := "Purch. Inv. Header"."VAT Registration No.";
                 JXVZPurchVatBook.JXVZTaxAreaCode := "Purch. Inv. Header"."Tax Area Code";
                 JXVZPurchVatBook.JXVZProvince := "Purch. Inv. Header".JXVZProvince;
-                JXVZPurchVatBook.JXVZInvoiceType := Format("Purch. Inv. Header".JXInvoiceType::Invoice);
+                JXVZPurchVatBook.JXVZInvoiceType := Format("Purch. Inv. Header".JXVZInvoiceType::Invoice);
                 JXVZPurchVatBook.JXVZInvoiceAmount := Abs("Purch. Inv. Header"."Amount Including VAT");
 
                 if ("Purch. Inv. Header"."Currency Code" <> '') then
@@ -117,48 +117,6 @@ report 84106 JXVZPurchVatBook
                                         JXVZPurchVatBook.JXVZExemptBaseAmount += Abs(PurchInvLine."Line Amount") / "Purch. Inv. Header"."Currency Factor"
                                     else
                                         JXVZPurchVatBook.JXVZExemptBaseAmount += Abs(PurchInvLine."Line Amount");
-                                else
-                                    if PurchInvLine.Type = PurchInvLine.Type::"G/L Account" then begin
-                                        GLAccount.reset();
-                                        GLAccount.SetRange("No.", PurchInvLine."No.");
-                                        if GLAccount.FindFirst() then begin
-                                            if GLAccount.JXVZPercepLineGAN then
-                                                if "Purch. Inv. Header"."Currency Code" <> '' then
-                                                    JXVZPurchVatBook.JXVZSpecial += Abs(PurchInvLine."Line Amount") / "Purch. Inv. Header"."Currency Factor"
-                                                else
-                                                    JXVZPurchVatBook.JXVZSpecial += Abs(PurchInvLine."Line Amount");
-
-                                            if GLAccount.JXVZPercepLineIIBB then
-                                                if "Purch. Inv. Header"."Currency Code" <> '' then begin
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchInvLine."Line Amount") / "Purch. Inv. Header"."Currency Factor";
-                                                    JXVZPurchVatBook.JXVZIIBBArba += Abs(PurchInvLine."Line Amount") / "Purch. Inv. Header"."Currency Factor";
-                                                end else begin
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchInvLine."Line Amount");
-                                                    JXVZPurchVatBook.JXVZIIBBArba += Abs(PurchInvLine."Line Amount");
-                                                end;
-
-                                            if GLAccount.JXVZPercepLineIIBBCaba then
-                                                if "Purch. Inv. Header"."Currency Code" <> '' then begin
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchInvLine."Line Amount") / "Purch. Inv. Header"."Currency Factor";
-                                                    JXVZPurchVatBook.JXVZIIBBCaba += Abs(PurchInvLine."Line Amount") / "Purch. Inv. Header"."Currency Factor";
-                                                end else begin
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchInvLine."Line Amount");
-                                                    JXVZPurchVatBook.JXVZIIBBCaba += Abs(PurchInvLine."Line Amount");
-                                                end;
-
-                                            if GLAccount.JXVZPercepLineIIBBOthers then
-                                                if "Purch. Inv. Header"."Currency Code" <> '' then
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchInvLine."Line Amount") / "Purch. Inv. Header"."Currency Factor"
-                                                else
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchInvLine."Line Amount");
-
-                                            if GLAccount.JXVZPercepLineVAT then
-                                                if "Purch. Inv. Header"."Currency Code" <> '' then
-                                                    JXVZPurchVatBook.JXVZVATPercep := Abs(PurchInvLine."Line Amount") / "Purch. Inv. Header"."Currency Factor"
-                                                else
-                                                    JXVZPurchVatBook.JXVZVATPercep += Abs(PurchInvLine."Line Amount");
-                                        end;
-                                    end;
                             end;
                     until PurchInvLine.Next() = 0;
 
@@ -181,34 +139,34 @@ report 84106 JXVZPurchVatBook
                         TaxJurisdiction.Reset();
                         TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
                         if TaxJurisdiction.FindFirst() then
-                            case TaxJurisdiction.JXTaxType of
-                                TaxJurisdiction.JXTaxType::VAT:
-                                    case TaxJurisdiction.JXVAType of
-                                        TaxJurisdiction.JXVAType::IVA21:
+                            case TaxJurisdiction.JXVZTaxType of
+                                TaxJurisdiction.JXVZTaxType::VAT:
+                                    case TaxJurisdiction.JXVZVAType of
+                                        TaxJurisdiction.JXVZVAType::IVA21:
                                             JXVZPurchVatBook.JXVZVAT21 += Abs(VatEntry.Amount);
 
-                                        TaxJurisdiction.JXVAType::IVA27:
+                                        TaxJurisdiction.JXVZVAType::IVA27:
                                             JXVZPurchVatBook.JXVZVAT27 += Abs(VatEntry.Amount);
 
-                                        TaxJurisdiction.JXVAType::IVA105:
+                                        TaxJurisdiction.JXVZVAType::IVA105:
                                             JXVZPurchVatBook.JXVZVAT105 += Abs(VatEntry.Amount);
                                     end;
 
-                                TaxJurisdiction.JXTaxType::VATPerception:
+                                TaxJurisdiction.JXVZTaxType::VATPerception:
                                     JXVZPurchVatBook.JXVZVATPercep += Abs(VatEntry.Amount);
 
-                                TaxJurisdiction.JXTaxType::GrossIncome:
+                                TaxJurisdiction.JXVZTaxType::GrossIncome:
                                     begin
                                         JXVZPurchVatBook.JXVZIIBB += Abs(VatEntry.Amount);
 
-                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::ARBA then
+                                        if TaxJurisdiction.JXVZVAType = TaxJurisdiction.JXVZVAType::ARBA then
                                             JXVZPurchVatBook.JXVZIIBBArba += Abs(VatEntry.Amount);
 
-                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::CABA then
+                                        if TaxJurisdiction.JXVZVAType = TaxJurisdiction.JXVZVAType::CABA then
                                             JXVZPurchVatBook.JXVZIIBBCaba += Abs(VatEntry.Amount);
 
                                     end;
-                                TaxJurisdiction.JXTaxType::Others:
+                                TaxJurisdiction.JXVZTaxType::Others:
                                     JXVZPurchVatBook.JXVZSpecial += Abs(VatEntry.Amount);
                             end;
                     until VatEntry.Next() = 0;
@@ -216,12 +174,14 @@ report 84106 JXVZPurchVatBook
                 JXVZPurchVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXVZFiscalType);
 
                 //Check dif amount
+                /*
                 JXVZPaymentSetup.Get();
                 if JXVZPaymentSetup.JXVZCheckAmountVAT then begin
                     CheckAmount := (JXVZPurchVatBook.JXVZBaseAmount + JXVZPurchVatBook.JXVZNoBaseAmount + JXVZPurchVatBook.JXVZExemptBaseAmount + JXVZPurchVatBook.JXVZVAT105 + JXVZPurchVatBook.JXVZVAT21 + JXVZPurchVatBook.JXVZVAT27 + JXVZPurchVatBook.JXVZVATPercep + JXVZPurchVatBook.JXVZIIBB + JXVZPurchVatBook.JXVZSpecial);
                     if ((JXVZPurchVatBook.JXVZInvoiceAmountLCY - CheckAmount) <> 0) then
                         JXVZPurchVatBook.JXVZBaseAmount += (JXVZPurchVatBook.JXVZInvoiceAmountLCY - CheckAmount);
                 end;
+                */
                 //Check dif amount END
 
                 JXVZPurchVatBook.Insert();
@@ -237,7 +197,7 @@ report 84106 JXVZPurchVatBook
             trigger OnPreDataItem()
             begin
                 "Purch. Debit Memo Header".SetRange("Posting Date", FromDate, ToDate);
-                "Purch. Debit Memo Header".SetRange(JXInvoiceType, "Purch. Debit Memo Header".JXInvoiceType::DebitMemo);
+                "Purch. Debit Memo Header".SetRange(JXVZInvoiceType, "Purch. Debit Memo Header".JXVZInvoiceType::DebitMemo);
             end;
 
             trigger OnAfterGetRecord()
@@ -256,7 +216,7 @@ report 84106 JXVZPurchVatBook
                 JXVZPurchVatBook.JXVZVATRegistrationNo := "Purch. Debit Memo Header"."VAT Registration No.";
                 JXVZPurchVatBook.JXVZTaxAreaCode := "Purch. Debit Memo Header"."Tax Area Code";
                 JXVZPurchVatBook.JXVZProvince := "Purch. Debit Memo Header".JXVZProvince;
-                JXVZPurchVatBook.JXVZInvoiceType := Format("Purch. Debit Memo Header".JXInvoiceType::DebitMemo);
+                JXVZPurchVatBook.JXVZInvoiceType := Format("Purch. Debit Memo Header".JXVZInvoiceType::DebitMemo);
                 JXVZPurchVatBook.JXVZInvoiceAmount := Abs("Purch. Debit Memo Header"."Amount Including VAT");
 
                 if ("Purch. Debit Memo Header"."Currency Code" <> '') then
@@ -283,48 +243,6 @@ report 84106 JXVZPurchVatBook
                                         JXVZPurchVatBook.JXVZExemptBaseAmount += Abs(PurchInvLine."Line Amount") / "Purch. Debit Memo Header"."Currency Factor"
                                     else
                                         JXVZPurchVatBook.JXVZExemptBaseAmount += Abs(PurchInvLine."Line Amount");
-                                else
-                                    if PurchInvLine.Type = PurchInvLine.Type::"G/L Account" then begin
-                                        GLAccount.reset();
-                                        GLAccount.SetRange("No.", PurchInvLine."No.");
-                                        if GLAccount.FindFirst() then begin
-                                            if GLAccount.JXVZPercepLineGAN then
-                                                if "Purch. Debit Memo Header"."Currency Code" <> '' then
-                                                    JXVZPurchVatBook.JXVZSpecial += Abs(PurchInvLine."Line Amount") / "Purch. Debit Memo Header"."Currency Factor"
-                                                else
-                                                    JXVZPurchVatBook.JXVZSpecial += Abs(PurchInvLine."Line Amount");
-
-                                            if GLAccount.JXVZPercepLineIIBB then
-                                                if "Purch. Debit Memo Header"."Currency Code" <> '' then begin
-                                                    JXVZPurchVatBook.JXVZIIBB += JXVZPurchVatBook.JXVZIIBB / "Purch. Debit Memo Header"."Currency Factor";
-                                                    JXVZPurchVatBook.JXVZIIBBArba += JXVZPurchVatBook.JXVZIIBBArba / "Purch. Debit Memo Header"."Currency Factor";
-                                                end else begin
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchInvLine."Line Amount");
-                                                    JXVZPurchVatBook.JXVZIIBBArba += Abs(PurchInvLine."Line Amount");
-                                                end;
-
-                                            if GLAccount.JXVZPercepLineIIBBCaba then
-                                                if "Purch. Debit Memo Header"."Currency Code" <> '' then begin
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchInvLine."Line Amount") / "Purch. Debit Memo Header"."Currency Factor";
-                                                    JXVZPurchVatBook.JXVZIIBBCaba += Abs(PurchInvLine."Line Amount") / "Purch. Debit Memo Header"."Currency Factor";
-                                                end else begin
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchInvLine."Line Amount");
-                                                    JXVZPurchVatBook.JXVZIIBBCaba += Abs(PurchInvLine."Line Amount");
-                                                end;
-
-                                            if GLAccount.JXVZPercepLineIIBBOthers then
-                                                if "Purch. Debit Memo Header"."Currency Code" <> '' then
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchInvLine."Line Amount") / "Purch. Debit Memo Header"."Currency Factor"
-                                                else
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchInvLine."Line Amount");
-
-                                            if GLAccount.JXVZPercepLineVAT then
-                                                if "Purch. Debit Memo Header"."Currency Code" <> '' then
-                                                    JXVZPurchVatBook.JXVZVATPercep += Abs(PurchInvLine."Line Amount") / "Purch. Debit Memo Header"."Currency Factor"
-                                                else
-                                                    JXVZPurchVatBook.JXVZVATPercep += Abs(PurchInvLine."Line Amount");
-                                        end;
-                                    end;
                             end;
                     until PurchInvLine.Next() = 0;
 
@@ -347,33 +265,33 @@ report 84106 JXVZPurchVatBook
                         TaxJurisdiction.Reset();
                         TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
                         if TaxJurisdiction.FindFirst() then
-                            case TaxJurisdiction.JXTaxType of
-                                TaxJurisdiction.JXTaxType::VAT:
-                                    case TaxJurisdiction.JXVAType of
-                                        TaxJurisdiction.JXVAType::IVA21:
+                            case TaxJurisdiction.JXVZTaxType of
+                                TaxJurisdiction.JXVZTaxType::VAT:
+                                    case TaxJurisdiction.JXVZVAType of
+                                        TaxJurisdiction.JXVZVAType::IVA21:
                                             JXVZPurchVatBook.JXVZVAT21 += Abs(VatEntry.Amount);
 
-                                        TaxJurisdiction.JXVAType::IVA27:
+                                        TaxJurisdiction.JXVZVAType::IVA27:
                                             JXVZPurchVatBook.JXVZVAT27 += Abs(VatEntry.Amount);
 
-                                        TaxJurisdiction.JXVAType::IVA105:
+                                        TaxJurisdiction.JXVZVAType::IVA105:
                                             JXVZPurchVatBook.JXVZVAT105 += Abs(VatEntry.Amount);
                                     end;
 
-                                TaxJurisdiction.JXTaxType::VATPerception:
+                                TaxJurisdiction.JXVZTaxType::VATPerception:
                                     JXVZPurchVatBook.JXVZVATPercep += Abs(VatEntry.Amount);
 
-                                TaxJurisdiction.JXTaxType::GrossIncome:
+                                TaxJurisdiction.JXVZTaxType::GrossIncome:
                                     begin
                                         JXVZPurchVatBook.JXVZIIBB += Abs(VatEntry.Amount);
 
-                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::ARBA then
+                                        if TaxJurisdiction.JXVZVAType = TaxJurisdiction.JXVZVAType::ARBA then
                                             JXVZPurchVatBook.JXVZIIBBArba += Abs(VatEntry.Amount);
 
-                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::CABA then
+                                        if TaxJurisdiction.JXVZVAType = TaxJurisdiction.JXVZVAType::CABA then
                                             JXVZPurchVatBook.JXVZIIBBCaba += Abs(VatEntry.Amount);
                                     end;
-                                TaxJurisdiction.JXTaxType::Others:
+                                TaxJurisdiction.JXVZTaxType::Others:
                                     JXVZPurchVatBook.JXVZSpecial += Abs(VatEntry.Amount);
                             end;
                     until VatEntry.Next() = 0;
@@ -381,12 +299,14 @@ report 84106 JXVZPurchVatBook
                 JXVZPurchVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXVZFiscalType);
 
                 //Check dif amount
+                /*
                 JXVZPaymentSetup.Get();
                 if JXVZPaymentSetup.JXVZCheckAmountVAT then begin
                     CheckAmount := (JXVZPurchVatBook.JXVZBaseAmount + JXVZPurchVatBook.JXVZNoBaseAmount + JXVZPurchVatBook.JXVZExemptBaseAmount + JXVZPurchVatBook.JXVZVAT105 + JXVZPurchVatBook.JXVZVAT21 + JXVZPurchVatBook.JXVZVAT27 + JXVZPurchVatBook.JXVZVATPercep + JXVZPurchVatBook.JXVZIIBB + JXVZPurchVatBook.JXVZSpecial);
                     if ((JXVZPurchVatBook.JXVZInvoiceAmountLCY - CheckAmount) <> 0) then
                         JXVZPurchVatBook.JXVZBaseAmount += (JXVZPurchVatBook.JXVZInvoiceAmountLCY - CheckAmount);
                 end;
+                */
                 //Check dif amount END
 
                 JXVZPurchVatBook.Insert();
@@ -445,48 +365,6 @@ report 84106 JXVZPurchVatBook
                                         JXVZPurchVatBook.JXVZExemptBaseAmount := (Abs(PurchCrMemoLine."Line Amount") * -1) / "Purch. Cr. Memo Hdr."."Currency Factor"
                                     else
                                         JXVZPurchVatBook.JXVZExemptBaseAmount += Abs(PurchCrMemoLine."Line Amount") * -1;
-                                else
-                                    if PurchCrMemoLine.Type = PurchCrMemoLine.Type::"G/L Account" then begin
-                                        GLAccount.reset();
-                                        GLAccount.SetRange("No.", PurchCrMemoLine."No.");
-                                        if GLAccount.FindFirst() then begin
-                                            if GLAccount.JXVZPercepLineGAN then
-                                                if "Purch. Cr. Memo Hdr."."Currency Code" <> '' then
-                                                    JXVZPurchVatBook.JXVZSpecial := (Abs(PurchCrMemoLine."Line Amount") * -1) / "Purch. Cr. Memo Hdr."."Currency Factor"
-                                                else
-                                                    JXVZPurchVatBook.JXVZSpecial += Abs(PurchCrMemoLine."Line Amount") * -1;
-
-                                            if GLAccount.JXVZPercepLineIIBB then
-                                                if "Purch. Cr. Memo Hdr."."Currency Code" <> '' then begin
-                                                    JXVZPurchVatBook.JXVZIIBB := (Abs(PurchCrMemoLine."Line Amount") * -1) / "Purch. Cr. Memo Hdr."."Currency Factor";
-                                                    JXVZPurchVatBook.JXVZIIBBArba := (Abs(PurchCrMemoLine."Line Amount") * -1) / "Purch. Cr. Memo Hdr."."Currency Factor";
-                                                end else begin
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchCrMemoLine."Line Amount") * -1;
-                                                    JXVZPurchVatBook.JXVZIIBBArba += Abs(PurchCrMemoLine."Line Amount") * -1;
-                                                end;
-
-                                            if GLAccount.JXVZPercepLineIIBBCaba then
-                                                if "Purch. Cr. Memo Hdr."."Currency Code" <> '' then begin
-                                                    JXVZPurchVatBook.JXVZIIBB := (Abs(PurchCrMemoLine."Line Amount") * -1) / "Purch. Cr. Memo Hdr."."Currency Factor";
-                                                    JXVZPurchVatBook.JXVZIIBBCaba := (Abs(PurchCrMemoLine."Line Amount") * -1) / "Purch. Cr. Memo Hdr."."Currency Factor";
-                                                end else begin
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchCrMemoLine."Line Amount") * -1;
-                                                    JXVZPurchVatBook.JXVZIIBBCaba += Abs(PurchCrMemoLine."Line Amount") * -1;
-                                                end;
-
-                                            if GLAccount.JXVZPercepLineIIBBOthers then
-                                                if "Purch. Cr. Memo Hdr."."Currency Code" <> '' then
-                                                    JXVZPurchVatBook.JXVZIIBB += (Abs(PurchCrMemoLine."Line Amount") * -1) / "Purch. Cr. Memo Hdr."."Currency Factor"
-                                                else
-                                                    JXVZPurchVatBook.JXVZIIBB += Abs(PurchCrMemoLine."Line Amount") * -1;
-
-                                            if GLAccount.JXVZPercepLineVAT then
-                                                if "Purch. Cr. Memo Hdr."."Currency Code" <> '' then
-                                                    JXVZPurchVatBook.JXVZVATPercep := (Abs(PurchCrMemoLine."Line Amount") * -1) / "Purch. Cr. Memo Hdr."."Currency Factor"
-                                                else
-                                                    JXVZPurchVatBook.JXVZVATPercep += Abs(PurchCrMemoLine."Line Amount") * -1;
-                                        end;
-                                    end;
                             end;
 
                     until PurchCrMemoLine.Next() = 0;
@@ -509,34 +387,34 @@ report 84106 JXVZPurchVatBook
                         TaxJurisdiction.Reset();
                         TaxJurisdiction.SetRange(TaxJurisdiction."Code", VatEntry."Tax Jurisdiction Code");
                         if TaxJurisdiction.FindFirst() then
-                            case TaxJurisdiction.JXTaxType of
-                                TaxJurisdiction.JXTaxType::VAT:
-                                    case TaxJurisdiction.JXVAType of
-                                        TaxJurisdiction.JXVAType::IVA21:
+                            case TaxJurisdiction.JXVZTaxType of
+                                TaxJurisdiction.JXVZTaxType::VAT:
+                                    case TaxJurisdiction.JXVZVAType of
+                                        TaxJurisdiction.JXVZVAType::IVA21:
                                             JXVZPurchVatBook.JXVZVAT21 += Abs(VatEntry.Amount) * -1;
 
-                                        TaxJurisdiction.JXVAType::IVA27:
+                                        TaxJurisdiction.JXVZVAType::IVA27:
                                             JXVZPurchVatBook.JXVZVAT27 += Abs(VatEntry.Amount) * -1;
 
-                                        TaxJurisdiction.JXVAType::IVA105:
+                                        TaxJurisdiction.JXVZVAType::IVA105:
                                             JXVZPurchVatBook.JXVZVAT105 += Abs(VatEntry.Amount) * -1;
                                     end;
 
-                                TaxJurisdiction.JXTaxType::VATPerception:
+                                TaxJurisdiction.JXVZTaxType::VATPerception:
                                     JXVZPurchVatBook.JXVZVATPercep += Abs(VatEntry.Amount) * -1;
 
-                                TaxJurisdiction.JXTaxType::GrossIncome:
+                                TaxJurisdiction.JXVZTaxType::GrossIncome:
                                     begin
                                         JXVZPurchVatBook.JXVZIIBB += Abs(VatEntry.Amount) * -1;
 
-                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::ARBA then
+                                        if TaxJurisdiction.JXVZVAType = TaxJurisdiction.JXVZVAType::ARBA then
                                             JXVZPurchVatBook.JXVZIIBBArba += Abs(VatEntry.Amount) * -1;
 
-                                        if TaxJurisdiction.JXVAType = TaxJurisdiction.JXVAType::CABA then
+                                        if TaxJurisdiction.JXVZVAType = TaxJurisdiction.JXVZVAType::CABA then
                                             JXVZPurchVatBook.JXVZIIBBCaba += Abs(VatEntry.Amount) * -1;
                                     end;
 
-                                TaxJurisdiction.JXTaxType::Others:
+                                TaxJurisdiction.JXVZTaxType::Others:
                                     JXVZPurchVatBook.JXVZSpecial += Abs(VatEntry.Amount) * -1;
                             end;
                     until VatEntry.Next() = 0;

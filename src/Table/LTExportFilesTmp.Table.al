@@ -54,7 +54,7 @@ table 84134 JXVZExportFilesTmp
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'User', Comment = 'ESP=Usuario';
         }
-        field(11; JXType; Option)
+        field(11; JXVZType; Option)
         {
             DataClassification = OrganizationIdentifiableInformation;
             OptionMembers = ,Header,Line,Dispatch,HeadDispatch;

@@ -4,7 +4,7 @@ page 84105 JXVZFECustDocumentTypes
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = JXVZFECustDocumentType;
-    Caption = 'FE customer document types', Comment = 'ESP = Clientes tipos de documentos FE';
+    Caption = 'customer document types', Comment = 'ESP = Clientes tipos de documentos';
 
     layout
     {
@@ -12,20 +12,20 @@ page 84105 JXVZFECustDocumentTypes
         {
             repeater(GroupName)
             {
-                field(JXId; Rec.JXId)
+                field(JXVZId; Rec.JXVZId)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Id', Comment = 'ESP = Id';
                 }
-                field(JXDescription; Rec.JXDescription)
+                field(JXVZDescription; Rec.JXVZDescription)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Description', Comment = 'ESP = Descripcion';
                 }
-                field(JXFEValue; Rec.JXFEValue)
+                field(JXVZSValue; Rec.JXVZSValue)
                 {
                     ApplicationArea = All;
-                    ToolTip = 'FE Value', Comment = 'ESP = Valor FE';
+                    ToolTip = 'Value', Comment = 'ESP = Valor';
                 }
             }
         }
