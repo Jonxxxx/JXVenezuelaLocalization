@@ -53,6 +53,12 @@ tableextension 84105 JXVZSalesInvHeader extends "Sales Invoice Header"
             Caption = 'Province code', Comment = 'ESP=Codigo provincia';
             TableRelation = JXVZProvince;
         }
+
+        field(84112; JXVZCtrlDocumentNo; Code[20])
+        {
+            DataClassification = OrganizationIdentifiableInformation;
+            Caption = 'Control Document No';
+        }
     }
 
     trigger OnBeforeDelete()

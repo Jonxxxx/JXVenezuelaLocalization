@@ -31,6 +31,11 @@ tableextension 84118 JXVZPurchInvHeader extends "Purch. Inv. Header"
                         Comment = 'ESP = Tipo factura';
             OptionMembers = ,Invoice,DebitMemo;
         }
+        field(84105; JXVZCtrlDocumentNo; Code[20])
+        {
+            DataClassification = OrganizationIdentifiableInformation;
+            Caption = 'Control Document No';
+        }
     }
 
 }

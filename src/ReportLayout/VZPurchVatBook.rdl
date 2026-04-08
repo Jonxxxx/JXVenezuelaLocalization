@@ -11,154 +11,6 @@
       <rd:DataSourceID>8155d8c5-9fa5-4e2c-ae5e-0a8b0250f442</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="CompanyInfo_Number">
-          <DataField>CompanyInfo_Number</DataField>
-        </Field>
-        <Field Name="CompanyInfo_City">
-          <DataField>CompanyInfo_City</DataField>
-        </Field>
-        <Field Name="CompanyInfo_VATRegistrationNo">
-          <DataField>CompanyInfo_VATRegistrationNo</DataField>
-        </Field>
-        <Field Name="CompanyInfo_Name">
-          <DataField>CompanyInfo_Name</DataField>
-        </Field>
-        <Field Name="CompanyInfo_Address">
-          <DataField>CompanyInfo_Address</DataField>
-        </Field>
-        <Field Name="CompanyInfo_County">
-          <DataField>CompanyInfo_County</DataField>
-        </Field>
-        <Field Name="CompanyInfo_PostCode">
-          <DataField>CompanyInfo_PostCode</DataField>
-        </Field>
-        <Field Name="FromDate">
-          <DataField>FromDate</DataField>
-        </Field>
-        <Field Name="ToDate">
-          <DataField>ToDate</DataField>
-        </Field>
-        <Field Name="OpenIIBB">
-          <DataField>OpenIIBB</DataField>
-        </Field>
-        <Field Name="PostingDate">
-          <DataField>PostingDate</DataField>
-        </Field>
-        <Field Name="InvoiceNumber">
-          <DataField>InvoiceNumber</DataField>
-        </Field>
-        <Field Name="CompanyName">
-          <DataField>CompanyName</DataField>
-        </Field>
-        <Field Name="VATRegistrationNoo">
-          <DataField>VATRegistrationNoo</DataField>
-        </Field>
-        <Field Name="Taxareacode">
-          <DataField>Taxareacode</DataField>
-        </Field>
-        <Field Name="Province">
-          <DataField>Province</DataField>
-        </Field>
-        <Field Name="Invoicetype">
-          <DataField>Invoicetype</DataField>
-        </Field>
-        <Field Name="Invoiceamount">
-          <DataField>Invoiceamount</DataField>
-        </Field>
-        <Field Name="InvoiceamountFormat">
-          <DataField>InvoiceamountFormat</DataField>
-        </Field>
-        <Field Name="Baseamount">
-          <DataField>Baseamount</DataField>
-        </Field>
-        <Field Name="BaseamountFormat">
-          <DataField>BaseamountFormat</DataField>
-        </Field>
-        <Field Name="NoBaseamount">
-          <DataField>NoBaseamount</DataField>
-        </Field>
-        <Field Name="NoBaseamountFormat">
-          <DataField>NoBaseamountFormat</DataField>
-        </Field>
-        <Field Name="ExemptBaseamount">
-          <DataField>ExemptBaseamount</DataField>
-        </Field>
-        <Field Name="ExemptBaseamountFormat">
-          <DataField>ExemptBaseamountFormat</DataField>
-        </Field>
-        <Field Name="VAT105">
-          <DataField>VAT105</DataField>
-        </Field>
-        <Field Name="VAT105Format">
-          <DataField>VAT105Format</DataField>
-        </Field>
-        <Field Name="VAT21">
-          <DataField>VAT21</DataField>
-        </Field>
-        <Field Name="VAT21Format">
-          <DataField>VAT21Format</DataField>
-        </Field>
-        <Field Name="VAT27">
-          <DataField>VAT27</DataField>
-        </Field>
-        <Field Name="VAT27Format">
-          <DataField>VAT27Format</DataField>
-        </Field>
-        <Field Name="VATpercep">
-          <DataField>VATpercep</DataField>
-        </Field>
-        <Field Name="VATpercepFormat">
-          <DataField>VATpercepFormat</DataField>
-        </Field>
-        <Field Name="IIBB">
-          <DataField>IIBB</DataField>
-        </Field>
-        <Field Name="IIBBFormat">
-          <DataField>IIBBFormat</DataField>
-        </Field>
-        <Field Name="Special">
-          <DataField>Special</DataField>
-        </Field>
-        <Field Name="SpecialFormat">
-          <DataField>SpecialFormat</DataField>
-        </Field>
-        <Field Name="FiscalType">
-          <DataField>FiscalType</DataField>
-        </Field>
-        <Field Name="CurrencyCode">
-          <DataField>CurrencyCode</DataField>
-        </Field>
-        <Field Name="InvoiceAmountLCY">
-          <DataField>InvoiceAmountLCY</DataField>
-        </Field>
-        <Field Name="InvoiceAmountLCYFormat">
-          <DataField>InvoiceAmountLCYFormat</DataField>
-        </Field>
-        <Field Name="IIBBISLR">
-          <DataField>IIBBISLR</DataField>
-        </Field>
-        <Field Name="IIBBISLRFormat">
-          <DataField>IIBBISLRFormat</DataField>
-        </Field>
-        <Field Name="IIBBMunicipal">
-          <DataField>IIBBMunicipal</DataField>
-        </Field>
-        <Field Name="IIBBMunicipalFormat">
-          <DataField>IIBBMunicipalFormat</DataField>
-        </Field>
-        <Field Name="DocumentDate">
-          <DataField>DocumentDate</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -167,13 +19,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.71875in</Width>
+                  <Width>0.53143in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.71875in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.07292in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.16134in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.11458in</Width>
@@ -183,9 +38,6 @@
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.22917in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.66667in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
@@ -217,20 +69,45 @@
                 <TablixColumn>
                   <Width>1in</Width>
                 </TablixColumn>
-                <TablixColumn>
-                  <Width>0.875in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.875in</Width>
-                </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
                   <Height>0.34437in</Height>
                   <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="OperNo">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!OperNo.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>OperNo</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="PostingDate">
@@ -271,44 +148,6 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="DocumentDate">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!DocumentDate.Value</Value>
-                                  <Style>
-                                    <FontSize>8pt</FontSize>
-                                    <Format>d</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>DocumentDate</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>=iif(Fields!InvoiceNumber.Value="", true, false)</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="InvoiceNumber">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -331,6 +170,40 @@
                           <Visibility>
                             <Hidden>=iif(Fields!InvoiceNumber.Value="", true, false)</Hidden>
                           </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="JXVZCtrlDocumentNo">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!JXVZCtrlDocumentNo.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>JXVZCtrlDocumentNo</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -427,55 +300,18 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!FiscalType.Value</Value>
+                                  <Value>01-reg</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>FiscalType</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>=iif(Fields!InvoiceNumber.Value="", true, false)</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Province">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Province.Value</Value>
-                                  <Style>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Province</rd:DefaultName>
                           <Visibility>
                             <Hidden>=iif(Fields!InvoiceNumber.Value="", true, false)</Hidden>
                           </Visibility>
@@ -870,125 +706,45 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Special">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Special.Value</Value>
-                                  <Style>
-                                    <FontSize>8pt</FontSize>
-                                    <Format>#,0.00</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Special</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>=iif(Fields!InvoiceNumber.Value="", true, false)</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="IIBB">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Switch(First(Fields!OpenIIBB.Value, "DataSet_Result") = false, Fields!IIBB.Value, First(Fields!OpenIIBB.Value, "DataSet_Result") = true, Fields!IIBBISLR.Value)</Value>
-                                  <Style>
-                                    <FontSize>8pt</FontSize>
-                                    <Format>#,0.00</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>IIBB</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>=iif(Fields!InvoiceNumber.Value="", true, false)</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="IIBBMunicipal">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!IIBBMunicipal.Value</Value>
-                                  <Style>
-                                    <FontSize>8pt</FontSize>
-                                    <Format>#,0.00</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>IIBBMunicipal</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>=iif(First(Fields!OpenIIBB.Value, "DataSet_Result") = false, true, false)</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
                   <Height>0.23622in</Height>
                   <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox61">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox61</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox2">
@@ -1025,40 +781,6 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox69">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox69</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="Textbox4">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -1078,6 +800,40 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox69">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox69</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1180,40 +936,6 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox24</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox26">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox26</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1584,126 +1306,12 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Special2">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!Special.Value)</Value>
-                                  <Style>
-                                    <FontSize>9pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>#,0.00</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Special</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="IIBB2">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Switch(First(Fields!OpenIIBB.Value, "DataSet_Result") = false, sum(Fields!IIBB.Value), First(Fields!OpenIIBB.Value, "DataSet_Result") = true, sum(Fields!IIBBISLR.Value))</Value>
-                                  <Style>
-                                    <FontSize>9pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>#,0.00</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>IIBB</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="IIBBMunicipal2">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!IIBBMunicipal.Value)</Value>
-                                  <Style>
-                                    <FontSize>8pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>#,0.00</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>IIBBMunicipal</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>=iif(First(Fields!OpenIIBB.Value, "DataSet_Result") = false, true, false)</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
               </TablixRows>
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
@@ -1739,7 +1347,7 @@
             <RepeatRowHeaders>true</RepeatRowHeaders>
             <DataSetName>DataSet_Result</DataSetName>
             <Height>0.58059in</Height>
-            <Width>19.90279in</Width>
+            <Width>17.46013in</Width>
             <Visibility>
               <Hidden>=iif(Fields!InvoiceNumber.Value = "", false, true)</Hidden>
             </Visibility>
@@ -1753,7 +1361,7 @@
         <Height>1.76732cm</Height>
         <Style />
       </Body>
-      <Width>53.5cm</Width>
+      <Width>44.55708cm</Width>
       <Page>
         <PageHeader>
           <Height>5.45215cm</Height>
@@ -1958,7 +1566,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>CUIT:</Value>
+                      <Value>RIF:</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -2282,7 +1890,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Fecha registro</Value>
+                      <Value>Fecha </Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -2296,8 +1904,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>0.00001cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>1.31411cm</Left>
               <Height>0.95407cm</Height>
               <Width>1.82562cm</Width>
               <ZIndex>16</ZIndex>
@@ -2325,7 +1933,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>N°</Value>
+                      <Value>Numero Factura</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -2339,8 +1947,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>3.65124cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>3.17501cm</Left>
               <Height>0.95407cm</Height>
               <Width>2.72523cm</Width>
               <ZIndex>17</ZIndex>
@@ -2382,10 +1990,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox7</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>6.37647cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>8.85046cm</Left>
               <Height>0.95407cm</Height>
-              <Width>5.37103cm</Width>
+              <Width>5.33531cm</Width>
               <ZIndex>18</ZIndex>
               <Style>
                 <Border>
@@ -2411,7 +2019,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>CUIT</Value>
+                      <Value>RIF</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -2425,8 +2033,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox9</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>11.7475cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>14.18577cm</Left>
               <Height>0.95407cm</Height>
               <Width>2.54cm</Width>
               <ZIndex>19</ZIndex>
@@ -2454,7 +2062,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Tipo fiscal</Value>
+                      <Value>Tipo Transacc.</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -2468,54 +2076,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox11</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>14.28751cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>16.72578cm</Left>
               <Height>0.95407cm</Height>
               <Width>3.12208cm</Width>
               <ZIndex>20</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <TopBorder>
-                  <Style>Solid</Style>
-                </TopBorder>
-                <BottomBorder>
-                  <Style>Solid</Style>
-                </BottomBorder>
-                <VerticalAlign>Middle</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox40">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Provincia</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>17.40959cm</Left>
-              <Height>0.95407cm</Height>
-              <Width>1.69334cm</Width>
-              <ZIndex>21</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2554,11 +2119,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox13</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>19.10293cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>19.88358cm</Left>
               <Height>0.95407cm</Height>
               <Width>2.54cm</Width>
-              <ZIndex>22</ZIndex>
+              <ZIndex>21</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2597,11 +2162,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox15</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>23.28809cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>24.06875cm</Left>
               <Height>0.95407cm</Height>
               <Width>2.54cm</Width>
-              <ZIndex>23</ZIndex>
+              <ZIndex>22</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2640,11 +2205,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox17</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>28.32852cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>29.10918cm</Left>
               <Height>0.95407cm</Height>
               <Width>2.54cm</Width>
-              <ZIndex>24</ZIndex>
+              <ZIndex>23</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2683,11 +2248,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox19</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>30.86852cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>31.64918cm</Left>
               <Height>0.95407cm</Height>
               <Width>2.54cm</Width>
-              <ZIndex>25</ZIndex>
+              <ZIndex>24</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2726,11 +2291,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox21</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>33.40852cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>34.18918cm</Left>
               <Height>0.95407cm</Height>
               <Width>2.54cm</Width>
-              <ZIndex>26</ZIndex>
+              <ZIndex>25</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2769,11 +2334,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox31</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>35.94852cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>36.72918cm</Left>
               <Height>0.95407cm</Height>
               <Width>2.54cm</Width>
-              <ZIndex>27</ZIndex>
+              <ZIndex>26</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2812,11 +2377,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox23</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>38.48852cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>39.26918cm</Left>
               <Height>0.95407cm</Height>
               <Width>2.54cm</Width>
-              <ZIndex>28</ZIndex>
+              <ZIndex>27</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2841,7 +2406,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>IVA percep</Value>
+                      <Value>IVA Retenido</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -2855,97 +2420,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox25</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>41.02852cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>41.80918cm</Left>
               <Height>0.95407cm</Height>
               <Width>2.54cm</Width>
-              <ZIndex>29</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <TopBorder>
-                  <Style>Solid</Style>
-                </TopBorder>
-                <BottomBorder>
-                  <Style>Solid</Style>
-                </BottomBorder>
-                <VerticalAlign>Middle</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox50">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Switch(First(Fields!OpenIIBB.Value, "DataSet_Result") = false, "IIBB percep", First(Fields!OpenIIBB.Value, "DataSet_Result") = true, "IIBB Percep ISLR")</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox27</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>45.79058cm</Left>
-              <Height>0.95407cm</Height>
-              <Width>2.54cm</Width>
-              <ZIndex>30</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <TopBorder>
-                  <Style>Solid</Style>
-                </TopBorder>
-                <BottomBorder>
-                  <Style>Solid</Style>
-                </BottomBorder>
-                <VerticalAlign>Middle</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox51">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Otras percep</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox33</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>43.56808cm</Left>
-              <Height>0.95407cm</Height>
-              <Width>2.2225cm</Width>
-              <ZIndex>31</ZIndex>
+              <ZIndex>28</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2984,11 +2463,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox15</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>25.78852cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>26.56918cm</Left>
               <Height>0.95407cm</Height>
               <Width>2.57529cm</Width>
-              <ZIndex>32</ZIndex>
+              <ZIndex>29</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -3027,100 +2506,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox15</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>21.60765cm</Left>
+              <Top>4.20704cm</Top>
+              <Left>22.38831cm</Left>
               <Height>0.95407cm</Height>
               <Width>1.68044cm</Width>
-              <ZIndex>33</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <TopBorder>
-                  <Style>Solid</Style>
-                </TopBorder>
-                <BottomBorder>
-                  <Style>Solid</Style>
-                </BottomBorder>
-                <VerticalAlign>Middle</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox65">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value EvaluationMode="Constant">IIBB Percep Municipal</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox33</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>48.33058cm</Left>
-              <Height>0.95407cm</Height>
-              <Width>2.2225cm</Width>
-              <ZIndex>34</ZIndex>
-              <Visibility>
-                <Hidden>=iif(First(Fields!OpenIIBB.Value, "DataSet_Result") = false, true, false)</Hidden>
-              </Visibility>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <TopBorder>
-                  <Style>Solid</Style>
-                </TopBorder>
-                <BottomBorder>
-                  <Style>Solid</Style>
-                </BottomBorder>
-                <VerticalAlign>Middle</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox66">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Fecha doc.</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>4.18058cm</Top>
-              <Left>1.82562cm</Left>
-              <Height>0.95407cm</Height>
-              <Width>1.82562cm</Width>
-              <ZIndex>35</ZIndex>
+              <ZIndex>30</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -3163,11 +2553,96 @@
               <Left>23.66114cm</Left>
               <Height>0.6cm</Height>
               <Width>6.17771cm</Width>
-              <ZIndex>36</ZIndex>
+              <ZIndex>31</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox48">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Oper. Nro.</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>4.20704cm</Top>
+              <Height>0.95407cm</Height>
+              <Width>1.34983cm</Width>
+              <ZIndex>32</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <TopBorder>
+                  <Style>Solid</Style>
+                </TopBorder>
+                <BottomBorder>
+                  <Style>Solid</Style>
+                </BottomBorder>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox62">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Numero Ctrl. Factura</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox3</rd:DefaultName>
+              <Top>4.20704cm</Top>
+              <Left>5.90067cm</Left>
+              <Height>0.95407cm</Height>
+              <Width>2.94979cm</Width>
+              <ZIndex>33</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <TopBorder>
+                  <Style>Solid</Style>
+                </TopBorder>
+                <BottomBorder>
+                  <Style>Solid</Style>
+                </BottomBorder>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -3794,7 +3269,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Total IVA Percepción</Value>
+                      <Value>Total IVA Retencion</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -3854,140 +3329,6 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="Textbox31">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Total Percepción IIBB</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>3.29851cm</Top>
-              <Left>1.82562cm</Left>
-              <Height>0.5cm</Height>
-              <Width>5.71501cm</Width>
-              <ZIndex>20</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox33">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Sum(Fields!IIBB.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <Format>#,0.00</Format>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>3.29851cm</Top>
-              <Left>7.54064cm</Left>
-              <Height>0.5cm</Height>
-              <Width>3.54544cm</Width>
-              <ZIndex>21</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox36">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Total Otras Percepciones</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>3.79851cm</Top>
-              <Left>1.82562cm</Left>
-              <Height>0.5cm</Height>
-              <Width>5.71501cm</Width>
-              <ZIndex>22</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox45">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!Special.Value, "DataSet_Result")</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <Format>#,0.00</Format>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>3.79851cm</Top>
-              <Left>7.54064cm</Left>
-              <Height>0.5cm</Height>
-              <Width>3.54544cm</Width>
-              <ZIndex>23</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
             <Textbox Name="Textbox56">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -4006,11 +3347,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>4.29851cm</Top>
+              <Top>3.34601cm</Top>
               <Left>1.82562cm</Left>
               <Height>0.5cm</Height>
               <Width>5.71501cm</Width>
-              <ZIndex>24</ZIndex>
+              <ZIndex>20</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -4042,11 +3383,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>4.29851cm</Top>
+              <Top>3.34601cm</Top>
               <Left>7.54064cm</Left>
               <Height>0.5cm</Height>
               <Width>3.54544cm</Width>
-              <ZIndex>25</ZIndex>
+              <ZIndex>21</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -4075,12 +3416,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -4120,4 +3455,152 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="CompanyInfo_Number">
+          <DataField>CompanyInfo_Number</DataField>
+        </Field>
+        <Field Name="CompanyInfo_City">
+          <DataField>CompanyInfo_City</DataField>
+        </Field>
+        <Field Name="CompanyInfo_VATRegistrationNo">
+          <DataField>CompanyInfo_VATRegistrationNo</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Name">
+          <DataField>CompanyInfo_Name</DataField>
+        </Field>
+        <Field Name="CompanyInfo_Address">
+          <DataField>CompanyInfo_Address</DataField>
+        </Field>
+        <Field Name="CompanyInfo_County">
+          <DataField>CompanyInfo_County</DataField>
+        </Field>
+        <Field Name="CompanyInfo_PostCode">
+          <DataField>CompanyInfo_PostCode</DataField>
+        </Field>
+        <Field Name="FromDate">
+          <DataField>FromDate</DataField>
+        </Field>
+        <Field Name="ToDate">
+          <DataField>ToDate</DataField>
+        </Field>
+        <Field Name="OpenIIBB">
+          <DataField>OpenIIBB</DataField>
+        </Field>
+        <Field Name="PostingDate">
+          <DataField>PostingDate</DataField>
+        </Field>
+        <Field Name="InvoiceNumber">
+          <DataField>InvoiceNumber</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="VATRegistrationNoo">
+          <DataField>VATRegistrationNoo</DataField>
+        </Field>
+        <Field Name="Taxareacode">
+          <DataField>Taxareacode</DataField>
+        </Field>
+        <Field Name="Province">
+          <DataField>Province</DataField>
+        </Field>
+        <Field Name="Invoicetype">
+          <DataField>Invoicetype</DataField>
+        </Field>
+        <Field Name="Invoiceamount">
+          <DataField>Invoiceamount</DataField>
+        </Field>
+        <Field Name="InvoiceamountFormat">
+          <DataField>InvoiceamountFormat</DataField>
+        </Field>
+        <Field Name="Baseamount">
+          <DataField>Baseamount</DataField>
+        </Field>
+        <Field Name="BaseamountFormat">
+          <DataField>BaseamountFormat</DataField>
+        </Field>
+        <Field Name="NoBaseamount">
+          <DataField>NoBaseamount</DataField>
+        </Field>
+        <Field Name="NoBaseamountFormat">
+          <DataField>NoBaseamountFormat</DataField>
+        </Field>
+        <Field Name="ExemptBaseamount">
+          <DataField>ExemptBaseamount</DataField>
+        </Field>
+        <Field Name="ExemptBaseamountFormat">
+          <DataField>ExemptBaseamountFormat</DataField>
+        </Field>
+        <Field Name="VAT105">
+          <DataField>VAT105</DataField>
+        </Field>
+        <Field Name="VAT105Format">
+          <DataField>VAT105Format</DataField>
+        </Field>
+        <Field Name="VAT21">
+          <DataField>VAT21</DataField>
+        </Field>
+        <Field Name="VAT21Format">
+          <DataField>VAT21Format</DataField>
+        </Field>
+        <Field Name="VATpercep">
+          <DataField>VATpercep</DataField>
+        </Field>
+        <Field Name="VATpercepFormat">
+          <DataField>VATpercepFormat</DataField>
+        </Field>
+        <Field Name="IIBB">
+          <DataField>IIBB</DataField>
+        </Field>
+        <Field Name="IIBBFormat">
+          <DataField>IIBBFormat</DataField>
+        </Field>
+        <Field Name="Special">
+          <DataField>Special</DataField>
+        </Field>
+        <Field Name="SpecialFormat">
+          <DataField>SpecialFormat</DataField>
+        </Field>
+        <Field Name="FiscalType">
+          <DataField>FiscalType</DataField>
+        </Field>
+        <Field Name="CurrencyCode">
+          <DataField>CurrencyCode</DataField>
+        </Field>
+        <Field Name="InvoiceAmountLCY">
+          <DataField>InvoiceAmountLCY</DataField>
+        </Field>
+        <Field Name="InvoiceAmountLCYFormat">
+          <DataField>InvoiceAmountLCYFormat</DataField>
+        </Field>
+        <Field Name="IIBBISLR">
+          <DataField>IIBBISLR</DataField>
+        </Field>
+        <Field Name="IIBBISLRFormat">
+          <DataField>IIBBISLRFormat</DataField>
+        </Field>
+        <Field Name="IIBBMunicipal">
+          <DataField>IIBBMunicipal</DataField>
+        </Field>
+        <Field Name="IIBBMunicipalFormat">
+          <DataField>IIBBMunicipalFormat</DataField>
+        </Field>
+        <Field Name="DocumentDate">
+          <DataField>DocumentDate</DataField>
+        </Field>
+        <Field Name="OperNo">
+          <DataField>OperNo</DataField>
+        </Field>
+        <Field Name="JXVZCtrlDocumentNo">
+          <DataField>JXVZCtrlDocumentNo</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

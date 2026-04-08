@@ -85,6 +85,23 @@ tableextension 84113 JXVZVendor extends Vendor
             TableRelation = JXVZFECustDocumentType;
             ValidateTableRelation = true;
         }
+
+        modify("VAT Registration No.")
+        {
+            trigger OnAfterValidate()
+            var
+                CompInfo: Record "Company Information";
+                JXVZLogicalFactory: Codeunit JXVZLogicalFactory;
+            begin
+                CompInfo.Reset();
+                if CompInfo.FindFirst() then
+                    if CompInfo.JXVZVenezuelaLocEnabled then begin
+                        Clear(JXVZLogicalFactory);
+                        JXVZLogicalFactory.ValidateVenezuelanRIFOrError("VAT Registration No.");
+                        Rec."VAT Registration No." := JXVZLogicalFactory.NormalizeVenezuelanRIF("VAT Registration No.");
+                    end;
+            end;
+        }
     }
 
     /*procedure "#ValidateTaxAreaCode"()
@@ -104,9 +121,9 @@ tableextension 84113 JXVZVendor extends Vendor
 
 
     /*var
-        TextJXL0010Lbl: Label 'The CUIT must not have any more than 11 digits';
-        TextJXL0011Lbl: Label 'The CUIT must not have less than 11 digits';
-        TextJXL0012Lbl: Label 'The number of CUIT is not correct';
+        TextJXL0010Lbl: Label 'The RIF must not have any more than 11 digits';
+        TextJXL0011Lbl: Label 'The RIF must not have less than 11 digits';
+        TextJXL0012Lbl: Label 'The number of RIF is not correct';
         TextJXL0013Lbl: Label 'It is not configured fiscal type in tax area code %1';
         TextJXL0014Lbl: Label 'Fiscal Type must be %1';
         TextJXL0015Lbl: Label 'Complete the field Tax Area Code first';*/

@@ -95,6 +95,23 @@ tableextension 84110 JXVZCompanyInfo extends "Company Information"
                 RestartSession();
             end;
         }
+
+        modify("VAT Registration No.")
+        {
+            trigger OnAfterValidate()
+            var
+                CompInfo: Record "Company Information";
+                JXVZLogicalFactory: Codeunit JXVZLogicalFactory;
+            begin
+                CompInfo.Reset();
+                if CompInfo.FindFirst() then
+                    if CompInfo.JXVZVenezuelaLocEnabled then begin
+                        Clear(JXVZLogicalFactory);
+                        JXVZLogicalFactory.ValidateVenezuelanRIFOrError("VAT Registration No.");
+                        Rec."VAT Registration No." := JXVZLogicalFactory.NormalizeVenezuelanRIF("VAT Registration No.");
+                    end;
+            end;
+        }
     }
 
     procedure JXIsVenezuela(): Boolean

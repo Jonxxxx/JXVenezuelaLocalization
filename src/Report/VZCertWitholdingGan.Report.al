@@ -4,7 +4,7 @@ report 84110 JXVZCertWitholdingGan
     //UsageCategory = None;
 
     DefaultLayout = RDLC;
-    RDLCLayout = 'ReportLayout/VZCertWitholdingGan.rdl';
+    RDLCLayout = 'src/ReportLayout/VZCertWitholdingGan.rdl';
 
     dataset
     {

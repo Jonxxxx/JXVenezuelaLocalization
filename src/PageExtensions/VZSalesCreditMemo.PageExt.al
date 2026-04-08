@@ -62,6 +62,11 @@ pageextension 84106 JXVZSalesCreditMemo extends "Sales Credit Memo"
                     ToolTip = 'Posting no. series', Comment = 'ESP=Numero serie registro';
                     Editable = ShowSeriesField;
                 }
+                field(JXVZCtrlDocumentNo; Rec.JXVZCtrlDocumentNo)
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Control Document No.';
+                }
 
             }
         }

@@ -30,5 +30,10 @@ tableextension 84120 JXVZPurchCrMemoHdr extends "Purch. Cr. Memo Hdr."
                         Comment = 'ESP = Tipo factura';
             OptionMembers = ,Invoice,DebitMemo;
         }
+        field(84105; JXVZCtrlDocumentNo; Code[20])
+        {
+            DataClassification = OrganizationIdentifiableInformation;
+            Caption = 'Control Document No';
+        }
     }
 }

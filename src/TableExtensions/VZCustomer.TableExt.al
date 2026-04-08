@@ -34,5 +34,22 @@ tableextension 84103 JXVZCustomer extends Customer
             Caption = 'Point of sale',
                         Comment = 'ESP = "Punto de venta"';
         }
+
+        modify("VAT Registration No.")
+        {
+            trigger OnAfterValidate()
+            var
+                CompInfo: Record "Company Information";
+                JXVZLogicalFactory: Codeunit JXVZLogicalFactory;
+            begin
+                CompInfo.Reset();
+                if CompInfo.FindFirst() then
+                    if CompInfo.JXVZVenezuelaLocEnabled then begin
+                        Clear(JXVZLogicalFactory);
+                        JXVZLogicalFactory.ValidateVenezuelanRIFOrError("VAT Registration No.");
+                        Rec."VAT Registration No." := JXVZLogicalFactory.NormalizeVenezuelanRIF("VAT Registration No.");
+                    end;
+            end;
+        }
     }
 }

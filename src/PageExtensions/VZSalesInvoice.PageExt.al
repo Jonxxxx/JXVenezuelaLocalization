@@ -16,7 +16,6 @@ pageextension 84105 JXVZSalesInvoice extends "Sales Invoice"
                     ToolTip = 'Invoice type', Comment = 'ESP = Tipo de factura';
                 }
 
-
                 field(JXVZPointOfSale; Rec.JXVZPointOfSale)
                 {
                     ApplicationArea = All;
@@ -69,6 +68,11 @@ pageextension 84105 JXVZSalesInvoice extends "Sales Invoice"
                     Editable = ShowSeriesField;
                 }
 
+                field(JXVZCtrlDocumentNo; Rec.JXVZCtrlDocumentNo)
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Control Document No.';
+                }
 
             }
         }

@@ -78,6 +78,12 @@ tableextension 84104 JXVZSalesHeader extends "Sales Header"
             TableRelation = JXVZProvince;
         }
 
+        field(84112; JXVZCtrlDocumentNo; Code[20])
+        {
+            DataClassification = OrganizationIdentifiableInformation;
+            Caption = 'Control Document No';
+        }
+
         modify("Sell-to Customer No.")
         {
             trigger OnAfterValidate()

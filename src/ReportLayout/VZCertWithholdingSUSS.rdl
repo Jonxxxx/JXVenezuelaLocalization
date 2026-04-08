@@ -327,13 +327,13 @@
               <VerticalAlign>Middle</VerticalAlign>
             </Style>
           </Textbox>
-          <Textbox Name="Nro__de_CUITCaption">
+          <Textbox Name="Nro__de_RIFCaption">
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Nro de CUIT</Value>
+                    <Value>Nro de RIF</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -621,13 +621,13 @@
               <VerticalAlign>Middle</VerticalAlign>
             </Style>
           </Textbox>
-          <Textbox Name="Nro__de_CUITCaption_Control1000000018">
+          <Textbox Name="Nro__de_RIFCaption_Control1000000018">
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Nro de CUIT</Value>
+                    <Value>Nro de RIF</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>

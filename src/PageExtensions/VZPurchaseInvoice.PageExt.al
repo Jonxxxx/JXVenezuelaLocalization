@@ -59,6 +59,12 @@ pageextension 84118 JXVZPurchaseInvoice extends "Purchase Invoice"
                     Enabled = ShowSeriesField;
                     Visible = ShowSeriesField;
                 }
+                field(JXVZCtrlDocumentNo; Rec.JXVZCtrlDocumentNo)
+                {
+                    ApplicationArea = all;
+                    Visible = IsVenezuela;
+                    ToolTip = 'Control Document No.';
+                }
             }
         }
     }

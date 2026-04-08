@@ -37,6 +37,13 @@ pageextension 84108 JXVZPostedSalesCrMemo extends "Posted Sales Credit Memo"
                     ToolTip = 'Voucher type for', Comment = 'ESP = Tipo de voucher para';
                 }
 
+                field(JXVZCtrlDocumentNo; Rec.JXVZCtrlDocumentNo)
+                {
+                    ApplicationArea = all;
+                    Visible = IsVenezuela;
+                    ToolTip = 'Control Document No.';
+                }
+
             }
         }
     }

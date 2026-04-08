@@ -2,7 +2,7 @@ report 84104 JXVZPaymentOrder
 {
     Caption = 'Payment order', Comment = 'ESP=Orden de pago';
     DefaultLayout = RDLC;
-    RDLCLayout = 'ReportLayout/VZPaymentOrder.rdl';
+    RDLCLayout = 'src/ReportLayout/VZPaymentOrder.rdl';
     UseRequestPage = false;
     //UsageCategory = None;
 
@@ -27,7 +27,7 @@ report 84104 JXVZPaymentOrder
             column(JXVZHistoryPaymOrder_JXVZPostingDate; JXVZHistoryPaymOrder.JXVZPostingDate)
             {
             }
-            column(JXVZHistoryPaymOrder_JXVZCUIT; JXVZHistoryPaymOrder.JXVZCUIT)
+            column(JXVZHistoryPaymOrder_JXVZRIF; JXVZHistoryPaymOrder.JXVZRIF)
             {
             }
             column(JXVZHistoryPaymOrder_JXVZVendorNo; JXVZHistoryPaymOrder.JXVZVendorNo)

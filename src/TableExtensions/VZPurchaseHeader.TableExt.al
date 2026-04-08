@@ -32,6 +32,12 @@ tableextension 84116 JXVZPurchaseHeader extends "Purchase Header"
             OptionCaption = ' ,Invoice,DebitMemo', Comment = 'ESP= ,Factura,Nota debito';
         }
 
+        field(84105; JXVZCtrlDocumentNo; Code[20])
+        {
+            DataClassification = OrganizationIdentifiableInformation;
+            Caption = 'Control Document No';
+        }
+
         modify("Buy-from Vendor No.")
         {
             trigger OnAfterValidate()

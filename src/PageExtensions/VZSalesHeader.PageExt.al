@@ -74,6 +74,12 @@ pageextension 84104 JXVZSalesHeader extends "Sales Order"
                     Editable = false;
                 }
 
+                field(JXVZCtrlDocumentNo; Rec.JXVZCtrlDocumentNo)
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Control Document No.';
+                }
+
             }
         }
         modify("Sell-to Customer Name")

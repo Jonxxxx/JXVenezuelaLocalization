@@ -116,7 +116,7 @@ table 84126 JXVZWithholdLedgerEntry
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Affected document type';
-            Description = 'SICORE - 01 - CUIT, 02 - CUIL, 03 - CDI';
+            Description = 'SICORE - 01 - RIF, 02 - CUIL, 03 - CDI';
         }
         field(24; "Affected Document No."; Text[20])
         {

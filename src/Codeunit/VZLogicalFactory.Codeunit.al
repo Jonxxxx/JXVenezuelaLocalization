@@ -47,7 +47,7 @@ codeunit 84102 JXVZLogicalFactory
                     JXVZHistoryReceiptHeader.JXVZDocumentDate := _GenJnlLine."Document Date";
                     JXVZHistoryReceiptHeader.JXVZCustomerNo := _GenJnlLine."Account No.";
                     JXVZHistoryReceiptHeader.JXVZName := Customer.Name;
-                    JXVZHistoryReceiptHeader.JXVZCuit := Customer."VAT Registration No.";
+                    JXVZHistoryReceiptHeader.JXVZRIF := Customer."VAT Registration No.";
                     JXVZHistoryReceiptHeader.JXVZAddress := Customer.Address;
                     JXVZHistoryReceiptHeader.JXVZUserId := FORMAT(UserId());
                     JXVZHistoryReceiptHeader.JXVZStatus := JXVZHistoryReceiptHeader.JXVZStatus::Registered;
@@ -228,7 +228,7 @@ codeunit 84102 JXVZLogicalFactory
                     JXVZHistoryPaymentOrder.JXVZDocumentDate := _GenJnlLine."Document Date";
                     JXVZHistoryPaymentOrder.JXVZVendorNo := _GenJnlLine."Account No.";
                     JXVZHistoryPaymentOrder.JXVZName := Vendor.Name;
-                    JXVZHistoryPaymentOrder.JXVZCuit := Vendor."VAT Registration No.";
+                    JXVZHistoryPaymentOrder.JXVZRIF := Vendor."VAT Registration No.";
                     JXVZHistoryPaymentOrder.JXVZAddress := Vendor.Address;
                     JXVZHistoryPaymentOrder.JXVZUserID := UserId;
                     JXVZHistoryPaymentOrder.JXVZStatus := JXVZHistoryPaymentOrder.JXVZStatus::Registered;
@@ -697,5 +697,164 @@ codeunit 84102 JXVZLogicalFactory
                 if JXVZHistoryPaymOrder.FindFirst() then
                     Error(StrSubstNo(ErrorOPDocNoLbl, JXVZHistoryPaymOrder.JXVZNo));
             end;
+    end;
+
+    //RIF validations
+    procedure IsValidVenezuelanRIF(InputRIF: Text): Boolean
+    var
+        NormalizedRIF: Text;
+        CurrentCheckDigit: Integer;
+        ExpectedCheckDigit: Integer;
+    begin
+        NormalizedRIF := NormalizeVenezuelanRIF(InputRIF);
+
+        // Formato esperado: 1 letra + 9 dígitos = 10 caracteres
+        if StrLen(NormalizedRIF) <> 10 then
+            exit(false);
+
+        if not IsValidRIFPrefix(CopyStr(NormalizedRIF, 1, 1)) then
+            exit(false);
+
+        // Las 9 posiciones restantes deben ser numéricas
+        if not IsDigits(CopyStr(NormalizedRIF, 2, 9)) then
+            exit(false);
+
+        if not Evaluate(CurrentCheckDigit, CopyStr(NormalizedRIF, 10, 1)) then
+            exit(false);
+
+        ExpectedCheckDigit := CalcRIFCheckDigit(NormalizedRIF);
+
+        exit(CurrentCheckDigit = ExpectedCheckDigit);
+    end;
+
+    procedure ValidateVenezuelanRIFOrError(InputRIF: Text)
+    begin
+        if InputRIF = '' then
+            exit;
+
+        if not IsValidVenezuelanRIF(InputRIF) then
+            Error(
+              'El RIF venezolano "%1" no es válido. Formato esperado: una letra (V/E/J/P/G) y 9 dígitos, sin puntos. Ejemplo: J123456789.',
+              InputRIF);
+    end;
+
+    procedure NormalizeVenezuelanRIF(InputRIF: Text): Text
+    var
+        Result: Text;
+    begin
+        Result := UpperCase(DelChr(InputRIF, '=', ' -./\'));
+        exit(Result);
+    end;
+
+    procedure FormatVenezuelanRIF(InputRIF: Text): Text
+    var
+        RIF: Text;
+    begin
+        RIF := NormalizeVenezuelanRIF(InputRIF);
+
+        if StrLen(RIF) <> 10 then
+            exit(RIF);
+
+        exit(
+          CopyStr(RIF, 1, 1) + '-' +
+          CopyStr(RIF, 2, 8) + '-' +
+          CopyStr(RIF, 10, 1));
+    end;
+
+    local procedure CalcRIFCheckDigit(NormalizedRIF: Text): Integer
+    var
+        Weights: array[8] of Integer;
+        PrefixValue: Integer;
+        Digit: Integer;
+        I: Integer;
+        Sum: Integer;
+    begin
+        // Pesos para las 8 cifras base
+        Weights[1] := 3;
+        Weights[2] := 2;
+        Weights[3] := 7;
+        Weights[4] := 6;
+        Weights[5] := 5;
+        Weights[6] := 4;
+        Weights[7] := 3;
+        Weights[8] := 2;
+
+        PrefixValue := GetRIFPrefixValue(CopyStr(NormalizedRIF, 1, 1));
+        Sum := PrefixValue;
+
+        // Toma las posiciones 2..9 (8 cifras base)
+        for I := 1 to 8 do begin
+            Evaluate(Digit, CopyStr(NormalizedRIF, I + 1, 1));
+            Sum += Digit * Weights[I];
+        end;
+
+        exit(MapMod11ToCheckDigit(Sum mod 11));
+    end;
+
+    local procedure GetRIFPrefixValue(Prefix: Text[1]): Integer
+    begin
+        case Prefix of
+            'V':
+                exit(4);   // Persona natural venezolana
+            'E':
+                exit(8);   // Persona natural extranjera
+            'J':
+                exit(12);  // Persona jurídica
+            'P':
+                exit(16);  // Pasaporte
+            'G':
+                exit(20);  // Gobierno / ente público
+        end;
+
+        exit(-1);
+    end;
+
+    local procedure MapMod11ToCheckDigit(Remainder: Integer): Integer
+    begin
+        case Remainder of
+            0:
+                exit(0);
+            1:
+                exit(0);
+            2:
+                exit(9);
+            3:
+                exit(8);
+            4:
+                exit(7);
+            5:
+                exit(6);
+            6:
+                exit(5);
+            7:
+                exit(4);
+            8:
+                exit(3);
+            9:
+                exit(2);
+            10:
+                exit(1);
+        end;
+
+        exit(-1);
+    end;
+
+    local procedure IsValidRIFPrefix(Prefix: Text[1]): Boolean
+    begin
+        exit(Prefix in ['V', 'E', 'J', 'P', 'G']);
+    end;
+
+    local procedure IsDigits(Value: Text): Boolean
+    var
+        I: Integer;
+    begin
+        if Value = '' then
+            exit(false);
+
+        for I := 1 to StrLen(Value) do
+            if not (CopyStr(Value, I, 1) in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']) then
+                exit(false);
+
+        exit(true);
     end;
 }

@@ -39,6 +39,12 @@ pageextension 84124 JXVZPostedPurchCrMemo extends "Posted Purchase Credit Memo"
                     ApplicationArea = all;
                     ToolTip = 'Tax liable', Comment = 'ESP=Sujeto a impuestos';
                 }
+                field(JXVZCtrlDocumentNo; Rec.JXVZCtrlDocumentNo)
+                {
+                    ApplicationArea = all;
+                    Visible = IsVenezuela;
+                    ToolTip = 'Control Document No.';
+                }
             }
         }
     }

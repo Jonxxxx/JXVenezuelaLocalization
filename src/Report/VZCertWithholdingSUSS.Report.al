@@ -4,7 +4,7 @@ report 84111 JXVZCertWithholdingSUSS
     //UsageCategory = None;
 
     DefaultLayout = RDLC;
-    RDLCLayout = 'ReportLayout/VZCertWithholdingSUSS.rdl';
+    RDLCLayout = 'src/ReportLayout/VZCertWithholdingSUSS.rdl';
 
 
     dataset

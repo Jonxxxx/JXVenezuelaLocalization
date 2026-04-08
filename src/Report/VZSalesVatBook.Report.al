@@ -5,7 +5,7 @@ report 84105 JXVZSalesVatBook
     ApplicationArea = All;
 
     DefaultLayout = RDLC;
-    RDLCLayout = 'ReportLayout/VZSalesVatBook.rdl';
+    RDLCLayout = 'src/ReportLayout/VZSalesVatBook.rdl';
 
     dataset
     {
@@ -78,6 +78,8 @@ report 84105 JXVZSalesVatBook
             var
                 TaxJurisdictionTemp: Record "Tax Jurisdiction" temporary;
             begin
+                OperNo += 1;
+
                 "Sales Invoice Header".CalcFields("Amount Including VAT");
                 JXVZSalesVatBook.Init();
                 ReportKey += 1;
@@ -90,6 +92,7 @@ report 84105 JXVZSalesVatBook
                 JXVZSalesVatBook.JXVZProvince := "Sales Invoice Header".JXVZProvinceCode;
                 JXVZSalesVatBook.JXVZInvoiceType := Format("Sales Invoice Header".JXVZInvoiceType::Invoice);
                 JXVZSalesVatBook.JXVZInvoiceAmount := Abs("Sales Invoice Header"."Amount Including VAT");
+                JXVZSalesVatBook.JXVZCtrlDocumentNo := "Sales Invoice Header".JXVZCtrlDocumentNo;
 
                 if ("Sales Invoice Header"."Currency Code" <> '') then
                     JXVZSalesVatBook.JXVZInvoiceAmountLCY := Abs("Sales Invoice Header"."Amount Including VAT") / "Sales Invoice Header"."Currency Factor"
@@ -174,15 +177,15 @@ report 84105 JXVZSalesVatBook
 
                 JXVZSalesVatBook.JXVZBaseAmount := abs(JXVZSalesVatBook.JXVZBaseAmount);
                 JXVZSalesVatBook.JXVZVAT16 := abs(JXVZSalesVatBook.JXVZVAT16);
-                JXVZSalesVatBook.JXVZVAT27 := abs(JXVZSalesVatBook.JXVZVAT27);
                 JXVZSalesVatBook.JXVZVAT8 := abs(JXVZSalesVatBook.JXVZVAT8);
                 JXVZSalesVatBook.JXVZVATPercep := abs(JXVZSalesVatBook.JXVZVATPercep);
                 JXVZSalesVatBook.JXVZWithold := abs(JXVZSalesVatBook.JXVZWithold);
                 JXVZSalesVatBook.JXVZWitholdISLR := abs(JXVZSalesVatBook.JXVZWitholdISLR);
                 JXVZSalesVatBook.JXVZWitholdMunicipal := abs(JXVZSalesVatBook.JXVZWitholdMunicipal);
                 JXVZSalesVatBook.JXVZSpecial := abs(JXVZSalesVatBook.JXVZSpecial);
-
                 JXVZSalesVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXVZFiscalType);
+                JXVZSalesVatBook.JXVZOperNo := OperNo;
+
                 JXVZSalesVatBook.Insert();
             end;
 
@@ -202,6 +205,8 @@ report 84105 JXVZSalesVatBook
             var
                 TaxJurisdictionTemp: Record "Tax Jurisdiction" temporary;
             begin
+                OperNo += 1;
+
                 "Sales Debit Memo Header".CalcFields("Amount Including VAT");
                 JXVZSalesVatBook.Init();
                 ReportKey += 1;
@@ -214,6 +219,7 @@ report 84105 JXVZSalesVatBook
                 JXVZSalesVatBook.JXVZProvince := "Sales Debit Memo Header".JXVZProvinceCode;
                 JXVZSalesVatBook.JXVZInvoiceType := Format("Sales Debit Memo Header".JXVZInvoiceType::DebitMemo);
                 JXVZSalesVatBook.JXVZInvoiceAmount := Abs("Sales Debit Memo Header"."Amount Including VAT");
+                JXVZSalesVatBook.JXVZCtrlDocumentNo := "Sales Debit Memo Header".JXVZCtrlDocumentNo;
 
                 if ("Sales Debit Memo Header"."Currency Code" <> '') then
                     JXVZSalesVatBook.JXVZInvoiceAmountLCY := Abs("Sales Debit Memo Header"."Amount Including VAT") / "Sales Debit Memo Header"."Currency Factor"
@@ -296,6 +302,7 @@ report 84105 JXVZSalesVatBook
                     until VatEntry.Next() = 0;
 
                 JXVZSalesVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXVZFiscalType);
+                JXVZSalesVatBook.JXVZOperNo := OperNo;
                 JXVZSalesVatBook.Insert();
             end;
         }
@@ -313,6 +320,8 @@ report 84105 JXVZSalesVatBook
             var
                 TaxJurisdictionTemp: Record "Tax Jurisdiction" temporary;
             begin
+                OperNo += 1;
+
                 "Sales Cr.Memo Header".CalcFields("Amount Including VAT");
                 JXVZSalesVatBook.Init();
                 ReportKey += 1;
@@ -324,6 +333,8 @@ report 84105 JXVZSalesVatBook
                 JXVZSalesVatBook.JXVZTaxAreaCode := "Sales Cr.Memo Header"."Tax Area Code";
                 JXVZSalesVatBook.JXVZProvince := "Sales Cr.Memo Header".JXVZProvinceCode;
                 JXVZSalesVatBook.JXVZInvoiceType := 'Nota de crédito';
+                JXVZSalesVatBook.JXVZCtrlDocumentNo := "Sales Cr.Memo Header".JXVZCtrlDocumentNo;
+
                 JXVZSalesVatBook.JXVZInvoiceAmount := Abs("Sales Cr.Memo Header"."Amount Including VAT") * -1;
 
                 if ("Sales Cr.Memo Header"."Currency Code" <> '') then
@@ -408,15 +419,14 @@ report 84105 JXVZSalesVatBook
 
                 JXVZSalesVatBook.JXVZBaseAmount := abs(JXVZSalesVatBook.JXVZBaseAmount) * -1;
                 JXVZSalesVatBook.JXVZVAT16 := abs(JXVZSalesVatBook.JXVZVAT16) * -1;
-                JXVZSalesVatBook.JXVZVAT27 := abs(JXVZSalesVatBook.JXVZVAT27) * -1;
                 JXVZSalesVatBook.JXVZVAT8 := abs(JXVZSalesVatBook.JXVZVAT8) * -1;
                 JXVZSalesVatBook.JXVZVATPercep := abs(JXVZSalesVatBook.JXVZVATPercep) * -1;
                 JXVZSalesVatBook.JXVZWithold := abs(JXVZSalesVatBook.JXVZWithold) * -1;
                 JXVZSalesVatBook.JXVZWitholdISLR := abs(JXVZSalesVatBook.JXVZWitholdISLR) * -1;
                 JXVZSalesVatBook.JXVZWitholdMunicipal := abs(JXVZSalesVatBook.JXVZWitholdMunicipal) * -1;
                 JXVZSalesVatBook.JXVZSpecial := abs(JXVZSalesVatBook.JXVZSpecial) * -1;
-
                 JXVZSalesVatBook.JXVZFiscalType := LTFiscalType.GetDescription(JXVZFiscalType);
+                JXVZSalesVatBook.JXVZOperNo := OperNo;
                 JXVZSalesVatBook.Insert();
             end;
         }
@@ -451,8 +461,6 @@ report 84105 JXVZSalesVatBook
             { }
             column(VAT21; JXVZSalesVatBook.JXVZVAT16)
             { }
-            column(VAT27; JXVZSalesVatBook.JXVZVAT27)
-            { }
             column(VATpercep; JXVZSalesVatBook.JXVZVATPercep)
             { }
             column(IIBB; JXVZSalesVatBook.JXVZWithold)
@@ -469,6 +477,10 @@ report 84105 JXVZSalesVatBook
             { }
 
             column(IIBBMunicipal; JXVZSalesVatBook.JXVZWitholdMunicipal)
+            { }
+            column(OperNo; JXVZSalesVatBook.JXVZOperNo)
+            { }
+            column(JXVZCtrlDocumentNo; JXVZSalesVatBook.JXVZCtrlDocumentNo)
             { }
 
             trigger OnPreDataItem()
@@ -544,4 +556,5 @@ report 84105 JXVZSalesVatBook
         FromDate: Date;
         ToDate: Date;
         ReportKey: Integer;
+        OperNo: Integer;
 }

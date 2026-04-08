@@ -204,8 +204,8 @@
         <trans-unit id="Table 1247211801 - Field 141528055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>NIF</source>
           <target state="needs-review-translation">NIF</target>
-          <note from="Developer" annotates="general" priority="2">ESP=CUIT</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZHistoryPaymOrder - Field JXVZCUIT - Property Caption</note>
+          <note from="Developer" annotates="general" priority="2">ESP=RIF</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZHistoryPaymOrder - Field JXVZRIF - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1247211801 - Field 1880225319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document date</source>
@@ -288,8 +288,8 @@
         <trans-unit id="Table 1621702633 - Field 3476429463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>NIF</source>
           <target state="needs-review-translation">NIF</target>
-          <note from="Developer" annotates="general" priority="2">ESP=CUIT</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZHistoryReceiptHeader - Field JXVZCuit - Property Caption</note>
+          <note from="Developer" annotates="general" priority="2">ESP=RIF</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZHistoryReceiptHeader - Field JXVZRIF - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1621702633 - Field 691225952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Currency code</source>
@@ -1145,7 +1145,7 @@
         </trans-unit>
         <trans-unit id="Table 349886754 - Field 718955964 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Letter</source>
-          <target state="needs-review-translation">Carta</target>
+          <target state="needs-review-translation">Letra</target>
           <note from="Developer" annotates="general" priority="2">ESP = Letra</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZSeriesFEConfiguration - Field JXVZLetter - Property Caption</note>
         </trans-unit>
@@ -1324,9 +1324,9 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZVatBookTmp - Field JXVZVAT10 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 785666135 - Field 1072153654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>VAT 21</source>
-          <target state="needs-review-translation">IVA 21</target>
-          <note from="Developer" annotates="general" priority="2">ESP=IVA 21</note>
+          <source>VAT 16</source>
+          <target state="needs-review-translation">IVA 16</target>
+          <note from="Developer" annotates="general" priority="2">ESP=IVA 16</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZVatBookTmp - Field JXVZVAT16 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 785666135 - Field 542080287 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1342,9 +1342,9 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZVatBookTmp - Field JXVZVAT27 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 785666135 - Field 1176997511 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>VAT 10,5</source>
-          <target state="needs-review-translation">IVA 10,5</target>
-          <note from="Developer" annotates="general" priority="2">ESP=IVA 10,5</note>
+          <source>VAT 8</source>
+          <target state="needs-review-translation">IVA 8</target>
+          <note from="Developer" annotates="general" priority="2">ESP=IVA 8</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZVatBookTmp - Field JXVZVAT8 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 785666135 - Field 3724459920 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1356,7 +1356,7 @@
         <trans-unit id="Table 785666135 - Field 3741337703 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>NIF</source>
           <target state="needs-review-translation">NIF</target>
-          <note from="Developer" annotates="general" priority="2">ESP=CUIT</note>
+          <note from="Developer" annotates="general" priority="2">ESP=RIF</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZVatBookTmp - Field JXVZVATRegistrationNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 785666135 - Field 4039179093 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -3360,8 +3360,8 @@
         <trans-unit id="Page 284802101 - Control 3476429463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>NIF</source>
           <target state="needs-review-translation">NIF</target>
-          <note from="Developer" annotates="general" priority="2">ESP=CUIT</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPostedReceipt - Control JXVZCuit - Property ToolTip</note>
+          <note from="Developer" annotates="general" priority="2">ESP=RIF</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPostedReceipt - Control JXVZRIF - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 284802101 - Control 691225952 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Currency Code</source>
@@ -3683,7 +3683,7 @@
         </trans-unit>
         <trans-unit id="Page 349886754 - Control 718955964 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Letter</source>
-          <target state="needs-review-translation">Carta</target>
+          <target state="needs-review-translation">Letra</target>
           <note from="Developer" annotates="general" priority="2">ESP = Letra</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZSeriesFEConfiguration - Control JXVZLetter - Property ToolTip</note>
         </trans-unit>
@@ -9677,7 +9677,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 611794535 - Field 718955964 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Letter</source>
-          <target state="needs-review-translation">Carta</target>
+          <target state="needs-review-translation">Letra</target>
           <note from="Developer" annotates="general" priority="2">ESP=Letra</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZGenJournalLine - Field JXVZLetter - Property Caption</note>
         </trans-unit>

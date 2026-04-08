@@ -5,7 +5,7 @@ report 84106 JXVZPurchVatBook
     ApplicationArea = All;
 
     DefaultLayout = RDLC;
-    RDLCLayout = 'ReportLayout/VZPurchVatBook.rdl';
+    RDLCLayout = 'src/ReportLayout/VZPurchVatBook.rdl';
 
     dataset
     {
@@ -79,6 +79,8 @@ report 84106 JXVZPurchVatBook
                 TaxJurisdictionTemp: Record "Tax Jurisdiction" temporary;
                 GLAccount: Record "G/L Account";
             begin
+                OperNo += 1;
+
                 "Purch. Inv. Header".CalcFields("Amount Including VAT");
                 JXVZPurchVatBook.Init();
                 ReportKey += 1;
@@ -92,6 +94,7 @@ report 84106 JXVZPurchVatBook
                 JXVZPurchVatBook.JXVZProvince := "Purch. Inv. Header".JXVZProvince;
                 JXVZPurchVatBook.JXVZInvoiceType := Format("Purch. Inv. Header".JXVZInvoiceType::Invoice);
                 JXVZPurchVatBook.JXVZInvoiceAmount := Abs("Purch. Inv. Header"."Amount Including VAT");
+                JXVZPurchVatBook.JXVZCtrlDocumentNo := "Purch. Inv. Header".JXVZCtrlDocumentNo;
 
                 if ("Purch. Inv. Header"."Currency Code" <> '') then
                     JXVZPurchVatBook.JXVZInvoiceAmountLCY := Abs("Purch. Inv. Header"."Amount Including VAT") / "Purch. Inv. Header"."Currency Factor"
@@ -180,7 +183,7 @@ report 84106 JXVZPurchVatBook
                 end;
                 */
                 //Check dif amount END
-
+                JXVZPurchVatBook.JXVZOperNo := OperNo;
                 JXVZPurchVatBook.Insert();
             end;
 
@@ -202,6 +205,8 @@ report 84106 JXVZPurchVatBook
                 TaxJurisdictionTemp: Record "Tax Jurisdiction" temporary;
                 GLAccount: Record "G/L Account";
             begin
+                OperNo += 1;
+
                 "Purch. Debit Memo Header".CalcFields("Amount Including VAT");
                 JXVZPurchVatBook.Init();
                 ReportKey += 1;
@@ -215,6 +220,7 @@ report 84106 JXVZPurchVatBook
                 JXVZPurchVatBook.JXVZProvince := "Purch. Debit Memo Header".JXVZProvince;
                 JXVZPurchVatBook.JXVZInvoiceType := Format("Purch. Debit Memo Header".JXVZInvoiceType::DebitMemo);
                 JXVZPurchVatBook.JXVZInvoiceAmount := Abs("Purch. Debit Memo Header"."Amount Including VAT");
+                JXVZPurchVatBook.JXVZCtrlDocumentNo := "Purch. Debit Memo Header".JXVZCtrlDocumentNo;
 
                 if ("Purch. Debit Memo Header"."Currency Code" <> '') then
                     JXVZPurchVatBook.JXVZInvoiceAmountLCY := Abs("Purch. Debit Memo Header"."Amount Including VAT") / "Purch. Debit Memo Header"."Currency Factor"
@@ -302,7 +308,7 @@ report 84106 JXVZPurchVatBook
                 end;
                 */
                 //Check dif amount END
-
+                JXVZPurchVatBook.JXVZOperNo := OperNo;
                 JXVZPurchVatBook.Insert();
             end;
         }
@@ -321,6 +327,8 @@ report 84106 JXVZPurchVatBook
                 TaxJurisdictionTemp: Record "Tax Jurisdiction" temporary;
                 GLAccount: Record "G/L Account";
             begin
+                OperNo += 1;
+
                 "Purch. Cr. Memo Hdr.".CalcFields("Amount Including VAT");
                 JXVZPurchVatBook.Init();
                 ReportKey += 1;
@@ -333,6 +341,7 @@ report 84106 JXVZPurchVatBook
                 JXVZPurchVatBook.JXVZTaxAreaCode := "Purch. Cr. Memo Hdr."."Tax Area Code";
                 JXVZPurchVatBook.JXVZProvince := "Purch. Cr. Memo Hdr.".JXVZProvince;
                 JXVZPurchVatBook.JXVZInvoiceType := 'Nota de crédito';
+                JXVZPurchVatBook.JXVZCtrlDocumentNo := "Purch. Debit Memo Header".JXVZCtrlDocumentNo;
                 JXVZPurchVatBook.JXVZInvoiceAmount := Abs("Purch. Cr. Memo Hdr."."Amount Including VAT") * -1;
 
                 if ("Purch. Cr. Memo Hdr."."Currency Code" <> '') then
@@ -422,7 +431,7 @@ report 84106 JXVZPurchVatBook
                 end;
                 */
                 //Check dif amount END
-
+                JXVZPurchVatBook.JXVZOperNo := OperNo;
                 JXVZPurchVatBook.Insert();
             end;
         }
@@ -457,8 +466,6 @@ report 84106 JXVZPurchVatBook
             { }
             column(VAT21; JXVZPurchVatBook.JXVZVAT16)
             { }
-            column(VAT27; JXVZPurchVatBook.JXVZVAT27)
-            { }
             column(VATpercep; JXVZPurchVatBook.JXVZVATPercep)
             { }
             column(IIBB; JXVZPurchVatBook.JXVZWithold)
@@ -479,6 +486,10 @@ report 84106 JXVZPurchVatBook
             { }
 
             column(DocumentDate; JXVZPurchVatBook.JXVZDocumentDate)
+            { }
+            column(OperNo; JXVZPurchVatBook.JXVZOperNo)
+            { }
+            column(JXVZCtrlDocumentNo; JXVZPurchVatBook.JXVZCtrlDocumentNo)
             { }
 
             trigger OnPreDataItem()
@@ -555,4 +566,5 @@ report 84106 JXVZPurchVatBook
         ToDate: Date;
         ReportKey: Integer;
         CheckAmount: Decimal;
+        OperNo: Integer;
 }

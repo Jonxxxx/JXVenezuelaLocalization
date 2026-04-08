@@ -3,7 +3,7 @@ report 84103 JXVZReceipt
     Caption = 'Receipt', Comment = 'ESP=Recibo';
     DefaultLayout = RDLC;
     //UsageCategory = None;
-    RDLCLayout = 'ReportLayout/JXVZReceipt.rdl';
+    RDLCLayout = 'src/ReportLayout/VZReceipt.rdl';
 
     dataset
     {
@@ -22,7 +22,7 @@ report 84103 JXVZReceipt
             column(JXVZAddress; Customer.Address + ', ' + Customer."Post Code" + ', ' + Customer.City)
             {
             }
-            column(JXVZCuit; JXVZCuit)
+            column(JXVZRIF; JXVZRIF)
             {
             }
             column(JXVZHistoryReceiptHeader_JXVZCustomerNo; JXVZHistoryReceiptHeader.JXVZCustomerNo)

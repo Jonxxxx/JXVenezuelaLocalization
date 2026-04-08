@@ -54,5 +54,11 @@ tableextension 84106 JXVZSalesCrMemoHeader extends "Sales Cr.Memo Header"
             TableRelation = JXVZProvince;
         }
 
+        field(84112; JXVZCtrlDocumentNo; Code[20])
+        {
+            DataClassification = OrganizationIdentifiableInformation;
+            Caption = 'Control Document No';
+        }
+
     }
 }

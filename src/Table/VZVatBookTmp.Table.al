@@ -22,7 +22,7 @@ table 84132 JXVZVatBookTmp
         field(4; JXVZVATRegistrationNo; Text[20])
         {
             DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'NIF', Comment = 'ESP=CUIT';
+            Caption = 'NIF', Comment = 'ESP=RIF';
         }
         field(5; JXVZTaxAreaCode; Code[20])
         {
@@ -63,17 +63,12 @@ table 84132 JXVZVatBookTmp
         field(12; JXVZVAT8; Decimal)
         {
             DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'VAT 10,5', Comment = 'ESP=IVA 10,5';
+            Caption = 'VAT 8', Comment = 'ESP=IVA 8';
         }
         field(13; JXVZVAT16; Decimal)
         {
             DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'VAT 21', Comment = 'ESP=IVA 21';
-        }
-        field(14; JXVZVAT27; Decimal)
-        {
-            DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'VAT 27', Comment = 'ESP=IVA 27';
+            Caption = 'VAT 16', Comment = 'ESP=IVA 16';
         }
         field(15; JXVZVATPercep; Decimal)
         {
@@ -104,24 +99,6 @@ table 84132 JXVZVatBookTmp
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'VAT 10', Comment = 'ESP=IVA 10';
-        }
-
-        field(21; JXVZVAT22; Decimal)
-        {
-            DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'VAT 22', Comment = 'ESP=IVA 22';
-        }
-
-        field(22; JXVZIRNR; Decimal)
-        {
-            DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'IRNR', Comment = 'ESP=IRNR';
-        }
-
-        field(23; JXVZIRPF; Decimal)
-        {
-            DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'IRPF', Comment = 'ESP=IRPF';
         }
 
         field(24; JXVZCurrency; Code[10])
@@ -157,6 +134,17 @@ table 84132 JXVZVatBookTmp
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Document No. BC';
+        }
+        field(30; JXVZOperNo; Integer)
+        {
+            DataClassification = OrganizationIdentifiableInformation;
+            Caption = 'OperNo';
+        }
+
+        field(31; JXVZCtrlDocumentNo; Code[20])
+        {
+            DataClassification = OrganizationIdentifiableInformation;
+            Caption = 'Control Document No';
         }
     }
 

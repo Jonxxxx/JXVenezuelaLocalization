@@ -3132,7 +3132,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>CUIT:</Value>
+                    <Value>RIF:</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -3162,7 +3162,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!JXVZCuit.Value</Value>
+                    <Value>=Fields!JXVZRIF.Value</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -3427,8 +3427,8 @@ End Function
         <Field Name="JXVZAddress">
           <DataField>JXVZAddress</DataField>
         </Field>
-        <Field Name="JXVZCuit">
-          <DataField>JXVZCuit</DataField>
+        <Field Name="JXVZRIF">
+          <DataField>JXVZRIF</DataField>
         </Field>
         <Field Name="JXVZHistoryReceiptHeader_JXVZCustomerNo">
           <DataField>JXVZHistoryReceiptHeader_JXVZCustomerNo</DataField>

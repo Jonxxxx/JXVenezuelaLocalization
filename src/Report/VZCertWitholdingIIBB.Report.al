@@ -4,7 +4,7 @@ report 84109 JXVZCertWitholdingIIBB
     //UsageCategory = None;
 
     DefaultLayout = RDLC;
-    RDLCLayout = 'ReportLayout/VZCertWitholdingIIBB.rdl';
+    RDLCLayout = 'src/ReportLayout/VZCertWitholdingIIBB.rdl';
 
     dataset
     {

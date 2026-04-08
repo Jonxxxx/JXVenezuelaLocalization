@@ -33,10 +33,10 @@ table 84129 JXVZHistoryPaymOrder
             Caption = 'Name', Comment = 'ESP=Nombre';
             Editable = true;
         }
-        field(6; JXVZCUIT; Text[20])
+        field(6; JXVZRIF; Text[20])
         {
             DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'NIF', Comment = 'ESP=CUIT';
+            Caption = 'NIF', Comment = 'ESP=RIF';
         }
         field(7; JXVZAddress; Text[100])
         {

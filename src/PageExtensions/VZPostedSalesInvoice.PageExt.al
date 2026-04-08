@@ -36,6 +36,13 @@ pageextension 84107 JXVZPostedSalesInvoice extends "Posted Sales Invoice"
                     ApplicationArea = All;
                     ToolTip = 'Voucher type for', Comment = 'ESP = Tipo de voucher para';
                 }
+
+                field(JXVZCtrlDocumentNo; Rec.JXVZCtrlDocumentNo)
+                {
+                    ApplicationArea = all;
+                    Visible = IsVenezuela;
+                    ToolTip = 'Control Document No.';
+                }
             }
         }
     }

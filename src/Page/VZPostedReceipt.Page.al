@@ -32,10 +32,10 @@ page 84112 JXVZPostedReceipt
                     ApplicationArea = All;
                     Tooltip = 'Name', Comment = 'ESP=Nombre';
                 }
-                field(JXVZCuit; Rec.JXVZCuit)
+                field(JXVZRIF; Rec.JXVZRIF)
                 {
                     ApplicationArea = All;
-                    Tooltip = 'NIF', Comment = 'ESP=CUIT';
+                    Tooltip = 'NIF', Comment = 'ESP=RIF';
                     Visible = IsVenezuela;
                 }
 

@@ -464,13 +464,13 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Hist_Cab_OPago_Cuit2">
+          <Textbox Name="Hist_Cab_OPago_RIF2">
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!JXVZHistoryPaymOrder_JXVZCUIT.Value</Value>
+                    <Value>=Fields!JXVZHistoryPaymOrder_JXVZRIF.Value</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -2249,7 +2249,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="CUIT: " + Fields!CompanyInformation_VATNum.Value</Value>
+                    <Value>="RIF: " + Fields!CompanyInformation_VATNum.Value</Value>
                     <Style>
                       <FontSize>7pt</FontSize>
                     </Style>
@@ -2383,8 +2383,8 @@ End Function
         <Field Name="JXVZHistoryPaymOrder_JXVZPostingDate">
           <DataField>JXVZHistoryPaymOrder_JXVZPostingDate</DataField>
         </Field>
-        <Field Name="JXVZHistoryPaymOrder_JXVZCUIT">
-          <DataField>JXVZHistoryPaymOrder_JXVZCUIT</DataField>
+        <Field Name="JXVZHistoryPaymOrder_JXVZRIF">
+          <DataField>JXVZHistoryPaymOrder_JXVZRIF</DataField>
         </Field>
         <Field Name="JXVZHistoryPaymOrder_JXVZVendorNo">
           <DataField>JXVZHistoryPaymOrder_JXVZVendorNo</DataField>
