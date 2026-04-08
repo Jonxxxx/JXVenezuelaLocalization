@@ -43,11 +43,6 @@ page 84120 JXVZWithholdingTax
                     ApplicationArea = All;
                     Tooltip = 'Tax type', Comment = 'ESP=Tipo de impuesto';
                 }
-                field(JXVZSicoreCode; rec.JXVZSicoreCode)
-                {
-                    ApplicationArea = All;
-                    Tooltip = 'Sicore Code', Comment = 'ESP=Codigo Sicore';
-                }
             }
         }
     }

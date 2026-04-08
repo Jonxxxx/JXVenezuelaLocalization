@@ -6,8 +6,8 @@ tableextension 84114 JXVZTaxGroup extends "Tax Group"
         {
             Caption = 'Type', Comment = 'ESP=Tipo';
             DataClassification = OrganizationIdentifiableInformation;
-            OptionMembers = " ","No base","Exempt base";
-            OptionCaption = ' ,Base no gravada,Base exento';
+            OptionMembers = " ","No base","Exempt base","Base exonerado";
+            OptionCaption = ' ,Base no gravada,Base exento,Base exonerado';
         }
     }
 }

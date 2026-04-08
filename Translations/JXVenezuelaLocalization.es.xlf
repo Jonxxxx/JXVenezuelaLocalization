@@ -1991,7 +1991,7 @@
         </trans-unit>
         <trans-unit id="Table 1206936874 - Field 138877466 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Journal Description</source>
-          <target state="needs-review-translation">Descripción de la revista</target>
+          <target state="needs-review-translation">Descripción de la Diario</target>
           <note from="Developer" annotates="general" priority="2">Descripcion diario</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdDetailEntry - Field JXVZLineDescription - Property Caption</note>
         </trans-unit>
@@ -2135,7 +2135,7 @@
         </trans-unit>
         <trans-unit id="Table 4094794362 - Field 4173052356 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retains</source>
-          <target state="needs-review-translation">Conserva</target>
+          <target state="needs-review-translation">Retiene</target>
           <note from="Developer" annotates="general" priority="2">ESP=Retiene</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdingTax - Field JXVZRetains - Property Caption</note>
         </trans-unit>
@@ -4379,7 +4379,7 @@
         </trans-unit>
         <trans-unit id="Page 1206936874 - Control 138877466 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Journal Description</source>
-          <target state="needs-review-translation">Descripción de la revista</target>
+          <target state="needs-review-translation">Descripción de la Diario</target>
           <note from="Developer" annotates="general" priority="2">Descripcion diario</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdDetailEntry - Control JXVZLineDescription - Property ToolTip</note>
         </trans-unit>
@@ -4469,7 +4469,7 @@
         </trans-unit>
         <trans-unit id="Page 4094794362 - Control 4173052356 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Retains</source>
-          <target state="needs-review-translation">Conserva</target>
+          <target state="needs-review-translation">Retiene</target>
           <note from="Developer" annotates="general" priority="2">ESP=Retiene</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdingTax - Control JXVZRetains - Property ToolTip</note>
         </trans-unit>
@@ -4907,7 +4907,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 85177007 - Action 933028673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3470244815">
           <source>Tax groups</source>
-          <target state="needs-review-translation">Grupos fiscales</target>
+          <target state="needs-review-translation">Grupos de impuestos</target>
           <note from="Developer" annotates="general" priority="2">ESP="Grupos de impuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountantRC - Action JXVZTaxGroups - Property Caption</note>
         </trans-unit>
@@ -5183,7 +5183,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 259464239 - Action 933028673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
           <source>Tax groups</source>
-          <target state="needs-review-translation">Grupos fiscales</target>
+          <target state="needs-review-translation">Grupos de impuestos</target>
           <note from="Developer" annotates="general" priority="2">ESP="Grupos de impuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountingManagerRC - Action JXVZTaxGroups - Property Caption</note>
         </trans-unit>
@@ -5459,7 +5459,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 3751039973 - Action 933028673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4183424761">
           <source>Tax groups</source>
-          <target state="needs-review-translation">Grupos fiscales</target>
+          <target state="needs-review-translation">Grupos de impuestos</target>
           <note from="Developer" annotates="general" priority="2">ESP="Grupos de impuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminMainRC - Action JXVZTaxGroups - Property Caption</note>
         </trans-unit>
@@ -5735,7 +5735,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 575691732 - Action 933028673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3513039640">
           <source>Tax groups</source>
-          <target state="needs-review-translation">Grupos fiscales</target>
+          <target state="needs-review-translation">Grupos de impuestos</target>
           <note from="Developer" annotates="general" priority="2">ESP="Grupos de impuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminRC - Action JXVZTaxGroups - Property Caption</note>
         </trans-unit>
@@ -6011,7 +6011,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 1832857326 - Action 933028673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
           <source>Tax groups</source>
-          <target state="needs-review-translation">Grupos fiscales</target>
+          <target state="needs-review-translation">Grupos de impuestos</target>
           <note from="Developer" annotates="general" priority="2">ESP="Grupos de impuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZBusinessManagerRC - Action JXVZTaxGroups - Property Caption</note>
         </trans-unit>
@@ -6335,7 +6335,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 718071150 - Action 933028673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1681328941">
           <source>Tax groups</source>
-          <target state="needs-review-translation">Grupos fiscales</target>
+          <target state="needs-review-translation">Grupos de impuestos</target>
           <note from="Developer" annotates="general" priority="2">ESP="Grupos de impuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZTaxGroups - Property Caption</note>
         </trans-unit>
@@ -6785,7 +6785,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 1879656288 - Action 933028673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4105562392">
           <source>Tax groups</source>
-          <target state="needs-review-translation">Grupos fiscales</target>
+          <target state="needs-review-translation">Grupos de impuestos</target>
           <note from="Developer" annotates="general" priority="2">ESP="Grupos de impuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZFinanceManagerRC - Action JXVZTaxGroups - Property Caption</note>
         </trans-unit>
@@ -7115,7 +7115,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 66928517 - Action 933028673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Tax groups</source>
-          <target state="needs-review-translation">Grupos fiscales</target>
+          <target state="needs-review-translation">Grupos de impuestos</target>
           <note from="Developer" annotates="general" priority="2">ESP="Grupos de impuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZOrderProcedorRC - Action JXVZTaxGroups - Property Caption</note>
         </trans-unit>
@@ -7655,7 +7655,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 3837642363 - Action 933028673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3353361819">
           <source>Tax groups</source>
-          <target state="needs-review-translation">Grupos fiscales</target>
+          <target state="needs-review-translation">Grupos de impuestos</target>
           <note from="Developer" annotates="general" priority="2">ESP="Grupos de impuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZProjectManagerRC - Action JXVZTaxGroups - Property Caption</note>
         </trans-unit>
@@ -7931,7 +7931,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 2868952998 - Action 933028673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
           <source>Tax groups</source>
-          <target state="needs-review-translation">Grupos fiscales</target>
+          <target state="needs-review-translation">Grupos de impuestos</target>
           <note from="Developer" annotates="general" priority="2">ESP="Grupos de impuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchAgentRC - Action JXVZTaxGroups - Property Caption</note>
         </trans-unit>
@@ -8417,7 +8417,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 3721443820 - Action 933028673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2704021542">
           <source>Tax groups</source>
-          <target state="needs-review-translation">Grupos fiscales</target>
+          <target state="needs-review-translation">Grupos de impuestos</target>
           <note from="Developer" annotates="general" priority="2">ESP="Grupos de impuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchManagerRC - Action JXVZTaxGroups - Property Caption</note>
         </trans-unit>
@@ -8717,7 +8717,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 3283532282 - Action 933028673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1279072642">
           <source>Tax groups</source>
-          <target state="needs-review-translation">Grupos fiscales</target>
+          <target state="needs-review-translation">Grupos de impuestos</target>
           <note from="Developer" annotates="general" priority="2">ESP="Grupos de impuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZResourceManagerRC - Action JXVZTaxGroups - Property Caption</note>
         </trans-unit>
@@ -9257,7 +9257,7 @@
         </trans-unit>
         <trans-unit id="PageExtension 3315660187 - Action 933028673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1696917291">
           <source>Tax groups</source>
-          <target state="needs-review-translation">Grupos fiscales</target>
+          <target state="needs-review-translation">Grupos de impuestos</target>
           <note from="Developer" annotates="general" priority="2">ESP="Grupos de impuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZServiceManagerRC - Action JXVZTaxGroups - Property Caption</note>
         </trans-unit>

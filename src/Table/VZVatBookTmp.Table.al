@@ -146,6 +146,12 @@ table 84132 JXVZVatBookTmp
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Control Document No';
         }
+
+        field(32; JXVZDocTypeLV; Text[20])
+        {
+            DataClassification = OrganizationIdentifiableInformation;
+            Caption = 'Tipo Doc LV';
+        }
     }
 
     keys

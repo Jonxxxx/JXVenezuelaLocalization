@@ -294,14 +294,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="FiscalType">
+                        <Textbox Name="JXVZDocTypeLV">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>01-reg</Value>
+                                  <Value>=Fields!JXVZDocTypeLV.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -312,7 +312,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>FiscalType</rd:DefaultName>
+                          <rd:DefaultName>JXVZDocTypeLV</rd:DefaultName>
                           <Visibility>
                             <Hidden>=iif(Fields!InvoiceNumber.Value="", true, false)</Hidden>
                           </Visibility>
@@ -327,6 +327,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -3512,6 +3513,9 @@ End Function
         </Field>
         <Field Name="JXVZCtrlDocumentNo">
           <DataField>JXVZCtrlDocumentNo</DataField>
+        </Field>
+        <Field Name="JXVZDocTypeLV">
+          <DataField>JXVZDocTypeLV</DataField>
         </Field>
       </Fields>
       <Query>

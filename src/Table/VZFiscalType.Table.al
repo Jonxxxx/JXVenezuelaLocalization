@@ -19,14 +19,12 @@ table 84141 JXVZFiscalType
 
         field(3; JXVZFiscalType; Option)
         {
-            //RI = Responsable inscripto, CF = Consumidor final, MO = Monotributista
-            //RX = Exento, EXT = Extranjero, NC = No categorizado
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Fiscal type',
                         Comment = 'ESP = Tipo fiscal';
-            OptionMembers = ,RI,CF,MO,EX,EXT,NC,OTHR;
-            OptionCaption = ',Responsible registered,Final consumer,Monotributista,Exempt,Foreign,Not categorized,Other',
-                              Comment = 'ESP = ,Responsable inscripto,Consumidor final,Monotributista,Exento,Exterior,No categorizado,Otro';
+            OptionMembers = ,ORD,FO,OC,RE;
+            OptionCaption = ',Ordinario,Formal,Ocacional,Responsable',
+                              Comment = 'ESP = ,Ordinario,Formal,Ocacional,Responsable';
         }
 
         field(4; JXVZSVATCondition; Integer)

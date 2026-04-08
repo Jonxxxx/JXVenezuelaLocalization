@@ -391,7 +391,6 @@ codeunit 84102 JXVZLogicalFactory
                     JXVZWithholdLedgerEntry.JXVZVoucherDate := _GenJnlLine."Document Date";
                     JXVZWithholdLedgerEntry.JXVZVoucherNo := _GenJnlLine."Document No.";
                     JXVZWithholdLedgerEntry.JXVZVoucherAmount := Abs(_GenJnlLine.JXVZBase);
-                    JXVZWithholdLedgerEntry.JXVZSicoreCode := JXVZWithholdingTax.JXVZSicoreCode;
                     JXVZWithholdLedgerEntry.JXVZOperationCode := 1;
                     JXVZWithholdLedgerEntry.JXVZCalculationBase := Abs(_GenJnlLine.JXVZBase);
                     JXVZWithholdLedgerEntry.JXVZWitholdingDate := _GenJnlLine."Posting Date";

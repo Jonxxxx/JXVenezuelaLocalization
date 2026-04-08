@@ -134,8 +134,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZFiscalType - Field JXVZFiscalType - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1537964656 - Field 1537964656 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>,Responsible registered,Final consumer,Monotributista,Exempt,Foreign,Not categorized,Other</source>
-          <note from="Developer" annotates="general" priority="2">ESP = ,Responsable inscripto,Consumidor final,Monotributista,Exento,Exterior,No categorizado,Otro</note>
+          <source>,Ordinario,Formal,Ocacional,Responsable</source>
+          <note from="Developer" annotates="general" priority="2">ESP = ,Ordinario,Formal,Ocacional,Responsable</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZFiscalType - Field JXVZFiscalType - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 1537964656 - Field 1669974263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1028,6 +1028,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZVatBookTmp - Field JXVZDocNoBC - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 785666135 - Field 3159336256 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo Doc LV</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZVatBookTmp - Field JXVZDocTypeLV - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 785666135 - Field 1880225319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document date</source>
           <note from="Developer" annotates="general" priority="2">ESP=Fecha documento</note>
@@ -1772,11 +1777,6 @@
           <source>Retains</source>
           <note from="Developer" annotates="general" priority="2">ESP=Retiene</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdingTax - Field JXVZRetains - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 4094794362 - Field 65787358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>SICORE Code</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Codigo SICORE</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdingTax - Field JXVZSicoreCode - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4094794362 - Field 629313357 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tax</source>
@@ -3718,11 +3718,6 @@
           <note from="Developer" annotates="general" priority="2">ESP=Retiene</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdingTax - Control JXVZRetains - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 4094794362 - Control 65787358 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sicore Code</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Codigo Sicore</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdingTax - Control JXVZSicoreCode - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 4094794362 - Control 629313357 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tax</source>
           <note from="Developer" annotates="general" priority="2">ESP=Impuesto</note>
@@ -5083,11 +5078,6 @@
           <note from="Developer" annotates="general" priority="2">ESP=Cuadrar operación</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCashReceiptJournal - Action JXVZCalcCuadre - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2961758158 - Control 4174596911 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
-          <source>Pago a cuenta - Diff cambio</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Pago a cuenta - Diff cambio</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCashReceiptJournal - Control JXVZAccountPayment - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2961758158 - Control 171385716 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
           <source>Acreditation date</source>
           <note from="Developer" annotates="general" priority="2">ESP=Fecha acreditacion</note>
@@ -6002,11 +5992,6 @@
           <source>Withholdings</source>
           <note from="Developer" annotates="general" priority="2">ESP=Retenciones</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPaymentJournal - Action JXVZRetentions - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 375258119 - Control 4174596911 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
-          <source>Pago a cuenta - Diff cambio</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Pago a cuenta - Diff cambio</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPaymentJournal - Control JXVZAccountPayment - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 375258119 - Control 171385716 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
           <source>Acreditation date</source>
@@ -8359,7 +8344,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZTaxGroup - Field JXVZType - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3149810816 - Field 3555728754 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2005969950">
-          <source> ,Base no gravada,Base exento</source>
+          <source> ,Base no gravada,Base exento,Base exonerado</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZTaxGroup - Field JXVZType - Property OptionCaption</note>
         </trans-unit>
@@ -8427,6 +8412,31 @@
           <source>Venezuela</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZCountry - EnumValue Venezuela - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 324441763 - EnumValue 29945090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>04 Aju</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZDocTypeLVE - EnumValue Aju - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 324441763 - EnumValue 1909087814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>03 Anu</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZDocTypeLVE - EnumValue Anu - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 324441763 - EnumValue 2819132811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>02 Com</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZDocTypeLVE - EnumValue Com - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 324441763 - EnumValue 1365275863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZDocTypeLVE - EnumValue Empty - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 324441763 - EnumValue 3112529348 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>01 Reg</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZDocTypeLVE - EnumValue Reg - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 2541124256 - EnumValue 978818198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2593693414">
           <source>Payment Order</source>

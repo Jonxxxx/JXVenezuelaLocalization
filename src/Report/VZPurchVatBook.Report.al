@@ -95,6 +95,7 @@ report 84106 JXVZPurchVatBook
                 JXVZPurchVatBook.JXVZInvoiceType := Format("Purch. Inv. Header".JXVZInvoiceType::Invoice);
                 JXVZPurchVatBook.JXVZInvoiceAmount := Abs("Purch. Inv. Header"."Amount Including VAT");
                 JXVZPurchVatBook.JXVZCtrlDocumentNo := "Purch. Inv. Header".JXVZCtrlDocumentNo;
+                JXVZPurchVatBook.JXVZDocTypeLV := Format(JXVZDocTypeLVE::Reg);
 
                 if ("Purch. Inv. Header"."Currency Code" <> '') then
                     JXVZPurchVatBook.JXVZInvoiceAmountLCY := Abs("Purch. Inv. Header"."Amount Including VAT") / "Purch. Inv. Header"."Currency Factor"
@@ -222,6 +223,11 @@ report 84106 JXVZPurchVatBook
                 JXVZPurchVatBook.JXVZInvoiceAmount := Abs("Purch. Debit Memo Header"."Amount Including VAT");
                 JXVZPurchVatBook.JXVZCtrlDocumentNo := "Purch. Debit Memo Header".JXVZCtrlDocumentNo;
 
+                if ("Purch. Debit Memo Header"."Applies-to Doc. Type" = "Purch. Debit Memo Header"."Applies-to Doc. Type"::" ") and ("Purch. Debit Memo Header"."Applies-to Doc. No." = '') then
+                    JXVZPurchVatBook.JXVZDocTypeLV := Format(JXVZDocTypeLVE::Reg)
+                else
+                    JXVZPurchVatBook.JXVZDocTypeLV := Format(JXVZDocTypeLVE::Com);
+
                 if ("Purch. Debit Memo Header"."Currency Code" <> '') then
                     JXVZPurchVatBook.JXVZInvoiceAmountLCY := Abs("Purch. Debit Memo Header"."Amount Including VAT") / "Purch. Debit Memo Header"."Currency Factor"
                 else
@@ -342,6 +348,12 @@ report 84106 JXVZPurchVatBook
                 JXVZPurchVatBook.JXVZProvince := "Purch. Cr. Memo Hdr.".JXVZProvince;
                 JXVZPurchVatBook.JXVZInvoiceType := 'Nota de crédito';
                 JXVZPurchVatBook.JXVZCtrlDocumentNo := "Purch. Debit Memo Header".JXVZCtrlDocumentNo;
+
+                if ("Purch. Debit Memo Header"."Applies-to Doc. Type" = "Purch. Debit Memo Header"."Applies-to Doc. Type"::" ") and ("Purch. Debit Memo Header"."Applies-to Doc. No." = '') then
+                    JXVZPurchVatBook.JXVZDocTypeLV := Format(JXVZDocTypeLVE::Reg)
+                else
+                    JXVZPurchVatBook.JXVZDocTypeLV := Format(JXVZDocTypeLVE::Com);
+
                 JXVZPurchVatBook.JXVZInvoiceAmount := Abs("Purch. Cr. Memo Hdr."."Amount Including VAT") * -1;
 
                 if ("Purch. Cr. Memo Hdr."."Currency Code" <> '') then
@@ -490,6 +502,8 @@ report 84106 JXVZPurchVatBook
             column(OperNo; JXVZPurchVatBook.JXVZOperNo)
             { }
             column(JXVZCtrlDocumentNo; JXVZPurchVatBook.JXVZCtrlDocumentNo)
+            { }
+            column(JXVZDocTypeLV; JXVZPurchVatBook.JXVZDocTypeLV)
             { }
 
             trigger OnPreDataItem()

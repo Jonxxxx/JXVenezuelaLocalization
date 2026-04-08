@@ -34,12 +34,6 @@ pageextension 84113 JXVZCashReceiptJournal extends "Cash Receipt Journal"
                 ToolTip = 'Acreditation date', Comment = 'ESP=Fecha acreditacion';
                 ApplicationArea = All;
             }
-            field(JXVZAccountPayment; Rec.JXVZAccountPayment)
-            {
-                Visible = IsVenezuela;
-                ToolTip = 'Pago a cuenta - Diff cambio', Comment = 'ESP=Pago a cuenta - Diff cambio';
-                ApplicationArea = All;
-            }
         }
 
         modify("Account No.")

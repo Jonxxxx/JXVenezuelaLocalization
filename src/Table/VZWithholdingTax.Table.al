@@ -29,11 +29,6 @@ table 84116 JXVZWithholdingTax
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Retains', Comment = 'ESP=Retiene';
         }
-        field(5; JXVZSicoreCode; Code[3])
-        {
-            DataClassification = OrganizationIdentifiableInformation;
-            Caption = 'SICORE Code', Comment = 'ESP=Codigo SICORE';
-        }
         field(6; JXVZDescription; Text[40])
         {
             DataClassification = OrganizationIdentifiableInformation;
@@ -43,7 +38,7 @@ table 84116 JXVZWithholdingTax
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Tax type', Comment = 'ESP=Tipo de impuesto';
-            OptionMembers = "","Ganancias","SUSS","IVA","IB-ISLR","IB-Municipal","Otros","IB-MIS";
+            OptionMembers = "","IVA","ISLR","Municipal","Otros";
         }
     }
 

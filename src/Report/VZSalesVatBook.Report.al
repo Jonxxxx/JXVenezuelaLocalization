@@ -93,6 +93,7 @@ report 84105 JXVZSalesVatBook
                 JXVZSalesVatBook.JXVZInvoiceType := Format("Sales Invoice Header".JXVZInvoiceType::Invoice);
                 JXVZSalesVatBook.JXVZInvoiceAmount := Abs("Sales Invoice Header"."Amount Including VAT");
                 JXVZSalesVatBook.JXVZCtrlDocumentNo := "Sales Invoice Header".JXVZCtrlDocumentNo;
+                JXVZSalesVatBook.JXVZDocTypeLV := Format(JXVZDocTypeLVE::Reg);
 
                 if ("Sales Invoice Header"."Currency Code" <> '') then
                     JXVZSalesVatBook.JXVZInvoiceAmountLCY := Abs("Sales Invoice Header"."Amount Including VAT") / "Sales Invoice Header"."Currency Factor"
@@ -221,6 +222,11 @@ report 84105 JXVZSalesVatBook
                 JXVZSalesVatBook.JXVZInvoiceAmount := Abs("Sales Debit Memo Header"."Amount Including VAT");
                 JXVZSalesVatBook.JXVZCtrlDocumentNo := "Sales Debit Memo Header".JXVZCtrlDocumentNo;
 
+                if ("Sales Debit Memo Header"."Applies-to Doc. Type" = "Sales Debit Memo Header"."Applies-to Doc. Type"::" ") and ("Sales Debit Memo Header"."Applies-to Doc. No." = '') then
+                    JXVZSalesVatBook.JXVZDocTypeLV := Format(JXVZDocTypeLVE::Reg)
+                else
+                    JXVZSalesVatBook.JXVZDocTypeLV := Format(JXVZDocTypeLVE::Com);
+
                 if ("Sales Debit Memo Header"."Currency Code" <> '') then
                     JXVZSalesVatBook.JXVZInvoiceAmountLCY := Abs("Sales Debit Memo Header"."Amount Including VAT") / "Sales Debit Memo Header"."Currency Factor"
                 else
@@ -334,6 +340,11 @@ report 84105 JXVZSalesVatBook
                 JXVZSalesVatBook.JXVZProvince := "Sales Cr.Memo Header".JXVZProvinceCode;
                 JXVZSalesVatBook.JXVZInvoiceType := 'Nota de crédito';
                 JXVZSalesVatBook.JXVZCtrlDocumentNo := "Sales Cr.Memo Header".JXVZCtrlDocumentNo;
+
+                if ("Sales Cr.Memo Header"."Applies-to Doc. Type" = "Sales Cr.Memo Header"."Applies-to Doc. Type"::" ") and ("Sales Cr.Memo Header"."Applies-to Doc. No." = '') then
+                    JXVZSalesVatBook.JXVZDocTypeLV := Format(JXVZDocTypeLVE::Reg)
+                else
+                    JXVZSalesVatBook.JXVZDocTypeLV := Format(JXVZDocTypeLVE::Com);
 
                 JXVZSalesVatBook.JXVZInvoiceAmount := Abs("Sales Cr.Memo Header"."Amount Including VAT") * -1;
 
@@ -481,6 +492,8 @@ report 84105 JXVZSalesVatBook
             column(OperNo; JXVZSalesVatBook.JXVZOperNo)
             { }
             column(JXVZCtrlDocumentNo; JXVZSalesVatBook.JXVZCtrlDocumentNo)
+            { }
+            column(JXVZDocTypeLV; JXVZSalesVatBook.JXVZDocTypeLV)
             { }
 
             trigger OnPreDataItem()
