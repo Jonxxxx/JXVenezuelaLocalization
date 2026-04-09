@@ -115,7 +115,7 @@ pageextension 84117 JXVZPurchaseOrder extends "Purchase Order"
 
             action(JXVZDeleteWithholdings)
             {
-                Caption = 'Ver retenciones';
+                Caption = 'Eliminar retenciones';
                 ToolTip = 'Elimina las retenciones calculadas para el documento actual.';
                 ApplicationArea = All;
                 Image = DeleteQtyToHandle;

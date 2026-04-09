@@ -117,7 +117,7 @@ pageextension 84118 JXVZPurchaseInvoice extends "Purchase Invoice"
 
             action(JXVZDeleteWithholdings)
             {
-                Caption = 'Ver retenciones';
+                Caption = 'Eliminar retenciones';
                 ToolTip = 'Elimina las retenciones calculadas para el documento actual.';
                 ApplicationArea = All;
                 Image = DeleteQtyToHandle;

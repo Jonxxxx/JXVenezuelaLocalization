@@ -508,9 +508,6 @@ report 84105 JXVZSalesVatBook
                     JXVZSalesVatBook.FindFirst()
                 else
                     JXVZSalesVatBook.Next();
-
-                if StrPos(JXVZSalesVatBook.JXVZVATRegistrationNo, '-') = 0 then
-                    JXVZSalesVatBook.JXVZVATRegistrationNo := InsStr((InsStr(JXVZSalesVatBook.JXVZVATRegistrationNo, '-', 3)), '-', 12)
             end;
         }
     }

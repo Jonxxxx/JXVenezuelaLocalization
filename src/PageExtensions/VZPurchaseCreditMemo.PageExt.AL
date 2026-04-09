@@ -114,7 +114,7 @@ pageextension 84119 JXVZPurchaseCreditMemo extends "Purchase Credit Memo"
 
             action(JXVZDeleteWithholdings)
             {
-                Caption = 'Ver retenciones';
+                Caption = 'Eliminar retenciones';
                 ToolTip = 'Elimina las retenciones calculadas para el documento actual.';
                 ApplicationArea = All;
                 Image = DeleteQtyToHandle;
