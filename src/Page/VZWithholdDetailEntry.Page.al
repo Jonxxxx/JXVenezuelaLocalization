@@ -86,6 +86,7 @@ page 84122 JXVZWithholdDetailEntry
                     ApplicationArea = All;
                     Tooltip = 'Journal Description', Comment = 'Descripcion diario';
                 }
+                /*
                 field(JXVZReportID; Rec.JXVZReportID)
                 {
                     ApplicationArea = All;
@@ -96,6 +97,17 @@ page 84122 JXVZWithholdDetailEntry
                 {
                     ApplicationArea = All;
                     Tooltip = 'Report description', Comment = 'ESP=Descripcion reporte';
+                }
+                */
+                field(JXVZCalcOnPayment; Rec.JXVZCalcOnPayment)
+                {
+                    ApplicationArea = All;
+                    Tooltip = 'Calculate on purchase document', Comment = 'ESP=Calcular en documento de compra';
+                }
+                field(JXVZCalcOnPurchaseDoc; Rec.JXVZCalcOnPurchaseDoc)
+                {
+                    ApplicationArea = All;
+                    Tooltip = 'Calculate on purchase document', Comment = 'ESP=Calcular en documento de compra';
                 }
             }
         }

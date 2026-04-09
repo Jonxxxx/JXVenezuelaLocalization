@@ -67,6 +67,79 @@ pageextension 84117 JXVZPurchaseOrder extends "Purchase Order"
         }
     }
 
+    actions
+    {
+        addafter(VendorStatistics)
+        {
+            action(JXVZCalcWithholds)
+            {
+                Caption = 'Calcular retenciones';
+                ToolTip = 'Calcula las retenciones del documento de compra actual.';
+                ApplicationArea = All;
+                Image = CalculateHierarchy;
+                PromotedCategory = Process;
+                Promoted = true;
+                PromotedIsBig = false;
+                PromotedOnly = true;
+
+                trigger OnAction()
+                var
+                    JXVZWithholdings: Codeunit JXVZWithholdings;
+                begin
+                    Clear(JXVZWithholdings);
+                    JXVZWithholdings.CalculateFromPurchaseDocument(Rec);
+                    CurrPage.Update(false);
+                    Message('Las retenciones fueron calculadas correctamente.');
+                end;
+            }
+
+            action(JXVZViewWithholds)
+            {
+                Caption = 'Ver retenciones';
+                ToolTip = 'Ver las retenciones del documento de compra actual.';
+                ApplicationArea = All;
+                Image = ViewDocumentLine;
+                PromotedCategory = Process;
+                Promoted = true;
+                PromotedIsBig = false;
+                PromotedOnly = true;
+
+                trigger OnAction()
+                var
+                    JXVZWithholdings: Codeunit JXVZWithholdings;
+                begin
+                    Clear(JXVZWithholdings);
+                    JXVZWithholdings.ShowCalculatedWithholdings(Rec);
+                end;
+            }
+
+            action(JXVZDeleteWithholdings)
+            {
+                Caption = 'Ver retenciones';
+                ToolTip = 'Elimina las retenciones calculadas para el documento actual.';
+                ApplicationArea = All;
+                Image = DeleteQtyToHandle;
+                PromotedCategory = Process;
+                Promoted = true;
+                PromotedIsBig = false;
+                PromotedOnly = true;
+
+                trigger OnAction()
+                var
+                    JXVZWithholdings: Codeunit JXVZWithholdings;
+                begin
+                    if not Confirm('¿Desea eliminar las retenciones calculadas del documento?', false) then
+                        exit;
+
+                    Clear(JXVZWithholdings);
+                    JXVZWithholdings.DeleteCalculatedWithholdings(Rec);
+                    CurrPage.Update(false);
+                    Message('Las retenciones calculadas fueron eliminadas correctamente.');
+                end;
+            }
+        }
+    }
+
     trigger OnOpenPage()
     begin
         IsVenezuela := CompanyInformation.JXIsVenezuela();

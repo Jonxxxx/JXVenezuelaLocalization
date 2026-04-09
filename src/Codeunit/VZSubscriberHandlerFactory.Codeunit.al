@@ -725,4 +725,32 @@ codeunit 84103 JXVZSubscriberHandlerFactory
             end;
     end;
     */
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPurchInvHeaderInsert', '', false, false)]
+    local procedure PurchPost_OnAfterPurchInvHeaderInsert(var PurchInvHeader: Record "Purch. Inv. Header"; var PurchHeader: Record "Purchase Header"; PreviewMode: Boolean)
+    var
+        CompanyInfo: Record "Company Information";
+        JXVZWithholdings: Codeunit JXVZWithholdings;
+    begin
+        if CompanyInfo.JXIsVenezuela() then begin
+            if PreviewMode then
+                exit;
+
+            JXVZWithholdings.PostPurchaseInvoiceWithholdings(PurchHeader, PurchInvHeader);
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPurchCrMemoHeaderInsert', '', false, false)]
+    local procedure PurchPost_OnAfterPurchCrMemoHeaderInsert(var PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr."; var PurchHeader: Record "Purchase Header"; CommitIsSupressed: Boolean; PreviewMode: Boolean)
+    var
+        CompanyInfo: Record "Company Information";
+        JXVZWithholdings: Codeunit JXVZWithholdings;
+    begin
+        if CompanyInfo.JXIsVenezuela() then begin
+            if PreviewMode or CommitIsSupressed then
+                exit;
+
+            JXVZWithholdings.PostPurchaseCrMemoWithholdings(PurchHeader, PurchCrMemoHdr);
+        end;
+    end;
 }

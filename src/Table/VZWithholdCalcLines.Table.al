@@ -18,11 +18,10 @@ table 84122 JXVZWithholdCalcLines
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Description', Comment = 'ESP=Descripcion';
         }
-        field(6; JXVZBaseWitholdingType; Option)
+        field(6; JXVZBaseWitholdingType; Enum JXVZWithholdBaseType)
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Base witholding type', Comment = 'ESP=Tipo retencion base';
-            OptionMembers = "Sin Impuestos","Importe Impuestos","Importe Total","Total menos IVA-IVA Perc-IIBB","Total menos IVA","Total menos IVA menos IVA Percep","Solo IVA";
         }
         field(7; JXVZAccumulativeCalculation; Boolean)
         {

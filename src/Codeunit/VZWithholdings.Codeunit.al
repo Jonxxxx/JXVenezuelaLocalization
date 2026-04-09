@@ -27,6 +27,8 @@ codeunit 84104 JXVZWithholdings
         JXVZWithholdAccumCalc: Record JXVZWithholdAccumCalc;
         JXVZVendorWithholdCondition2: Record JXVZVendorWithholdCondition;
         JXVZWithholdingTax2: Record JXVZWithholdingTax;
+        PurchaseHeader: Record "Purchase Header";
+        PurchaseLine: Record "Purchase Line";
         VendorControl: Boolean;
         ConditionCode: Code[20];
         PercentageAmount: Decimal;
@@ -129,6 +131,9 @@ codeunit 84104 JXVZWithholdings
                                 JXVZWithholdDetailEntry.Reset();
                                 JXVZWithholdDetailEntry.SetRange(JXVZWithholdDetailEntry.JXVZWitholdingNo, JXVZWithholdAreaLine.JXVZWithholdingNo);
                                 if JXVZWithholdDetailEntry.FindSet(false, false) then begin
+                                    if not JXVZWithholdDetailEntry.JXVZCalcOnPayment then //Verifica si calcula en pagos
+                                        continue;
+
                                     JXVZWithholdingTax.Reset();
                                     JXVZWithholdingTax.SetRange(JXVZWithholdingTax.JXVZTaxCode, JXVZWithholdDetailEntry.JXVZTaxCode);
                                     JXVZWithholdingTax.SetRange(JXVZRetains, true);
@@ -168,10 +173,11 @@ codeunit 84104 JXVZWithholdings
                                     AdditionalControl := true;
 
                                     if VendorControl then begin
-                                        JXVZWithholdScale.Reset();
-                                        JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZScaleCode, JXVZWithholdDetailEntry.JXVZScaleCode);
-                                        JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZWitholdingCondition, ConditionCode);
-                                        if JXVZWithholdScale.FindFirst() then begin
+                                        //JXVZWithholdScale.Reset();
+                                        //JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZScaleCode, JXVZWithholdDetailEntry.JXVZScaleCode);
+                                        //JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZWitholdingCondition, ConditionCode);
+                                        //if JXVZWithholdScale.FindFirst() then begin
+                                        if ScaleExistsForSetup(JXVZWithholdDetailEntry, ConditionCode, _DocumentDate) then begin
                                             JXVZWithholdCalcLines.Reset();
                                             JXVZWithholdCalcLines.SetRange(JXVZWithholdCalcLines.JXVZWitholdingNo, JXVZWithholdAreaLine.JXVZWithholdingNo);
                                             JXVZWithholdCalcLines.SetRange(JXVZWithholdCalcLines.JXVZPaymentOrderNo, _PaymentOrderNro);
@@ -220,33 +226,33 @@ codeunit 84104 JXVZWithholdings
                                                 else
                                                     case JXVZWithholdCalcLines.JXVZBaseWitholdingType of
 
-                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Sin Impuestos":
+                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::NetAmount:
                                                             BaseCalculation := PurchInvLine."VAT Base Amount";
 
-                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Impuestos":
+                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::TaxAmount:
                                                             BaseCalculation := PurchInvLine."Amount Including VAT";
 
-                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Total":
+                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossAmount:
                                                             BaseCalculation := PurchInvLine."Amount Including VAT";
 
-                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA-IVA Perc-IIBB":
+                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndOtherTaxes:
                                                             BaseCalculation := PurchInvLine.Amount;
 
-                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA":
+                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVAT:
                                                             begin
                                                                 BaseCalculation := PurchInvLine."Amount Including VAT" -
                                                                                 CalcTaxPerLine(PurchInvLine."Tax Area Code", PurchInvLine."Tax Group Code", PurchInvLine."Tax Liable", PurchInvLine."Posting Date",
                                                                                             PurchInvLine.Amount, 0, getExchangeRate(PurchInvLine."Document No."), true, false);
                                                             end;
 
-                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA menos IVA Percep":
+                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndVATRelatedTaxes:
                                                             begin
                                                                 BaseCalculation := PurchInvLine."Amount Including VAT" -
                                                                                 CalcTaxPerLine(PurchInvLine."Tax Area Code", PurchInvLine."Tax Group Code", PurchInvLine."Tax Liable", PurchInvLine."Posting Date",
                                                                                             PurchInvLine.Amount, 0, getExchangeRate(PurchInvLine."Document No."), true, true);
                                                             end;
 
-                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Solo IVA":
+                                                        JXVZWithholdCalcLines.JXVZBaseWitholdingType::VATOnly:
                                                             begin
                                                                 BaseCalculation := CalcTaxPerLine(PurchInvLine."Tax Area Code", PurchInvLine."Tax Group Code", PurchInvLine."Tax Liable", PurchInvLine."Posting Date",
                                                                                             PurchInvLine.Amount, 0, getExchangeRate(PurchInvLine."Document No."), true, false);
@@ -311,33 +317,33 @@ codeunit 84104 JXVZWithholdings
                                             PagoAcumulativoRetencionNC(JXVZWithholdCalcLines, PurchCrMemoLine)
                                         else
                                             case JXVZWithholdCalcLines.JXVZBaseWitholdingType of
-                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Sin Impuestos":
+                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::NetAmount:
                                                     BaseCalculation := PurchCrMemoLine."VAT Base Amount";
 
-                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Impuestos":
+                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::TaxAmount:
                                                     BaseCalculation := PurchCrMemoLine."Amount Including VAT";
 
-                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Total":
+                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossAmount:
                                                     BaseCalculation := PurchCrMemoLine."Amount Including VAT";
 
-                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA-IVA Perc-IIBB":
+                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndOtherTaxes:
                                                     BaseCalculation := PurchCrMemoLine.Amount;
 
-                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA":
+                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVAT:
                                                     begin
                                                         BaseCalculation := PurchCrMemoLine."Amount Including VAT" -
                                                                         CalcTaxPerLine(PurchCrMemoLine."Tax Area Code", PurchCrMemoLine."Tax Group Code", PurchCrMemoLine."Tax Liable", PurchCrMemoLine."Posting Date",
                                                                                     PurchCrMemoLine.Amount, 0, getExchangeRate(PurchCrMemoLine."Document No."), true, false);
                                                     end;
 
-                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA menos IVA Percep":
+                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndVATRelatedTaxes:
                                                     begin
                                                         BaseCalculation := PurchCrMemoLine."Amount Including VAT" -
                                                                         CalcTaxPerLine(PurchCrMemoLine."Tax Area Code", PurchCrMemoLine."Tax Group Code", PurchCrMemoLine."Tax Liable", PurchCrMemoLine."Posting Date",
                                                                                     PurchCrMemoLine.Amount, 0, getExchangeRate(PurchCrMemoLine."Document No."), true, true);
                                                     end;
 
-                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Solo IVA":
+                                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::VATOnly:
                                                     begin
                                                         BaseCalculation := CalcTaxPerLine(PurchCrMemoLine."Tax Area Code", PurchCrMemoLine."Tax Group Code", PurchCrMemoLine."Tax Liable", PurchCrMemoLine."Posting Date",
                                                                                     PurchCrMemoLine.Amount, 0, getExchangeRate(PurchCrMemoLine."Document No."), true, false);
@@ -369,37 +375,41 @@ codeunit 84104 JXVZWithholdings
         JXVZWithholdCalcLines.SetRange(JXVZWithholdCalcLines.JXVZPaymentOrderNo, _PaymentOrderNro);
         JXVZWithholdCalcLines.SetRange(JXVZWithholdCalcLines.JXVZDistinctPerDocument, false);
         JXVZWithholdCalcLines.SetRange(JXVZWithholdCalcLines.JXVZAccumulativePayments, false);
-        if (JXVZWithholdCalcLines.FindFirst()) then
+        if (JXVZWithholdCalcLines.FindSet()) then
             repeat
-                JXVZWithholdScale.Reset();
-                JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZScaleCode, JXVZWithholdCalcLines.JXVZScaleCode);
-                JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZWitholdingCondition, JXVZWithholdCalcLines.JXVZWitholdingCondition);
-                JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZTaxCode, JXVZWithholdCalcLines.JXVZTaxCode);
-                if JXVZWithholdScale.FindSet() then
-                    repeat
-                        if JXVZWithholdScale.JXVZTo = 0 then begin
-                            if (JXVZWithholdScale.JXVZFrom <= JXVZWithholdCalcLines.JXVZAccumulative) then begin
-                                if JXVZWithholdScale.JXVZMonotributoIVA then
-                                    JXVZWithholdCalcLines.JXVZCalculatedWitholding := JXVZWithholdScale.JXVZFixedAmount + ((JXVZWithholdCalcLines.JXVZAccumulative) * (JXVZWithholdScale.JXVZSurplus / 100))
-                                else
-                                    JXVZWithholdCalcLines.JXVZCalculatedWitholding := JXVZWithholdScale.JXVZFixedAmount + ((JXVZWithholdCalcLines.JXVZAccumulative - JXVZWithholdScale.JXVZBaseAmount) *
-                                                                                  (JXVZWithholdScale.JXVZSurplus / 100));
+                /*
+                    JXVZWithholdScale.Reset();
+                    JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZScaleCode, JXVZWithholdCalcLines.JXVZScaleCode);
+                    JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZWitholdingCondition, JXVZWithholdCalcLines.JXVZWitholdingCondition);
+                    JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZTaxCode, JXVZWithholdCalcLines.JXVZTaxCode);
+                    if JXVZWithholdScale.FindSet() then
+                        repeat
+                            if JXVZWithholdScale.JXVZTo = 0 then begin
+                                if (JXVZWithholdScale.JXVZFrom <= JXVZWithholdCalcLines.JXVZAccumulative) then begin
+                                    if JXVZWithholdScale.JXVZMonotributoIVA then
+                                        JXVZWithholdCalcLines.JXVZCalculatedWitholding := JXVZWithholdScale.JXVZFixedAmount + ((JXVZWithholdCalcLines.JXVZAccumulative) * (JXVZWithholdScale.JXVZSurplus / 100))
+                                    else
+                                        JXVZWithholdCalcLines.JXVZCalculatedWitholding := JXVZWithholdScale.JXVZFixedAmount + ((JXVZWithholdCalcLines.JXVZAccumulative - JXVZWithholdScale.JXVZBaseAmount) *
+                                                                                      (JXVZWithholdScale.JXVZSurplus / 100));
 
-                                JXVZWithholdCalcLines."JXVZWitholding%" := JXVZWithholdScale.JXVZSurplus;
-                                JXVZWithholdCalcLines.Modify();
-                            end
-                        end else
-                            if (JXVZWithholdScale.JXVZFrom <= JXVZWithholdCalcLines.JXVZAccumulative) and (JXVZWithholdScale.JXVZTo > JXVZWithholdCalcLines.JXVZAccumulative) then begin
-                                if JXVZWithholdScale.JXVZMonotributoIVA then
-                                    JXVZWithholdCalcLines.JXVZCalculatedWitholding := JXVZWithholdScale.JXVZFixedAmount + ((JXVZWithholdCalcLines.JXVZAccumulative) * (JXVZWithholdScale.JXVZSurplus / 100))
-                                else
-                                    JXVZWithholdCalcLines.JXVZCalculatedWitholding := JXVZWithholdScale.JXVZFixedAmount + ((JXVZWithholdCalcLines.JXVZAccumulative - JXVZWithholdScale.JXVZBaseAmount) *
-                                                                                  (JXVZWithholdScale.JXVZSurplus / 100));
-                                JXVZWithholdCalcLines."JXVZWitholding%" := JXVZWithholdScale.JXVZSurplus;
-                                JXVZWithholdCalcLines.Modify();
-                            end;
+                                    JXVZWithholdCalcLines."JXVZWitholding%" := JXVZWithholdScale.JXVZSurplus;
+                                    JXVZWithholdCalcLines.Modify();
+                                end
+                            end else
+                                if (JXVZWithholdScale.JXVZFrom <= JXVZWithholdCalcLines.JXVZAccumulative) and (JXVZWithholdScale.JXVZTo > JXVZWithholdCalcLines.JXVZAccumulative) then begin
+                                    if JXVZWithholdScale.JXVZMonotributoIVA then
+                                        JXVZWithholdCalcLines.JXVZCalculatedWitholding := JXVZWithholdScale.JXVZFixedAmount + ((JXVZWithholdCalcLines.JXVZAccumulative) * (JXVZWithholdScale.JXVZSurplus / 100))
+                                    else
+                                        JXVZWithholdCalcLines.JXVZCalculatedWitholding := JXVZWithholdScale.JXVZFixedAmount + ((JXVZWithholdCalcLines.JXVZAccumulative - JXVZWithholdScale.JXVZBaseAmount) *
+                                                                                      (JXVZWithholdScale.JXVZSurplus / 100));
+                                    JXVZWithholdCalcLines."JXVZWitholding%" := JXVZWithholdScale.JXVZSurplus;
+                                    JXVZWithholdCalcLines.Modify();
+                                end;
 
-                    until JXVZWithholdScale.Next() = 0;
+                        until JXVZWithholdScale.Next() = 0;
+                    */
+                if ApplyScaleToCalcLine(JXVZWithholdCalcLines, JXVZWithholdCalcLines.JXVZAccumulative, JXVZWithholdCalcLines.JXVZDocumentDate) then
+                    JXVZWithholdCalcLines.Modify();
             until JXVZWithholdCalcLines.Next() = 0;
 
         JXVZWithholdCalcLines.Reset();
@@ -412,6 +422,7 @@ codeunit 84104 JXVZWithholdings
                 JXVZWithholdCalcDocument.SetRange(JXVZWithholdCalcDocument.JXVZWitholdingNo, JXVZWithholdCalcLines.JXVZWitholdingNo);
                 if (JXVZWithholdCalcDocument.FindSet()) then
                     repeat
+                        /*
                         JXVZWithholdScale.Reset();
                         JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZScaleCode, JXVZWithholdCalcLines.JXVZScaleCode);
                         JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZWitholdingCondition, JXVZWithholdCalcLines.JXVZWitholdingCondition);
@@ -433,7 +444,11 @@ codeunit 84104 JXVZWithholdings
                                         JXVZWithholdCalcLines."JXVZWitholding%" := JXVZWithholdScale.JXVZSurplus;
                                     end;
                             until JXVZWithholdScale.Next() = 0;
-
+                            */
+                        if ApplyScaleToCalcDocument(JXVZWithholdCalcDocument, JXVZWithholdCalcLines) then begin
+                            JXVZWithholdCalcDocument.Modify();
+                            JXVZWithholdCalcLines.Modify();
+                        end;
 
                         JXVZWithholdCalcDocument.JXVZWitholdingAmount := JXVZWithholdCalcDocument.JXVZWitholdingTotalAmount - JXVZWithholdCalcDocument.JXVZAccumulatedWitholdings;
                         JXVZWithholdCalcDocument.Modify();
@@ -474,6 +489,7 @@ codeunit 84104 JXVZWithholdings
                 if (LocalJXVZWithholdAccumCalc.FindSet()) then
                     LocalJXVZWithholdAccumCalc.CalcSums(LocalJXVZWithholdAccumCalc.JXVZCalculationBase);
 
+                /*
                 JXVZWithholdScale.Reset();
                 JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZScaleCode, JXVZWithholdCalcLines.JXVZScaleCode);
                 JXVZWithholdScale.SetRange(JXVZWithholdScale.JXVZWitholdingCondition, JXVZWithholdCalcLines.JXVZWitholdingCondition);
@@ -511,6 +527,10 @@ codeunit 84104 JXVZWithholdings
                             end;
 
                     until JXVZWithholdScale.Next() = 0;
+                */
+
+                if ApplyScaleToCalcLine(JXVZWithholdCalcLines, JXVZWithholdAccumCalc.JXVZCalculationBase, JXVZWithholdCalcLines.JXVZDocumentDate) then
+                    JXVZWithholdCalcLines.Modify();
 
                 JXVZWithholdCalcLines.JXVZPreviousPayments := LocalJXVZWithholdAccumCalc.JXVZCalculationBase;
                 JXVZWithholdCalcLines.JXVZBase := JXVZWithholdAccumCalc.JXVZCalculationBase;
@@ -687,7 +707,7 @@ codeunit 84104 JXVZWithholdings
                                             if JXVZWithholdAreaLine.FindFirst() then
                                                 case JXVZWithholdCalcLines.JXVZBaseWitholdingType of
 
-                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Sin Impuestos":
+                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::NetAmount:
 
                                                         if PurchInvoiceHeader.Get(PurchInvoiceLine."Document No.") then
                                                             if PurchInvoiceHeader."Currency Factor" <> 0 then begin
@@ -731,7 +751,7 @@ codeunit 84104 JXVZWithholdings
 
                                                             end;
 
-                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Impuestos":
+                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::TaxAmount:
                                                         if PurchInvoiceHeader.Get(PurchInvoiceLine."Document No.") then
                                                             if PurchInvoiceHeader."Currency Factor" <> 0 then
                                                                 JXVZWithholdCalcLines.JXVZAccumulative += ((PercentageAmount *
@@ -742,7 +762,7 @@ codeunit 84104 JXVZWithholdings
                                                                                                      - PurchInvoiceLine."VAT Base Amount")) / 100);
 
 
-                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Total":
+                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossAmount:
                                                         if PurchInvoiceHeader.Get(PurchInvoiceLine."Document No.") then
                                                             if PurchInvoiceHeader."Currency Factor" <> 0 then
                                                                 JXVZWithholdCalcLines.JXVZAccumulative += ((PercentageAmount
@@ -751,7 +771,7 @@ codeunit 84104 JXVZWithholdings
                                                                 JXVZWithholdCalcLines.JXVZAccumulative += ((PercentageAmount * PurchInvoiceLine."Amount Including VAT") / 100);
 
 
-                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA-IVA Perc-IIBB":
+                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndOtherTaxes:
                                                         if PurchInvoiceHeader.Get(PurchInvoiceLine."Document No.") then
                                                             if PurchInvoiceHeader."Currency Factor" <> 0 then
                                                                 JXVZWithholdCalcLines.JXVZAccumulative += ((PercentageAmount *
@@ -759,7 +779,7 @@ codeunit 84104 JXVZWithholdings
                                                             else
                                                                 JXVZWithholdCalcLines.JXVZAccumulative += ((PercentageAmount * PurchInvoiceLine.Amount) / 100);
 
-                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA":
+                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVAT:
                                                         begin
                                                             baseToCalc := PurchInvLine."Amount Including VAT" -
                                                                             CalcTaxPerLine(PurchInvLine."Tax Area Code", PurchInvLine."Tax Group Code", PurchInvLine."Tax Liable", PurchInvLine."Posting Date",
@@ -773,7 +793,7 @@ codeunit 84104 JXVZWithholdings
                                                                     JXVZWithholdCalcLines.JXVZAccumulative += ((PercentageAmount * baseToCalc) / 100);
                                                         end;
 
-                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA menos IVA Percep":
+                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndVATRelatedTaxes:
                                                         begin
                                                             baseToCalc := PurchInvLine."Amount Including VAT" -
                                                                             CalcTaxPerLine(PurchInvLine."Tax Area Code", PurchInvLine."Tax Group Code", PurchInvLine."Tax Liable", PurchInvLine."Posting Date",
@@ -787,7 +807,7 @@ codeunit 84104 JXVZWithholdings
                                                                     JXVZWithholdCalcLines.JXVZAccumulative += ((PercentageAmount * baseToCalc) / 100);
                                                         end;
 
-                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Solo IVA":
+                                                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::VATOnly:
                                                         begin
                                                             baseToCalc := CalcTaxPerLine(PurchInvLine."Tax Area Code", PurchInvLine."Tax Group Code", PurchInvLine."Tax Liable", PurchInvLine."Posting Date",
                                                                                         PurchInvLine.Amount, 0, getExchangeRate(PurchInvLine."Document No."), true, false);
@@ -823,7 +843,7 @@ codeunit 84104 JXVZWithholdings
                                                     JXVZWithholdAreaLine.Reset();
                                                     if JXVZWithholdAreaLine.Get(PurchCrMemoLine.JXVZWithholdingCode, JXVZWithholdCalcLines.JXVZWitholdingNo) then
                                                         case JXVZWithholdCalcLines.JXVZBaseWitholdingType of
-                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Sin Impuestos":
+                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::NetAmount:
 
                                                                 if PurchCrMemoHeader."Currency Factor" <> 0 then begin
                                                                     if (JXVZWithholdCalcLines.JXVZRetainAllInFirstPayment) then begin
@@ -853,7 +873,7 @@ codeunit 84104 JXVZWithholdings
                                                                 end;
 
 
-                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Impuestos":
+                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::TaxAmount:
 
                                                                 if GenJournalLineTmpProcess."Currency Factor" <> 0 then
                                                                     JXVZWithholdCalcLines.JXVZAccumulative := ((PercentageAmount * ((PurchCrMemoLine."Amount Including VAT" / GenJournalLineTmpProcess."Currency Factor")
@@ -865,7 +885,7 @@ codeunit 84104 JXVZWithholdings
 
 
 
-                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Total":
+                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossAmount:
 
                                                                 if GenJournalLineTmpProcess."Currency Factor" <> 0 then
                                                                     JXVZWithholdCalcLines.JXVZAccumulative := ((PercentageAmount * (PurchCrMemoLine."Amount Including VAT" / GenJournalLineTmpProcess."Currency Factor"))
@@ -875,14 +895,14 @@ codeunit 84104 JXVZWithholdings
 
 
 
-                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA-IVA Perc-IIBB":
+                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndOtherTaxes:
                                                                 if GenJournalLineTmpProcess."Currency Factor" <> 0 then
                                                                     JXVZWithholdCalcLines.JXVZAccumulative := ((PercentageAmount * (PurchCrMemoLine.Amount / GenJournalLineTmpProcess."Currency Factor"))
                                                                                                           / 100) + JXVZWithholdCalcLines.JXVZAccumulative
                                                                 else
                                                                     JXVZWithholdCalcLines.JXVZAccumulative := ((PercentageAmount * PurchCrMemoLine.Amount) / 100) + JXVZWithholdCalcLines.JXVZAccumulative;
 
-                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA":
+                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVAT:
                                                                 begin
                                                                     baseToCalc := PurchCrMemoLine."Amount Including VAT" -
                                                                         CalcTaxPerLine(PurchCrMemoLine."Tax Area Code", PurchCrMemoLine."Tax Group Code", PurchCrMemoLine."Tax Liable", PurchCrMemoLine."Posting Date",
@@ -895,7 +915,7 @@ codeunit 84104 JXVZWithholdings
                                                                         JXVZWithholdCalcLines.JXVZAccumulative := ((PercentageAmount * PurchCrMemoLine.Amount) / 100) + JXVZWithholdCalcLines.JXVZAccumulative;
                                                                 end;
 
-                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA menos IVA Percep":
+                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndVATRelatedTaxes:
                                                                 begin
                                                                     baseToCalc := PurchCrMemoLine."Amount Including VAT" -
                                                                         CalcTaxPerLine(PurchCrMemoLine."Tax Area Code", PurchCrMemoLine."Tax Group Code", PurchCrMemoLine."Tax Liable", PurchCrMemoLine."Posting Date",
@@ -908,7 +928,7 @@ codeunit 84104 JXVZWithholdings
                                                                         JXVZWithholdCalcLines.JXVZAccumulative := ((PercentageAmount * PurchCrMemoLine.Amount) / 100) + JXVZWithholdCalcLines.JXVZAccumulative;
                                                                 end;
 
-                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Solo IVA":
+                                                            JXVZWithholdCalcLines.JXVZBaseWitholdingType::VATOnly:
                                                                 begin
                                                                     baseToCalc := CalcTaxPerLine(PurchCrMemoLine."Tax Area Code", PurchCrMemoLine."Tax Group Code", PurchCrMemoLine."Tax Liable", PurchCrMemoLine."Posting Date",
                                                                                     PurchCrMemoLine.Amount, 0, getExchangeRate(PurchCrMemoLine."Document No."), true, false);
@@ -1099,13 +1119,13 @@ codeunit 84104 JXVZWithholdings
             repeat
                 PurchInvHeaderLocal.CalcFields(Amount, "Amount Including VAT");
                 case JXVZWithholdCalcLines.JXVZBaseWitholdingType of
-                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Sin Impuestos":
+                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::NetAmount:
                         BaseCalculation := PurchInvHeaderLocal.Amount;
-                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Impuestos":
+                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::TaxAmount:
                         BaseCalculation := PurchInvHeaderLocal."Amount Including VAT";
-                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Total":
+                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossAmount:
                         BaseCalculation := PurchInvHeaderLocal."Amount Including VAT";
-                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA":
+                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVAT:
                         begin
                             TotalTax := getTotalIVA("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
                             if PurchInvHeaderLocal."Currency Code" <> '' then
@@ -1113,7 +1133,7 @@ codeunit 84104 JXVZWithholdings
 
                             BaseCalculation := PurchInvHeaderLocal."Amount Including VAT" - TotalTax;
                         end;
-                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA menos IVA Percep":
+                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndVATRelatedTaxes:
                         begin
                             TotalTax := getTotalIVAAndPercepIVA("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
                             if PurchInvHeaderLocal."Currency Code" <> '' then
@@ -1121,7 +1141,7 @@ codeunit 84104 JXVZWithholdings
 
                             BaseCalculation := PurchInvHeaderLocal."Amount Including VAT" - TotalTax;
                         end;
-                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Solo IVA":
+                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::VATOnly:
                         begin
                             TotalTax := getTotalIVA("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
                             if PurchInvHeaderLocal."Currency Code" <> '' then
@@ -1158,13 +1178,13 @@ codeunit 84104 JXVZWithholdings
             repeat
                 PurchCrMemoHdrLocal.CalcFields(Amount, "Amount Including VAT");
                 case JXVZWithholdCalcLines.JXVZBaseWitholdingType of
-                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Sin Impuestos":
+                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::NetAmount:
                         BaseCalculation := PurchCrMemoHdrLocal.Amount;
-                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Impuestos":
+                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::TaxAmount:
                         BaseCalculation := PurchCrMemoHdrLocal."Amount Including VAT";
-                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Total":
+                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossAmount:
                         BaseCalculation := PurchCrMemoHdrLocal."Amount Including VAT";
-                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA":
+                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVAT:
                         begin
                             TotalTax := getTotalIVA("Gen. Journal Document Type"::Invoice, PurchCrMemoHdrLocal."No.");
                             if PurchCrMemoHdrLocal."Currency Code" <> '' then
@@ -1172,7 +1192,7 @@ codeunit 84104 JXVZWithholdings
 
                             BaseCalculation := PurchCrMemoHdrLocal."Amount Including VAT" - TotalTax;
                         end;
-                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA menos IVA Percep":
+                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndVATRelatedTaxes:
                         begin
                             TotalTax := getTotalIVAAndPercepIVA("Gen. Journal Document Type"::Invoice, PurchCrMemoHdrLocal."No.");
                             if PurchCrMemoHdrLocal."Currency Code" <> '' then
@@ -1180,7 +1200,7 @@ codeunit 84104 JXVZWithholdings
 
                             BaseCalculation := PurchCrMemoHdrLocal."Amount Including VAT" - TotalTax;
                         end;
-                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Solo IVA":
+                    JXVZWithholdCalcLines.JXVZBaseWitholdingType::VATOnly:
                         begin
                             TotalTax := getTotalIVA("Gen. Journal Document Type"::Invoice, PurchCrMemoHdrLocal."No.");
                             if PurchCrMemoHdrLocal."Currency Code" <> '' then
@@ -1279,13 +1299,13 @@ codeunit 84104 JXVZWithholdings
                         if (PurchInvLineLocal.FindFirst()) then begin
                             PurchInvHeaderLocal.CalcFields(Amount, "Amount Including VAT");
                             case JXVZWithholdCalcLines.JXVZBaseWitholdingType of
-                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Sin Impuestos":
+                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::NetAmount:
                                     BaseCalculation := PurchInvLineLocal.Amount;
-                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Impuestos":
+                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::TaxAmount:
                                     BaseCalculation := PurchInvHeaderLocal."Amount Including VAT";
-                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Total":
+                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossAmount:
                                     BaseCalculation := PurchInvHeaderLocal."Amount Including VAT";
-                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA":
+                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVAT:
                                     begin
                                         TotalTax := getTotalIVA("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
                                         if PurchInvHeaderLocal."Currency Code" <> '' then
@@ -1293,7 +1313,7 @@ codeunit 84104 JXVZWithholdings
 
                                         BaseCalculation := PurchInvHeaderLocal."Amount Including VAT" - TotalTax;
                                     end;
-                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA menos IVA Percep":
+                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndVATRelatedTaxes:
                                     begin
                                         TotalTax := getTotalIVAAndPercepIVA("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
                                         if PurchInvHeaderLocal."Currency Code" <> '' then
@@ -1301,7 +1321,7 @@ codeunit 84104 JXVZWithholdings
 
                                         BaseCalculation := PurchInvHeaderLocal."Amount Including VAT" - TotalTax;
                                     end;
-                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Solo IVA":
+                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::VATOnly:
                                     begin
                                         TotalTax := getTotalIVA("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
                                         if PurchInvHeaderLocal."Currency Code" <> '' then
@@ -1348,13 +1368,13 @@ codeunit 84104 JXVZWithholdings
                         if (PurchCrMemoLineLocal.FindFirst()) then begin
                             PurchCrMemoHdrLocal.CalcFields(Amount, "Amount Including VAT");
                             case JXVZWithholdCalcLines.JXVZBaseWitholdingType of
-                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Sin Impuestos":
+                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::NetAmount:
                                     BaseCalculation := PurchCrMemoLineLocal.Amount;
-                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Impuestos":
+                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::TaxAmount:
                                     BaseCalculation := PurchCrMemoHdrLocal."Amount Including VAT";
-                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Importe Total":
+                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossAmount:
                                     BaseCalculation := PurchCrMemoHdrLocal."Amount Including VAT";
-                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA":
+                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVAT:
                                     begin
                                         TotalTax := getTotalIVA("Gen. Journal Document Type"::Invoice, PurchCrMemoHdrLocal."No.");
                                         if PurchCrMemoHdrLocal."Currency Code" <> '' then
@@ -1362,7 +1382,7 @@ codeunit 84104 JXVZWithholdings
 
                                         BaseCalculation := PurchCrMemoHdrLocal."Amount Including VAT" - TotalTax;
                                     end;
-                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Total menos IVA menos IVA Percep":
+                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndVATRelatedTaxes:
                                     begin
                                         TotalTax := getTotalIVAAndPercepIVA("Gen. Journal Document Type"::Invoice, PurchCrMemoHdrLocal."No.");
                                         if PurchCrMemoHdrLocal."Currency Code" <> '' then
@@ -1370,7 +1390,7 @@ codeunit 84104 JXVZWithholdings
 
                                         BaseCalculation := PurchCrMemoHdrLocal."Amount Including VAT" - TotalTax;
                                     end;
-                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::"Solo IVA":
+                                JXVZWithholdCalcLines.JXVZBaseWitholdingType::VATOnly:
                                     begin
                                         TotalTax := getTotalIVA("Gen. Journal Document Type"::Invoice, PurchCrMemoHdrLocal."No.");
                                         if PurchCrMemoHdrLocal."Currency Code" <> '' then
@@ -1580,13 +1600,13 @@ codeunit 84104 JXVZWithholdings
                 Clear(TotalTax);
                 PurchInvHeaderLocal.CalcFields(Amount, "Amount Including VAT");
                 case JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType of
-                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::"Sin Impuestos":
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::NetAmount:
                         BaseCalculationLocal := PurchInvHeaderLocal.Amount;
-                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::"Importe Impuestos":
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::TaxAmount:
                         BaseCalculationLocal := PurchInvHeaderLocal."Amount Including VAT";
-                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::"Importe Total":
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossAmount:
                         BaseCalculationLocal := PurchInvHeaderLocal."Amount Including VAT";
-                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::"Total menos IVA":
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossLessVAT:
                         begin
                             TotalTax := getTotalIVA("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
                             if PurchInvHeaderLocal."Currency Code" <> '' then
@@ -1594,7 +1614,7 @@ codeunit 84104 JXVZWithholdings
 
                             BaseCalculationLocal := PurchInvHeaderLocal."Amount Including VAT" - TotalTax;
                         end;
-                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::"Total menos IVA menos IVA Percep":
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossLessVATAndVATRelatedTaxes:
                         begin
                             TotalTax := getTotalIVAAndPercepIVA("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
                             if PurchInvHeaderLocal."Currency Code" <> '' then
@@ -1602,7 +1622,7 @@ codeunit 84104 JXVZWithholdings
 
                             BaseCalculationLocal := PurchInvHeaderLocal."Amount Including VAT" - TotalTax;
                         end;
-                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::"Solo IVA":
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::VATOnly:
                         begin
                             TotalTax := getTotalIVA("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
                             if PurchInvHeaderLocal."Currency Code" <> '' then
@@ -1627,13 +1647,13 @@ codeunit 84104 JXVZWithholdings
                 Clear(TotalTax);
                 PurchCrMemoHdrLocal.CalcFields(Amount, "Amount Including VAT");
                 case JXVZWithholdCalcLines.JXVZBaseWitholdingType of
-                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::"Sin Impuestos":
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::NetAmount:
                         BaseCalculationLocal := PurchCrMemoHdrLocal.Amount;
-                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::"Importe Impuestos":
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::TaxAmount:
                         BaseCalculationLocal := PurchCrMemoHdrLocal."Amount Including VAT";
-                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::"Importe Total":
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossAmount:
                         BaseCalculationLocal := PurchCrMemoHdrLocal."Amount Including VAT";
-                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::"Total menos IVA":
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossLessVAT:
                         begin
                             TotalTax := getTotalIVA("Gen. Journal Document Type"::"Credit Memo", PurchCrMemoHdrLocal."No.");
                             if PurchCrMemoHdrLocal."Currency Code" <> '' then
@@ -1641,7 +1661,7 @@ codeunit 84104 JXVZWithholdings
 
                             BaseCalculationLocal := PurchCrMemoHdrLocal."Amount Including VAT" - TotalTax;
                         end;
-                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::"Total menos IVA menos IVA Percep":
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossLessVATAndVATRelatedTaxes:
                         begin
                             TotalTax := getTotalIVAAndPercepIVA("Gen. Journal Document Type"::"Credit Memo", PurchCrMemoHdrLocal."No.");
                             if PurchCrMemoHdrLocal."Currency Code" <> '' then
@@ -1649,7 +1669,7 @@ codeunit 84104 JXVZWithholdings
 
                             BaseCalculationLocal := PurchCrMemoHdrLocal."Amount Including VAT" - TotalTax;
                         end;
-                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::"Solo IVA":
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::VATOnly:
                         begin
                             TotalTax := getTotalIVA("Gen. Journal Document Type"::"Credit Memo", PurchCrMemoHdrLocal."No.");
                             if PurchCrMemoHdrLocal."Currency Code" <> '' then
@@ -2028,5 +2048,1044 @@ codeunit 84104 JXVZWithholdings
             repeat
                 JXVZWithholdLedgerEntryByDoc.Delete();
             until JXVZWithholdLedgerEntryByDoc.Next() = 0;
+    end;
+
+    local procedure ScaleExistsForSetup(_WithholdDetail: Record JXVZWithholdDetailEntry; _ConditionCode: Code[20]; _OperationDate: Date): Boolean
+    var
+        LocalWithholdScale: Record JXVZWithholdScale;
+    begin
+        LocalWithholdScale.Reset();
+        LocalWithholdScale.SetRange(JXVZScaleCode, _WithholdDetail.JXVZScaleCode);
+        LocalWithholdScale.SetRange(JXVZWitholdingCondition, _ConditionCode);
+        LocalWithholdScale.SetRange(JXVZTaxCode, _WithholdDetail.JXVZTaxCode);
+        LocalWithholdScale.SetRange(JXVZRegime, _WithholdDetail.JXVZRegime);
+
+        if LocalWithholdScale.FindSet() then
+            repeat
+                if IsScaleValidForDate(LocalWithholdScale, _OperationDate) then
+                    exit(true);
+            until LocalWithholdScale.Next() = 0;
+
+        exit(false);
+    end;
+
+    local procedure ApplyScaleToCalcLine(var _WithholdCalcLine: Record JXVZWithholdCalcLines; _CalculationBase: Decimal; _OperationDate: Date): Boolean
+    var
+        SelectedScale: Record JXVZWithholdScale;
+    begin
+        if not TryGetApplicableScale(
+                _WithholdCalcLine.JXVZScaleCode,
+                _WithholdCalcLine.JXVZWitholdingCondition,
+                _WithholdCalcLine.JXVZTaxCode,
+                _WithholdCalcLine.JXVZRegime,
+                _OperationDate,
+                _CalculationBase,
+                SelectedScale)
+        then
+            exit(false);
+
+        _WithholdCalcLine.JXVZCalculatedWitholding := CalculateWithholdingFromScale(_CalculationBase, SelectedScale, _OperationDate);
+        _WithholdCalcLine."JXVZWitholding%" := SelectedScale.JXVZSurplus;
+
+        exit(true);
+    end;
+
+    local procedure ApplyScaleToCalcDocument(var _WithholdCalcDocument: Record JXVZWithholdCalcDocument; var _WithholdCalcLine: Record JXVZWithholdCalcLines): Boolean
+    var
+        SelectedScale: Record JXVZWithholdScale;
+    begin
+        if not TryGetApplicableScale(
+                _WithholdCalcLine.JXVZScaleCode,
+                _WithholdCalcLine.JXVZWitholdingCondition,
+                _WithholdCalcLine.JXVZTaxCode,
+                _WithholdCalcLine.JXVZRegime,
+                _WithholdCalcDocument.JXVZDocumentDate,
+                _WithholdCalcDocument.JXVZCalculationBase,
+                SelectedScale)
+        then
+            exit(false);
+
+        _WithholdCalcDocument.JXVZWitholdingTotalAmount := CalculateWithholdingFromScale(
+            _WithholdCalcDocument.JXVZCalculationBase,
+            SelectedScale,
+            _WithholdCalcDocument.JXVZDocumentDate);
+
+        _WithholdCalcLine."JXVZWitholding%" := SelectedScale.JXVZSurplus;
+
+        exit(true);
+    end;
+
+    local procedure TryGetApplicableScale(
+        _ScaleCode: Code[20];
+        _ConditionCode: Code[20];
+        _TaxCode: Code[20];
+        _Regime: Code[20];
+        _OperationDate: Date;
+        _CalculationBase: Decimal;
+        var _SelectedScale: Record JXVZWithholdScale): Boolean
+    var
+        LocalWithholdScale: Record JXVZWithholdScale;
+        ScaleSearchBase: Decimal;
+    begin
+        LocalWithholdScale.Reset();
+        LocalWithholdScale.SetRange(JXVZScaleCode, _ScaleCode);
+        LocalWithholdScale.SetRange(JXVZWitholdingCondition, _ConditionCode);
+        LocalWithholdScale.SetRange(JXVZTaxCode, _TaxCode);
+        LocalWithholdScale.SetRange(JXVZRegime, _Regime);
+
+        if LocalWithholdScale.FindSet() then
+            repeat
+                if IsScaleValidForDate(LocalWithholdScale, _OperationDate) then begin
+                    ScaleSearchBase := GetScaleSearchBase(_CalculationBase, LocalWithholdScale, _OperationDate);
+
+                    if IsScaleInRange(LocalWithholdScale, ScaleSearchBase) then begin
+                        _SelectedScale := LocalWithholdScale;
+                        exit(true);
+                    end;
+                end;
+            until LocalWithholdScale.Next() = 0;
+
+        exit(false);
+    end;
+
+    local procedure IsScaleValidForDate(_Scale: Record JXVZWithholdScale; _OperationDate: Date): Boolean
+    begin
+        if (_Scale.JXVZValidFrom <> 0D) and (_Scale.JXVZValidFrom > _OperationDate) then
+            exit(false);
+
+        if (_Scale.JXVZValidTo <> 0D) and (_Scale.JXVZValidTo < _OperationDate) then
+            exit(false);
+
+        exit(true);
+    end;
+
+    local procedure IsScaleInRange(_Scale: Record JXVZWithholdScale; _ScaleSearchBase: Decimal): Boolean
+    begin
+        if _Scale.JXVZTo = 0 then
+            exit(_Scale.JXVZFrom <= _ScaleSearchBase);
+
+        exit((_Scale.JXVZFrom <= _ScaleSearchBase) and (_Scale.JXVZTo > _ScaleSearchBase));
+    end;
+
+    local procedure GetScaleSearchBase(_CalculationBase: Decimal; _Scale: Record JXVZWithholdScale; _OperationDate: Date): Decimal
+    var
+        TaxableBaseAmount: Decimal;
+        TaxUnitValue: Decimal;
+    begin
+        TaxableBaseAmount := Abs(_CalculationBase) * (GetScaleTaxableBasePct(_Scale) / 100);
+
+        if _Scale.JXVZUseTaxUnit then begin
+            TaxUnitValue := GetTaxUnitValue(_OperationDate);
+            if TaxUnitValue = 0 then
+                exit(0);
+
+            exit(TaxableBaseAmount / TaxUnitValue);
+        end;
+
+        exit(Abs(_CalculationBase));
+    end;
+
+    local procedure GetScaleTaxableBasePct(_Scale: Record JXVZWithholdScale): Decimal
+    begin
+        if _Scale.JXVZTaxableBasePct = 0 then
+            exit(100);
+
+        exit(_Scale.JXVZTaxableBasePct);
+    end;
+
+    local procedure GetScaleFixedAmount(_Scale: Record JXVZWithholdScale; _OperationDate: Date): Decimal
+    begin
+        if _Scale.JXVZUseTaxUnit then
+            exit(_Scale.JXVZFixedAmount * GetTaxUnitValue(_OperationDate));
+
+        exit(_Scale.JXVZFixedAmount);
+    end;
+
+    local procedure GetScaleBaseAmount(_Scale: Record JXVZWithholdScale; _OperationDate: Date): Decimal
+    begin
+        if _Scale.JXVZUseTaxUnit then
+            exit(_Scale.JXVZBaseAmount * GetTaxUnitValue(_OperationDate));
+
+        exit(_Scale.JXVZBaseAmount);
+    end;
+
+    local procedure GetScaleDeductionAmount(_Scale: Record JXVZWithholdScale; _OperationDate: Date): Decimal
+    begin
+        if _Scale.JXVZUseTaxUnit then
+            exit(_Scale.JXVZDeductionAmount * GetTaxUnitValue(_OperationDate));
+
+        exit(_Scale.JXVZDeductionAmount);
+    end;
+
+    local procedure GetScaleMinimumPaymentAmount(_Scale: Record JXVZWithholdScale; _OperationDate: Date): Decimal
+    begin
+        if _Scale.JXVZUseTaxUnit then
+            exit(_Scale.JXVZMinimumPaymentAmount * GetTaxUnitValue(_OperationDate));
+
+        exit(_Scale.JXVZMinimumPaymentAmount);
+    end;
+
+    local procedure CalculateWithholdingFromScale(_CalculationBase: Decimal; _Scale: Record JXVZWithholdScale; _OperationDate: Date): Decimal
+    var
+        TaxableBaseAmount: Decimal;
+        FixedAmount: Decimal;
+        BaseAmount: Decimal;
+        DeductionAmount: Decimal;
+        MinimumPaymentAmount: Decimal;
+        Result: Decimal;
+    begin
+        MinimumPaymentAmount := GetScaleMinimumPaymentAmount(_Scale, _OperationDate);
+
+        if (MinimumPaymentAmount <> 0) and (Abs(_CalculationBase) < MinimumPaymentAmount) then
+            exit(0);
+
+        FixedAmount := GetScaleFixedAmount(_Scale, _OperationDate);
+        BaseAmount := GetScaleBaseAmount(_Scale, _OperationDate);
+        DeductionAmount := GetScaleDeductionAmount(_Scale, _OperationDate);
+        TaxableBaseAmount := _CalculationBase * (GetScaleTaxableBasePct(_Scale) / 100);
+
+        case _Scale.JXVZCalculationFormula of
+            _Scale.JXVZCalculationFormula::StandardExcess:
+                begin
+                    if _Scale.JXVZMonotributoIVA then
+                        Result := FixedAmount + (_CalculationBase * (_Scale.JXVZSurplus / 100))
+                    else
+                        Result := FixedAmount + ((_CalculationBase - BaseAmount) * (_Scale.JXVZSurplus / 100));
+                end;
+
+            _Scale.JXVZCalculationFormula::PercentageOnFullBase:
+                begin
+                    Result := FixedAmount + (TaxableBaseAmount * (_Scale.JXVZSurplus / 100));
+                end;
+
+            _Scale.JXVZCalculationFormula::PercentageMinusDeduction:
+                begin
+                    Result := FixedAmount + (TaxableBaseAmount * (_Scale.JXVZSurplus / 100)) - DeductionAmount;
+                end;
+
+            _Scale.JXVZCalculationFormula::Tarifa2Accumulated:
+                begin
+                    Result := FixedAmount + (TaxableBaseAmount * (_Scale.JXVZSurplus / 100)) - DeductionAmount;
+                end;
+
+            _Scale.JXVZCalculationFormula::FixedAmountOnly:
+                begin
+                    Result := FixedAmount;
+                end;
+
+            _Scale.JXVZCalculationFormula::NoWithhold:
+                begin
+                    Result := 0;
+                end;
+        end;
+
+        exit(Result);
+    end;
+
+    local procedure GetTaxUnitValue(_OperationDate: Date): Decimal
+    begin
+        // TODO:
+        // Idealmente este valor debería salir de setup por vigencia.
+        // Por ahora se deja fijo según UT vigente utilizada para Venezuela.
+        exit(43);
+    end;
+
+    //Purchase
+    procedure CalcPurchaseDocument(var _PurchaseHeader: Record "Purchase Header")
+    var
+        ProcessKey: Code[20];
+    begin
+        if not (_PurchaseHeader."Document Type" in [_PurchaseHeader."Document Type"::Invoice, _PurchaseHeader."Document Type"::"Credit Memo"]) then
+            exit;
+
+        ProcessKey := _PurchaseHeader."No.";
+
+        DeletePurchaseDocumentTemp(ProcessKey);
+
+        GlobDocumentDate := GetPurchaseOperationDate(_PurchaseHeader);
+        GlobVendor := GetPurchaseVendorNo(_PurchaseHeader);
+        GlobPaymentOrderNro := ProcessKey;
+
+        PurchaseLine.Reset();
+        PurchaseLine.SetRange("Document Type", _PurchaseHeader."Document Type");
+        PurchaseLine.SetRange("Document No.", _PurchaseHeader."No.");
+        PurchaseLine.SetFilter(Amount, '<>%1', 0);
+        if PurchaseLine.FindSet() then
+            repeat
+                ProcessPurchaseLine(_PurchaseHeader, PurchaseLine, ProcessKey);
+            until PurchaseLine.Next() = 0;
+
+        FinalizePurchaseDocumentCalc(_PurchaseHeader, ProcessKey);
+    end;
+
+    local procedure DeletePurchaseDocumentTemp(_ProcessKey: Code[20])
+    begin
+        JXVZWithholdCalcLines.Reset();
+        JXVZWithholdCalcLines.SetRange(JXVZPaymentOrderNo, _ProcessKey);
+        if JXVZWithholdCalcLines.FindSet() then
+            JXVZWithholdCalcLines.DeleteAll(true);
+
+        JXVZWithholdCalcDocument.Reset();
+        JXVZWithholdCalcDocument.SetRange(JXVZPaymentOrderNo, _ProcessKey);
+        if JXVZWithholdCalcDocument.FindSet() then
+            JXVZWithholdCalcDocument.DeleteAll(true);
+
+        JXVZWithholdAccumCalc.Reset();
+        JXVZWithholdAccumCalc.SetRange(JXVZPaymentOrderNo, _ProcessKey);
+        if JXVZWithholdAccumCalc.FindSet() then
+            JXVZWithholdAccumCalc.DeleteAll(true);
+    end;
+
+    local procedure ProcessPurchaseLine(var _PurchaseHeader: Record "Purchase Header"; var _PurchaseLine: Record "Purchase Line"; _ProcessKey: Code[20])
+    var
+        LocalWithholdingTax: Record JXVZWithholdingTax;
+        LocalCalcLine: Record JXVZWithholdCalcLines;
+        LocalConditionCode: Code[20];
+        LocalBaseCalculation: Decimal;
+    begin
+        if _PurchaseLine.JXVZWithholdingCode = '' then
+            exit;
+
+        JXVZWithholdAreaLine.Reset();
+        JXVZWithholdAreaLine.SetRange(JXVZWithholdingCode, _PurchaseLine.JXVZWithholdingCode);
+        if not JXVZWithholdAreaLine.FindSet() then
+            exit;
+
+        repeat
+            JXVZWithholdDetailEntry.Reset();
+            JXVZWithholdDetailEntry.SetRange(JXVZWitholdingNo, JXVZWithholdAreaLine.JXVZWithholdingNo);
+            if JXVZWithholdDetailEntry.FindSet() then
+                repeat
+                    if not JXVZWithholdDetailEntry.JXVZCalcOnPurchaseDoc then// Si esta en false no calcula
+                        continue;
+
+                    LocalWithholdingTax.Reset();
+                    LocalWithholdingTax.SetRange(JXVZTaxCode, JXVZWithholdDetailEntry.JXVZTaxCode);
+                    LocalWithholdingTax.SetRange(JXVZRetains, true);
+                    if not LocalWithholdingTax.FindFirst() then
+                        continue;
+
+                    if not VendorAllowedForPurchaseWithholding(_PurchaseHeader, JXVZWithholdDetailEntry.JXVZTaxCode, LocalWithholdingTax) then
+                        continue;
+
+                    LocalConditionCode := GetVendorWithholdingCondition(GetPurchaseVendorNo(_PurchaseHeader), JXVZWithholdDetailEntry.JXVZTaxCode);
+                    if LocalConditionCode = '' then
+                        LocalConditionCode := JXVZWithholdDetailEntry.JXVZConditionCode;
+
+                    if not ScaleExistsForSetup(JXVZWithholdDetailEntry, LocalConditionCode, GetPurchaseOperationDate(_PurchaseHeader)) then
+                        continue;
+
+                    GetOrCreatePurchaseCalcLine(
+                        _PurchaseHeader,
+                        JXVZWithholdDetailEntry,
+                        LocalWithholdingTax,
+                        LocalConditionCode,
+                        _ProcessKey,
+                        LocalCalcLine);
+
+                    LocalBaseCalculation := GetPurchaseLineBase(_PurchaseHeader, _PurchaseLine, LocalCalcLine.JXVZBaseWitholdingType);
+
+                    if _PurchaseHeader."Document Type" = _PurchaseHeader."Document Type"::"Credit Memo" then
+                        LocalBaseCalculation := -LocalBaseCalculation;
+
+                    if LocalCalcLine.JXVZDistinctPerDocument then
+                        UpsertPurchaseCalcDocument(LocalCalcLine, _PurchaseHeader, LocalBaseCalculation)
+                    else begin
+                        LocalCalcLine.JXVZAccumulative += LocalBaseCalculation;
+                        LocalCalcLine.JXVZBase := LocalCalcLine.JXVZAccumulative;
+                        LocalCalcLine.Modify();
+                    end;
+                until JXVZWithholdDetailEntry.Next() = 0;
+        until JXVZWithholdAreaLine.Next() = 0;
+    end;
+
+    local procedure GetOrCreatePurchaseCalcLine(
+        var _PurchaseHeader: Record "Purchase Header";
+        var _WithholdDetail: Record JXVZWithholdDetailEntry;
+        var _WithholdingTax: Record JXVZWithholdingTax;
+        _ConditionCode: Code[20];
+        _ProcessKey: Code[20];
+        var _CalcLine: Record JXVZWithholdCalcLines)
+    var
+        NoSeriesManagement: Codeunit "No. Series";
+    begin
+        _CalcLine.Reset();
+        _CalcLine.SetRange(JXVZWitholdingNo, _WithholdDetail.JXVZWitholdingNo);
+        _CalcLine.SetRange(JXVZPaymentOrderNo, _ProcessKey);
+
+        if _CalcLine.FindFirst() then
+            exit;
+
+        _CalcLine.Init();
+        _CalcLine.JXVZTaxCode := _WithholdDetail.JXVZTaxCode;
+        _CalcLine.JXVZRegime := _WithholdDetail.JXVZRegime;
+        _CalcLine.JXVZDescription := 'Retención - ' + _WithholdingTax.JXVZDescription;
+        _CalcLine.JXVZBaseWitholdingType := _WithholdDetail.JXVZWitholdingBaseType;
+        _CalcLine.JXVZAccumulativeCalculation := _WithholdDetail.JXVZAccumulativeCalculation;
+        _CalcLine.JXVZMinimumWitholding := _WithholdDetail.JXVZMinimumWitholding;
+        _CalcLine.JXVZScaleCode := _WithholdDetail.JXVZScaleCode;
+        _CalcLine.JXVZWitholdingNo := _WithholdDetail.JXVZWitholdingNo;
+        _CalcLine.JXVZCalculatedWitholding := 0;
+        _CalcLine.JXVZWitholdingCondition := _ConditionCode;
+        _CalcLine.JXVZPaymentOrderNo := _ProcessKey;
+
+        Clear(NoSeriesManagement);
+        _WithholdDetail.TestField(JXVZSeriesCode);
+        _CalcLine.JXVZWithholdingNumber := NoSeriesManagement.GetNextNo(_WithholdDetail.JXVZSeriesCode, Today(), true);
+
+        _CalcLine.JXVZPaymentMethodCode := _WithholdDetail.JXVZPaymentMethodCode;
+        _CalcLine.JXVZAccountNo := _WithholdDetail.JXVZAccountNo;
+        _CalcLine.JXVZDocumentDate := GetPurchaseOperationDate(_PurchaseHeader);
+
+        if _WithholdDetail.JXVZAccumulativeCalculation then
+            _CalcLine.JXVZAccumulationPeriod := _WithholdDetail.JXVZAccumulationPeriod
+        else
+            _CalcLine.JXVZAccumulationPeriod := _CalcLine.JXVZAccumulationPeriod::" ";
+
+        _CalcLine.JXVZGeneralWitholdingDescription := _WithholdDetail.JXVZDescription;
+        _CalcLine.JXVZDistinctPerDocument := _WithholdDetail.JXVZDiscriminatesPerDocument;
+        _CalcLine.JXVZDeterminationPerMonthlyInv := _WithholdDetail.JXVZMonthInvoiceDeter;
+        _CalcLine.JXVZMinimumAmountInvPerMonth := _WithholdDetail.JXVZMonthInvoiceMinimunAmt;
+        _CalcLine.JXVZWitholdingMode := _WithholdDetail.JXVZWitholdingMode;
+        _CalcLine.JXVZAccumulativePayments := false; // En compras abiertas no se usa acumulado por pagos
+        _CalcLine.JXVZRetainAllInFirstPayment := false;
+        _CalcLine.JXVZMonotributo := _WithholdDetail.JXVZMonotributo;
+
+        _CalcLine.Insert();
+    end;
+
+    local procedure UpsertPurchaseCalcDocument(var _CalcLine: Record JXVZWithholdCalcLines; var _PurchaseHeader: Record "Purchase Header"; _BaseCalculation: Decimal)
+    begin
+        JXVZWithholdCalcDocument.Reset();
+        JXVZWithholdCalcDocument.SetRange(JXVZPaymentOrderNo, _CalcLine.JXVZPaymentOrderNo);
+        JXVZWithholdCalcDocument.SetRange(JXVZWitholdingNo, _CalcLine.JXVZWitholdingNo);
+        JXVZWithholdCalcDocument.SetRange(JXVZDocumentNo, _PurchaseHeader."No.");
+
+        if not JXVZWithholdCalcDocument.FindFirst() then begin
+            JXVZWithholdCalcDocument.Init();
+            JXVZWithholdCalcDocument.JXVZPaymentOrderNo := _CalcLine.JXVZPaymentOrderNo;
+            JXVZWithholdCalcDocument.JXVZWitholdingNo := _CalcLine.JXVZWitholdingNo;
+            if _PurchaseHeader."Document Type" = _PurchaseHeader."Document Type"::"Credit Memo" then
+                JXVZWithholdCalcDocument.JXVZDocumentType := JXVZWithholdCalcDocument.JXVZDocumentType::"Credit Memo"
+            else
+                JXVZWithholdCalcDocument.JXVZDocumentType := JXVZWithholdCalcDocument.JXVZDocumentType::Invoice;
+            JXVZWithholdCalcDocument.JXVZDocumentNo := _PurchaseHeader."No.";
+            JXVZWithholdCalcDocument.JXVZDocumentDate := GetPurchaseOperationDate(_PurchaseHeader);
+            JXVZWithholdCalcDocument.JXVZVendorDocumentNo := GetPurchaseExternalDocumentNo(_PurchaseHeader);
+            JXVZWithholdCalcDocument.JXVZCalculationBase := _BaseCalculation;
+            JXVZWithholdCalcDocument.Insert();
+        end else begin
+            JXVZWithholdCalcDocument.JXVZCalculationBase += _BaseCalculation;
+            JXVZWithholdCalcDocument.Modify();
+        end;
+    end;
+
+    local procedure FinalizePurchaseDocumentCalc(var _PurchaseHeader: Record "Purchase Header"; _ProcessKey: Code[20])
+    begin
+        ApplyPurchaseHistoricalAccumulation(_PurchaseHeader, _ProcessKey);
+        ApplyPurchaseScales(_ProcessKey);
+        ApplyPurchaseVendorExemptions(_PurchaseHeader, _ProcessKey);
+        FinalAdjustPurchaseAccumulatedWithholdings(_ProcessKey);
+        CleanupPurchaseCalc(_ProcessKey);
+    end;
+
+    local procedure ApplyPurchaseHistoricalAccumulation(var _PurchaseHeader: Record "Purchase Header"; _ProcessKey: Code[20])
+    var
+        StartPeriodLocal: Date;
+        EndPeriodLocal: Date;
+        PreviousBase: Decimal;
+    begin
+        JXVZWithholdCalcLines.Reset();
+        JXVZWithholdCalcLines.SetRange(JXVZPaymentOrderNo, _ProcessKey);
+        if JXVZWithholdCalcLines.FindSet() then
+            repeat
+                if not (JXVZWithholdCalcLines.JXVZAccumulativeCalculation or JXVZWithholdCalcLines.JXVZDeterminationPerMonthlyInv) then
+                    continue;
+
+                GetAccumulationDatesByOperationDate(
+                    GetPurchaseOperationDate(_PurchaseHeader),
+                    JXVZWithholdCalcLines.JXVZAccumulationPeriod,
+                    StartPeriodLocal,
+                    EndPeriodLocal);
+
+                if StartPeriodLocal = 0D then
+                    Error(Text004Lbl, JXVZWithholdCalcLines.JXVZTaxCode, JXVZWithholdCalcLines.JXVZRegime);
+
+                PreviousBase := CalculaFacturacionDL(
+                    GetPurchaseVendorNo(_PurchaseHeader),
+                    JXVZWithholdCalcLines.JXVZWitholdingNo,
+                    StartPeriodLocal,
+                    EndPeriodLocal);
+
+                JXVZWithholdCalcLines.JXVZPreviousPayments := PreviousBase;
+
+                if JXVZWithholdCalcLines.JXVZAccumulativeCalculation then begin
+                    JXVZWithholdCalcLines.JXVZAccumulative += PreviousBase;
+                    JXVZWithholdCalcLines.JXVZBase := JXVZWithholdCalcLines.JXVZAccumulative;
+                    JXVZWithholdCalcLines.JXVZMothlyWitholding := GetHistoricalWithholdingAmount(
+                        JXVZWithholdCalcLines.JXVZTaxCode,
+                        JXVZWithholdCalcLines.JXVZRegime,
+                        GetPurchaseVendorNo(_PurchaseHeader),
+                        StartPeriodLocal,
+                        EndPeriodLocal);
+                end;
+
+                JXVZWithholdCalcLines.Modify();
+            until JXVZWithholdCalcLines.Next() = 0;
+    end;
+
+    local procedure ApplyPurchaseScales(_ProcessKey: Code[20])
+    begin
+        JXVZWithholdCalcLines.Reset();
+        JXVZWithholdCalcLines.SetRange(JXVZPaymentOrderNo, _ProcessKey);
+        JXVZWithholdCalcLines.SetRange(JXVZDistinctPerDocument, false);
+        if JXVZWithholdCalcLines.FindSet() then
+            repeat
+                if ApplyScaleToCalcLine(JXVZWithholdCalcLines, JXVZWithholdCalcLines.JXVZAccumulative, JXVZWithholdCalcLines.JXVZDocumentDate) then
+                    JXVZWithholdCalcLines.Modify();
+            until JXVZWithholdCalcLines.Next() = 0;
+
+        JXVZWithholdCalcLines.Reset();
+        JXVZWithholdCalcLines.SetRange(JXVZPaymentOrderNo, _ProcessKey);
+        JXVZWithholdCalcLines.SetRange(JXVZDistinctPerDocument, true);
+        if JXVZWithholdCalcLines.FindSet() then
+            repeat
+                JXVZWithholdCalcDocument.Reset();
+                JXVZWithholdCalcDocument.SetRange(JXVZPaymentOrderNo, _ProcessKey);
+                JXVZWithholdCalcDocument.SetRange(JXVZWitholdingNo, JXVZWithholdCalcLines.JXVZWitholdingNo);
+                if JXVZWithholdCalcDocument.FindSet() then
+                    repeat
+                        if ApplyScaleToCalcDocument(JXVZWithholdCalcDocument, JXVZWithholdCalcLines) then begin
+                            JXVZWithholdCalcDocument.JXVZWitholdingAmount := JXVZWithholdCalcDocument.JXVZWitholdingTotalAmount;
+                            JXVZWithholdCalcDocument.Modify();
+                        end;
+                    until JXVZWithholdCalcDocument.Next() = 0;
+
+                JXVZWithholdCalcLines.CalcFields(JXVZDiscriminatedCalcWitholding, JXVZDiscriminationCalcBase);
+                JXVZWithholdCalcLines.JXVZCalculatedWitholding := JXVZWithholdCalcLines.JXVZDiscriminatedCalcWitholding;
+                JXVZWithholdCalcLines.JXVZBase := JXVZWithholdCalcLines.JXVZDiscriminationCalcBase;
+                JXVZWithholdCalcLines.JXVZAccumulative := JXVZWithholdCalcLines.JXVZDiscriminationCalcBase;
+                JXVZWithholdCalcLines.Modify();
+            until JXVZWithholdCalcLines.Next() = 0;
+    end;
+
+    local procedure ApplyPurchaseVendorExemptions(var _PurchaseHeader: Record "Purchase Header"; _ProcessKey: Code[20])
+    begin
+        JXVZWithholdCalcLines.Reset();
+        JXVZWithholdCalcLines.SetRange(JXVZPaymentOrderNo, _ProcessKey);
+        if JXVZWithholdCalcLines.FindSet() then
+            repeat
+                JXVZVendorExemption.Reset();
+                JXVZVendorExemption.SetRange(JXVZVendorCode, GetPurchaseVendorNo(_PurchaseHeader));
+                JXVZVendorExemption.SetRange(JXVZTaxCode, JXVZWithholdCalcLines.JXVZTaxCode);
+                JXVZVendorExemption.SetRange(JXVZRegime, JXVZWithholdCalcLines.JXVZRegime);
+                if JXVZVendorExemption.FindSet() then
+                    repeat
+                        if (JXVZVendorExemption.JXVZFromDate <= GetPurchaseOperationDate(_PurchaseHeader)) and
+                           (JXVZVendorExemption.JXVZToDate >= GetPurchaseOperationDate(_PurchaseHeader))
+                        then begin
+                            JXVZWithholdCalcLines.JXVZCalculatedWitholding :=
+                              JXVZWithholdCalcLines.JXVZCalculatedWitholding -
+                              ((JXVZWithholdCalcLines.JXVZCalculatedWitholding * JXVZVendorExemption.JXVZExemptionPercent) / 100);
+
+                            JXVZWithholdCalcLines."JXVZExemption%" := JXVZVendorExemption.JXVZExemptionPercent;
+                            JXVZWithholdCalcLines.JXVZCertificateDate := JXVZVendorExemption.JXVZCertificateDate;
+                            JXVZWithholdCalcLines.Modify();
+                        end;
+                    until JXVZVendorExemption.Next() = 0;
+            until JXVZWithholdCalcLines.Next() = 0;
+    end;
+
+    local procedure FinalAdjustPurchaseAccumulatedWithholdings(_ProcessKey: Code[20])
+    begin
+        JXVZWithholdCalcLines.Reset();
+        JXVZWithholdCalcLines.SetRange(JXVZPaymentOrderNo, _ProcessKey);
+        if JXVZWithholdCalcLines.FindSet() then
+            repeat
+                if JXVZWithholdCalcLines.JXVZAccumulativeCalculation then begin
+                    JXVZWithholdCalcLines.JXVZPreviousWitholdings := JXVZWithholdCalcLines.JXVZMothlyWitholding;
+                    JXVZWithholdCalcLines.JXVZCalculatedWitholding :=
+                        JXVZWithholdCalcLines.JXVZCalculatedWitholding - JXVZWithholdCalcLines.JXVZMothlyWitholding;
+                    JXVZWithholdCalcLines.Modify();
+                end;
+            until JXVZWithholdCalcLines.Next() = 0;
+    end;
+
+    local procedure CleanupPurchaseCalc(_ProcessKey: Code[20])
+    var
+        MonthlyBaseToValidate: Decimal;
+    begin
+        JXVZWithholdCalcLines.Reset();
+        JXVZWithholdCalcLines.SetRange(JXVZPaymentOrderNo, _ProcessKey);
+        if JXVZWithholdCalcLines.FindSet() then
+            repeat
+                MonthlyBaseToValidate := JXVZWithholdCalcLines.JXVZAccumulative + JXVZWithholdCalcLines.JXVZPreviousPayments;
+
+                if (JXVZWithholdCalcLines.JXVZCalculatedWitholding < JXVZWithholdCalcLines.JXVZMinimumWitholding) or
+                   (JXVZWithholdCalcLines.JXVZCalculatedWitholding = 0)
+                then begin
+                    JXVZWithholdCalcLines.Delete(true);
+                    continue;
+                end;
+
+                if JXVZWithholdCalcLines.JXVZDeterminationPerMonthlyInv then
+                    if MonthlyBaseToValidate < JXVZWithholdCalcLines.JXVZMinimumAmountInvPerMonth then begin
+                        JXVZWithholdCalcLines.Delete(true);
+                        continue;
+                    end;
+            until JXVZWithholdCalcLines.Next() = 0;
+
+        JXVZWithholdCalcDocument.Reset();
+        JXVZWithholdCalcDocument.SetRange(JXVZPaymentOrderNo, _ProcessKey);
+        if JXVZWithholdCalcDocument.FindSet() then
+            repeat
+                JXVZWithholdCalcLines.Reset();
+                JXVZWithholdCalcLines.SetRange(JXVZPaymentOrderNo, _ProcessKey);
+                JXVZWithholdCalcLines.SetRange(JXVZWitholdingNo, JXVZWithholdCalcDocument.JXVZWitholdingNo);
+                if not JXVZWithholdCalcLines.FindFirst() then
+                    JXVZWithholdCalcDocument.Delete(true);
+            until JXVZWithholdCalcDocument.Next() = 0;
+    end;
+
+    local procedure GetPurchaseLineBase(var _PurchaseHeader: Record "Purchase Header"; var _PurchaseLine: Record "Purchase Line"; _BaseType: enum JXVZWithholdBaseType): Decimal
+    var
+        LocalBaseCalculation: Decimal;
+    begin
+        case _BaseType of
+            _BaseType::NetAmount:
+                LocalBaseCalculation := _PurchaseLine."VAT Base Amount";
+
+            _BaseType::TaxAmount:
+                LocalBaseCalculation := _PurchaseLine."Amount Including VAT";
+
+            _BaseType::GrossAmount:
+                LocalBaseCalculation := _PurchaseLine."Amount Including VAT";
+
+            _BaseType::GrossLessVATAndOtherTaxes:
+                LocalBaseCalculation := _PurchaseLine.Amount;
+
+            _BaseType::GrossLessVAT:
+                LocalBaseCalculation := _PurchaseLine."Amount Including VAT" -
+                    CalcTaxPerLine(
+                        _PurchaseLine."Tax Area Code",
+                        _PurchaseLine."Tax Group Code",
+                        _PurchaseLine."Tax Liable",
+                        GetPurchaseOperationDate(_PurchaseHeader),
+                        _PurchaseLine.Amount,
+                        0,
+                        _PurchaseHeader."Currency Factor",
+                        true,
+                        false);
+
+            _BaseType::GrossLessVATAndVATRelatedTaxes:
+                LocalBaseCalculation := _PurchaseLine."Amount Including VAT" -
+                    CalcTaxPerLine(
+                        _PurchaseLine."Tax Area Code",
+                        _PurchaseLine."Tax Group Code",
+                        _PurchaseLine."Tax Liable",
+                        GetPurchaseOperationDate(_PurchaseHeader),
+                        _PurchaseLine.Amount,
+                        0,
+                        _PurchaseHeader."Currency Factor",
+                        true,
+                        true);
+
+            _BaseType::VATOnly:
+                LocalBaseCalculation :=
+                    CalcTaxPerLine(
+                        _PurchaseLine."Tax Area Code",
+                        _PurchaseLine."Tax Group Code",
+                        _PurchaseLine."Tax Liable",
+                        GetPurchaseOperationDate(_PurchaseHeader),
+                        _PurchaseLine.Amount,
+                        0,
+                        _PurchaseHeader."Currency Factor",
+                        true,
+                        false);
+        end;
+
+        if _PurchaseHeader."Currency Factor" <> 0 then
+            LocalBaseCalculation := LocalBaseCalculation / _PurchaseHeader."Currency Factor";
+
+        exit(LocalBaseCalculation);
+    end;
+
+    local procedure VendorAllowedForPurchaseWithholding(var _PurchaseHeader: Record "Purchase Header"; _TaxCode: Code[20]; var _WithholdingTax: Record JXVZWithholdingTax): Boolean
+    begin
+        if _WithholdingTax.JXVZProvince = '' then
+            exit(true);
+
+        if (_PurchaseHeader.JXVZProvince <> '') and (_PurchaseHeader.JXVZProvince = _WithholdingTax.JXVZProvince) then
+            exit(true);
+
+        if _PurchaseHeader.JXVZProvince = '' then begin
+            JXVZVendorWithholdCondition2.Reset();
+            JXVZVendorWithholdCondition2.SetRange(JXVZVendorCode, _PurchaseHeader."Buy-from Vendor No.");
+            JXVZVendorWithholdCondition2.SetRange(JXVZTaxCode, _TaxCode);
+            if JXVZVendorWithholdCondition2.FindFirst() then begin
+                JXVZWithholdingTax2.Reset();
+                JXVZWithholdingTax2.SetRange(JXVZTaxCode, JXVZVendorWithholdCondition2.JXVZTaxCode);
+                if JXVZWithholdingTax2.FindFirst() then
+                    if JXVZWithholdingTax2.JXVZProvince <> '' then
+                        exit(true);
+            end;
+        end;
+
+        exit(false);
+    end;
+
+    local procedure GetVendorWithholdingCondition(_VendorNo: Code[20]; _TaxCode: Code[20]): Code[20]
+    begin
+        JXVZVendorWithholdCondition.Reset();
+        JXVZVendorWithholdCondition.SetRange(JXVZTaxCode, _TaxCode);
+        JXVZVendorWithholdCondition.SetRange(JXVZVendorCode, _VendorNo);
+        if JXVZVendorWithholdCondition.FindFirst() then
+            exit(JXVZVendorWithholdCondition.JXVZTaxConditionCode);
+
+        exit('');
+    end;
+
+    local procedure GetPurchaseVendorNo(var _PurchaseHeader: Record "Purchase Header"): Code[20]
+    begin
+        if _PurchaseHeader."Pay-to Vendor No." <> '' then
+            exit(_PurchaseHeader."Pay-to Vendor No.");
+
+        exit(_PurchaseHeader."Buy-from Vendor No.");
+    end;
+
+    local procedure GetPurchaseOperationDate(var _PurchaseHeader: Record "Purchase Header"): Date
+    begin
+        if _PurchaseHeader."Posting Date" <> 0D then
+            exit(_PurchaseHeader."Posting Date");
+
+        if _PurchaseHeader."Document Date" <> 0D then
+            exit(_PurchaseHeader."Document Date");
+
+        exit(WorkDate());
+    end;
+
+    local procedure GetPurchaseExternalDocumentNo(var _PurchaseHeader: Record "Purchase Header"): Code[35]
+    begin
+        if _PurchaseHeader."Vendor Cr. Memo No." <> '' then
+            exit(_PurchaseHeader."Vendor Cr. Memo No.");
+
+        exit(_PurchaseHeader."Vendor Invoice No.");
+    end;
+
+    local procedure GetAccumulationDatesByOperationDate(_OperationDate: Date; _AccumulationPeriod: Option " ","Mes Calendario","Año Calendario","Año Corrido"; var _StartPeriod: Date; var _EndPeriod: Date)
+    begin
+        _StartPeriod := 0D;
+        _EndPeriod := 0D;
+
+        case _AccumulationPeriod of
+            _AccumulationPeriod::"Mes Calendario":
+                begin
+                    _StartPeriod := DMY2Date(1, Date2DMY(_OperationDate, 2), Date2DMY(_OperationDate, 3));
+                    _EndPeriod := CalcDate('<CM>', _OperationDate);
+                end;
+
+            _AccumulationPeriod::"Año Calendario":
+                begin
+                    _StartPeriod := DMY2Date(1, 1, Date2DMY(_OperationDate, 3));
+                    _EndPeriod := CalcDate('<CY>', _OperationDate);
+                end;
+
+            _AccumulationPeriod::"Año Corrido":
+                begin
+                    _StartPeriod := CalcDate('<-1Y+1D>', _OperationDate);
+                    _EndPeriod := _OperationDate;
+                end;
+        end;
+    end;
+
+    local procedure GetHistoricalWithholdingAmount(_TaxCode: Code[20]; _Regime: Code[20]; _VendorNo: Code[20]; _StartPeriod: Date; _EndPeriod: Date): Decimal
+    begin
+        JXVZWithholdLedgerEntry.Reset();
+        JXVZWithholdLedgerEntry.SetCurrentKey(JXVZTaxCode, JXVZVendorCode, JXVZRegime);
+        JXVZWithholdLedgerEntry.SetRange(JXVZTaxCode, _TaxCode);
+        JXVZWithholdLedgerEntry.SetRange(JXVZVendorCode, _VendorNo);
+        JXVZWithholdLedgerEntry.SetRange(JXVZRegime, _Regime);
+        JXVZWithholdLedgerEntry.SetRange(JXVZWitholdingDate, _StartPeriod, _EndPeriod);
+        JXVZWithholdLedgerEntry.CalcSums(JXVZWitholdingAmount);
+
+        exit(JXVZWithholdLedgerEntry.JXVZWitholdingAmount);
+    end;
+
+    procedure PostPurchaseInvoiceWithholdings(var PurchHeader: Record "Purchase Header"; var PurchInvHeader: Record "Purch. Inv. Header")
+    begin
+        PostPurchaseWithholdings(PurchHeader, PurchInvHeader."No.", PurchInvHeader."Posting Date", PurchInvHeader."Document Date",
+            PurchInvHeader."Vendor Invoice No.", false, PurchInvHeader."Dimension Set ID",
+            PurchInvHeader."Shortcut Dimension 1 Code", PurchInvHeader."Shortcut Dimension 2 Code");
+    end;
+
+    procedure PostPurchaseCrMemoWithholdings(var PurchHeader: Record "Purchase Header"; var PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr.")
+    begin
+        PostPurchaseWithholdings(PurchHeader, PurchCrMemoHdr."No.", PurchCrMemoHdr."Posting Date", PurchCrMemoHdr."Document Date",
+            PurchCrMemoHdr."Vendor Cr. Memo No.", true, PurchCrMemoHdr."Dimension Set ID",
+            PurchCrMemoHdr."Shortcut Dimension 1 Code", PurchCrMemoHdr."Shortcut Dimension 2 Code");
+    end;
+
+    local procedure PostPurchaseWithholdings(
+        var PurchHeader: Record "Purchase Header";
+        PostedDocNo: Code[20];
+        PostingDate: Date;
+        DocumentDate: Date;
+        ExternalDocumentNo: Code[35];
+        IsCreditMemo: Boolean;
+        DimensionSetID: Integer;
+        ShortcutDim1Code: Code[20];
+        ShortcutDim2Code: Code[20])
+    var
+        ProcessKey: Code[20];
+        LocalCalcLine: Record JXVZWithholdCalcLines;
+        LocalDetail: Record JXVZWithholdDetailEntry;
+        CertificateNo: Code[20];
+    begin
+        ProcessKey := PurchHeader."No.";
+
+        CalcPurchaseDocument(PurchHeader);
+
+        LocalCalcLine.Reset();
+        LocalCalcLine.SetRange(JXVZPaymentOrderNo, ProcessKey);
+        if not LocalCalcLine.FindSet() then
+            exit;
+
+        repeat
+            if LocalCalcLine.JXVZCalculatedWitholding = 0 then
+                continue;
+
+            LocalDetail.Reset();
+            LocalDetail.SetRange(JXVZWitholdingNo, LocalCalcLine.JXVZWitholdingNo);
+            LocalDetail.SetRange(JXVZTaxCode, LocalCalcLine.JXVZTaxCode);
+            LocalDetail.SetRange(JXVZRegime, LocalCalcLine.JXVZRegime);
+            if not LocalDetail.FindFirst() then
+                Error('No se encontró la configuración de detalle de retención para Impuesto %1, Régimen %2.',
+                    LocalCalcLine.JXVZTaxCode, LocalCalcLine.JXVZRegime);
+
+            CertificateNo := GetPurchaseWithholdingCertificateNo(LocalDetail, PostingDate);
+
+            PostPurchaseWithholdingJournalLine(
+                PurchHeader,
+                LocalDetail,
+                LocalCalcLine,
+                PostedDocNo,
+                PostingDate,
+                DocumentDate,
+                ExternalDocumentNo,
+                IsCreditMemo,
+                CertificateNo,
+                DimensionSetID,
+                ShortcutDim1Code,
+                ShortcutDim2Code);
+
+            InsertPurchaseWithholdLedgerEntry(
+                PurchHeader,
+                LocalDetail,
+                LocalCalcLine,
+                PostedDocNo,
+                PostingDate,
+                DocumentDate,
+                ExternalDocumentNo,
+                IsCreditMemo,
+                CertificateNo);
+        until LocalCalcLine.Next() = 0;
+
+        DeletePurchaseDocumentTemp(ProcessKey);
+    end;
+
+    local procedure PostPurchaseWithholdingJournalLine(
+        var PurchHeader: Record "Purchase Header";
+        var WithholdDetail: Record JXVZWithholdDetailEntry;
+        var WithholdCalcLine: Record JXVZWithholdCalcLines;
+        PostedDocNo: Code[20];
+        PostingDate: Date;
+        DocumentDate: Date;
+        ExternalDocumentNo: Code[35];
+        IsCreditMemo: Boolean;
+        CertificateNo: Code[20];
+        DimensionSetID: Integer;
+        ShortcutDim1Code: Code[20];
+        ShortcutDim2Code: Code[20])
+    var
+        LocalGenJnlLine: Record "Gen. Journal Line";
+        SourceCodeSetup: Record "Source Code Setup";
+        GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line";
+        SignFactor: Decimal;
+    begin
+        SourceCodeSetup.Get();
+
+        if IsCreditMemo then
+            SignFactor := 1
+        else
+            SignFactor := -1;
+
+        LocalGenJnlLine.Init();
+        LocalGenJnlLine."System-Created Entry" := true;
+        LocalGenJnlLine."Source Code" := SourceCodeSetup.Purchases;
+        LocalGenJnlLine."Posting Date" := PostingDate;
+        LocalGenJnlLine."Document Date" := DocumentDate;
+        LocalGenJnlLine."Document No." := PostedDocNo;
+        LocalGenJnlLine."External Document No." := ExternalDocumentNo;
+        LocalGenJnlLine."Account Type" := LocalGenJnlLine."Account Type"::Vendor;
+        LocalGenJnlLine.Validate("Account No.", GetPurchaseVendorNo(PurchHeader));
+
+        if IsCreditMemo then begin
+            LocalGenJnlLine."Document Type" := LocalGenJnlLine."Document Type"::Refund;
+            LocalGenJnlLine."Applies-to Doc. Type" := LocalGenJnlLine."Applies-to Doc. Type"::"Credit Memo";
+        end else begin
+            LocalGenJnlLine."Document Type" := LocalGenJnlLine."Document Type"::Payment;
+            LocalGenJnlLine."Applies-to Doc. Type" := LocalGenJnlLine."Applies-to Doc. Type"::Invoice;
+        end;
+
+        LocalGenJnlLine."Applies-to Doc. No." := PostedDocNo;
+        LocalGenJnlLine.Description := CopyStr(WithholdCalcLine.JXVZDescription, 1, MaxStrLen(LocalGenJnlLine.Description));
+        LocalGenJnlLine."Bal. Account Type" := LocalGenJnlLine."Bal. Account Type"::"G/L Account";
+        LocalGenJnlLine.Validate("Bal. Account No.", WithholdDetail.JXVZAccountNo);
+
+        LocalGenJnlLine."Dimension Set ID" := DimensionSetID;
+        LocalGenJnlLine."Shortcut Dimension 1 Code" := ShortcutDim1Code;
+        LocalGenJnlLine."Shortcut Dimension 2 Code" := ShortcutDim2Code;
+
+        LocalGenJnlLine.Validate(Amount, Round(Abs(WithholdCalcLine.JXVZCalculatedWitholding) * SignFactor, 0.01));
+
+        // Campos custom usados por tu lógica actual
+        LocalGenJnlLine.JXVZIsWitholding := true;
+        LocalGenJnlLine.JXVZWitholdingNo := WithholdCalcLine.JXVZWitholdingNo;
+        LocalGenJnlLine.JXVZBase := Round(Abs(WithholdCalcLine.JXVZBase) * SignFactor, 0.01);
+        LocalGenJnlLine.JXVZValueNoValue := CertificateNo;
+        LocalGenJnlLine.JXVZDocumentDateValue := DocumentDate;
+        LocalGenJnlLine.JXVZToDateValue := PostingDate;
+        LocalGenJnlLine.JXVZAcreditationDateValue := PostingDate;
+
+        GenJnlPostLine.RunWithCheck(LocalGenJnlLine);
+    end;
+
+    local procedure InsertPurchaseWithholdLedgerEntry(
+        var PurchHeader: Record "Purchase Header";
+        var WithholdDetail: Record JXVZWithholdDetailEntry;
+        var WithholdCalcLine: Record JXVZWithholdCalcLines;
+        PostedDocNo: Code[20];
+        PostingDate: Date;
+        DocumentDate: Date;
+        ExternalDocumentNo: Code[35];
+        IsCreditMemo: Boolean;
+        CertificateNo: Code[20])
+    var
+        LocalWithholdLedgerEntry: Record JXVZWithholdLedgerEntry;
+        LocalWithholdingTax: Record JXVZWithholdingTax;
+        LocalWithholdScale: Record JXVZWithholdScale;
+        LocalWithholdTaxCondition: Record JXVZWithholdTaxCondition;
+        EntryNo: Integer;
+    begin
+        LocalWithholdLedgerEntry.Reset();
+        if LocalWithholdLedgerEntry.FindLast() then
+            EntryNo := LocalWithholdLedgerEntry.JXVZNo + 1
+        else
+            EntryNo := 1;
+
+        LocalWithholdLedgerEntry.Init();
+        LocalWithholdLedgerEntry.JXVZNo := EntryNo;
+        LocalWithholdLedgerEntry.JXVZVendorCode := GetPurchaseVendorNo(PurchHeader);
+        LocalWithholdLedgerEntry.JXVZWitholdingNo := WithholdCalcLine.JXVZWitholdingNo;
+        LocalWithholdLedgerEntry.JXVZVoucherCode := '';
+        LocalWithholdLedgerEntry.JXVZVoucherDate := DocumentDate;
+        LocalWithholdLedgerEntry.JXVZVoucherNo := PostedDocNo;
+        LocalWithholdLedgerEntry.JXVZVoucherAmount := Abs(WithholdCalcLine.JXVZBase);
+        LocalWithholdLedgerEntry.JXVZOperationCode := 1;
+        LocalWithholdLedgerEntry.JXVZCalculationBase := Abs(WithholdCalcLine.JXVZBase);
+        LocalWithholdLedgerEntry.JXVZWitholdingDate := PostingDate;
+        LocalWithholdLedgerEntry.JXVZWitholdingCertDate := PostingDate;
+        LocalWithholdLedgerEntry.JXVZWitholdingAmount := Abs(WithholdCalcLine.JXVZCalculatedWitholding);
+        LocalWithholdLedgerEntry."JXVZExemption%" := WithholdCalcLine."JXVZExemption%";
+        LocalWithholdLedgerEntry.JXVZBoletinDate := WithholdCalcLine.JXVZCertificateDate;
+        LocalWithholdLedgerEntry.JXVZWitholdingCertificateNo := CertificateNo;
+        LocalWithholdLedgerEntry.JXVZWitholdingSeriesNo := '';
+        LocalWithholdLedgerEntry.JXVZBase := Abs(WithholdCalcLine.JXVZBase);
+        LocalWithholdLedgerEntry.JXVZWitholdingType := LocalWithholdLedgerEntry.JXVZWitholdingType::Realizada;
+        LocalWithholdLedgerEntry.JXVZDiscriminatePerDocument := WithholdCalcLine.JXVZDistinctPerDocument;
+        LocalWithholdLedgerEntry."JXVZWitholding%" := Abs(WithholdCalcLine."JXVZWitholding%");
+        LocalWithholdLedgerEntry.JXVZTaxCode := WithholdDetail.JXVZTaxCode;
+        LocalWithholdLedgerEntry.JXVZWitholdingBaseType := WithholdDetail.JXVZWitholdingBaseType;
+        LocalWithholdLedgerEntry.JXVZMinimumWitholding := WithholdDetail.JXVZMinimumWitholding;
+        LocalWithholdLedgerEntry.JXVZScaleCode := WithholdDetail.JXVZScaleCode;
+        LocalWithholdLedgerEntry.JXVZRegime := WithholdDetail.JXVZRegime;
+
+        LocalWithholdingTax.Reset();
+        LocalWithholdingTax.SetRange(JXVZTaxCode, WithholdDetail.JXVZTaxCode);
+        if LocalWithholdingTax.FindFirst() then
+            LocalWithholdLedgerEntry.JXVZProvinceCode := LocalWithholdingTax.JXVZProvince;
+
+        LocalWithholdLedgerEntry.JXVZConditionCode := WithholdCalcLine.JXVZWitholdingCondition;
+
+        LocalWithholdTaxCondition.Reset();
+        LocalWithholdTaxCondition.SetRange(JXVZTaxCode, WithholdDetail.JXVZTaxCode);
+        if WithholdDetail.JXVZConditionCode <> '' then
+            LocalWithholdTaxCondition.SetRange(JXVZConditionCode, WithholdDetail.JXVZConditionCode)
+        else
+            LocalWithholdTaxCondition.SetRange(JXVZConditionCode, WithholdCalcLine.JXVZWitholdingCondition);
+        if LocalWithholdTaxCondition.FindFirst() then
+            LocalWithholdLedgerEntry.JXVZSicoreConditionCode := LocalWithholdTaxCondition.JXVZSicoreConditionCode;
+
+        LocalWithholdScale.Reset();
+        LocalWithholdScale.SetRange(JXVZScaleCode, WithholdDetail.JXVZScaleCode);
+        LocalWithholdScale.SetRange(JXVZTaxCode, WithholdDetail.JXVZTaxCode);
+        LocalWithholdScale.SetRange(JXVZRegime, WithholdDetail.JXVZRegime);
+        LocalWithholdScale.SetRange(JXVZWitholdingCondition, WithholdCalcLine.JXVZWitholdingCondition);
+        if LocalWithholdScale.FindFirst() then;
+
+        LocalWithholdLedgerEntry.Insert();
+    end;
+
+    local procedure GetPurchaseWithholdingCertificateNo(var WithholdDetail: Record JXVZWithholdDetailEntry; PostingDate: Date): Code[20]
+    var
+        NoSeriesManagement: Codeunit "No. Series";
+    begin
+        if WithholdDetail.JXVZPostingSeriesCode <> '' then
+            exit(NoSeriesManagement.GetNextNo(WithholdDetail.JXVZPostingSeriesCode, PostingDate, true));
+
+        if WithholdDetail.JXVZSeriesCode <> '' then
+            exit(NoSeriesManagement.GetNextNo(WithholdDetail.JXVZSeriesCode, PostingDate, true));
+
+        exit('');
+    end;
+
+    //Helpers actions
+    procedure CalculateFromPurchaseDocument(var PurchaseHeader: Record "Purchase Header")
+    var
+        JXVZWithholdings: Codeunit JXVZWithholdings;
+    begin
+        PurchaseHeader.TestField("Buy-from Vendor No.");
+        PurchaseHeader.TestField("Posting Date");
+        PurchaseHeader.TestField("Document Date");
+        PurchaseHeader.TestField("No.");
+
+        JXVZWithholdings.CalcPurchaseDocument(PurchaseHeader);
+    end;
+
+    procedure ShowCalculatedWithholdings(var PurchaseHeader: Record "Purchase Header")
+    var
+        CalcLines: Record JXVZWithholdCalcLines;
+    begin
+        PurchaseHeader.TestField("No.");
+
+        CalcLines.Reset();
+        CalcLines.SetRange(JXVZPaymentOrderNo, PurchaseHeader."No.");
+
+        Page.Run(Page::JXVZPurchCalculatedWithholds, CalcLines);
+    end;
+
+    //Delete witholds
+    procedure DeletePurchaseDocumentWithholdings(var PurchaseHeader: Record "Purchase Header")
+    begin
+        PurchaseHeader.testfield("No.");
+        DeletePurchaseDocumentTemp(PurchaseHeader."No.");
+    end;
+
+    procedure DeleteCalculatedWithholdings(var PurchaseHeader: Record "Purchase Header")
+    var
+        JXVZWithholdings: Codeunit JXVZWithholdings;
+    begin
+        PurchaseHeader.testfield("No.");
+        JXVZWithholdings.DeletePurchaseDocumentWithholdings(PurchaseHeader);
     end;
 }

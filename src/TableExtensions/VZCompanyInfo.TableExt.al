@@ -107,7 +107,7 @@ tableextension 84110 JXVZCompanyInfo extends "Company Information"
                 if CompInfo.FindFirst() then
                     if CompInfo.JXVZVenezuelaLocEnabled then begin
                         Clear(JXVZLogicalFactory);
-                        JXVZLogicalFactory.ValidateVenezuelanRIFOrError("VAT Registration No.");
+                        JXVZLogicalFactory.ValidateVenezuelanRIFOrError(Rec."VAT Registration No.", Rec."Country/Region Code");
                         Rec."VAT Registration No." := JXVZLogicalFactory.NormalizeVenezuelanRIF("VAT Registration No.");
                     end;
             end;
@@ -118,6 +118,7 @@ tableextension 84110 JXVZCompanyInfo extends "Company Information"
     var
         companyInfo: Record "Company Information";
     begin
+        companyInfo.Reset();
         companyInfo.FindFirst();
         if (companyInfo.JXVZCountry = JXVZCountry::Venezuela) then
             exit(true)

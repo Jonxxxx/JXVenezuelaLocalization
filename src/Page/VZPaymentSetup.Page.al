@@ -23,6 +23,7 @@ page 84116 JXVZPaymentSetup
                     ApplicationArea = All;
                     ToolTip = 'Register payment report', Comment = 'ESP=Reporte orden de pago registrado';
                 }
+                /*
                 field(JXVZWitholdReport; Rec.JXVZWitholdReport)
                 {
                     ApplicationArea = All;
@@ -38,7 +39,7 @@ page 84116 JXVZPaymentSetup
                     ApplicationArea = All;
                     ToolTip = 'Suss report', Comment = 'ESP=Reporte Suss';
                 }
-
+                */
                 field(JXVZAccountDescripOP; rec.JXVZAccountDescripOP)
                 {
                     ApplicationArea = All;

@@ -726,15 +726,25 @@ codeunit 84102 JXVZLogicalFactory
         exit(CurrentCheckDigit = ExpectedCheckDigit);
     end;
 
-    procedure ValidateVenezuelanRIFOrError(InputRIF: Text)
+    procedure ValidateVenezuelanRIFOrError(InputRIF: Text; Country: Code[10])
+    var
+        CompanyInfo: Record "Company Information";
     begin
-        if InputRIF = '' then
-            exit;
+        if CompanyInfo.JXIsVenezuela() then begin
+            CompanyInfo.Reset();
+            if CompanyInfo.FindFirst() then;
 
-        if not IsValidVenezuelanRIF(InputRIF) then
-            Error(
-              'El RIF venezolano "%1" no es válido. Formato esperado: una letra (V/E/J/P/G) y 9 dígitos, sin puntos. Ejemplo: J123456789.',
-              InputRIF);
+            if CompanyInfo."Country/Region Code" = Country then begin
+
+                if InputRIF = '' then
+                    exit;
+
+                if not IsValidVenezuelanRIF(InputRIF) then
+                    Error(
+                      'El RIF venezolano "%1" no es válido. Formato esperado: una letra (V/E/J/P/G) y 9 dígitos, sin puntos. Ejemplo: J123456789.',
+                      InputRIF);
+            end;
+        end;
     end;
 
     procedure NormalizeVenezuelanRIF(InputRIF: Text): Text

@@ -22,9 +22,9 @@ table 84141 JXVZFiscalType
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Fiscal type',
                         Comment = 'ESP = Tipo fiscal';
-            OptionMembers = ,ORD,FO,OC,RE;
-            OptionCaption = ',Ordinario,Formal,Ocacional,Responsable',
-                              Comment = 'ESP = ,Ordinario,Formal,Ocacional,Responsable';
+            OptionMembers = ,ORD,FO,OC,RE,EX;
+            OptionCaption = ',Ordinario,Formal,Ocacional,Responsable,Exterior',
+                              Comment = 'ESP = ,Ordinario,Formal,Ocacional,Responsable,Exterior';
         }
 
         field(4; JXVZSVATCondition; Integer)

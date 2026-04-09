@@ -2934,7 +2934,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Sum(Fields!VAT105.Value, "DataSet_Result") + Sum(Fields!VAT21.Value, "DataSet_Result") + Sum(Fields!VAT27.Value, "DataSet_Result")</Value>
+                      <Value>=Sum(Fields!VAT105.Value, "DataSet_Result") + Sum(Fields!VAT21.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -3235,7 +3235,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Sum(Fields!VAT105.Value, "DataSet_Result") + Sum(Fields!VAT21.Value, "DataSet_Result") + Sum(Fields!VAT27.Value, "DataSet_Result")</Value>
+                      <Value>=Sum(Fields!VAT105.Value, "DataSet_Result") + Sum(Fields!VAT21.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <Format>#,0.00</Format>

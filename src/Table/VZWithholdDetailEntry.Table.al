@@ -31,11 +31,10 @@ table 84118 JXVZWithholdDetailEntry
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Description', Comment = 'ESP=Descripcion';
         }
-        field(7; JXVZWitholdingBaseType; Option)
+        field(7; JXVZWitholdingBaseType; Enum JXVZWithholdBaseType)
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Witholding base type', Comment = 'ESP=Tipo retencion base';
-            OptionMembers = "Sin Impuestos","Importe Impuestos","Importe Total","Total menos IVA-IVA Perc-IIBB","Total menos IVA","Total menos IVA menos IVA Percep","Solo IVA";
         }
         field(8; JXVZAccumulativeCalculation; Boolean)
         {
@@ -187,6 +186,18 @@ table 84118 JXVZWithholdDetailEntry
             Caption = 'Posting Series code', Comment = 'ESP=Codigo de serie registro';
             TableRelation = "No. Series";
             ValidateTableRelation = true;
+        }
+
+        field(32; JXVZCalcOnPurchaseDoc; Boolean)
+        {
+            DataClassification = OrganizationIdentifiableInformation;
+            Caption = 'Calculate on purchase document', Comment = 'ESP=Calcular en documento de compra';
+        }
+
+        field(33; JXVZCalcOnPayment; Boolean)
+        {
+            DataClassification = OrganizationIdentifiableInformation;
+            Caption = 'Calculate on payment', Comment = 'ESP=Calcular en pago';
         }
     }
 

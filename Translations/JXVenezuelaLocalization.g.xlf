@@ -134,8 +134,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZFiscalType - Field JXVZFiscalType - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1537964656 - Field 1537964656 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>,Ordinario,Formal,Ocacional,Responsable</source>
-          <note from="Developer" annotates="general" priority="2">ESP = ,Ordinario,Formal,Ocacional,Responsable</note>
+          <source>,Ordinario,Formal,Ocacional,Responsable,Exterior</source>
+          <note from="Developer" annotates="general" priority="2">ESP = ,Ordinario,Formal,Ocacional,Responsable,Exterior</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZFiscalType - Field JXVZFiscalType - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 1537964656 - Field 1669974263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -1628,6 +1628,16 @@
           <note from="Developer" annotates="general" priority="2">ESP=Pagos unitario</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdDetailEntry - Field JXVZAccumulativePayments - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1206936874 - Field 353504820 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculate on payment</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Calcular en pago</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdDetailEntry - Field JXVZCalcOnPayment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1206936874 - Field 398726635 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculate on purchase document</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Calcular en documento de compra</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdDetailEntry - Field JXVZCalcOnPurchaseDoc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1206936874 - Field 1223162228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Condition code</source>
           <note from="Developer" annotates="general" priority="2">ESP=Codigo condicion</note>
@@ -2063,6 +2073,26 @@
           <note from="Developer" annotates="general" priority="2">ESP=Importe base</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZBaseAmount - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3171551029 - Field 3036047987 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculation formula</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Formula de calculo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZCalculationFormula - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3171551029 - Field 3994581359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deduction amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Importe sustraendo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZDeductionAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3171551029 - Field 1807229243 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Economic activity code</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Codigo actividad economica</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZEconomicActivityCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3171551029 - Field 1754474910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Economic activity description</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Descripcion actividad economica</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZEconomicActivityDescription - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3171551029 - Field 2519497992 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fixed amount</source>
           <note from="Developer" annotates="general" priority="2">ESP=Importe fijo</note>
@@ -2073,10 +2103,25 @@
           <note from="Developer" annotates="general" priority="2">ESP=Desde</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZFrom - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3171551029 - Field 3610700338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Minimum payment amount</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Importe minimo de pago</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZMinimumPaymentAmount - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3171551029 - Field 1214835396 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Monotributo IVA</source>
           <note from="Developer" annotates="general" priority="2">ESP=Monotributo IVA</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZMonotributoIVA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3171551029 - Field 2979036153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Municipality code</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Codigo municipio</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZMunicipalityCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3171551029 - Field 3255837521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Regime</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Regimen</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZRegime - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3171551029 - Field 351681245 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Scale code</source>
@@ -2088,6 +2133,11 @@
           <note from="Developer" annotates="general" priority="2">ESP=% excendente</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZSurplus - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3171551029 - Field 3953898997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>% Taxable base</source>
+          <note from="Developer" annotates="general" priority="2">ESP=% base imponible</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZTaxableBasePct - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3171551029 - Field 2711124530 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tax code</source>
           <note from="Developer" annotates="general" priority="2">ESP=Codigo impuesto</note>
@@ -2097,6 +2147,21 @@
           <source>To</source>
           <note from="Developer" annotates="general" priority="2">ESP=Hasta</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZTo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3171551029 - Field 3338562538 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Use Tax Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Usa Unidad Tributaria</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZUseTaxUnit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3171551029 - Field 3684422026 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Valid from</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Vigencia desde</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZValidFrom - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3171551029 - Field 1765403125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Valid to</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Vigencia hasta</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdScale - Field JXVZValidTo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3171551029 - Field 1344351036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Witholding condition</source>
@@ -2588,11 +2653,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPaymentSetup - Control JXVZAccountDescripOP - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 2274312045 - Control 209149387 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Gain report</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Reporte ganancias</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPaymentSetup - Control JXVZGainReport - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 2274312045 - Control 4257498468 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Register payment report</source>
           <note from="Developer" annotates="general" priority="2">ESP=Reporte orden de pago registrado</note>
@@ -2602,16 +2662,6 @@
           <source>Register receipt report</source>
           <note from="Developer" annotates="general" priority="2">ESP=Reporte recibo registrado</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPaymentSetup - Control JXVZHistReceiptReport - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2274312045 - Control 122907234 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Suss report</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Reporte Suss</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPaymentSetup - Control JXVZSussReport - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2274312045 - Control 2222486391 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Withholding report</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Reporte Retenciones</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPaymentSetup - Control JXVZWitholdReport - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2274312045 - Action 1629619770 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delete all transactions</source>
@@ -3042,6 +3092,101 @@
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2">ESP=Descripcion</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZProvinces - Control JXVZDescription - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculated Withholdings</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Retenciones calculadas</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 1583114092 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the withholding uses accumulative calculation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZAccumulativeCalculation - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 3808912653 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculation base.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZBase - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 209268341 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculated withholding amount.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZCalculatedWitholding - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 619819264 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the withholding is discriminated per document.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZDistinctPerDocument - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 1880225319 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the document date used for the calculation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZDocumentDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 418276446 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the exemption percentage applied.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZExemption% - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 2515370069 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding description.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZGeneralWitholdingDescription - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 920770348 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the accumulated withholding amount from the period.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZMothlyWitholding - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 30173213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the internal process/document number.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZPaymentOrderNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 2192099066 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the previous accumulated base.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZPreviousPayments - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 1882355395 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the previous withholdings deducted from the current calculation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZPreviousWitholdings - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 3255837521 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding regime.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZRegime - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 351681245 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the scale code used.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZScaleCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 2711124530 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the tax code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZTaxCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 1559380524 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding certificate or internal number.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZWithholdingNumber - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 2010615178 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding percentage applied.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZWitholding% - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 1344351036 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding condition.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZWitholdingCondition - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 511434200 - Control 3260564334 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding setup entry number.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPurchCalculatedWithholds - Control JXVZWitholdingNo - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 349886754 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Venezuela series configuration</source>
@@ -3633,6 +3778,16 @@
           <note from="Developer" annotates="general" priority="2">ESP=Calculo acumulativo</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdDetailEntry - Control JXVZAccumulativeCalculation - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 1206936874 - Control 353504820 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculate on purchase document</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Calcular en documento de compra</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdDetailEntry - Control JXVZCalcOnPayment - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1206936874 - Control 398726635 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculate on purchase document</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Calcular en documento de compra</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdDetailEntry - Control JXVZCalcOnPurchaseDoc - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 1206936874 - Control 3260750020 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2">ESP=Descripcion</note>
@@ -3662,16 +3817,6 @@
           <source>Regime</source>
           <note from="Developer" annotates="general" priority="2">ESP=Regimen</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdDetailEntry - Control JXVZRegime - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1206936874 - Control 1887898314 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Report description</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Descripcion reporte</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdDetailEntry - Control JXVZReportDescription - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1206936874 - Control 1843738727 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Report ID</source>
-          <note from="Developer" annotates="general" priority="2">ESP=ID reporte</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdDetailEntry - Control JXVZReportID - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1206936874 - Control 351681245 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Scale Code</source>
@@ -3739,43 +3884,103 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3171551029 - Control 2362388273 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Base amount</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Importe base</note>
+          <source>Specifies the base amount used in the scale calculation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZBaseAmount - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3171551029 - Control 3036047987 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculation formula used for this scale.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZCalculationFormula - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3171551029 - Control 3994581359 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the deduction amount or sustraendo.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZDeductionAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3171551029 - Control 1807229243 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the economic activity code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZEconomicActivityCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3171551029 - Control 1754474910 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the economic activity description.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZEconomicActivityDescription - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3171551029 - Control 2519497992 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed amount</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Importe fijo</note>
+          <source>Specifies the fixed amount for the scale.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZFixedAmount - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3171551029 - Control 1852026340 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>From</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Desde</note>
+          <source>Specifies the amount from which this scale applies.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZFrom - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3171551029 - Control 3610700338 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the minimum payment amount required for the scale to apply.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZMinimumPaymentAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3171551029 - Control 1214835396 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether Monotributo IVA applies.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZMonotributoIVA - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3171551029 - Control 2979036153 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the municipality code for municipal withholdings.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZMunicipalityCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3171551029 - Control 3255837521 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding regime.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZRegime - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3171551029 - Control 351681245 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Scale code</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Codigo escala</note>
+          <source>Specifies the scale code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZScaleCode - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3171551029 - Control 1069643420 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>% surplus</source>
-          <note from="Developer" annotates="general" priority="2">ESP=% excendente</note>
+          <source>Specifies the percentage applied to the surplus amount.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZSurplus - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3171551029 - Control 3953898997 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the taxable base percentage to apply before calculating the withholding.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZTaxableBasePct - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3171551029 - Control 2711124530 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Tax code</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Codigo impuesto</note>
+          <source>Specifies the withholding tax code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZTaxCode - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3171551029 - Control 697209911 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>To</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Hasta</note>
+          <source>Specifies the amount up to which this scale applies.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZTo - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3171551029 - Control 3338562538 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the scale uses Tax Unit values.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZUseTaxUnit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3171551029 - Control 3684422026 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the starting date from which this scale is valid.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZValidFrom - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3171551029 - Control 1765403125 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the ending date until which this scale is valid.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZValidTo - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3171551029 - Control 1344351036 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Witholding condition</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Condicion de retencion</note>
+          <source>Specifies the withholding condition.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdScale - Control JXVZWitholdingCondition - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2064435319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -6678,6 +6883,36 @@
           <note from="Developer" annotates="general" priority="2">ESP="Escala retencion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchAgentRC - Action JXVZWithholdTaxScale - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1059613798 - Action 1095002263 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
+          <source>Calcula las retenciones del documento de compra actual.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseCreditMemo - Action JXVZCalcWithholds - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1059613798 - Action 1095002263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
+          <source>Calcular retenciones</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseCreditMemo - Action JXVZCalcWithholds - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1059613798 - Action 936622427 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
+          <source>Elimina las retenciones calculadas para el documento actual.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseCreditMemo - Action JXVZDeleteWithholdings - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1059613798 - Action 936622427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
+          <source>Ver retenciones</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseCreditMemo - Action JXVZDeleteWithholdings - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1059613798 - Action 4157009527 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
+          <source>Ver las retenciones del documento de compra actual.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseCreditMemo - Action JXVZViewWithholds - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1059613798 - Action 4157009527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
+          <source>Ver retenciones</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseCreditMemo - Action JXVZViewWithholds - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1059613798 - Control 497382615 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
           <source>Posting No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="No. Registro"</note>
@@ -6722,6 +6957,36 @@
           <source>Withholding code</source>
           <note from="Developer" annotates="general" priority="2">ESP=Codigo retencion</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseCreditMemo - Control JXVZWithholdingCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4290665256 - Action 1095002263 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+          <source>Calcula las retenciones del documento de compra actual.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseInvoice - Action JXVZCalcWithholds - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4290665256 - Action 1095002263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+          <source>Calcular retenciones</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseInvoice - Action JXVZCalcWithholds - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4290665256 - Action 936622427 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+          <source>Elimina las retenciones calculadas para el documento actual.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseInvoice - Action JXVZDeleteWithholdings - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4290665256 - Action 936622427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+          <source>Ver retenciones</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseInvoice - Action JXVZDeleteWithholdings - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4290665256 - Action 4157009527 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+          <source>Ver las retenciones del documento de compra actual.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseInvoice - Action JXVZViewWithholds - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4290665256 - Action 4157009527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+          <source>Ver retenciones</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseInvoice - Action JXVZViewWithholds - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 4290665256 - Control 1866889003 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
           <source>Venezuela</source>
@@ -6772,6 +7037,36 @@
           <source>Withholding code</source>
           <note from="Developer" annotates="general" priority="2">ESP=Codigo retencion</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseInvoice - Control JXVZWithholdingCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1188411861 - Action 1095002263 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Calcula las retenciones del documento de compra actual.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseOrder - Action JXVZCalcWithholds - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1188411861 - Action 1095002263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Calcular retenciones</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseOrder - Action JXVZCalcWithholds - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1188411861 - Action 936622427 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Elimina las retenciones calculadas para el documento actual.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseOrder - Action JXVZDeleteWithholdings - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1188411861 - Action 936622427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Ver retenciones</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseOrder - Action JXVZDeleteWithholdings - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1188411861 - Action 4157009527 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Ver las retenciones del documento de compra actual.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseOrder - Action JXVZViewWithholds - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1188411861 - Action 4157009527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Ver retenciones</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseOrder - Action JXVZViewWithholds - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1188411861 - Control 1866889003 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
           <source>Venezuela</source>
@@ -8437,6 +8732,81 @@
           <source>01 Reg</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZDocTypeLVE - EnumValue Reg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4030652378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Withholding base type</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Tipo base retención</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdBaseType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4030652378 - EnumValue 4191805954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe total</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Importe total</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdBaseType - EnumValue GrossAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4030652378 - EnumValue 1848726180 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total menos IVA</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Total menos IVA</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdBaseType - EnumValue GrossLessVAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4030652378 - EnumValue 809133008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total menos IVA y otros impuestos</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Total menos IVA y otros impuestos</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdBaseType - EnumValue GrossLessVATAndOtherTaxes - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4030652378 - EnumValue 3888512408 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total menos IVA e impuestos asociados al IVA</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Total menos IVA e impuestos asociados al IVA</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdBaseType - EnumValue GrossLessVATAndVATRelatedTaxes - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4030652378 - EnumValue 3706032493 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Base neta</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Base neta</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdBaseType - EnumValue NetAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4030652378 - EnumValue 4025233019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Importe impuestos</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Importe impuestos</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdBaseType - EnumValue TaxAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4030652378 - EnumValue 112848113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Solo IVA</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Solo IVA</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdBaseType - EnumValue VATOnly - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 184678839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Withholding scale formula</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Formula de escala de retención</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdScaleFormula - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 184678839 - EnumValue 635983754 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fixed amount only</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Solo importe fijo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdScaleFormula - EnumValue FixedAmountOnly - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 184678839 - EnumValue 584905712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No withhold</source>
+          <note from="Developer" annotates="general" priority="2">ESP=No retener</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdScaleFormula - EnumValue NoWithhold - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 184678839 - EnumValue 2275901357 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Percentage minus deduction</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Porcentaje menos sustraendo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdScaleFormula - EnumValue PercentageMinusDeduction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 184678839 - EnumValue 3707707073 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Percentage on full base</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Porcentaje sobre base completa</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdScaleFormula - EnumValue PercentageOnFullBase - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 184678839 - EnumValue 1038037228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Standard excess</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Excedente estándar</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdScaleFormula - EnumValue StandardExcess - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 184678839 - EnumValue 3693269209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tarifa 2 accumulated</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Tarifa 2 acumulada</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdScaleFormula - EnumValue Tarifa2Accumulated - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 2541124256 - EnumValue 978818198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2593693414">
           <source>Payment Order</source>

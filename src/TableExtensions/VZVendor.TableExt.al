@@ -97,7 +97,7 @@ tableextension 84113 JXVZVendor extends Vendor
                 if CompInfo.FindFirst() then
                     if CompInfo.JXVZVenezuelaLocEnabled then begin
                         Clear(JXVZLogicalFactory);
-                        JXVZLogicalFactory.ValidateVenezuelanRIFOrError("VAT Registration No.");
+                        JXVZLogicalFactory.ValidateVenezuelanRIFOrError("VAT Registration No.", Rec."Country/Region Code");
                         Rec."VAT Registration No." := JXVZLogicalFactory.NormalizeVenezuelanRIF("VAT Registration No.");
                     end;
             end;

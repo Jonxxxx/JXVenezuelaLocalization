@@ -10,48 +10,110 @@ page 84123 JXVZWithholdScale
     {
         area(content)
         {
-            repeater(Control1000000000)
+            repeater(General)
             {
                 ShowCaption = false;
+
                 field(JXVZScaleCode; Rec.JXVZScaleCode)
                 {
                     ApplicationArea = All;
-                    Tooltip = 'Scale code', Comment = 'ESP=Codigo escala';
+                    ToolTip = 'Specifies the scale code.';
                 }
                 field(JXVZTaxCode; Rec.JXVZTaxCode)
                 {
                     ApplicationArea = All;
-                    Tooltip = 'Tax code', Comment = 'ESP=Codigo impuesto';
+                    ToolTip = 'Specifies the withholding tax code.';
                 }
                 field(JXVZWitholdingCondition; Rec.JXVZWitholdingCondition)
                 {
                     ApplicationArea = All;
-                    Tooltip = 'Witholding condition', Comment = 'ESP=Condicion de retencion';
+                    ToolTip = 'Specifies the withholding condition.';
+                }
+                field(JXVZRegime; Rec.JXVZRegime)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the withholding regime.';
+                }
+                field(JXVZCalculationFormula; Rec.JXVZCalculationFormula)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the calculation formula used for this scale.';
                 }
                 field(JXVZFrom; Rec.JXVZFrom)
                 {
                     ApplicationArea = All;
-                    Tooltip = 'From', Comment = 'ESP=Desde';
+                    ToolTip = 'Specifies the amount from which this scale applies.';
                 }
                 field(JXVZTo; Rec.JXVZTo)
                 {
                     ApplicationArea = All;
-                    Tooltip = 'To', Comment = 'ESP=Hasta';
+                    ToolTip = 'Specifies the amount up to which this scale applies.';
                 }
                 field(JXVZFixedAmount; Rec.JXVZFixedAmount)
                 {
                     ApplicationArea = All;
-                    Tooltip = 'Fixed amount', Comment = 'ESP=Importe fijo';
+                    ToolTip = 'Specifies the fixed amount for the scale.';
                 }
                 field(JXVZBaseAmount; Rec.JXVZBaseAmount)
                 {
                     ApplicationArea = All;
-                    Tooltip = 'Base amount', Comment = 'ESP=Importe base';
+                    ToolTip = 'Specifies the base amount used in the scale calculation.';
                 }
                 field(JXVZSurplus; Rec.JXVZSurplus)
                 {
                     ApplicationArea = All;
-                    Tooltip = '% surplus', Comment = 'ESP=% excendente';
+                    ToolTip = 'Specifies the percentage applied to the surplus amount.';
+                }
+                field(JXVZTaxableBasePct; Rec.JXVZTaxableBasePct)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the taxable base percentage to apply before calculating the withholding.';
+                }
+                field(JXVZDeductionAmount; Rec.JXVZDeductionAmount)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the deduction amount or sustraendo.';
+                }
+                field(JXVZMinimumPaymentAmount; Rec.JXVZMinimumPaymentAmount)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the minimum payment amount required for the scale to apply.';
+                }
+                field(JXVZUseTaxUnit; Rec.JXVZUseTaxUnit)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies whether the scale uses Tax Unit values.';
+                }
+
+                field(JXVZValidFrom; Rec.JXVZValidFrom)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the starting date from which this scale is valid.';
+                }
+                field(JXVZValidTo; Rec.JXVZValidTo)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the ending date until which this scale is valid.';
+                }
+                field(JXVZMunicipalityCode; Rec.JXVZMunicipalityCode)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the municipality code for municipal withholdings.';
+                }
+                field(JXVZEconomicActivityCode; Rec.JXVZEconomicActivityCode)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the economic activity code.';
+                }
+                field(JXVZEconomicActivityDescription; Rec.JXVZEconomicActivityDescription)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the economic activity description.';
+                }
+                field(JXVZMonotributoIVA; Rec.JXVZMonotributoIVA)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies whether Monotributo IVA applies.';
                 }
             }
         }
