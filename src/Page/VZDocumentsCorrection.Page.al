@@ -1,8 +1,8 @@
 page 84143 JXVZDocumentsCorrection
 {
-    UsageCategory = None;
-    //ApplicationArea = All;
-    Caption = 'Documents correction', Comment = 'ESP=Corrección de documentos';
+    UsageCategory = History;
+    ApplicationArea = All;
+    Caption = 'Venezuela Documents correction', Comment = 'ESP=Corrección de documentos Venezuela';
     PageType = Card;
     Permissions = TableData "G/L Entry" = rimd,
                   TableData "Cust. Ledger Entry" = rimd,
@@ -142,6 +142,14 @@ page 84143 JXVZDocumentsCorrection
                         ApplicationArea = All;
                         Editable = false;
                     }
+
+                    field(PurchControlDocNoActual; PurchControlDocNoActual)
+                    {
+                        Caption = 'Control Doc. No.', Comment = 'ESP="No. Documento Control"';
+                        ToolTip = 'Control Doc. No.', Comment = 'ESP="No. Documento Control"';
+                        ApplicationArea = All;
+                        Editable = false;
+                    }
                 }
                 group(PurchaseNew)
                 {
@@ -205,6 +213,14 @@ page 84143 JXVZDocumentsCorrection
                         ApplicationArea = All;
                         Enabled = PurchWithholdingCodeNewEnabled;
                         TableRelation = JXVZWithholdArea.JXVZWithholdingCode;
+                    }
+
+                    field(PurchControlDocNoNew; PurchControlDocNoNew)
+                    {
+                        Caption = 'New Control Doc. No.', Comment = 'ESP="Nuevo No. Documento Control"';
+                        ToolTip = 'New Control Doc. No.', Comment = 'ESP="Nuevo No. Documento Control"';
+                        ApplicationArea = All;
+                        Enabled = PurchControlDocNoNewEnabled;
                     }
                 }
 
@@ -727,6 +743,11 @@ page 84143 JXVZDocumentsCorrection
                                         until PurchInvLineLocal.Next() = 0;
                                 end;
 
+                                if PurchControlDocNoNew <> '' then begin
+                                    PurchInvHeader.JXVZCtrlDocumentNo := PurchControlDocNoNew;
+                                    PurchInvHeader.Modify(false);
+                                end;
+
                                 PurchInvoiceRefresh();
 
                             end;
@@ -876,6 +897,11 @@ page 84143 JXVZDocumentsCorrection
                                             PurchCrMemoLineLocal.JXVZWithholdingCode := PurchWithholdingCodeNew;
                                             PurchCrMemoLineLocal.Modify(false);
                                         until PurchCrMemoLineLocal.Next() = 0;
+                                end;
+
+                                if PurchControlDocNoNew <> '' then begin
+                                    PurchCrMemoHdr.JXVZCtrlDocumentNo := PurchControlDocNoNew;
+                                    PurchCrMemoHdr.Modify(false);
                                 end;
 
                                 PurchCreditMemoRefresh();
@@ -2525,6 +2551,9 @@ end;
         PurchWithholdingCodeNew: code[20];
         PurchWithholdingCodeActual: Code[20];
         PurchWithholdingCodeNewEnabled: Boolean;
+        PurchControlDocNoNew: code[20];
+        PurchControlDocNoActual: code[20];
+        PurchControlDocNoNewEnabled: Boolean;
     /*TextJXL0054Lbl: Label 'Current', Comment = 'ESP=Actual';
     TextTextJXL0056Lbl: Label 'Current', Comment = 'ESP=Actual';
     TextTextJXL0055Lbl: Label 'New', Comment = 'ESP=Nuevo';
@@ -2593,12 +2622,14 @@ end;
             PurchDocumentDate := PurchInvHeader."Document Date";
 
             PurchWithholdingCodeActual := PurchInvHeader.JXVZWithholdingCode;
+            PurchControlDocNoActual := PurchInvHeader.JXVZCtrlDocumentNo;
             //PurchFiscalType := PurchInvHeader."Fiscal Type";            
 
             PurchNewExternalDocumentNo := PurchInvHeader."Vendor Invoice No.";
             PurchNewPostingDate := PurchInvHeader."Posting Date";
             PurchNewDocumentDate := PurchInvHeader."Document Date";
             PurchWithholdingCodeNew := PurchInvHeader.JXVZWithholdingCode;
+            PurchControlDocNoNew := PurchInvHeader.JXVZCtrlDocumentNo;
             //PurchNewFiscalType := PurchInvHeader."Fiscal Type";
 
             PurchExtDocNoEnable := true;
@@ -2615,6 +2646,7 @@ end;
             NavigateEnable := true;
             PurchModifyEnable := true;
             PurchWithholdingCodeNewEnabled := true;
+            PurchControlDocNoNewEnabled := true;
         end
         else begin
             PurchDocumentNo := '';
@@ -2629,6 +2661,8 @@ end;
             PurchNewFiscalType := '';
             PurchWithholdingCodeNew := '';
             PurchWithholdingCodeActual := '';
+            PurchControlDocNoActual := '';
+            PurchControlDocNoNew := '';
 
             PurchExtDocNoEnable := false;
             PurchPostingDateEnable := false;
@@ -2643,6 +2677,7 @@ end;
             NavigateEnable := false;
             PurchModifyEnable := false;
             PurchWithholdingCodeNewEnabled := false;
+            PurchControlDocNoNewEnabled := false;
         end;
     end;
 
@@ -2655,6 +2690,7 @@ end;
             PurchDocumentDate := PurchCrMemoHdr."Document Date";
 
             PurchWithholdingCodeActual := PurchCrMemoHdr.JXVZWithholdingCode;
+            PurchControlDocNoActual := PurchCrMemoHdr.JXVZCtrlDocumentNo;
             //PurchFiscalType := PurchCrMemoHdr."Behaviour Code";
 
             PurchNewExternalDocumentNo := PurchCrMemoHdr."Vendor Cr. Memo No.";
@@ -2662,6 +2698,7 @@ end;
             PurchNewDocumentDate := PurchCrMemoHdr."Document Date";
 
             PurchWithholdingCodeNew := PurchCrMemoHdr.JXVZWithholdingCode;
+            PurchControlDocNoNew := PurchCrMemoHdr.JXVZCtrlDocumentNo;
             //PurchNewFiscalType := PurchCrMemoHdr."Behaviour Code";
 
             PurchExtDocNoEnable := true;
@@ -2678,6 +2715,7 @@ end;
             NavigateEnable := true;
             PurchModifyEnable := true;
             PurchWithholdingCodeNewEnabled := true;
+            PurchControlDocNoNewEnabled := true;
         end
         else begin
             PurchDocumentNo := '';
@@ -2692,6 +2730,8 @@ end;
             PurchNewFiscalType := '';
             PurchWithholdingCodeNew := '';
             PurchWithholdingCodeActual := '';
+            PurchControlDocNoActual := '';
+            PurchControlDocNoNew := '';
 
             PurchExtDocNoEnable := false;
             PurchPostingDateEnable := false;
@@ -2706,6 +2746,7 @@ end;
             NavigateEnable := false;
             PurchModifyEnable := false;
             PurchWithholdingCodeNewEnabled := false;
+            PurchControlDocNoNewEnabled := false;
         end;
     end;
 

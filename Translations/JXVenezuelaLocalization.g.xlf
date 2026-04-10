@@ -2334,8 +2334,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit JXVZWithholdings - Method CalcTaxPerLine - NamedType Text004</note>
         </trans-unit>
         <trans-unit id="Page 204928760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Documents correction</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Corrección de documentos</note>
+          <source>Venezuela Documents correction</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Corrección de documentos Venezuela</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 204928760 - NamedType 209216429" size-unit="char" translate="yes" xml:space="preserve">
@@ -2392,6 +2392,16 @@
           <source>Current</source>
           <note from="Developer" annotates="general" priority="2">ESP=Actual</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchaseCurrent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 4215199552 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Control Doc. No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No. Documento Control"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchControlDocNoActual - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 4215199552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Control Doc. No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No. Documento Control"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchControlDocNoActual - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 204928760 - Control 448813969 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document date</source>
@@ -2457,6 +2467,16 @@
           <source>New</source>
           <note from="Developer" annotates="general" priority="2">ESP=Nuevo</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchaseNew - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2721444594 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Control Doc. No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo No. Documento Control"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchControlDocNoNew - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2721444594 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Control Doc. No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo No. Documento Control"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchControlDocNoNew - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 204928760 - Control 4109532089 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>New dispatch number</source>

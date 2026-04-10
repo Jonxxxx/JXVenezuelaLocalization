@@ -347,7 +347,7 @@ report 84106 JXVZPurchVatBook
                 JXVZPurchVatBook.JXVZTaxAreaCode := "Purch. Cr. Memo Hdr."."Tax Area Code";
                 JXVZPurchVatBook.JXVZProvince := "Purch. Cr. Memo Hdr.".JXVZProvince;
                 JXVZPurchVatBook.JXVZInvoiceType := 'Nota de crédito';
-                JXVZPurchVatBook.JXVZCtrlDocumentNo := "Purch. Debit Memo Header".JXVZCtrlDocumentNo;
+                JXVZPurchVatBook.JXVZCtrlDocumentNo := "Purch. Cr. Memo Hdr.".JXVZCtrlDocumentNo;
 
                 if ("Purch. Debit Memo Header"."Applies-to Doc. Type" = "Purch. Debit Memo Header"."Applies-to Doc. Type"::" ") and ("Purch. Debit Memo Header"."Applies-to Doc. No." = '') then
                     JXVZPurchVatBook.JXVZDocTypeLV := Format(JXVZDocTypeLVE::Reg)
