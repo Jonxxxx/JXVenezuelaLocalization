@@ -2486,7 +2486,8 @@ codeunit 84104 JXVZWithholdings
         ApplyPurchaseScales(_ProcessKey);
         ApplyPurchaseVendorExemptions(_PurchaseHeader, _ProcessKey);
         FinalAdjustPurchaseAccumulatedWithholdings(_ProcessKey);
-        CleanupPurchaseCalc(_ProcessKey);
+        if _PurchaseHeader."Document Type" <> _PurchaseHeader."Document Type"::"Credit Memo" then
+            CleanupPurchaseCalc(_ProcessKey);
     end;
 
     local procedure ApplyPurchaseHistoricalAccumulation(var _PurchaseHeader: Record "Purchase Header"; _ProcessKey: Code[20])
@@ -2910,45 +2911,68 @@ codeunit 84104 JXVZWithholdings
         LocalGenJnlLine: Record "Gen. Journal Line";
         SourceCodeSetup: Record "Source Code Setup";
         GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line";
+        JXVZPaymentSetup: Record JXVZPaymentSetup;
         SignFactor: Decimal;
     begin
         SourceCodeSetup.Get();
 
         if IsCreditMemo then
-            SignFactor := 1
+            SignFactor := -1
         else
-            SignFactor := -1;
+            SignFactor := 1;
 
+        JXVZPaymentSetup.Reset();
+        if JXVZPaymentSetup.FindFirst() then;
+
+        JXVZPaymentSetup.TestField(JXVZJournalNameWithhold);
+        JXVZPaymentSetup.TestField(JXVZJournalBatchWithhold);
+        WithholdDetail.TestField(JXVZAccountNo);
+
+        //Delete prev data
+        LocalGenJnlLine.Reset();
+        LocalGenJnlLine.SetRange("Journal Template Name", JXVZPaymentSetup.JXVZJournalNameWithhold);
+        LocalGenJnlLine.SetRange("Journal Batch Name", JXVZPaymentSetup.JXVZJournalBatchWithhold);
+        LocalGenJnlLine.DeleteAll();
+
+        LocalGenJnlLine.Reset();
         LocalGenJnlLine.Init();
+        LocalGenJnlLine."Journal Template Name" := JXVZPaymentSetup.JXVZJournalNameWithhold;
+        LocalGenJnlLine."Journal Batch Name" := JXVZPaymentSetup.JXVZJournalBatchWithhold;
+        LocalGenJnlLine."Line No." := 10000;
         LocalGenJnlLine."System-Created Entry" := true;
         LocalGenJnlLine."Source Code" := SourceCodeSetup.Purchases;
         LocalGenJnlLine."Posting Date" := PostingDate;
         LocalGenJnlLine."Document Date" := DocumentDate;
         LocalGenJnlLine."Document No." := PostedDocNo;
         LocalGenJnlLine."External Document No." := ExternalDocumentNo;
-        LocalGenJnlLine."Account Type" := LocalGenJnlLine."Account Type"::Vendor;
-        LocalGenJnlLine.Validate("Account No.", GetPurchaseVendorNo(PurchHeader));
 
-        if IsCreditMemo then begin
-            LocalGenJnlLine."Document Type" := LocalGenJnlLine."Document Type"::Refund;
-            LocalGenJnlLine."Applies-to Doc. Type" := LocalGenJnlLine."Applies-to Doc. Type"::"Credit Memo";
-        end else begin
+        if not IsCreditMemo then begin
             LocalGenJnlLine."Document Type" := LocalGenJnlLine."Document Type"::Payment;
-            LocalGenJnlLine."Applies-to Doc. Type" := LocalGenJnlLine."Applies-to Doc. Type"::Invoice;
+            LocalGenJnlLine."Account Type" := LocalGenJnlLine."Account Type"::Vendor;
+            LocalGenJnlLine.Validate("Account No.", GetPurchaseVendorNo(PurchHeader));
+        end else begin
+            LocalGenJnlLine."Document Type" := LocalGenJnlLine."Document Type"::Refund;
+            LocalGenJnlLine."Bal. Account Type" := LocalGenJnlLine."Bal. Account Type"::"G/L Account";
+            LocalGenJnlLine.Validate("Bal. Account No.", WithholdDetail.JXVZAccountNo);
         end;
 
-        LocalGenJnlLine."Applies-to Doc. No." := PostedDocNo;
-        LocalGenJnlLine.Description := CopyStr(WithholdCalcLine.JXVZDescription, 1, MaxStrLen(LocalGenJnlLine.Description));
-        LocalGenJnlLine."Bal. Account Type" := LocalGenJnlLine."Bal. Account Type"::"G/L Account";
-        LocalGenJnlLine.Validate("Bal. Account No.", WithholdDetail.JXVZAccountNo);
+        LocalGenJnlLine.Description := CopyStr(PostedDocNo + ' ' + WithholdCalcLine.JXVZDescription, 1, MaxStrLen(LocalGenJnlLine.Description));
+
+        if not IsCreditMemo then begin
+            LocalGenJnlLine."Bal. Account Type" := LocalGenJnlLine."Bal. Account Type"::"G/L Account";
+            LocalGenJnlLine.Validate("Bal. Account No.", WithholdDetail.JXVZAccountNo);
+        end else begin
+            LocalGenJnlLine."Account Type" := LocalGenJnlLine."Account Type"::Vendor;
+            LocalGenJnlLine.Validate("Account No.", GetPurchaseVendorNo(PurchHeader));
+        end;
 
         LocalGenJnlLine."Dimension Set ID" := DimensionSetID;
         LocalGenJnlLine."Shortcut Dimension 1 Code" := ShortcutDim1Code;
         LocalGenJnlLine."Shortcut Dimension 2 Code" := ShortcutDim2Code;
 
+        LocalGenJnlLine.Validate("Currency Code", '');
         LocalGenJnlLine.Validate(Amount, Round(Abs(WithholdCalcLine.JXVZCalculatedWitholding) * SignFactor, 0.01));
 
-        // Campos custom usados por tu lógica actual
         LocalGenJnlLine.JXVZIsWitholding := true;
         LocalGenJnlLine.JXVZWitholdingNo := WithholdCalcLine.JXVZWitholdingNo;
         LocalGenJnlLine.JXVZBase := Round(Abs(WithholdCalcLine.JXVZBase) * SignFactor, 0.01);

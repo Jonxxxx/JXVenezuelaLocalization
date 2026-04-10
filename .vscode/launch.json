@@ -32,6 +32,22 @@
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
             "schemaUpdateMode": "ForceSync"    
-        }
+        },
+        {
+            "name": "KMPG Test",
+            "request": "launch",
+            "type": "al",
+            "environmentType": "Sandbox",                        
+            //KMPG Test
+            "environmentName": "KDN-TEST",
+            "tenant": "9127da9d-bb4c-481c-b51f-6c369893a2fc",    
+            "startupObjectId": 22,
+            "startupObjectType": "Page",
+            "breakOnError": true,
+            "launchBrowser": true,
+            "enableLongRunningSqlStatements": true,
+            "enableSqlInformationDebugger": true,
+            "schemaUpdateMode": "ForceSync"    
+        },
     ]
 }

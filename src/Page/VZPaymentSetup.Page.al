@@ -57,6 +57,17 @@ page 84116 JXVZPaymentSetup
                     ApplicationArea = All;
                     ToolTip = 'Control for payment order posted secuence';
                 }
+
+                field(JXVZJournalNameWithhold; Rec.JXVZJournalNameWithhold)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Journal Template Name for Witholdings';
+                }
+                field(JXVZJournalBatchWithhold; Rec.JXVZJournalBatchWithhold)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Journal Batch Name Witholdings';
+                }
             }
         }
     }

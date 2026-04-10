@@ -56,6 +56,20 @@ table 84114 JXVZPaymentSetup
             DataClassification = CustomerContent;
             Caption = 'Control Payment Order Sequence';
         }
+
+        field(10; JXVZJournalNameWithhold; Code[10])
+        {
+            DataClassification = OrganizationIdentifiableInformation;
+            Caption = 'Journal Template Name for Witholdings';
+            TableRelation = "Gen. Journal Template";
+        }
+
+        field(11; JXVZJournalBatchWithhold; Code[10])
+        {
+            DataClassification = OrganizationIdentifiableInformation;
+            Caption = 'Journal Batch Name Witholdings';
+            TableRelation = "Gen. Journal Batch".Name where("Journal Template Name" = field(JXVZJournalNameWithhold));
+        }
     }
 
     keys

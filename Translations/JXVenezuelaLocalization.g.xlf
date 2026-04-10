@@ -688,6 +688,16 @@
           <note from="Developer" annotates="general" priority="2">ESP=Id</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZPaymentSetup - Field JXVZIdCode - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2274312045 - Field 923587754 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Journal Batch Name Witholdings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZPaymentSetup - Field JXVZJournalBatchWithhold - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2274312045 - Field 2250245999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Journal Template Name for Witholdings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZPaymentSetup - Field JXVZJournalNameWithhold - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2274312045 - Field 122907234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Suss report</source>
           <note from="Developer" annotates="general" priority="2">ESP=Reporte Suss</note>
@@ -2323,6 +2333,376 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit JXVZWithholdings - Method CalcTaxPerLine - NamedType Text004</note>
         </trans-unit>
+        <trans-unit id="Page 204928760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents correction</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Corrección de documentos</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - NamedType 209216429" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The document number %1 already exists. The change does not take place</source>
+          <note from="Developer" annotates="general" priority="2">ESP=El numero de documento %1 ya existe. El cambio no se realizará</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - NamedType TextJXL00002Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - NamedType 3537967993" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Fecha de registro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - NamedType TextJXL0024Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - NamedType 3043781594" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Fecha documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - NamedType TextJXL0025Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - NamedType 2537976626" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The field  %1 value can not be empty</source>
+          <note from="Developer" annotates="general" priority="2">ESP=El campo %1 no puede ser vacio</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - NamedType TextJXL0052Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - NamedType 511595217" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End process</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Proceso finalizado</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - NamedType TextJXL0053Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Method 1553730732 - NamedType 492024454" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The new Document No. must maintain the same structure as the original</source>
+          <note from="Developer" annotates="general" priority="2">ESP=El nuevo Nro. del Documento debe mantener la misma estructura que el original.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Method DocumentNoValidate - NamedType Text50000Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Method 1553730732 - NamedType 623520869" size-unit="char" translate="yes" xml:space="preserve">
+          <source>It is only allowed to change Numbers for other Numbers</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Solo se permiten cambiar Números por otros Números</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Method DocumentNoValidate - NamedType Text50001Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Method 1553730732 - NamedType 3817913796" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The document identified already exists as: %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Ya existe un documento identificado como: %1</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Method DocumentNoValidate - NamedType Text50002Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Method 1553730732 - NamedType 1791532387" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This field does not allow empty value.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Este campo no permite valor vacio.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Method DocumentNoValidate - NamedType Text50003Lbl</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 1823430260 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchases</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Compras</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control Purchases - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 705066534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Actual</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchaseCurrent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 448813969 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Fecha de documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchDocumentDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 448813969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Fecha de documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchDocumentDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 1962268878 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=No. documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchDocumentNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 1962268878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=No. documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchDocumentNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 690547561 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=No. documento externo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchExternalDocumentNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 690547561 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=No. documento externo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchExternalDocumentNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 949934808 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not show in books</source>
+          <note from="Developer" annotates="general" priority="2">ESP=No mostrar en libro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchNotShowInBook - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 949934808 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not show in books</source>
+          <note from="Developer" annotates="general" priority="2">ESP=No mostrar en libro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchNotShowInBook - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 546445292 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Fecha de registro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchPostingDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 546445292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Fecha de registro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchPostingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2800034606 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Withhold code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Codigo retencion"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchWithholdingCodeActual - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2800034606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Withhold code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Codigo retencion"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchWithholdingCodeActual - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 3265418777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchaseNew - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 4109532089 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New dispatch number</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo numero despacho</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchDespachoNew - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 4109532089 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New dispatch number</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo numero despacho</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchDespachoNew - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 4001435085 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New document date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nueva fecha de documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchNewDocumentDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 4001435085 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New document date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nueva fecha de documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchNewDocumentDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2241287125 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New external document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo no. documento externo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchNewExternalDocumentNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2241287125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New external document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo no. documento externo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchNewExternalDocumentNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 3534592564 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New not show si books</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo no mostrar en libro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchNewNotShowInBook - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 3534592564 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New not show si books</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo no mostrar en libro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchNewNotShowInBook - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2555522944 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New posting date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nueva fecha de registro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchNewPostingDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2555522944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New posting date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nueva fecha de registro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchNewPostingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 568505676 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New withhold code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo codigo retencion"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchWithholdingCodeNew - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 568505676 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New withhold code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo codigo retencion"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchWithholdingCodeNew - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 826922968 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document type</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Tipo de documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchVoucherType - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 826922968 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document type</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Tipo de documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchVoucherType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 826922968 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoices,Credit Memos,Refer</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Facturas,Notas Credito,Remitos</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control PurchVoucherType - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 1406942772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Ventas</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control Sales - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 1698025443 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Actual</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesCurrent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 3949946533 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Fecha de documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesDocumentDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 3949946533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Fecha de documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesDocumentDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2737501178 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=No. documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesDocumentNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2737501178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=No. documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesDocumentNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 3025144253 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=No. documento externo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesExternalDocumentNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 3025144253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=No. documento externo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesExternalDocumentNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2364157260 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not show in books</source>
+          <note from="Developer" annotates="general" priority="2">ESP=No mostrar en libro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesNotShowInBook - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2364157260 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not show in books</source>
+          <note from="Developer" annotates="general" priority="2">ESP=No mostrar en libro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesNotShowInBook - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2411854968 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Fecha de registro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesPostingDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2411854968 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Fecha de registro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesPostingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2806952792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesNew - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 4047435737 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New document date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nueva fecha de documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesNewDocumentDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 4047435737 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New document date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nueva fecha de documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesNewDocumentDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2198828406 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo no. documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesNewDocumentNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2198828406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo no. documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesNewDocumentNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 389401377 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New external document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo no. documento externo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesNewExternalDocumentNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 389401377 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New external document no.</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo no. documento externo</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesNewExternalDocumentNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 4205657248 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New not show si books</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo no mostrar en libro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesNewNotShowInBook - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 4205657248 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New not show si books</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nuevo no mostrar en libro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesNewNotShowInBook - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2729235028 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New posting date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nueva fecha de registro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesNewPostingDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2729235028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New posting date</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Nueva fecha de registro</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesNewPostingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2707288492 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document type</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Tipo de documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesVoucherType - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2707288492 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document type</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Tipo de documento</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesVoucherType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Control 2707288492 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoices,Credit Memos,Refer</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Facturas,Notas Credito,Remitos</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Control SalesVoucherType - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Action 74074757 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase modify</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Modificar compra</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Action PurchaseModify - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Action 74074757 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase modify</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Modificar compra</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Action PurchaseModify - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Action 3332414645 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase navigate</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Compras navegar</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Action PurchNavigate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Action 3332414645 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase navigate</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Compras navegar</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Action PurchNavigate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Action 3234096588 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales modify</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Modificar venta</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Action SalesModify - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Action 3234096588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales modify</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Modificar venta</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Action SalesModify - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Action 2218344673 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales navigate</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Ventas navegar</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Action SalesNavigate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 204928760 - Action 2218344673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales navigate</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Ventas navegar</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZDocumentsCorrection - Action SalesNavigate - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4241382509 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entities</source>
           <note from="Developer" annotates="general" priority="2">ESP=Entidades</note>
@@ -2642,6 +3022,16 @@
           <source>Control for payment order posted secuence</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPaymentSetup - Control JXVZControlSecuencePaymorderNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2274312045 - Control 923587754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Journal Batch Name Witholdings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPaymentSetup - Control JXVZJournalBatchWithhold - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2274312045 - Control 2250245999 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Journal Template Name for Witholdings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZPaymentSetup - Control JXVZJournalNameWithhold - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2274312045 - Control 2176459415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reports</source>
