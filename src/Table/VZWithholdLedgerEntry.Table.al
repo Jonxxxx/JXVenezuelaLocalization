@@ -174,6 +174,11 @@ table 84126 JXVZWithholdLedgerEntry
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Witholding Cert. date', Comment = 'ESP=Fecha cert. retencion';
         }
+        field(42; JXVZWithholdStatus; Enum JXVZWithholdStatus)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Withholding Status';
+        }
     }
 
     keys

@@ -1913,6 +1913,11 @@
           <note from="Developer" annotates="general" priority="2">ESP=No. Comprobante</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdLedgerEntry - Field JXVZVoucherNo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 590741926 - Field 360646649 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Withholding Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table JXVZWithholdLedgerEntry - Field JXVZWithholdStatus - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 590741926 - Field 2010615178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Witholding %</source>
           <note from="Developer" annotates="general" priority="2">ESP=% Retencion</note>
@@ -9217,6 +9222,16 @@
           <source>Tarifa 2 accumulated</source>
           <note from="Developer" annotates="general" priority="2">ESP=Tarifa 2 acumulada</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdScaleFormula - EnumValue Tarifa2Accumulated - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 360646649 - EnumValue 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdStatus - EnumValue Open - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 360646649 - EnumValue 35450067 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum JXVZWithholdStatus - EnumValue Posted - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 2541124256 - EnumValue 978818198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2593693414">
           <source>Payment Order</source>

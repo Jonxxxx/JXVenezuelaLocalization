@@ -442,6 +442,7 @@ codeunit 84102 JXVZLogicalFactory
                         if JXVZWithholdTaxCondition.FindFirst() then
                             JXVZWithholdLedgerEntry.JXVZSicoreConditionCode := JXVZWithholdTaxCondition.JXVZSicoreConditionCode;
                     end;
+                    JXVZWithholdLedgerEntry.JXVZWithholdStatus := JXVZWithholdLedgerEntry.JXVZWithholdStatus::Posted;
                     JXVZWithholdLedgerEntry.Insert();
                 end;
             end;

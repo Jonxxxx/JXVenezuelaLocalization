@@ -3057,6 +3057,7 @@ codeunit 84104 JXVZWithholdings
         LocalWithholdScale.SetRange(JXVZWitholdingCondition, WithholdCalcLine.JXVZWitholdingCondition);
         if LocalWithholdScale.FindFirst() then;
 
+        LocalWithholdLedgerEntry.JXVZWithholdStatus := LocalWithholdLedgerEntry.JXVZWithholdStatus::Posted;
         LocalWithholdLedgerEntry.Insert();
     end;
 
