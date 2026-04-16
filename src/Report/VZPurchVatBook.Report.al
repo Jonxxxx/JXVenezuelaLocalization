@@ -1,8 +1,8 @@
 report 84106 JXVZPurchVatBook
 {
     Caption = 'Purch VAT book Venezuela', Comment = 'ESP=Libro IVA compras Venezuela';
-    UsageCategory = ReportsAndAnalysis;
-    ApplicationArea = All;
+    UsageCategory = None;
+    //ApplicationArea = All;
 
     DefaultLayout = RDLC;
     RDLCLayout = 'src/ReportLayout/VZPurchVatBook.rdl';

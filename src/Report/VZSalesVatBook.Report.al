@@ -1,8 +1,8 @@
 report 84105 JXVZSalesVatBook
 {
     Caption = 'Sales vat book Venezuela', Comment = 'ESP=Libro IVA ventas Venezuela';
-    UsageCategory = ReportsAndAnalysis;
-    ApplicationArea = All;
+    UsageCategory = None;
+    //ApplicationArea = All;
 
     DefaultLayout = RDLC;
     RDLCLayout = 'src/ReportLayout/VZSalesVatBook.rdl';
