@@ -576,6 +576,8 @@ codeunit 84104 JXVZWithholdings
 
         AjustaRetenciones(_PaymentOrderNro);
 
+        RemoveWithholdingsAlreadyCalculatedOnPurchase(_PaymentOrderNro);
+
         JXVZWithholdCalcLines.SetRange(JXVZDistinctPerDocument, false);
         JXVZWithholdCalcLines.SetRange(JXVZAccumulativePayments, true);
         if JXVZWithholdCalcLines.FindFirst() then
@@ -2290,12 +2292,139 @@ codeunit 84104 JXVZWithholdings
         exit(43);
     end;
 
+    local procedure RemoveWithholdingsAlreadyCalculatedOnPurchase(_PaymentOrderNro: Code[20])
+    var
+        LocalCalcLine: Record JXVZWithholdCalcLines;
+        RemainingDocs: Boolean;
+        RemovedBase: Decimal;
+    begin
+        // 1) Retenciones discriminadas por documento:
+        // eliminamos solo los documentos que ya tienen retención registrada desde compra.
+        LocalCalcLine.Reset();
+        LocalCalcLine.SetRange(JXVZPaymentOrderNo, _PaymentOrderNro);
+        LocalCalcLine.SetRange(JXVZDistinctPerDocument, true);
+        LocalCalcLine.SetRange(JXVZAccumulativePayments, false);
+        if LocalCalcLine.FindSet() then
+            repeat
+                RemoveCalculatedDocumentsAlreadyWithheld(LocalCalcLine);
+
+                JXVZWithholdCalcDocument.Reset();
+                JXVZWithholdCalcDocument.SetRange(JXVZPaymentOrderNo, LocalCalcLine.JXVZPaymentOrderNo);
+                JXVZWithholdCalcDocument.SetRange(JXVZWitholdingNo, LocalCalcLine.JXVZWitholdingNo);
+                RemainingDocs := JXVZWithholdCalcDocument.FindFirst();
+
+                if not RemainingDocs then begin
+                    LocalCalcLine.Delete(true);
+                end else begin
+                    LocalCalcLine.CalcFields(JXVZDiscriminatedCalcWitholding, JXVZDiscriminationCalcBase);
+                    LocalCalcLine.JXVZCalculatedWitholding := LocalCalcLine.JXVZDiscriminatedCalcWitholding;
+                    LocalCalcLine.JXVZBase := LocalCalcLine.JXVZDiscriminationCalcBase;
+                    LocalCalcLine.JXVZAccumulative := LocalCalcLine.JXVZDiscriminationCalcBase;
+
+                    if LocalCalcLine.JXVZAccumulativeCalculation then
+                        LocalCalcLine.JXVZCalculatedWitholding := LocalCalcLine.JXVZCalculatedWitholding - LocalCalcLine.JXVZPreviousWitholdings;
+
+                    LocalCalcLine.Modify();
+                end;
+            until LocalCalcLine.Next() = 0;
+
+        // 2) Retenciones no discriminadas:
+        // restamos del acumulado/base los documentos ya retenidos en compra y recalculamos.
+        LocalCalcLine.Reset();
+        LocalCalcLine.SetRange(JXVZPaymentOrderNo, _PaymentOrderNro);
+        LocalCalcLine.SetRange(JXVZDistinctPerDocument, false);
+        if LocalCalcLine.FindSet() then
+            repeat
+                RemovedBase := GetBaseAlreadyWithheldOnPurchase(LocalCalcLine);
+
+                if RemovedBase <> 0 then begin
+                    LocalCalcLine.JXVZAccumulative := LocalCalcLine.JXVZAccumulative - RemovedBase;
+                    LocalCalcLine.JXVZBase := LocalCalcLine.JXVZBase - RemovedBase;
+
+                    if LocalCalcLine.JXVZAccumulative <= 0 then begin
+                        LocalCalcLine.Delete(true);
+                    end else begin
+                        if ApplyScaleToCalcLine(LocalCalcLine, LocalCalcLine.JXVZAccumulative, LocalCalcLine.JXVZDocumentDate) then begin
+                            if LocalCalcLine.JXVZAccumulativeCalculation then
+                                LocalCalcLine.JXVZCalculatedWitholding := LocalCalcLine.JXVZCalculatedWitholding - LocalCalcLine.JXVZPreviousWitholdings;
+
+                            LocalCalcLine.Modify();
+                        end;
+                    end;
+                end;
+            until LocalCalcLine.Next() = 0;
+    end;
+
+    local procedure RemoveCalculatedDocumentsAlreadyWithheld(var _CalcLine: Record JXVZWithholdCalcLines)
+    begin
+        JXVZWithholdCalcDocument.Reset();
+        JXVZWithholdCalcDocument.SetRange(JXVZPaymentOrderNo, _CalcLine.JXVZPaymentOrderNo);
+        JXVZWithholdCalcDocument.SetRange(JXVZWitholdingNo, _CalcLine.JXVZWitholdingNo);
+        if JXVZWithholdCalcDocument.FindSet() then
+            repeat
+                if ExistsPurchaseWithholdingInLedger(
+                    JXVZWithholdCalcDocument.JXVZDocumentNo,
+                    GlobVendor,
+                    _CalcLine.JXVZTaxCode,
+                    _CalcLine.JXVZRegime,
+                    _CalcLine.JXVZWitholdingNo)
+                then
+                    JXVZWithholdCalcDocument.Delete(true);
+            until JXVZWithholdCalcDocument.Next() = 0;
+    end;
+
+    local procedure GetBaseAlreadyWithheldOnPurchase(var _CalcLine: Record JXVZWithholdCalcLines): Decimal
+    var
+        LocalLedgerByDoc: Record JXVZWithholdLedgerEntryByDoc;
+        RemovedBase: Decimal;
+    begin
+        RemovedBase := 0;
+
+        LocalLedgerByDoc.Reset();
+        LocalLedgerByDoc.SetRange(JXVZPaymentJournal, _CalcLine.JXVZPaymentOrderNo);
+        LocalLedgerByDoc.SetRange(JXVZWitholdingNo, _CalcLine.JXVZWitholdingNo);
+        if LocalLedgerByDoc.FindSet() then
+            repeat
+                if ExistsPurchaseWithholdingInLedger(
+                    LocalLedgerByDoc."Invoice No.",
+                    GlobVendor,
+                    _CalcLine.JXVZTaxCode,
+                    _CalcLine.JXVZRegime,
+                    _CalcLine.JXVZWitholdingNo)
+                then begin
+                    RemovedBase += LocalLedgerByDoc.JXVZBase;
+                    LocalLedgerByDoc.Delete(true);
+                end;
+            until LocalLedgerByDoc.Next() = 0;
+
+        exit(RemovedBase);
+    end;
+
+    local procedure ExistsPurchaseWithholdingInLedger(
+        _DocumentNo: Code[20];
+        _VendorNo: Code[20];
+        _TaxCode: Code[20];
+        _Regime: Code[20];
+        _WithholdingNo: Integer): Boolean
+    var
+        LocalWithholdLedgerEntry: Record JXVZWithholdLedgerEntry;
+    begin
+        LocalWithholdLedgerEntry.Reset();
+        LocalWithholdLedgerEntry.SetRange(JXVZVoucherNo, _DocumentNo);
+        LocalWithholdLedgerEntry.SetRange(JXVZVendorCode, _VendorNo);
+        LocalWithholdLedgerEntry.SetRange(JXVZTaxCode, _TaxCode);
+        LocalWithholdLedgerEntry.SetRange(JXVZRegime, _Regime);
+        LocalWithholdLedgerEntry.SetRange(JXVZWitholdingNo, _WithholdingNo);
+        LocalWithholdLedgerEntry.SetRange(JXVZWitholdingType, LocalWithholdLedgerEntry.JXVZWitholdingType::Realizada);
+        exit(LocalWithholdLedgerEntry.FindFirst());
+    end;
+
     //Purchase
     procedure CalcPurchaseDocument(var _PurchaseHeader: Record "Purchase Header")
     var
         ProcessKey: Code[20];
     begin
-        if not (_PurchaseHeader."Document Type" in [_PurchaseHeader."Document Type"::Invoice, _PurchaseHeader."Document Type"::"Credit Memo"]) then
+        if not (_PurchaseHeader."Document Type" in [_PurchaseHeader."Document Type"::Invoice, _PurchaseHeader."Document Type"::Order, _PurchaseHeader."Document Type"::"Credit Memo"]) then
             exit;
 
         ProcessKey := _PurchaseHeader."No.";
@@ -2844,7 +2973,7 @@ codeunit 84104 JXVZWithholdings
     begin
         ProcessKey := PurchHeader."No.";
 
-        CalcPurchaseDocument(PurchHeader);
+        //CalcPurchaseDocument(PurchHeader); No forzamos recalculo
 
         LocalCalcLine.Reset();
         LocalCalcLine.SetRange(JXVZPaymentOrderNo, ProcessKey);

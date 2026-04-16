@@ -196,6 +196,7 @@ codeunit 84102 JXVZLogicalFactory
         LineVoucher: Integer;
         EntryNumber: Integer;
         "Witholding%": Decimal;
+        VoucherLineEntryNo: Integer;
     begin
         GenJnlBatch.Reset();
         GenJnlBatch.SetRange("Journal Template Name", _GenJnlLine."Journal Template Name");
@@ -215,6 +216,8 @@ codeunit 84102 JXVZLogicalFactory
                 JXVZHistoryPaymentOrder.SetRange(JXVZHistoryPaymentOrder.JXVZNo, _GenJnlLine."Document No.");
                 JXVZHistoryPaymentOrder.SetRange(JXVZHistoryPaymentOrder.JXVZPostingDate, _GenJnlLine."Posting Date");
                 if not JXVZHistoryPaymentOrder.FindFirst() then begin
+                    Clear(VoucherLineEntryNo);
+
                     //Check Account No. (Vendor)
                     _GenJnlLine.TestField("Account No.");
 
@@ -264,6 +267,10 @@ codeunit 84102 JXVZLogicalFactory
 
                                     JXVZHistoryPaymentDocument.JXVZCurrencyCode := VendLedgerEntry."Currency Code";
                                     JXVZHistoryPaymentDocument.JXVZCurrencyFactor := _GenJnlLine."Currency Factor";
+
+                                    VoucherLineEntryNo += 1;
+                                    JXVZHistoryPaymentDocument.JXVZEntryNo := VoucherLineEntryNo;
+
                                     JXVZHistoryPaymentDocument.Insert();
                                 end;
                             until VendLedgerEntry.Next() = 0;
@@ -308,6 +315,9 @@ codeunit 84102 JXVZLogicalFactory
                     JXVZHistoryPaymentDocument.JXVZCurrencyCode := _GenJnlLine."Currency Code";
                     JXVZHistoryPaymentDocument.JXVZCurrencyFactor := _GenJnlLine."Currency Factor";
 
+                    VoucherLineEntryNo += 1;
+                    JXVZHistoryPaymentDocument.JXVZEntryNo := VoucherLineEntryNo;
+
                     JXVZHistoryPaymentDocument.Insert();
                 end;
                 //Applies documents end
@@ -326,6 +336,10 @@ codeunit 84102 JXVZLogicalFactory
                 JXVZHistoryPaymentDocument.JXVZDocumentType := JXVZHistoryPaymentDocument.JXVZDocumentType::" ";
                 JXVZHistoryPaymentDocument.JXVZCurrencyCode := _GenJnlLine."Currency Code";
                 JXVZHistoryPaymentDocument.JXVZCurrencyFactor := _GenJnlLine."Currency Factor";
+
+                VoucherLineEntryNo += 1;
+                JXVZHistoryPaymentDocument.JXVZEntryNo := VoucherLineEntryNo;
+
                 JXVZHistoryPaymentDocument.Insert();
             end;
 
@@ -475,7 +489,7 @@ codeunit 84102 JXVZLogicalFactory
     begin
         JXVZHistoryReceiptHeader.Reset();
         JXVZHistoryReceiptHeader.SetRange(JXVZReceiptNo, _CashReceipt);
-        JXVZHistoryReceiptHeader.SetRange(JXVZPostingDate, _CashReceiptDate);
+        //JXVZHistoryReceiptHeader.SetRange(JXVZPostingDate, _CashReceiptDate);
         if JXVZHistoryReceiptHeader.FindFirst() then begin
             JXVZHistoryReceiptHeader.JXVZStatus := JXVZHistoryReceiptHeader.JXVZStatus::Cancelled;
             JXVZHistoryReceiptHeader.Modify(false);

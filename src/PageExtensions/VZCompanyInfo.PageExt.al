@@ -59,14 +59,6 @@ pageextension 84112 JXVZCompanyInfo extends "Company Information"
                 {
                     Caption = 'Venezuela info';
 
-                    field(JXPublisherLbl; JXPublisherLbl)
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Publisher';
-                        ToolTip = 'Publisher';
-                        Editable = false;
-                    }
-
                     field(JXNameLbl; JXNameLbl)
                     {
                         ApplicationArea = All;
@@ -96,7 +88,6 @@ pageextension 84112 JXVZCompanyInfo extends "Company Information"
     }
 
     var
-        JXPublisherLbl: Label 'Jonxsoft Uruguay S.A.S.';
-        JXNameLbl: Label 'Jonxsoft Venezuela Localization';
+        JXNameLbl: Label 'Venezuela Localization';
         JXVersionLbl: Label '2.1.2.1238';
 }

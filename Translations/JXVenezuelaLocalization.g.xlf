@@ -5954,14 +5954,9 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZWithholdTaxScale - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 314306977 - NamedType 3529750481" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 314306977">
-          <source>Jonxsoft Venezuela Localization</source>
+          <source>Venezuela Localization</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCompanyInfo - NamedType JXNameLbl</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 314306977 - NamedType 1899344290" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 314306977">
-          <source>Jonxsoft Uruguay S.A.S.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCompanyInfo - NamedType JXPublisherLbl</note>
         </trans-unit>
         <trans-unit id="PageExtension 314306977 - NamedType 3115363638" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 314306977">
           <source>2.1.2.1238</source>
@@ -5987,16 +5982,6 @@
           <source>Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCompanyInfo - Control JXNameLbl - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 314306977 - Control 1899344290 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 314306977">
-          <source>Publisher</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCompanyInfo - Control JXPublisherLbl - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 314306977 - Control 1899344290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 314306977">
-          <source>Publisher</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCompanyInfo - Control JXPublisherLbl - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 314306977 - Control 3115363638 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 314306977">
           <source>Version</source>
