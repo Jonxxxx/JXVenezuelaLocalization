@@ -10590,6 +10590,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension JXVZEmailScenario - EnumValue JXVZWitholdCert - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1311823032 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Withholding Ledger Entries Venezuela</source>
+          <target>Movimientos de retenciones Venezuela</target>
+          <note from="Developer" annotates="general" priority="2">ESP=Movimientos de retenciones Venezuela</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Property Caption</note>
+        </trans-unit>
       </group>
     </body>
   </file>

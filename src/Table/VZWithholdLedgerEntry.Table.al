@@ -19,11 +19,10 @@ table 84126 JXVZWithholdLedgerEntry
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Vendor code', Comment = 'ESP=Codigo proveedor';
         }
-        field(5; JXVZWitholdingBaseType; Option)
+        field(5; JXVZWitholdingBaseType; Enum JXVZWithholdBaseType)
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Witholding base type', Comment = 'ESP=Tipo retencion base';
-            OptionMembers = "Sin Impuestos","Importe IVA","Importe Total","Total menos IVA-IVA Perc-IIBB","Total menos IVA","Total menos IVA menos IVA Percep","Solo IVA";
         }
         field(6; JXVZMinimumWitholding; Decimal)
         {

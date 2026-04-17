@@ -4593,6 +4593,166 @@
           <note from="Developer" annotates="general" priority="2">ESP=Tipo de impuesto</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdingTax - Control JXVZTaxType - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 1311823032 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Withholding Ledger Entries Venezuela</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Movimientos de retenciones Venezuela</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 3808912653 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding base.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZBase - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 2766107007 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the bulletin date.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZBoletinDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 1205603102 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculation base.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZCalculationBase - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 1223162228 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding condition code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZConditionCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 4245379310 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the withholding is discriminated per document.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZDiscriminatePerDocument - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 418276446 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the exemption percentage.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZExemption% - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 3138822353 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the entry number.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 58047386 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the operation code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZOperationCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 3881306067 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the province/state code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZProvinceCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 3255837521 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding regime.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZRegime - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 351681245 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the scale code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZScaleCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 65787358 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the SICORE code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZSicoreCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 4110491139 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the SICORE condition code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZSicoreConditionCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 2711124530 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding tax code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZTaxCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 583833977 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the vendor code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZVendorCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 3622375590 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the voucher amount.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZVoucherAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 1261475477 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the voucher code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZVoucherCode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 2791502302 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the voucher date.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZVoucherDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 2539952353 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the voucher number.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZVoucherNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 360646649 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding status.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZWithholdStatus - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 2010615178 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding percentage.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZWitholding% - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 272265769 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding amount.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZWitholdingAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 3027776426 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding base type.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZWitholdingBaseType - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 2246594585 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding certificate date.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZWitholdingCertDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 3723078593 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding certificate number.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZWitholdingCertificateNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 3251417137 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding date.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZWitholdingDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 3386230340 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding mode.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZWitholdingMode - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 3260564334 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the withholding setup number.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZWitholdingNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Control 1020863101 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the withholding is made or suffered.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Control JXVZWitholdingType - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Action 2657527427 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open the related vendor card.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Action ViewVendor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1311823032 - Action 2657527427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor</source>
+          <note from="Developer" annotates="general" priority="2">ESP=Proveedor</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page JXVZWithholdLedgerEntries - Action ViewVendor - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3171551029 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Witholding scale</source>
           <note from="Developer" annotates="general" priority="2">ESP=Escala retencion</note>
