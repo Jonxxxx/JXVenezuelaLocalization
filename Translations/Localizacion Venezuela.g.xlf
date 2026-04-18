@@ -8778,21 +8778,6 @@
           <note from="Developer" annotates="general" priority="2">ESP = Tipo de voucher para</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZSalesInvoice - Control JXVZSTypeVoucher - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 546841988 - Control 2051989111 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3689007477">
-          <source>Tax area code</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Codigo area impuesto</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZSalesInvoiceSubPage - Control JXTax Area Code - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 546841988 - Control 4018380679 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3689007477">
-          <source>Tax group code</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Codigo grupo impuesto</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZSalesInvoiceSubPage - Control JXTax Group Code - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 546841988 - Control 4227607436 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3689007477">
-          <source>Tax liable</source>
-          <note from="Developer" annotates="general" priority="2">ESP=Sujeto a impuestos</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZSalesInvoiceSubPage - Control JXTax Liable - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="PageExtension 3894921313 - Control 2051989111 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
           <source>Tax area code</source>
           <note from="Developer" annotates="general" priority="2">ESP=Codigo area impuesto</note>

@@ -225,7 +225,6 @@ codeunit 84104 JXVZWithholdings
                                                     PagoAcumulativoRetencionFACT(JXVZWithholdCalcLines, PurchInvLine)
                                                 else
                                                     case JXVZWithholdCalcLines.JXVZBaseWitholdingType of
-
                                                         JXVZWithholdCalcLines.JXVZBaseWitholdingType::NetAmount:
                                                             BaseCalculation := PurchInvLine."VAT Base Amount";
 
@@ -239,24 +238,13 @@ codeunit 84104 JXVZWithholdings
                                                             BaseCalculation := PurchInvLine.Amount;
 
                                                         JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVAT:
-                                                            begin
-                                                                BaseCalculation := PurchInvLine."Amount Including VAT" -
-                                                                                CalcTaxPerLine(PurchInvLine."Tax Area Code", PurchInvLine."Tax Group Code", PurchInvLine."Tax Liable", PurchInvLine."Posting Date",
-                                                                                            PurchInvLine.Amount, 0, getExchangeRate(PurchInvLine."Document No."), true, false);
-                                                            end;
+                                                            BaseCalculation := PurchInvLine."Amount Including VAT" - GetPostedPurchInvLineVATAmountNormalVAT(PurchInvLine);
 
                                                         JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndVATRelatedTaxes:
-                                                            begin
-                                                                BaseCalculation := PurchInvLine."Amount Including VAT" -
-                                                                                CalcTaxPerLine(PurchInvLine."Tax Area Code", PurchInvLine."Tax Group Code", PurchInvLine."Tax Liable", PurchInvLine."Posting Date",
-                                                                                            PurchInvLine.Amount, 0, getExchangeRate(PurchInvLine."Document No."), true, true);
-                                                            end;
+                                                            BaseCalculation := PurchInvLine."Amount Including VAT" - GetPostedPurchInvLineVATAmountNormalVAT(PurchInvLine);
 
                                                         JXVZWithholdCalcLines.JXVZBaseWitholdingType::VATOnly:
-                                                            begin
-                                                                BaseCalculation := CalcTaxPerLine(PurchInvLine."Tax Area Code", PurchInvLine."Tax Group Code", PurchInvLine."Tax Liable", PurchInvLine."Posting Date",
-                                                                                            PurchInvLine.Amount, 0, getExchangeRate(PurchInvLine."Document No."), true, false);
-                                                            end;
+                                                            BaseCalculation := GetPostedPurchInvLineVATAmountNormalVAT(PurchInvLine);
                                                     end;
 
                                             if (GenJournalLineTmpProcess."Applies-to Doc. Type" = GenJournalLineTmpProcess."Applies-to Doc. Type"::"Credit Memo") then begin
@@ -330,24 +318,13 @@ codeunit 84104 JXVZWithholdings
                                                     BaseCalculation := PurchCrMemoLine.Amount;
 
                                                 JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVAT:
-                                                    begin
-                                                        BaseCalculation := PurchCrMemoLine."Amount Including VAT" -
-                                                                        CalcTaxPerLine(PurchCrMemoLine."Tax Area Code", PurchCrMemoLine."Tax Group Code", PurchCrMemoLine."Tax Liable", PurchCrMemoLine."Posting Date",
-                                                                                    PurchCrMemoLine.Amount, 0, getExchangeRate(PurchCrMemoLine."Document No."), true, false);
-                                                    end;
+                                                    BaseCalculation := PurchCrMemoLine."Amount Including VAT" - GetPostedPurchCrMemoLineVATAmountNormalVAT(PurchCrMemoLine);
 
                                                 JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndVATRelatedTaxes:
-                                                    begin
-                                                        BaseCalculation := PurchCrMemoLine."Amount Including VAT" -
-                                                                        CalcTaxPerLine(PurchCrMemoLine."Tax Area Code", PurchCrMemoLine."Tax Group Code", PurchCrMemoLine."Tax Liable", PurchCrMemoLine."Posting Date",
-                                                                                    PurchCrMemoLine.Amount, 0, getExchangeRate(PurchCrMemoLine."Document No."), true, true);
-                                                    end;
+                                                    BaseCalculation := PurchCrMemoLine."Amount Including VAT" - GetPostedPurchCrMemoLineVATAmountNormalVAT(PurchCrMemoLine);
 
                                                 JXVZWithholdCalcLines.JXVZBaseWitholdingType::VATOnly:
-                                                    begin
-                                                        BaseCalculation := CalcTaxPerLine(PurchCrMemoLine."Tax Area Code", PurchCrMemoLine."Tax Group Code", PurchCrMemoLine."Tax Liable", PurchCrMemoLine."Posting Date",
-                                                                                    PurchCrMemoLine.Amount, 0, getExchangeRate(PurchCrMemoLine."Document No."), true, false);
-                                                    end;
+                                                    BaseCalculation := GetPostedPurchCrMemoLineVATAmountNormalVAT(PurchCrMemoLine);
                                             end;
 
                                         if GenJournalLineTmpProcess."Currency Factor" <> 0 then
@@ -783,9 +760,7 @@ codeunit 84104 JXVZWithholdings
 
                                                     JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVAT:
                                                         begin
-                                                            baseToCalc := PurchInvLine."Amount Including VAT" -
-                                                                            CalcTaxPerLine(PurchInvLine."Tax Area Code", PurchInvLine."Tax Group Code", PurchInvLine."Tax Liable", PurchInvLine."Posting Date",
-                                                                                        PurchInvLine.Amount, 0, getExchangeRate(PurchInvLine."Document No."), true, false);
+                                                            baseToCalc := PurchInvoiceLine."Amount Including VAT" - GetPostedPurchInvLineVATAmountNormalVAT(PurchInvoiceLine);
 
                                                             if PurchInvoiceHeader.Get(PurchInvoiceLine."Document No.") then
                                                                 if PurchInvoiceHeader."Currency Factor" <> 0 then
@@ -797,9 +772,7 @@ codeunit 84104 JXVZWithholdings
 
                                                     JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndVATRelatedTaxes:
                                                         begin
-                                                            baseToCalc := PurchInvLine."Amount Including VAT" -
-                                                                            CalcTaxPerLine(PurchInvLine."Tax Area Code", PurchInvLine."Tax Group Code", PurchInvLine."Tax Liable", PurchInvLine."Posting Date",
-                                                                                        PurchInvLine.Amount, 0, getExchangeRate(PurchInvLine."Document No."), true, true);
+                                                            baseToCalc := PurchInvoiceLine."Amount Including VAT" - GetPostedPurchInvLineVATAmountNormalVAT(PurchInvoiceLine);
 
                                                             if PurchInvoiceHeader.Get(PurchInvoiceLine."Document No.") then
                                                                 if PurchInvoiceHeader."Currency Factor" <> 0 then
@@ -811,8 +784,7 @@ codeunit 84104 JXVZWithholdings
 
                                                     JXVZWithholdCalcLines.JXVZBaseWitholdingType::VATOnly:
                                                         begin
-                                                            baseToCalc := CalcTaxPerLine(PurchInvLine."Tax Area Code", PurchInvLine."Tax Group Code", PurchInvLine."Tax Liable", PurchInvLine."Posting Date",
-                                                                                        PurchInvLine.Amount, 0, getExchangeRate(PurchInvLine."Document No."), true, false);
+                                                            baseToCalc := GetPostedPurchInvLineVATAmountNormalVAT(PurchInvoiceLine);
 
                                                             if PurchInvoiceHeader.Get(PurchInvoiceLine."Document No.") then
                                                                 if PurchInvoiceHeader."Currency Factor" <> 0 then
@@ -906,40 +878,38 @@ codeunit 84104 JXVZWithholdings
 
                                                             JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVAT:
                                                                 begin
-                                                                    baseToCalc := PurchCrMemoLine."Amount Including VAT" -
-                                                                        CalcTaxPerLine(PurchCrMemoLine."Tax Area Code", PurchCrMemoLine."Tax Group Code", PurchCrMemoLine."Tax Liable", PurchCrMemoLine."Posting Date",
-                                                                                    PurchCrMemoLine.Amount, 0, getExchangeRate(PurchCrMemoLine."Document No."), true, false);
+                                                                    baseToCalc := PurchCrMemoLine."Amount Including VAT" - GetPostedPurchCrMemoLineVATAmountNormalVAT(PurchCrMemoLine);
 
-                                                                    if GenJournalLineTmpProcess."Currency Factor" <> 0 then
-                                                                        JXVZWithholdCalcLines.JXVZAccumulative := ((PercentageAmount * (PurchCrMemoLine.Amount / GenJournalLineTmpProcess."Currency Factor"))
-                                                                                                              / 100) + JXVZWithholdCalcLines.JXVZAccumulative
-                                                                    else
-                                                                        JXVZWithholdCalcLines.JXVZAccumulative := ((PercentageAmount * PurchCrMemoLine.Amount) / 100) + JXVZWithholdCalcLines.JXVZAccumulative;
+                                                                    if PurchCrMemoHeader.Get(PurchCrMemoLine."Document No.") then
+                                                                        if PurchCrMemoHeader."Currency Factor" <> 0 then
+                                                                            JXVZWithholdCalcLines.JXVZAccumulative -= ((PercentageAmount *
+                                                                                (baseToCalc / PurchCrMemoHeader."Currency Factor")) / 100)
+                                                                        else
+                                                                            JXVZWithholdCalcLines.JXVZAccumulative -= ((PercentageAmount * baseToCalc) / 100);
                                                                 end;
 
                                                             JXVZWithholdCalcLines.JXVZBaseWitholdingType::GrossLessVATAndVATRelatedTaxes:
                                                                 begin
-                                                                    baseToCalc := PurchCrMemoLine."Amount Including VAT" -
-                                                                        CalcTaxPerLine(PurchCrMemoLine."Tax Area Code", PurchCrMemoLine."Tax Group Code", PurchCrMemoLine."Tax Liable", PurchCrMemoLine."Posting Date",
-                                                                                    PurchCrMemoLine.Amount, 0, getExchangeRate(PurchCrMemoLine."Document No."), true, true);
+                                                                    baseToCalc := PurchCrMemoLine."Amount Including VAT" - GetPostedPurchCrMemoLineVATAmountNormalVAT(PurchCrMemoLine);
 
-                                                                    if GenJournalLineTmpProcess."Currency Factor" <> 0 then
-                                                                        JXVZWithholdCalcLines.JXVZAccumulative := ((PercentageAmount * (PurchCrMemoLine.Amount / GenJournalLineTmpProcess."Currency Factor"))
-                                                                                                              / 100) + JXVZWithholdCalcLines.JXVZAccumulative
-                                                                    else
-                                                                        JXVZWithholdCalcLines.JXVZAccumulative := ((PercentageAmount * PurchCrMemoLine.Amount) / 100) + JXVZWithholdCalcLines.JXVZAccumulative;
+                                                                    if PurchCrMemoHeader.Get(PurchCrMemoLine."Document No.") then
+                                                                        if PurchCrMemoHeader."Currency Factor" <> 0 then
+                                                                            JXVZWithholdCalcLines.JXVZAccumulative -= ((PercentageAmount *
+                                                                                (baseToCalc / PurchCrMemoHeader."Currency Factor")) / 100)
+                                                                        else
+                                                                            JXVZWithholdCalcLines.JXVZAccumulative -= ((PercentageAmount * baseToCalc) / 100);
                                                                 end;
 
                                                             JXVZWithholdCalcLines.JXVZBaseWitholdingType::VATOnly:
                                                                 begin
-                                                                    baseToCalc := CalcTaxPerLine(PurchCrMemoLine."Tax Area Code", PurchCrMemoLine."Tax Group Code", PurchCrMemoLine."Tax Liable", PurchCrMemoLine."Posting Date",
-                                                                                    PurchCrMemoLine.Amount, 0, getExchangeRate(PurchCrMemoLine."Document No."), true, false);
+                                                                    baseToCalc := GetPostedPurchCrMemoLineVATAmountNormalVAT(PurchCrMemoLine);
 
-                                                                    if GenJournalLineTmpProcess."Currency Factor" <> 0 then
-                                                                        JXVZWithholdCalcLines.JXVZAccumulative := ((PercentageAmount * (PurchCrMemoLine.Amount / GenJournalLineTmpProcess."Currency Factor"))
-                                                                                                              / 100) + JXVZWithholdCalcLines.JXVZAccumulative
-                                                                    else
-                                                                        JXVZWithholdCalcLines.JXVZAccumulative := ((PercentageAmount * PurchCrMemoLine.Amount) / 100) + JXVZWithholdCalcLines.JXVZAccumulative;
+                                                                    if PurchCrMemoHeader.Get(PurchCrMemoLine."Document No.") then
+                                                                        if PurchCrMemoHeader."Currency Factor" <> 0 then
+                                                                            JXVZWithholdCalcLines.JXVZAccumulative -= ((PercentageAmount *
+                                                                                (baseToCalc / PurchCrMemoHeader."Currency Factor")) / 100)
+                                                                        else
+                                                                            JXVZWithholdCalcLines.JXVZAccumulative -= ((PercentageAmount * baseToCalc) / 100);
                                                                 end;
                                                         end;
                                                 until PurchCrMemoLine.Next() = 0;
@@ -1586,12 +1556,12 @@ codeunit 84104 JXVZWithholdings
     begin
         _InvoicingDL := 0;
 
-        if not (Vendor.Get(VendorNro)) then
+        if not Vendor.Get(VendorNro) then
             exit;
 
         JXVZWithholdDetailEntryLocal.Reset();
         JXVZWithholdDetailEntryLocal.SetRange(JXVZWitholdingNo, _RetentionNro);
-        if not (JXVZWithholdDetailEntryLocal.Find('-')) then
+        if not JXVZWithholdDetailEntryLocal.FindFirst() then
             exit;
 
         PurchInvHeaderLocal.Reset();
@@ -1601,32 +1571,43 @@ codeunit 84104 JXVZWithholdings
             repeat
                 Clear(TotalTax);
                 PurchInvHeaderLocal.CalcFields(Amount, "Amount Including VAT");
+
                 case JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType of
                     JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::NetAmount:
                         BaseCalculationLocal := PurchInvHeaderLocal.Amount;
+
                     JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::TaxAmount:
+                        // Mantengo la lógica actual por compatibilidad funcional
                         BaseCalculationLocal := PurchInvHeaderLocal."Amount Including VAT";
+
                     JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossAmount:
                         BaseCalculationLocal := PurchInvHeaderLocal."Amount Including VAT";
+
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossLessVATAndOtherTaxes:
+                        BaseCalculationLocal := PurchInvHeaderLocal.Amount;
+
                     JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossLessVAT:
                         begin
-                            TotalTax := getTotalIVA("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
+                            TotalTax := GetPostedPurchaseDocumentVATAmountNormalVAT("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
                             if PurchInvHeaderLocal."Currency Code" <> '' then
                                 TotalTax := TotalTax * PurchInvHeaderLocal."Currency Factor";
 
                             BaseCalculationLocal := PurchInvHeaderLocal."Amount Including VAT" - TotalTax;
                         end;
+
                     JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossLessVATAndVATRelatedTaxes:
                         begin
-                            TotalTax := getTotalIVAAndPercepIVA("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
+                            // En Normal VAT lo tratamos igual que GrossLessVAT
+                            TotalTax := GetPostedPurchaseDocumentVATAmountNormalVAT("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
                             if PurchInvHeaderLocal."Currency Code" <> '' then
                                 TotalTax := TotalTax * PurchInvHeaderLocal."Currency Factor";
 
                             BaseCalculationLocal := PurchInvHeaderLocal."Amount Including VAT" - TotalTax;
                         end;
+
                     JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::VATOnly:
                         begin
-                            TotalTax := getTotalIVA("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
+                            TotalTax := GetPostedPurchaseDocumentVATAmountNormalVAT("Gen. Journal Document Type"::Invoice, PurchInvHeaderLocal."No.");
                             if PurchInvHeaderLocal."Currency Code" <> '' then
                                 TotalTax := TotalTax * PurchInvHeaderLocal."Currency Factor";
 
@@ -1648,32 +1629,43 @@ codeunit 84104 JXVZWithholdings
             repeat
                 Clear(TotalTax);
                 PurchCrMemoHdrLocal.CalcFields(Amount, "Amount Including VAT");
-                case JXVZWithholdCalcLines.JXVZBaseWitholdingType of
+
+                case JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType of
                     JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::NetAmount:
                         BaseCalculationLocal := PurchCrMemoHdrLocal.Amount;
+
                     JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::TaxAmount:
+                        // Mantengo la lógica actual por compatibilidad funcional
                         BaseCalculationLocal := PurchCrMemoHdrLocal."Amount Including VAT";
+
                     JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossAmount:
                         BaseCalculationLocal := PurchCrMemoHdrLocal."Amount Including VAT";
+
+                    JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossLessVATAndOtherTaxes:
+                        BaseCalculationLocal := PurchCrMemoHdrLocal.Amount;
+
                     JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossLessVAT:
                         begin
-                            TotalTax := getTotalIVA("Gen. Journal Document Type"::"Credit Memo", PurchCrMemoHdrLocal."No.");
+                            TotalTax := GetPostedPurchaseDocumentVATAmountNormalVAT("Gen. Journal Document Type"::"Credit Memo", PurchCrMemoHdrLocal."No.");
                             if PurchCrMemoHdrLocal."Currency Code" <> '' then
                                 TotalTax := TotalTax * PurchCrMemoHdrLocal."Currency Factor";
 
                             BaseCalculationLocal := PurchCrMemoHdrLocal."Amount Including VAT" - TotalTax;
                         end;
+
                     JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::GrossLessVATAndVATRelatedTaxes:
                         begin
-                            TotalTax := getTotalIVAAndPercepIVA("Gen. Journal Document Type"::"Credit Memo", PurchCrMemoHdrLocal."No.");
+                            // En Normal VAT lo tratamos igual que GrossLessVAT
+                            TotalTax := GetPostedPurchaseDocumentVATAmountNormalVAT("Gen. Journal Document Type"::"Credit Memo", PurchCrMemoHdrLocal."No.");
                             if PurchCrMemoHdrLocal."Currency Code" <> '' then
                                 TotalTax := TotalTax * PurchCrMemoHdrLocal."Currency Factor";
 
                             BaseCalculationLocal := PurchCrMemoHdrLocal."Amount Including VAT" - TotalTax;
                         end;
+
                     JXVZWithholdDetailEntryLocal.JXVZWitholdingBaseType::VATOnly:
                         begin
-                            TotalTax := getTotalIVA("Gen. Journal Document Type"::"Credit Memo", PurchCrMemoHdrLocal."No.");
+                            TotalTax := GetPostedPurchaseDocumentVATAmountNormalVAT("Gen. Journal Document Type"::"Credit Memo", PurchCrMemoHdrLocal."No.");
                             if PurchCrMemoHdrLocal."Currency Code" <> '' then
                                 TotalTax := TotalTax * PurchCrMemoHdrLocal."Currency Factor";
 
@@ -1687,7 +1679,26 @@ codeunit 84104 JXVZWithholdings
                 _InvoicingDL -= BaseCalculationLocal;
                 BaseCalculationLocal := 0;
             until PurchCrMemoHdrLocal.Next() = 0;
+    end;
 
+    local procedure GetPurchaseLineVATAmountNormalVAT(_PurchaseLine: Record "Purchase Line"): Decimal
+    begin
+        exit(Abs(_PurchaseLine."Amount Including VAT" - _PurchaseLine.Amount));
+    end;
+
+    local procedure GetPostedPurchaseDocumentVATAmountNormalVAT(pDocType: Enum "Gen. Journal Document Type"; pDocNo: Code[20]) TotalVAT: Decimal
+    var
+        VATEntry: Record "VAT Entry";
+    begin
+        TotalVAT := 0;
+
+        VATEntry.Reset();
+        VATEntry.SetRange("Document Type", pDocType);
+        VATEntry.SetRange("Document No.", pDocNo);
+        if VATEntry.FindSet() then
+            repeat
+                TotalVAT += Abs(VATEntry.Amount);
+            until VATEntry.Next() = 0;
     end;
 
     procedure CalcFechaMonotributo(_StartDate: Date) returnStartDate: Date
@@ -1751,40 +1762,22 @@ codeunit 84104 JXVZWithholdings
             until VendorLedgerEntryLocal.Next() = 0;
     end;
 
-    local procedure getTotalIVA(pDocType: Enum "Gen. Journal Document Type"; pDocNo: Code[20]) TotalIVA: Decimal;
+    local procedure getTotalIVA(pDocType: Enum "Gen. Journal Document Type"; pDocNo: Code[20]) TotalIVA: Decimal
     var
         VATEntry: Record "VAT Entry";
-        TaxJurisdiction: Record "Tax Jurisdiction";
     begin
         VATEntry.Reset();
         VATEntry.SetRange("Document Type", pDocType);
         VATEntry.SetRange("Document No.", pDocNo);
         if VATEntry.FindSet() then
             repeat
-                TaxJurisdiction.Reset();
-                TaxJurisdiction.SetRange(Code, VATEntry."Tax Jurisdiction Code");
-                if TaxJurisdiction.FindFirst() then
-                    if TaxJurisdiction.JXVZTaxType = TaxJurisdiction.JXVZTaxType::VAT then
-                        TotalIVA += abs(VATEntry.Amount);
-            until VATEntry.Next() = 0
+                TotalIVA += Abs(VATEntry.Amount);
+            until VATEntry.Next() = 0;
     end;
 
-    local procedure getTotalIVAAndPercepIVA(pDocType: Enum "Gen. Journal Document Type"; pDocNo: Code[20]) TotalIVAAndPerIVA: Decimal;
-    var
-        VATEntry: Record "VAT Entry";
-        TaxJurisdiction: Record "Tax Jurisdiction";
+    local procedure getTotalIVAAndPercepIVA(pDocType: Enum "Gen. Journal Document Type"; pDocNo: Code[20]) TotalIVAAndPerIVA: Decimal
     begin
-        VATEntry.Reset();
-        VATEntry.SetRange("Document Type", pDocType);
-        VATEntry.SetRange("Document No.", pDocNo);
-        if VATEntry.FindSet() then
-            repeat
-                TaxJurisdiction.Reset();
-                TaxJurisdiction.SetRange(Code, VATEntry."Tax Jurisdiction Code");
-                if TaxJurisdiction.FindFirst() then
-                    if (TaxJurisdiction.JXVZTaxType = TaxJurisdiction.JXVZTaxType::VAT) or (TaxJurisdiction.JXVZTaxType = TaxJurisdiction.JXVZTaxType::VATPerception) then
-                        TotalIVAAndPerIVA += abs(VATEntry.Amount);
-            until VATEntry.Next() = 0
+        exit(getTotalIVA(pDocType, pDocNo));
     end;
 
     local procedure CalcTaxPerLine
@@ -2780,7 +2773,10 @@ codeunit 84104 JXVZWithholdings
     local procedure GetPurchaseLineBase(var _PurchaseHeader: Record "Purchase Header"; var _PurchaseLine: Record "Purchase Line"; _BaseType: enum JXVZWithholdBaseType): Decimal
     var
         LocalBaseCalculation: Decimal;
+        LocalVATAmount: Decimal;
     begin
+        LocalVATAmount := GetPurchaseLineVATAmountNormalVAT(_PurchaseLine);
+
         case _BaseType of
             _BaseType::NetAmount:
                 LocalBaseCalculation := _PurchaseLine."VAT Base Amount";
@@ -2795,43 +2791,13 @@ codeunit 84104 JXVZWithholdings
                 LocalBaseCalculation := _PurchaseLine.Amount;
 
             _BaseType::GrossLessVAT:
-                LocalBaseCalculation := _PurchaseLine."Amount Including VAT" -
-                    CalcTaxPerLine(
-                        _PurchaseLine."Tax Area Code",
-                        _PurchaseLine."Tax Group Code",
-                        _PurchaseLine."Tax Liable",
-                        GetPurchaseOperationDate(_PurchaseHeader),
-                        _PurchaseLine.Amount,
-                        0,
-                        _PurchaseHeader."Currency Factor",
-                        true,
-                        false);
+                LocalBaseCalculation := _PurchaseLine."Amount Including VAT" - LocalVATAmount;
 
             _BaseType::GrossLessVATAndVATRelatedTaxes:
-                LocalBaseCalculation := _PurchaseLine."Amount Including VAT" -
-                    CalcTaxPerLine(
-                        _PurchaseLine."Tax Area Code",
-                        _PurchaseLine."Tax Group Code",
-                        _PurchaseLine."Tax Liable",
-                        GetPurchaseOperationDate(_PurchaseHeader),
-                        _PurchaseLine.Amount,
-                        0,
-                        _PurchaseHeader."Currency Factor",
-                        true,
-                        true);
+                LocalBaseCalculation := _PurchaseLine."Amount Including VAT" - LocalVATAmount;
 
             _BaseType::VATOnly:
-                LocalBaseCalculation :=
-                    CalcTaxPerLine(
-                        _PurchaseLine."Tax Area Code",
-                        _PurchaseLine."Tax Group Code",
-                        _PurchaseLine."Tax Liable",
-                        GetPurchaseOperationDate(_PurchaseHeader),
-                        _PurchaseLine.Amount,
-                        0,
-                        _PurchaseHeader."Currency Factor",
-                        true,
-                        false);
+                LocalBaseCalculation := LocalVATAmount;
         end;
 
         if _PurchaseHeader."Currency Factor" <> 0 then
@@ -3241,5 +3207,15 @@ codeunit 84104 JXVZWithholdings
     begin
         PurchaseHeader.testfield("No.");
         JXVZWithholdings.DeletePurchaseDocumentWithholdings(PurchaseHeader);
+    end;
+
+    local procedure GetPostedPurchInvLineVATAmountNormalVAT(_PurchInvLine: Record "Purch. Inv. Line"): Decimal
+    begin
+        exit(Abs(_PurchInvLine."Amount Including VAT" - _PurchInvLine.Amount));
+    end;
+
+    local procedure GetPostedPurchCrMemoLineVATAmountNormalVAT(_PurchCrMemoLine: Record "Purch. Cr. Memo Line"): Decimal
+    begin
+        exit(Abs(_PurchCrMemoLine."Amount Including VAT" - _PurchCrMemoLine.Amount));
     end;
 }

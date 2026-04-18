@@ -168,7 +168,7 @@ tableextension 84104 JXVZSalesHeader extends "Sales Header"
                 rec."Posting No. Series" := JXVZSeriesFEConfiguration.JXVZSeriesNumber;
                 rec.JXVZSTypeVoucher := JXVZSeriesFEConfiguration.JXVZFEDocumentType;
             end else begin
-                rec."Posting No. Series" := '';
+                //rec."Posting No. Series" := '';
                 rec.JXVZSTypeVoucher := '';
             end;
 
