@@ -5103,6 +5103,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipos de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountantRC - Action JXVZFEDocumentTypes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 85177007 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3470244815">
+          <source>Fiscal types setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountantRC - Action JXVZFiscalTypes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 85177007 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3470244815">
+          <source>Fiscal type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountantRC - Action JXVZFiscalTypes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 85177007 - Action 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3470244815">
           <source>Point of sale setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Configuracion de puntos de venta"</note>
@@ -5112,6 +5122,16 @@
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountantRC - Action JXVZPointOfSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 85177007 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3470244815">
+          <source>Province setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountantRC - Action JXVZProvinces - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 85177007 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3470244815">
+          <source>Province</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountantRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 85177007 - Action 349886754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3470244815">
           <source>Document series setup</source>
@@ -5127,26 +5147,6 @@
           <source>Perceptions setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. percepcion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountantRC - Action JXVZTaxesConfigurations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 85177007 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3470244815">
-          <source>Fiscal types setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountantRC - Action JXVZFiscalTypes - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 85177007 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3470244815">
-          <source>Fiscal type</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountantRC - Action JXVZFiscalTypes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 85177007 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3470244815">
-          <source>Province setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountantRC - Action JXVZProvinces - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 85177007 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3470244815">
-          <source>Province</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountantRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 85177007 - Action 3866517121 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3470244815">
           <source>Tax area setup</source>
@@ -5333,6 +5333,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipos de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountingManagerRC - Action JXVZFEDocumentTypes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 259464239 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
+          <source>Fiscal types setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountingManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 259464239 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
+          <source>Fiscal type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountingManagerRC - Action JXVZFiscalTypes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 259464239 - Action 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
           <source>Point of sale setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Configuracion de puntos de venta"</note>
@@ -5342,6 +5352,16 @@
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountingManagerRC - Action JXVZPointOfSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 259464239 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
+          <source>Province setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountingManagerRC - Action JXVZProvinces - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 259464239 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
+          <source>Province</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountingManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 259464239 - Action 349886754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
           <source>Document series setup</source>
@@ -5357,26 +5377,6 @@
           <source>Perceptions setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. percepcion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountingManagerRC - Action JXVZTaxesConfigurations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 259464239 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
-          <source>Fiscal types setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountingManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 259464239 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
-          <source>Fiscal type</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountingManagerRC - Action JXVZFiscalTypes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 259464239 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
-          <source>Province setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountingManagerRC - Action JXVZProvinces - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 259464239 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
-          <source>Province</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAccountingManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 259464239 - Action 3866517121 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2521211343">
           <source>Tax area setup</source>
@@ -5563,6 +5563,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipos de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminMainRC - Action JXVZFEDocumentTypes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3751039973 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4183424761">
+          <source>Fiscal types setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminMainRC - Action JXVZFiscalTypes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3751039973 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4183424761">
+          <source>Fiscal type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminMainRC - Action JXVZFiscalTypes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3751039973 - Action 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4183424761">
           <source>Point of sale setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Configuracion de puntos de venta"</note>
@@ -5572,6 +5582,16 @@
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminMainRC - Action JXVZPointOfSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3751039973 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4183424761">
+          <source>Province setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminMainRC - Action JXVZProvinces - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3751039973 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4183424761">
+          <source>Province</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminMainRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3751039973 - Action 349886754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4183424761">
           <source>Document series setup</source>
@@ -5587,26 +5607,6 @@
           <source>Perceptions setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. percepcion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminMainRC - Action JXVZTaxesConfigurations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3751039973 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4183424761">
-          <source>Fiscal types setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminMainRC - Action JXVZFiscalTypes - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3751039973 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4183424761">
-          <source>Fiscal type</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminMainRC - Action JXVZFiscalTypes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3751039973 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4183424761">
-          <source>Province setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminMainRC - Action JXVZProvinces - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3751039973 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4183424761">
-          <source>Province</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminMainRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3751039973 - Action 3866517121 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4183424761">
           <source>Tax area setup</source>
@@ -5793,6 +5793,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipos de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminRC - Action JXVZFEDocumentTypes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 575691732 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3513039640">
+          <source>Fiscal types setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminRC - Action JXVZFiscalTypes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 575691732 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3513039640">
+          <source>Fiscal type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminRC - Action JXVZFiscalTypes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 575691732 - Action 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3513039640">
           <source>Point of sale setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Configuracion de puntos de venta"</note>
@@ -5802,6 +5812,16 @@
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminRC - Action JXVZPointOfSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 575691732 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3513039640">
+          <source>Province setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminRC - Action JXVZProvinces - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 575691732 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3513039640">
+          <source>Province</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 575691732 - Action 349886754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3513039640">
           <source>Document series setup</source>
@@ -5817,26 +5837,6 @@
           <source>Perceptions setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. percepcion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminRC - Action JXVZTaxesConfigurations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 575691732 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3513039640">
-          <source>Fiscal types setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminRC - Action JXVZFiscalTypes - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 575691732 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3513039640">
-          <source>Fiscal type</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminRC - Action JXVZFiscalTypes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 575691732 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3513039640">
-          <source>Province setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminRC - Action JXVZProvinces - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 575691732 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3513039640">
-          <source>Province</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZAdminRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 575691732 - Action 3866517121 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3513039640">
           <source>Tax area setup</source>
@@ -6023,6 +6023,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipos de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZBusinessManagerRC - Action JXVZFEDocumentTypes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1832857326 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
+          <source>Fiscal types setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZBusinessManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1832857326 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
+          <source>Fiscal type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZBusinessManagerRC - Action JXVZFiscalTypes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1832857326 - Action 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
           <source>Point of sale setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Configuracion de puntos de venta"</note>
@@ -6032,6 +6042,16 @@
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZBusinessManagerRC - Action JXVZPointOfSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1832857326 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
+          <source>Province setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZBusinessManagerRC - Action JXVZProvinces - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1832857326 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
+          <source>Province</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZBusinessManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1832857326 - Action 349886754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
           <source>Document series setup</source>
@@ -6047,26 +6067,6 @@
           <source>Perceptions setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. percepcion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZBusinessManagerRC - Action JXVZTaxesConfigurations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1832857326 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
-          <source>Fiscal types setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZBusinessManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1832857326 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
-          <source>Fiscal type</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZBusinessManagerRC - Action JXVZFiscalTypes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1832857326 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
-          <source>Province setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZBusinessManagerRC - Action JXVZProvinces - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1832857326 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
-          <source>Province</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZBusinessManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1832857326 - Action 3866517121 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
           <source>Tax area setup</source>
@@ -6288,6 +6288,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipos de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZFEDocumentTypes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 718071150 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1681328941">
+          <source>Fiscal types setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZFiscalTypes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 718071150 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1681328941">
+          <source>Fiscal type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZFiscalTypes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 718071150 - Action 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1681328941">
           <source>Point of sale setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Configuracion de puntos de venta"</note>
@@ -6297,6 +6307,16 @@
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZPointOfSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 718071150 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1681328941">
+          <source>Province setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZProvinces - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 718071150 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1681328941">
+          <source>Province</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 718071150 - Action 349886754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1681328941">
           <source>Document series setup</source>
@@ -6312,26 +6332,6 @@
           <source>Perceptions setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. percepcion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZTaxesConfigurations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 718071150 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1681328941">
-          <source>Fiscal types setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZFiscalTypes - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 718071150 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1681328941">
-          <source>Fiscal type</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZFiscalTypes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 718071150 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1681328941">
-          <source>Province setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZProvinces - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 718071150 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1681328941">
-          <source>Province</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZCEOPresRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 718071150 - Action 3866517121 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1681328941">
           <source>Tax area setup</source>
@@ -6648,6 +6648,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipos de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZFinanceManagerRC - Action JXVZFEDocumentTypes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1879656288 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4105562392">
+          <source>Fiscal types setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZFinanceManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1879656288 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4105562392">
+          <source>Fiscal type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZFinanceManagerRC - Action JXVZFiscalTypes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1879656288 - Action 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4105562392">
           <source>Point of sale setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Configuracion de puntos de venta"</note>
@@ -6657,6 +6667,16 @@
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZFinanceManagerRC - Action JXVZPointOfSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1879656288 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4105562392">
+          <source>Province setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZFinanceManagerRC - Action JXVZProvinces - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1879656288 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4105562392">
+          <source>Province</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZFinanceManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1879656288 - Action 349886754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4105562392">
           <source>Document series setup</source>
@@ -6672,26 +6692,6 @@
           <source>Perceptions setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. percepcion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZFinanceManagerRC - Action JXVZTaxesConfigurations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1879656288 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4105562392">
-          <source>Fiscal types setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZFinanceManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1879656288 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4105562392">
-          <source>Fiscal type</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZFinanceManagerRC - Action JXVZFiscalTypes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1879656288 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4105562392">
-          <source>Province setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZFinanceManagerRC - Action JXVZProvinces - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1879656288 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4105562392">
-          <source>Province</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZFinanceManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1879656288 - Action 3866517121 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4105562392">
           <source>Tax area setup</source>
@@ -6923,6 +6923,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipos de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZOrderProcedorRC - Action JXVZFEDocumentTypes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 66928517 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Fiscal types setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZOrderProcedorRC - Action JXVZFiscalTypes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 66928517 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Fiscal type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZOrderProcedorRC - Action JXVZFiscalTypes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 66928517 - Action 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Point of sale setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Configuracion de puntos de venta"</note>
@@ -6932,6 +6942,16 @@
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZOrderProcedorRC - Action JXVZPointOfSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 66928517 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Province setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZOrderProcedorRC - Action JXVZProvinces - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 66928517 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
+          <source>Province</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZOrderProcedorRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 66928517 - Action 349886754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Document series setup</source>
@@ -6947,26 +6967,6 @@
           <source>Perceptions setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. percepcion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZOrderProcedorRC - Action JXVZTaxesConfigurations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 66928517 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
-          <source>Fiscal types setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZOrderProcedorRC - Action JXVZFiscalTypes - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 66928517 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
-          <source>Fiscal type</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZOrderProcedorRC - Action JXVZFiscalTypes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 66928517 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
-          <source>Province setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZOrderProcedorRC - Action JXVZProvinces - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 66928517 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
-          <source>Province</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZOrderProcedorRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 66928517 - Action 3866517121 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2747922353">
           <source>Tax area setup</source>
@@ -7388,6 +7388,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipos de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZProjectManagerRC - Action JXVZFEDocumentTypes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3837642363 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3353361819">
+          <source>Fiscal types setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZProjectManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3837642363 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3353361819">
+          <source>Fiscal type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZProjectManagerRC - Action JXVZFiscalTypes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3837642363 - Action 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3353361819">
           <source>Point of sale setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Configuracion de puntos de venta"</note>
@@ -7397,6 +7407,16 @@
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZProjectManagerRC - Action JXVZPointOfSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3837642363 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3353361819">
+          <source>Province setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZProjectManagerRC - Action JXVZProvinces - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3837642363 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3353361819">
+          <source>Province</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZProjectManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3837642363 - Action 349886754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3353361819">
           <source>Document series setup</source>
@@ -7412,26 +7432,6 @@
           <source>Perceptions setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. percepcion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZProjectManagerRC - Action JXVZTaxesConfigurations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3837642363 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3353361819">
-          <source>Fiscal types setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZProjectManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3837642363 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3353361819">
-          <source>Fiscal type</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZProjectManagerRC - Action JXVZFiscalTypes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3837642363 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3353361819">
-          <source>Province setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZProjectManagerRC - Action JXVZProvinces - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3837642363 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3353361819">
-          <source>Province</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZProjectManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3837642363 - Action 3866517121 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3353361819">
           <source>Tax area setup</source>
@@ -7618,6 +7618,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipos de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchAgentRC - Action JXVZFEDocumentTypes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2868952998 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
+          <source>Fiscal types setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchAgentRC - Action JXVZFiscalTypes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2868952998 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
+          <source>Fiscal type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchAgentRC - Action JXVZFiscalTypes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2868952998 - Action 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
           <source>Point of sale setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Configuracion de puntos de venta"</note>
@@ -7627,6 +7637,16 @@
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchAgentRC - Action JXVZPointOfSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2868952998 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
+          <source>Province setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchAgentRC - Action JXVZProvinces - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2868952998 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
+          <source>Province</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchAgentRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2868952998 - Action 349886754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
           <source>Document series setup</source>
@@ -7642,26 +7662,6 @@
           <source>Perceptions setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. percepcion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchAgentRC - Action JXVZTaxesConfigurations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2868952998 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
-          <source>Fiscal types setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchAgentRC - Action JXVZFiscalTypes - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2868952998 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
-          <source>Fiscal type</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchAgentRC - Action JXVZFiscalTypes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2868952998 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
-          <source>Province setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchAgentRC - Action JXVZProvinces - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2868952998 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
-          <source>Province</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchAgentRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2868952998 - Action 3866517121 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 743575308">
           <source>Tax area setup</source>
@@ -8128,6 +8128,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipos de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchManagerRC - Action JXVZFEDocumentTypes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3721443820 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2704021542">
+          <source>Fiscal types setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3721443820 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2704021542">
+          <source>Fiscal type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchManagerRC - Action JXVZFiscalTypes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3721443820 - Action 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2704021542">
           <source>Point of sale setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Configuracion de puntos de venta"</note>
@@ -8137,6 +8147,16 @@
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchManagerRC - Action JXVZPointOfSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3721443820 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2704021542">
+          <source>Province setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchManagerRC - Action JXVZProvinces - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3721443820 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2704021542">
+          <source>Province</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3721443820 - Action 349886754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2704021542">
           <source>Document series setup</source>
@@ -8152,26 +8172,6 @@
           <source>Perceptions setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. percepcion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchManagerRC - Action JXVZTaxesConfigurations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3721443820 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2704021542">
-          <source>Fiscal types setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3721443820 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2704021542">
-          <source>Fiscal type</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchManagerRC - Action JXVZFiscalTypes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3721443820 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2704021542">
-          <source>Province setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchManagerRC - Action JXVZProvinces - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3721443820 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2704021542">
-          <source>Province</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3721443820 - Action 3866517121 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2704021542">
           <source>Tax area setup</source>
@@ -8378,6 +8378,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipos de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZResourceManagerRC - Action JXVZFEDocumentTypes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3283532282 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1279072642">
+          <source>Fiscal types setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZResourceManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3283532282 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1279072642">
+          <source>Fiscal type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZResourceManagerRC - Action JXVZFiscalTypes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3283532282 - Action 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1279072642">
           <source>Point of sale setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Configuracion de puntos de venta"</note>
@@ -8387,6 +8397,16 @@
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZResourceManagerRC - Action JXVZPointOfSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3283532282 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1279072642">
+          <source>Province setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZResourceManagerRC - Action JXVZProvinces - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3283532282 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1279072642">
+          <source>Province</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZResourceManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3283532282 - Action 349886754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1279072642">
           <source>Document series setup</source>
@@ -8402,26 +8422,6 @@
           <source>Perceptions setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. percepcion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZResourceManagerRC - Action JXVZTaxesConfigurations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3283532282 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1279072642">
-          <source>Fiscal types setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZResourceManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3283532282 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1279072642">
-          <source>Fiscal type</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZResourceManagerRC - Action JXVZFiscalTypes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3283532282 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1279072642">
-          <source>Province setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZResourceManagerRC - Action JXVZProvinces - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3283532282 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1279072642">
-          <source>Province</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZResourceManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3283532282 - Action 3866517121 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1279072642">
           <source>Tax area setup</source>
@@ -8828,6 +8828,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Tipos de documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZServiceManagerRC - Action JXVZFEDocumentTypes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3315660187 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1696917291">
+          <source>Fiscal types setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZServiceManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3315660187 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1696917291">
+          <source>Fiscal type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZServiceManagerRC - Action JXVZFiscalTypes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3315660187 - Action 4021726644 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1696917291">
           <source>Point of sale setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Configuracion de puntos de venta"</note>
@@ -8837,6 +8847,16 @@
           <source>Point of sale</source>
           <note from="Developer" annotates="general" priority="2">ESP="Puntos de venta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZServiceManagerRC - Action JXVZPointOfSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3315660187 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1696917291">
+          <source>Province setup</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZServiceManagerRC - Action JXVZProvinces - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3315660187 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1696917291">
+          <source>Province</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZServiceManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3315660187 - Action 349886754 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1696917291">
           <source>Document series setup</source>
@@ -8852,26 +8872,6 @@
           <source>Perceptions setup</source>
           <note from="Developer" annotates="general" priority="2">ESP="Conf. percepcion"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZServiceManagerRC - Action JXVZTaxesConfigurations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3315660187 - Action 2440953553 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1696917291">
-          <source>Fiscal types setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de tipos fiscales"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZServiceManagerRC - Action JXVZFiscalTypes - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3315660187 - Action 2440953553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1696917291">
-          <source>Fiscal type</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tipo fiscal"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZServiceManagerRC - Action JXVZFiscalTypes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3315660187 - Action 530810041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1696917291">
-          <source>Province setup</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Configuracion de Provincias"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZServiceManagerRC - Action JXVZProvinces - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3315660187 - Action 530810041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1696917291">
-          <source>Province</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Provincia"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZServiceManagerRC - Action JXVZProvinces - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3315660187 - Action 3866517121 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1696917291">
           <source>Tax area setup</source>

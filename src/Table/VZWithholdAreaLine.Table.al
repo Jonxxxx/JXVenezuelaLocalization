@@ -29,8 +29,10 @@ table 84121 JXVZWithholdAreaLine
                             JXVZTaxCode := lclWithDetEntry.JXVZTaxCode;
                             JXVZRegime := lclWithDetEntry.JXVZRegime;
                         end else begin
-                            Clear(JXVZWithholdingNo);
-                            Message('', lclWithDetEntry.JXVZTaxCode);
+                            //Clear(JXVZWithholdingNo);
+                            //Message('', lclWithDetEntry.JXVZTaxCode);
+                            JXVZTaxCode := lclWithDetEntry.JXVZTaxCode;
+                            JXVZRegime := lclWithDetEntry.JXVZRegime;
                         end;
                     end;
             end;

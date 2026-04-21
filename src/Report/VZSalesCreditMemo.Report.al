@@ -1,8 +1,7 @@
 report 84120 JXVZSalesCreditMemo
 {
     Caption = 'Venezuela - Nota de Crédito de Venta';
-    UsageCategory = ReportsAndAnalysis;
-    ApplicationArea = All;
+    UsageCategory = None;
     DefaultLayout = RDLC;
     RDLCLayout = 'src/ReportLayout/VZSalesCreditMemo.rdl';
 

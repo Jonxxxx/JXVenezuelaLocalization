@@ -11,6 +11,7 @@ pageextension 84163 JXVZPurchAgentRC extends "Purchasing Agent Role Center"
                 group(JXVZTaxesConfigurations)
                 {
                     Caption = 'Perceptions setup', Comment = 'ESP="Conf. percepcion"';
+                    Visible = false;
 
                     action(JXVZTaxJurisdictions)
                     {
@@ -47,22 +48,7 @@ pageextension 84163 JXVZPurchAgentRC extends "Purchasing Agent Role Center"
                         Image = TaxDetail;
                         ToolTip = 'Tax details setup', Comment = 'ESP="Configuracion de detalles de impuestos"';
                     }
-                    action(JXVZFiscalTypes)
-                    {
-                        Caption = 'Fiscal type', Comment = 'ESP="Tipo fiscal"';
-                        RunObject = page JXVZFiscalTypes;
-                        ApplicationArea = JXVZshowVen;
-                        Image = TaxDetail;
-                        ToolTip = 'Fiscal types setup', Comment = 'ESP="Configuracion de tipos fiscales"';
-                    }
-                    action(JXVZProvinces)
-                    {
-                        Caption = 'Province', Comment = 'ESP="Provincia"';
-                        RunObject = page JXVZProvinces;
-                        ApplicationArea = JXVZshowVen;
-                        Image = TaxDetail;
-                        ToolTip = 'Province setup', Comment = 'ESP="Configuracion de Provincias"';
-                    }
+
                 }
 
                 group(JXVZWithholdingConfiguratons)
@@ -207,6 +193,22 @@ pageextension 84163 JXVZPurchAgentRC extends "Purchasing Agent Role Center"
                             ApplicationArea = JXVZshowVen;
                             Image = Setup;
                             ToolTip = 'Document series setup', Comment = 'ESP="Configuracion series de documentos"';
+                        }
+                        action(JXVZFiscalTypes)
+                        {
+                            Caption = 'Fiscal type', Comment = 'ESP="Tipo fiscal"';
+                            RunObject = page JXVZFiscalTypes;
+                            ApplicationArea = JXVZshowVen;
+                            Image = TaxDetail;
+                            ToolTip = 'Fiscal types setup', Comment = 'ESP="Configuracion de tipos fiscales"';
+                        }
+                        action(JXVZProvinces)
+                        {
+                            Caption = 'Province', Comment = 'ESP="Provincia"';
+                            RunObject = page JXVZProvinces;
+                            ApplicationArea = JXVZshowVen;
+                            Image = TaxDetail;
+                            ToolTip = 'Province setup', Comment = 'ESP="Configuracion de Provincias"';
                         }
                     }
                 }

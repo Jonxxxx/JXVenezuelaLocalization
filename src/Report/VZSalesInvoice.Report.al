@@ -1,8 +1,7 @@
 report 84119 JXVZSalesInvoice
 {
     Caption = 'Venezuela - Factura de Venta';
-    UsageCategory = ReportsAndAnalysis;
-    ApplicationArea = All;
+    UsageCategory = None;
     DefaultLayout = RDLC;
     RDLCLayout = 'src/ReportLayout/VZSalesInvoice.rdl';
 
