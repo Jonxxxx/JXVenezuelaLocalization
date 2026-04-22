@@ -38,6 +38,28 @@ tableextension 84116 JXVZPurchaseHeader extends "Purchase Header"
             Caption = 'Control Document No';
         }
 
+        field(84106; JXVZAutoInvoice; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Auto-Invoice';
+
+            trigger OnValidate()
+            var
+                PurchSetup: Record "Purchases & Payables Setup";
+                SerieManagement: Codeunit "No. Series";
+            begin
+                if JXVZAutoInvoice then begin
+                    Clear(SerieManagement);
+
+                    PurchSetup.Reset();
+                    if PurchSetup.FindFirst() then begin
+                        PurchSetup.TestField(JXVZSerieAutoInvoice);
+                        Rec."Vendor Invoice No." := SerieManagement.GetNextNo(PurchSetup.JXVZSerieAutoInvoice, WorkDate(), true);
+                    end;
+                end;
+            end;
+        }
+
         modify("Buy-from Vendor No.")
         {
             trigger OnAfterValidate()

@@ -63,6 +63,13 @@ pageextension 84117 JXVZPurchaseOrder extends "Purchase Order"
                     Visible = IsVenezuela;
                     ToolTip = 'Control Document No.';
                 }
+
+                field(JXVZAutoInvoice; Rec.JXVZAutoInvoice)
+                {
+                    ApplicationArea = All;
+                    Visible = IsVenezuela;
+                    ToolTip = 'Auto-Invoice';
+                }
             }
         }
     }

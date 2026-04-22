@@ -58,7 +58,7 @@ tableextension 84106 JXVZSalesCrMemoHeader extends "Sales Cr.Memo Header"
         {
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Control Document No';
-        }
 
+        }
     }
 }

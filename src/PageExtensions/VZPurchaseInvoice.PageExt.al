@@ -65,6 +65,13 @@ pageextension 84118 JXVZPurchaseInvoice extends "Purchase Invoice"
                     Visible = IsVenezuela;
                     ToolTip = 'Control Document No.';
                 }
+
+                field(JXVZAutoInvoice; Rec.JXVZAutoInvoice)
+                {
+                    ApplicationArea = All;
+                    Visible = IsVenezuela;
+                    ToolTip = 'Auto-Invoice';
+                }
             }
         }
     }

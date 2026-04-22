@@ -7233,6 +7233,11 @@
           <note from="Developer" annotates="general" priority="2">ESP=Sujeto a impuestos</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedPurchInvoice - Control JXTax Liable - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3459094414 - Control 2733364700 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
+          <source>Auto-Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPostedPurchInvoice - Control JXVZAutoInvoice - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3459094414 - Control 2686807483 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
           <source>Control Document No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7943,6 +7948,11 @@
           <note from="Developer" annotates="general" priority="2">ESP=Sujeto a impuestos</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseInvoice - Control JXTax Liable - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4290665256 - Control 2733364700 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
+          <source>Auto-Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseInvoice - Control JXVZAutoInvoice - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4290665256 - Control 2686807483 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
           <source>Control Document No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8023,6 +8033,11 @@
           <note from="Developer" annotates="general" priority="2">ESP=Sujeto a impuestos</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseOrder - Control JXTax Liable - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1188411861 - Control 2733364700 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Auto-Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseOrder - Control JXVZAutoInvoice - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1188411861 - Control 2686807483 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
           <source>Control Document No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8052,6 +8067,11 @@
           <source>No validate multi vendors in same payment</source>
           <note from="Developer" annotates="general" priority="2">ESP=No validar proveedores multiples en un mismo pago</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseSetup - Control JXVZNotValidMultiVendInPaym - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 454553854 - Control 2707685628 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3921990236">
+          <source>Serie Auto-Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JXVZPurchaseSetup - Control JXVZSerieAutoInvoice - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2829392173 - Control 2051989111 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1521900543">
           <source>Tax area code</source>
@@ -9328,6 +9348,11 @@
           <note from="Developer" annotates="general" priority="2">ESP=No. Valor</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZPostedGenJournalLine - Field JXVZValueNoValue - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3678677334 - Field 2733364700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Auto-Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZPurchaseHeader - Field JXVZAutoInvoice - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3678677334 - Field 2686807483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Control Document No</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9368,6 +9393,16 @@
           <note from="Developer" annotates="general" priority="2">ESP=No validar proveedores multiples en un mismo pago</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZPurchaseSetup - Field JXVZNotValidMultiVendInPaym - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 454553854 - Field 2707685628 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
+          <source>Serie Auto-invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZPurchaseSetup - Field JXVZSerieAutoInvoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2902054649 - Field 2733364700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2271228953">
+          <source>Auto-Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZPurchCrMemoHdr - Field JXVZAutoInvoice - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2902054649 - Field 2686807483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2271228953">
           <source>Control Document No</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9397,6 +9432,11 @@
           <source>Withholding Code</source>
           <note from="Developer" annotates="general" priority="2">ESP=Codigo retencion</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZPurchCrMemoLine - Field JXVZWithholdingCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 822157544 - Field 2733364700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>Auto-Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension JXVZPurchInvHeader - Field JXVZAutoInvoice - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 822157544 - Field 2686807483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
           <source>Control Document No</source>

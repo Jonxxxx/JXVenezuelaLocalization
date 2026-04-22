@@ -2177,7 +2177,15 @@ codeunit 84104 JXVZWithholdings
             exit(TaxableBaseAmount / TaxUnitValue);
         end;
 
-        exit(Abs(_CalculationBase));
+        exit(TaxableBaseAmount);
+    end;
+
+    local procedure GetScaleThresholdBaseAmount(_Scale: Record JXVZWithholdScale; _OperationDate: Date): Decimal
+    begin
+        if _Scale.JXVZUseTaxUnit then
+            exit(_Scale.JXVZBaseAmount * GetTaxUnitValue(_OperationDate));
+
+        exit(_Scale.JXVZBaseAmount);
     end;
 
     local procedure GetScaleTaxableBasePct(_Scale: Record JXVZWithholdScale): Decimal
@@ -2224,28 +2232,30 @@ codeunit 84104 JXVZWithholdings
     var
         TaxableBaseAmount: Decimal;
         FixedAmount: Decimal;
-        BaseAmount: Decimal;
+        ThresholdBaseAmount: Decimal;
         DeductionAmount: Decimal;
         MinimumPaymentAmount: Decimal;
         Result: Decimal;
     begin
+        FixedAmount := GetScaleFixedAmount(_Scale, _OperationDate);
+        ThresholdBaseAmount := GetScaleThresholdBaseAmount(_Scale, _OperationDate);
+        DeductionAmount := GetScaleDeductionAmount(_Scale, _OperationDate);
         MinimumPaymentAmount := GetScaleMinimumPaymentAmount(_Scale, _OperationDate);
 
-        if (MinimumPaymentAmount <> 0) and (Abs(_CalculationBase) < MinimumPaymentAmount) then
-            exit(0);
+        TaxableBaseAmount := Abs(_CalculationBase) * (GetScaleTaxableBasePct(_Scale) / 100);
 
-        FixedAmount := GetScaleFixedAmount(_Scale, _OperationDate);
-        BaseAmount := GetScaleBaseAmount(_Scale, _OperationDate);
-        DeductionAmount := GetScaleDeductionAmount(_Scale, _OperationDate);
-        TaxableBaseAmount := _CalculationBase * (GetScaleTaxableBasePct(_Scale) / 100);
+        // 1. Mínimo sujeto a retención / base mínima
+        // Si la base gravable no alcanza el mínimo configurado, no retiene.
+        if (ThresholdBaseAmount <> 0) and (TaxableBaseAmount < ThresholdBaseAmount) then
+            exit(0);
 
         case _Scale.JXVZCalculationFormula of
             _Scale.JXVZCalculationFormula::StandardExcess:
                 begin
                     if _Scale.JXVZMonotributoIVA then
-                        Result := FixedAmount + (_CalculationBase * (_Scale.JXVZSurplus / 100))
+                        Result := FixedAmount + (Abs(_CalculationBase) * (_Scale.JXVZSurplus / 100))
                     else
-                        Result := FixedAmount + ((_CalculationBase - BaseAmount) * (_Scale.JXVZSurplus / 100));
+                        Result := FixedAmount + ((TaxableBaseAmount - ThresholdBaseAmount) * (_Scale.JXVZSurplus / 100));
                 end;
 
             _Scale.JXVZCalculationFormula::PercentageOnFullBase:
@@ -2273,6 +2283,14 @@ codeunit 84104 JXVZWithholdings
                     Result := 0;
                 end;
         end;
+
+        // 2. Si luego del sustraendo queda negativa o en cero, no retiene
+        if Result <= 0 then
+            exit(0);
+
+        // 3. Mínimo de pago / mínima retención
+        if (MinimumPaymentAmount <> 0) and (Result < MinimumPaymentAmount) then
+            exit(0);
 
         exit(Result);
     end;

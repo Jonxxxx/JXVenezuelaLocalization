@@ -35,5 +35,11 @@ tableextension 84120 JXVZPurchCrMemoHdr extends "Purch. Cr. Memo Hdr."
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Control Document No';
         }
+
+        field(84106; JXVZAutoInvoice; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Auto-Invoice';
+        }
     }
 }

@@ -4,7 +4,12 @@ pageextension 84139 JXVZPurchaseSetup extends "Purchases & Payables Setup"
     {
         addlast(General)
         {
-
+            field(JXVZSerieAutoInvoice; Rec.JXVZSerieAutoInvoice)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Serie Auto-Invoice';
+                Visible = IsVenezuela;
+            }
 
             field(JXVZNotValidMultiVendInPaym; rec.JXVZNotValidMultiVendInPaym)
             {

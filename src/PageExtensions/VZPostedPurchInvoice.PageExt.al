@@ -47,6 +47,13 @@ pageextension 84123 JXVZPostedPurchInvoice extends "Posted Purchase Invoice"
                     Visible = IsVenezuela;
                     ToolTip = 'Control Document No.';
                 }
+
+                field(JXVZAutoInvoice; Rec.JXVZAutoInvoice)
+                {
+                    ApplicationArea = All;
+                    Visible = IsVenezuela;
+                    ToolTip = 'Auto-Invoice';
+                }
             }
         }
     }

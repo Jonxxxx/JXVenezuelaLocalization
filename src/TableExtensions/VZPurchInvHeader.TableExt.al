@@ -36,6 +36,12 @@ tableextension 84118 JXVZPurchInvHeader extends "Purch. Inv. Header"
             DataClassification = OrganizationIdentifiableInformation;
             Caption = 'Control Document No';
         }
+
+        field(84106; JXVZAutoInvoice; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Auto-Invoice';
+        }
     }
 
 }
